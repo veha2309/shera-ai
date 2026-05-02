@@ -1,0 +1,29 @@
+{
+  "status": true,
+  "data": [
+    {
+      "text": {
+        "en": "Students working in the fields of Wildlife, Environment, Education, Biodiversity, Conservation and related areas are welcomed for doing their Internship at the Zoo. Hundreds of students have participated in various internship programs in National Zoological Park in the last couple of years.\n",
+        "hi": "वन्यजीव, पर्यावरण, शिक्षा, जैव विविधता, संरक्षण और संबंधित क्षेत्रों में काम करने वाले छात्रों का चिड़ियाघर में इंटर्नशिप करने के लिए स्वागत किया जाता है। "
+      },
+      "_id": "69d7a90572b2a5850f394422",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "url": "https://nzpnewdelhi.gov.in/en/page/internship_program",
+      "createdAt": "2026-04-09T13:26:29.965Z",
+      "updatedAt": "2026-04-09T13:26:29.965Z",
+      "__v": 0
+    },
+    {
+      "text": {
+        "en": "Anyone interested in working for the cause of animals, may apply for the Volunteership Programme of the National Zoological Park by writing in via mail. They will be exposed to in-situ conservation methods, taking care of animals in captivity, and other administrative or peripheral activities that are involved in the upkeep and smooth functioning of a zoo.",
+        "hi": "जानवरों के हितों के लिए काम करने में रुचि रखने वाला कोई भी व्यक्ति मेल के माध्यम से लिखकर राष्ट्रीय प्राणी उद्यान के स्वयंसेवी कार्यक्रम के लिए आवेदन कर सकता है। "
+      },
+      "_id": "69d7a8f272b2a5850f39440f",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "url": "https://nzpnewdelhi.gov.in/en/page/volunteer_programme",
+      "createdAt": "2026-04-09T13:26:10.072Z",
+      "updatedAt": "2026-04-09T13:26:10.072Z",
+      "__v": 0
+    }
+  ]
+}

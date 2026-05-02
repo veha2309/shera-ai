@@ -1,0 +1,5373 @@
+{
+  "status": true,
+  "data": [
+    {
+      "title": {
+        "en": "Elephants never forget",
+        "hi": "हाथी कभी नहीं भूलते"
+      },
+      "text": {
+        "en": "Elephants have the largest brain of any land animal and an exceptional memory. They can remember the location of water sources visited decades ago.",
+        "hi": "हाथियों के पास किसी भी ज़मीनी जानवर की तुलना में सबसे बड़ा मस्तिष्क और असाधारण स्मृति होती है। "
+      },
+      "buttonLabel": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69c1208d9214f33e9a2e9925",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-23T11:14:21.292Z",
+      "updatedAt": "2026-03-23T11:14:21.292Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Flamingos are born white",
+        "hi": "राजहंस सफेद पैदा होते हैं"
+      },
+      "text": {
+        "en": "Baby flamingos are born with grey-white feathers. Their iconic pink colour comes from pigments in the algae and crustaceans they eat.",
+        "hi": "शिशु राजहंस भूरे-सफ़ेद पंखों के साथ पैदा होते हैं। "
+      },
+      "buttonLabel": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69c120aa9214f33e9a2e993c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-23T11:14:50.129Z",
+      "updatedAt": "2026-03-23T11:14:50.129Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "A group of rhinos is called a crash",
+        "hi": "गैंडों के समूह को क्रैश कहा जाता है"
+      },
+      "text": {
+        "en": "A group of rhinoceroses is called a \"crash\". Rhinos can run at speeds of up to 55 km/h despite their massive size.",
+        "hi": "गैंडों के समूह को \"क्रैश\" कहा जाता है। "
+      },
+      "buttonLabel": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69c120c69214f33e9a2e9965",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-23T11:15:18.175Z",
+      "updatedAt": "2026-03-23T11:15:18.175Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mughal Heritage",
+        "hi": "मुगल विरासत"
+      },
+      "text": {
+        "en": "Did you know the zoo is built on the grounds of the 16th-century Citadel of Indraprastha, near the historic Purana Qila?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर ऐतिहासिक पुराना किला के पास, 16वीं सदी के इंद्रप्रस्थ के गढ़ के मैदान पर बनाया गया है?"
+      },
+      "buttonLabel": {
+        "en": "View History",
+        "hi": "इतिहास देखें"
+      },
+      "_id": "69c3d274fa57b638ef6bdcee",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:17:56.559Z",
+      "updatedAt": "2026-03-25T12:17:56.559Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The National Status",
+        "hi": "राष्ट्रीय स्थिति"
+      },
+      "text": {
+        "en": "Did you know it was renamed \"National Zoological Park\" in 1982 to serve as the model for all other zoos in India?",
+        "hi": "क्या आप जानते हैं कि भारत के अन्य सभी चिड़ियाघरों के लिए मॉडल के रूप में काम करने के लिए 1982 में इसका नाम बदलकर \"राष्ट्रीय प्राणी उद्यान\" कर दिया गया था?"
+      },
+      "buttonLabel": {
+        "en": "Explore CZA",
+        "hi": "सीजेडए का अन्वेषण करें"
+      },
+      "_id": "69c3d275fa57b638ef6bdcf0",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://cza.nic.in/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:17:57.616Z",
+      "updatedAt": "2026-03-25T12:17:57.616Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "A Friday Rest",
+        "hi": "एक शुक्रवार का विश्राम"
+      },
+      "text": {
+        "en": "Did you know the Delhi Zoo is closed every Friday to give the animals a full day of peace and quiet from visitors?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर हर शुक्रवार को बंद रहता है ताकि जानवरों को पूरे दिन शांति और शांति मिल सके?"
+      },
+      "buttonLabel": {
+        "en": "Check Timings",
+        "hi": "समय की जाँच करें"
+      },
+      "_id": "69c3d276fa57b638ef6bdcf2",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-information",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:17:58.601Z",
+      "updatedAt": "2026-03-25T12:17:58.601Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "White Tiger Pioneer",
+        "hi": "व्हाइट टाइगर पायनियर"
+      },
+      "text": {
+        "en": "Did you know Delhi Zoo was one of the first in the world to successfully breed and house the rare White Tiger?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर दुर्लभ सफेद बाघ को सफलतापूर्वक प्रजनन और आश्रय देने वाले दुनिया के पहले चिड़ियाघरों में से एक था?"
+      },
+      "buttonLabel": {
+        "en": "Meet the Tigers",
+        "hi": "बाघों से मिलें"
+      },
+      "_id": "69c3d277fa57b638ef6bdcf4",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:17:59.365Z",
+      "updatedAt": "2026-03-25T12:17:59.365Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Kos Minar",
+        "hi": "कोस मीनार"
+      },
+      "text": {
+        "en": "Did you know there is an original Mughal-era \"Kos Minar\" (mileage pillar) still standing inside the zoo grounds?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के मैदान के अंदर एक मूल मुगल-युग \"कोस मीनार\" (माइलेज स्तंभ) अभी भी खड़ा है?"
+      },
+      "buttonLabel": {
+        "en": "Explore Delhi",
+        "hi": "दिल्ली का अन्वेषण करें"
+      },
+      "_id": "69c3d278fa57b638ef6bdcf6",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://delhitourism.gov.in/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:00.211Z",
+      "updatedAt": "2026-03-25T12:18:00.211Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mughal Courtyard",
+        "hi": "मुगल प्रांगण"
+      },
+      "text": {
+        "en": "Did you know before modern enclosures were built,  animals were kept in the historic Azimganj Sarai courtyard inside the zoo?",
+        "hi": "क्या आप जानते हैं कि आधुनिक बाड़े बनने से पहले जानवरों को चिड़ियाघर के ऐतिहासिक अजीमगंज सराय प्रांगण में रखा जाता था?"
+      },
+      "buttonLabel": {
+        "en": "Ancient Zoo",
+        "hi": "प्राचीन चिड़ियाघर"
+      },
+      "_id": "69c3d279fa57b638ef6bdcf8",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:01.469Z",
+      "updatedAt": "2026-03-25T12:18:01.469Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Green Lung",
+        "hi": "हरा फेफड़ा"
+      },
+      "text": {
+        "en": "Did you know the zoo covers 176 acres and acts as a massive \"green lung\" to help clean Delhi's city air?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर 176 एकड़ में फैला है और दिल्ली की शहर की हवा को साफ करने में मदद करने के लिए एक विशाल \"हरित फेफड़े\" के रूप में कार्य करता है?"
+      },
+      "buttonLabel": {
+        "en": "Green Facts",
+        "hi": "हरे तथ्य"
+      },
+      "_id": "69c3d27afa57b638ef6bdcfa",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:02.892Z",
+      "updatedAt": "2026-03-25T12:18:02.892Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sangai Success",
+        "hi": "संगाई सफलता"
+      },
+      "text": {
+        "en": "Did you know the zoo is a world leader in breeding the \"Dancing Deer\" (Sangai),  which is native only to Manipur?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर \"डांसिंग डियर\" (संगाई) के प्रजनन में विश्व में अग्रणी है, जो केवल मणिपुर का मूल निवासी है?"
+      },
+      "buttonLabel": {
+        "en": "See the Deer",
+        "hi": "हिरण देखें"
+      },
+      "_id": "69c3d27bfa57b638ef6bdcfc",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:03.587Z",
+      "updatedAt": "2026-03-25T12:18:03.587Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Underground Snakes",
+        "hi": "भूमिगत साँप"
+      },
+      "text": {
+        "en": "Did you know the Reptile House is partially underground to keep snakes naturally cool during Delhi's 45°C summers?",
+        "hi": "क्या आप जानते हैं कि दिल्ली की 45 डिग्री सेल्सियस गर्मी के दौरान सांपों को प्राकृतिक रूप से ठंडा रखने के लिए रेप्टाइल हाउस आंशिक रूप से भूमिगत है?"
+      },
+      "buttonLabel": {
+        "en": "Visit Reptiles",
+        "hi": "सरीसृपों पर जाएँ"
+      },
+      "_id": "69c3d27cfa57b638ef6bdcfe",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:04.634Z",
+      "updatedAt": "2026-03-25T12:18:04.634Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Elephant Duo",
+        "hi": "हाथी जोड़ी"
+      },
+      "text": {
+        "en": "Did you know the zoo's famous elephants,  Anarkali and Swarna Lata,  are two of the most photographed residents in the park?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के प्रसिद्ध हाथी, अनारकली और स्वर्ण लता, पार्क में सबसे अधिक फोटो खिंचवाने वाले निवासियों में से दो हैं?"
+      },
+      "buttonLabel": {
+        "en": "Meet Elephants",
+        "hi": "हाथियों से मिलें"
+      },
+      "_id": "69c3d27dfa57b638ef6bdd00",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:05.467Z",
+      "updatedAt": "2026-03-25T12:18:05.467Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "No Cages Here",
+        "hi": "यहां कोई पिंजरा नहीं"
+      },
+      "text": {
+        "en": "Did you know Delhi Zoo was a pioneer in India for using \"moated enclosures\" (deep ditches) instead of iron bars?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर लोहे की सलाखों के बजाय \"मोटेड बाड़ों\" (गहरी खाई) का उपयोग करने में भारत में अग्रणी था?"
+      },
+      "buttonLabel": {
+        "en": "View Habitats",
+        "hi": "पर्यावास देखें"
+      },
+      "_id": "69c3d27efa57b638ef6bdd02",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/inventory-of-animals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:06.076Z",
+      "updatedAt": "2026-03-25T12:18:06.076Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Migratory Guests",
+        "hi": "प्रवासी मेहमान"
+      },
+      "text": {
+        "en": "Did you know every winter,  wild Painted Storks fly from thousands of miles away to nest in the zoo's tall trees?",
+        "hi": "क्या आप जानते हैं कि हर सर्दियों में, जंगली पेंटेड स्टॉर्क चिड़ियाघर के ऊंचे पेड़ों पर घोंसला बनाने के लिए हजारों मील दूर से उड़ते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Bird Watching",
+        "hi": "पंछी देखना"
+      },
+      "_id": "69c3d27efa57b638ef6bdd04",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:06.418Z",
+      "updatedAt": "2026-03-25T12:18:06.418Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hippo Weight",
+        "hi": "हिप्पो वजन"
+      },
+      "text": {
+        "en": "Did you know a hippo at the Delhi Zoo can weigh as much as three small cars combined?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर में एक हिप्पो का वजन तीन छोटी कारों के बराबर हो सकता है?"
+      },
+      "buttonLabel": {
+        "en": "Hippo Facts",
+        "hi": "हिप्पो तथ्य"
+      },
+      "_id": "69c3d27efa57b638ef6bdd06",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:06.754Z",
+      "updatedAt": "2026-03-25T12:18:06.754Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Tiger Fingerprints",
+        "hi": "बाघ की उंगलियों के निशान"
+      },
+      "text": {
+        "en": "Did you know just like humans have unique fingerprints,  no two tigers have the same stripe pattern?",
+        "hi": "क्या आप जानते हैं कि जैसे इंसानों की उंगलियों के निशान अद्वितीय होते हैं, किसी भी दो बाघों की धारियों का पैटर्न एक जैसा नहीं होता?"
+      },
+      "buttonLabel": {
+        "en": "Tiger Patterns",
+        "hi": "बाघ पैटर्न"
+      },
+      "_id": "69c3d27ffa57b638ef6bdd08",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:07.105Z",
+      "updatedAt": "2026-03-25T12:18:07.105Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Lion’s Mane",
+        "hi": "शेर का अयाल"
+      },
+      "text": {
+        "en": "Did you know the Asiatic Lions here have a distinct longitudinal fold of skin running along their bellies,  unlike African lions?",
+        "hi": "क्या आप जानते हैं कि अफ्रीकी शेरों के विपरीत, एशियाई शेरों के पेट के साथ-साथ त्वचा की एक अलग अनुदैर्ध्य तह होती है?"
+      },
+      "buttonLabel": {
+        "en": "Asiatic Lion",
+        "hi": "एशियाई शेर"
+      },
+      "_id": "69c3d27ffa57b638ef6bdd0a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:07.470Z",
+      "updatedAt": "2026-03-25T12:18:07.470Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Rhino Armor",
+        "hi": "गैंडा कवच"
+      },
+      "text": {
+        "en": "Did you know the Indian Rhinoceros at the zoo has skin that looks like literal plates of armor,  but it’s actually quite sensitive?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में भारतीय गैंडे की त्वचा कवच की प्लेटों जैसी दिखती है, लेकिन वास्तव में यह काफी संवेदनशील होती है?"
+      },
+      "buttonLabel": {
+        "en": "Rhino Armor",
+        "hi": "गैंडा कवच"
+      },
+      "_id": "69c3d27ffa57b638ef6bdd0c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:07.802Z",
+      "updatedAt": "2026-03-25T12:18:07.802Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Gharial Snouts",
+        "hi": "घड़ियाल थूथन"
+      },
+      "text": {
+        "en": "Did you know the Gharials in the zoo have incredibly long,  thin snouts specialized for catching fish with a sideways snap?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में घड़ियालों के अविश्वसनीय रूप से लंबे, पतले थूथन होते हैं जो बग़ल में मछली पकड़ने के लिए विशेष होते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Gharial Info",
+        "hi": "घड़ियाल जानकारी"
+      },
+      "_id": "69c3d280fa57b638ef6bdd0e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:08.261Z",
+      "updatedAt": "2026-03-25T12:18:08.261Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Monkey Island",
+        "hi": "बंदर द्वीप"
+      },
+      "text": {
+        "en": "Did you know many primates live on \"islands\" here because they generally dislike swimming across the surrounding water moats?",
+        "hi": "क्या आप जानते हैं कि कई प्राइमेट यहां \"द्वीपों\" पर रहते हैं क्योंकि वे आम तौर पर आसपास के पानी की खाई में तैरना पसंद नहीं करते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Monkey Life",
+        "hi": "बंदर जीवन"
+      },
+      "_id": "69c3d281fa57b638ef6bdd10",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:09.801Z",
+      "updatedAt": "2026-03-25T12:18:09.801Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Blackbuck Fashion",
+        "hi": "ब्लैकबक फैशन"
+      },
+      "text": {
+        "en": "Did you know the male Blackbucks in the zoo turn from brown to velvety black as they get older and more dominant?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में नर काले हिरण जैसे-जैसे बड़े होते हैं और अधिक प्रभावी होते हैं, भूरे से मखमली काले रंग में बदल जाते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Blackbuck Info",
+        "hi": "काले हिरण की जानकारी"
+      },
+      "_id": "69c3d282fa57b638ef6bdd12",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:10.448Z",
+      "updatedAt": "2026-03-25T12:18:10.448Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Chidiya Ghar",
+        "hi": "चिड़िया घर"
+      },
+      "text": {
+        "en": "Did you know while its official name is the National Zoological Park,  locals affectionately call it \"Delhi Chidiya Ghar\"?",
+        "hi": "क्या आप जानते हैं कि इसका आधिकारिक नाम राष्ट्रीय प्राणी उद्यान है, स्थानीय लोग इसे प्यार से \"दिल्ली चिड़िया घर\" कहते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Home Page",
+        "hi": "होम पेज"
+      },
+      "_id": "69c3d283fa57b638ef6bdd14",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:11.245Z",
+      "updatedAt": "2026-03-25T12:18:11.245Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Royal Architect",
+        "hi": "शाही वास्तुकार"
+      },
+      "text": {
+        "en": "Did you know the zoo was designed by Major Aubrey Weinman and Carl Hagenbeck,  famous for creating naturalistic zoo layouts?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर को मेजर ऑब्रे वेनमैन और कार्ल हेगनबेक द्वारा डिजाइन किया गया था, जो प्राकृतिक चिड़ियाघर लेआउट बनाने के लिए प्रसिद्ध थे?"
+      },
+      "buttonLabel": {
+        "en": "The Design",
+        "hi": "परिरूप"
+      },
+      "_id": "69c3d283fa57b638ef6bdd16",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:11.916Z",
+      "updatedAt": "2026-03-25T12:18:11.916Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Bamboo Buffet",
+        "hi": "बांस का बुफ़े"
+      },
+      "text": {
+        "en": "Did you know the zoo grows its own bamboo thickets to provide a fresh,  natural snacks for the elephants and red pandas?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर हाथियों और लाल पांडा के लिए ताज़ा, प्राकृतिक नाश्ता उपलब्ध कराने के लिए अपने स्वयं के बांस के झुरमुट उगाता है?"
+      },
+      "buttonLabel": {
+        "en": "Zoo Flora",
+        "hi": "चिड़ियाघर फ्लोरा"
+      },
+      "_id": "69c3d285fa57b638ef6bdd18",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:13.095Z",
+      "updatedAt": "2026-03-25T12:18:13.095Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Peacocks on the Loose",
+        "hi": "खुले में मोर"
+      },
+      "text": {
+        "en": "Did you know the National Bird,  the Peafowl,  roams completely free across the entire 176-acre park?",
+        "hi": "क्या आप जानते हैं कि राष्ट्रीय पक्षी, मोर, पूरे 176 एकड़ के पार्क में पूरी तरह से स्वतंत्र रूप से घूमता है?"
+      },
+      "buttonLabel": {
+        "en": "National Bird",
+        "hi": "राष्ट्रीय पक्षी"
+      },
+      "_id": "69c3d285fa57b638ef6bdd1a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:13.727Z",
+      "updatedAt": "2026-03-25T12:18:13.727Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The 14-Neck Bone",
+        "hi": "14-गर्दन की हड्डी"
+      },
+      "text": {
+        "en": "Did you know the owls in the zoo can turn their heads 270 degrees because they have twice as many neck bones as humans?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में उल्लू अपना सिर 270 डिग्री तक घुमा सकते हैं क्योंकि उनकी गर्दन की हड्डियाँ इंसानों की तुलना में दोगुनी होती हैं?"
+      },
+      "buttonLabel": {
+        "en": "Owl Facts",
+        "hi": "उल्लू तथ्य"
+      },
+      "_id": "69c3d286fa57b638ef6bdd1c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:14.557Z",
+      "updatedAt": "2026-03-25T12:18:14.557Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Silent Snow Leopard",
+        "hi": "मूक हिम तेंदुआ"
+      },
+      "text": {
+        "en": "Did you know the Snow Leopard at the zoo cannot roar; it can only hiss, chuff,  and growl?",
+        "hi": "क्या आप जानते हैं चिड़ियाघर में हिम तेंदुआ दहाड़ नहीं सकता; "
+      },
+      "buttonLabel": {
+        "en": "Mountain Ghost",
+        "hi": "पहाड़ी भूत"
+      },
+      "_id": "69c3d287fa57b638ef6bdd1e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:15.209Z",
+      "updatedAt": "2026-03-25T12:18:15.209Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Crash of Rhinos",
+        "hi": "गैंडों का दुर्घटना"
+      },
+      "text": {
+        "en": "Did you know a group of the zoo's rhinoceroses is officially called a \"crash\"?",
+        "hi": "क्या आप जानते हैं चिड़ियाघर के गैंडों के एक समूह को आधिकारिक तौर पर \"क्रैश\" कहा जाता है?"
+      },
+      "buttonLabel": {
+        "en": "Rhino Crash",
+        "hi": "गैंडा दुर्घटना"
+      },
+      "_id": "69c3d289fa57b638ef6bdd20",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:17.212Z",
+      "updatedAt": "2026-03-25T12:18:17.212Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sun-Loving Crocs",
+        "hi": "सूर्य-प्रेमी क्रॉक्स"
+      },
+      "text": {
+        "en": "Did you know you’ll often see crocodiles with their mouths wide open? They are just thermoregulating to stay cool.",
+        "hi": "क्या आप जानते हैं कि आपने अक्सर मगरमच्छों को अपना मुँह खुला हुआ देखा होगा? "
+      },
+      "buttonLabel": {
+        "en": "Croc Facts",
+        "hi": "मगरमच्छ तथ्य"
+      },
+      "_id": "69c3d28afa57b638ef6bdd22",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:18.034Z",
+      "updatedAt": "2026-03-25T12:18:18.034Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Ancient Banyan",
+        "hi": "प्राचीन बरगद"
+      },
+      "text": {
+        "en": "Did you know some of the Banyan trees inside the park are older than the zoo itself,  dating back to the British era?",
+        "hi": "क्या आप जानते हैं कि पार्क के अंदर बरगद के कुछ पेड़ चिड़ियाघर से भी पुराने हैं, जो ब्रिटिश काल के हैं?"
+      },
+      "buttonLabel": {
+        "en": "Ancient Trees",
+        "hi": "प्राचीन पेड़"
+      },
+      "_id": "69c3d28afa57b638ef6bdd24",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:18.664Z",
+      "updatedAt": "2026-03-25T12:18:18.664Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Battery Power",
+        "hi": "बैटरी पावर"
+      },
+      "text": {
+        "en": "Did you know to keep the park eco-friendly, only battery-operated trolleys are allowed to transport visitors inside?",
+        "hi": "क्या आप जानते हैं कि पार्क को पर्यावरण-अनुकूल बनाए रखने के लिए, केवल बैटरी चालित ट्रॉलियों को ही आगंतुकों को अंदर ले जाने की अनुमति है?"
+      },
+      "buttonLabel": {
+        "en": "Trolley Info",
+        "hi": "ट्रॉली जानकारी"
+      },
+      "_id": "69c3d28bfa57b638ef6bdd3f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-amenities",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:19.049Z",
+      "updatedAt": "2026-03-25T12:18:19.049Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Jaguar Rosettes",
+        "hi": "जगुआर रोसेट्स"
+      },
+      "text": {
+        "en": "Did you know you can tell the zoo's Jaguar apart from a Leopard by the spots inside its spots,  called \"rosettes\"?",
+        "hi": "क्या आप जानते हैं कि आप चिड़ियाघर के जगुआर को तेंदुए से अलग उसके धब्बों के आधार पर पहचान सकते हैं, जिन्हें \"रोसेट्स\" कहा जाता है?"
+      },
+      "buttonLabel": {
+        "en": "Spot Difference",
+        "hi": "स्पॉट अंतर"
+      },
+      "_id": "69c3d28dfa57b638ef6bde4e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:21.518Z",
+      "updatedAt": "2026-03-25T12:18:21.518Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The V Bear",
+        "hi": "वी भालू"
+      },
+      "text": {
+        "en": "Did you know the Himalayan Black Bear at the zoo has a distinct white \"V\" on its chest,  earning it the nickname \"Moon Bear\"?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में हिमालयी काले भालू की छाती पर एक अलग सफेद \"V\" होता है, जिससे उसे \"मून बियर\" उपनाम मिलता है?"
+      },
+      "buttonLabel": {
+        "en": "Moon Bear",
+        "hi": "चंद्रमा भालू"
+      },
+      "_id": "69c3d28dfa57b638ef6bde50",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:21.838Z",
+      "updatedAt": "2026-03-25T12:18:21.838Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Ostrich Eyes",
+        "hi": "शुतुरमुर्ग की आंखें"
+      },
+      "text": {
+        "en": "Did you know the Ostriches at the zoo have eyes that are larger than their brains?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के शुतुरमुर्गों की आंखें उनके दिमाग से बड़ी होती हैं?"
+      },
+      "buttonLabel": {
+        "en": "Ostrich Facts",
+        "hi": "शुतुरमुर्ग तथ्य"
+      },
+      "_id": "69c3d28efa57b638ef6bde52",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:22.270Z",
+      "updatedAt": "2026-03-25T12:18:22.270Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Pelican Pouches",
+        "hi": "पेलिकन पाउच"
+      },
+      "text": {
+        "en": "Did you know the Rosy Pelicans in the zoo’s ponds can hold up to 11 liters of water in their throat pouches?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के तालाबों में रोज़ी पेलिकन अपने गले की थैली में 11 लीटर तक पानी रख सकते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Pelican Info",
+        "hi": "पेलिकन जानकारी"
+      },
+      "_id": "69c3d28efa57b638ef6bde54",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:22.641Z",
+      "updatedAt": "2026-03-25T12:18:22.641Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hornbill Helmets",
+        "hi": "हॉर्नबिल हेलमेट"
+      },
+      "text": {
+        "en": "Did you know the Great Indian Hornbill has a massive yellow structure on its beak called a \"casque\" that acts as a sound resonator?",
+        "hi": "क्या आप जानते हैं कि ग्रेट इंडियन हॉर्नबिल की चोंच पर एक विशाल पीली संरचना होती है जिसे \"कैस्क\" कहा जाता है जो ध्वनि अनुनादक के रूप में कार्य करती है?"
+      },
+      "buttonLabel": {
+        "en": "Hornbill Facts",
+        "hi": "हॉर्नबिल तथ्य"
+      },
+      "_id": "69c3d290fa57b638ef6bde56",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:24.816Z",
+      "updatedAt": "2026-03-25T12:18:24.816Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Jesus Lizard",
+        "hi": "यीशु छिपकली"
+      },
+      "text": {
+        "en": "Did you know the zoo's Basilisk lizard can literally run across the surface of water for short distances?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर की बेसिलिस्क छिपकली सचमुच पानी की सतह पर कम दूरी तक दौड़ सकती है?"
+      },
+      "buttonLabel": {
+        "en": "Water Runner",
+        "hi": "जल धावक"
+      },
+      "_id": "69c3d291fa57b638ef6bde58",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:25.174Z",
+      "updatedAt": "2026-03-25T12:18:25.174Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Emu vs Ostrich",
+        "hi": "एमु बनाम शुतुरमुर्ग"
+      },
+      "text": {
+        "en": "Did you know you can tell them apart by their toes? Emus have three toes,  while the Ostriches have only two!",
+        "hi": "क्या आप जानते हैं कि आप उन्हें उनके पैर की उंगलियों से अलग बता सकते हैं? "
+      },
+      "buttonLabel": {
+        "en": "Toe Count",
+        "hi": "पैर की अंगुली गिनती"
+      },
+      "_id": "69c3d291fa57b638ef6bde5a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:25.517Z",
+      "updatedAt": "2026-03-25T12:18:25.517Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Studbook Keeping",
+        "hi": "स्टडबुक कीपिंग"
+      },
+      "text": {
+        "en": "Did you know every birth at the Delhi Zoo is recorded in an international \"studbook\" to track species health?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर में प्रत्येक जन्म को प्रजातियों के स्वास्थ्य पर नज़र रखने के लिए एक अंतरराष्ट्रीय \"स्टडबुक\" में दर्ज किया जाता है?"
+      },
+      "buttonLabel": {
+        "en": "Registry",
+        "hi": "रजिस्ट्री"
+      },
+      "_id": "69c3d291fa57b638ef6bde5c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://cza.nic.in/page/en/studbook",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:25.880Z",
+      "updatedAt": "2026-03-25T12:18:25.880Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Aromatic Trees",
+        "hi": "सुगंधित पेड़"
+      },
+      "text": {
+        "en": "Did you know the zoo is home to several Eucalyptus trees that give the air a distinct,  fresh scent near the herbivore section?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर कई यूकेलिप्टस पेड़ों का घर है जो शाकाहारी खंड के पास हवा को एक अलग, ताज़ा खुशबू देते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Scented Zoo",
+        "hi": "सुगंधित चिड़ियाघर"
+      },
+      "_id": "69c3d292fa57b638ef6bde5e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:26.733Z",
+      "updatedAt": "2026-03-25T12:18:26.733Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Porcupine Defense",
+        "hi": "साही रक्षा"
+      },
+      "text": {
+        "en": "Did you know a porcupine's quills are actually just modified,  hardened hairs made of the same material as your fingernails?",
+        "hi": "क्या आप जानते हैं कि साही के बाल वास्तव में संशोधित, कठोर बाल होते हैं जो आपके नाखूनों के समान सामग्री से बने होते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Quill Facts",
+        "hi": "कलम तथ्य"
+      },
+      "_id": "69c3d293fa57b638ef6bde60",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:27.107Z",
+      "updatedAt": "2026-03-25T12:18:27.107Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "King’s Venom",
+        "hi": "राजा का विष"
+      },
+      "text": {
+        "en": "Did you know the King Cobra at the Delhi Zoo is the only snake in the world that builds a nest for its eggs?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर में किंग कोबरा दुनिया का एकमात्र सांप है जो अपने अंडों के लिए घोंसला बनाता है?"
+      },
+      "buttonLabel": {
+        "en": "King Cobra",
+        "hi": "नागराज"
+      },
+      "_id": "69c3d294fa57b638ef6bde62",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:28.019Z",
+      "updatedAt": "2026-03-25T12:18:28.019Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Gaur Power",
+        "hi": "गौर शक्ति"
+      },
+      "text": {
+        "en": "Did you know the Indian Gaur (Bison) at the zoo is the largest species of wild cattle in the entire world?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में भारतीय गौर (बाइसन) पूरी दुनिया में जंगली मवेशियों की सबसे बड़ी प्रजाति है?"
+      },
+      "buttonLabel": {
+        "en": "Mighty Gaur",
+        "hi": "पराक्रमी गौर"
+      },
+      "_id": "69c3d295fa57b638ef6bde64",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:29.195Z",
+      "updatedAt": "2026-03-25T12:18:29.195Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sloth Bear Vacuums",
+        "hi": "सुस्ती भालू वैक्यूम"
+      },
+      "text": {
+        "en": "Did you know Sloth Bears have no upper front teeth,  which helps them use their mouths like a vacuum to suck up termites?",
+        "hi": "क्या आप जानते हैं कि स्लॉथ बियर के ऊपरी सामने वाले दांत नहीं होते हैं, जो उन्हें दीमकों को चूसने के लिए अपने मुंह को वैक्यूम की तरह इस्तेमाल करने में मदद करता है?"
+      },
+      "buttonLabel": {
+        "en": "Sloth Bear",
+        "hi": "सुस्त भालू"
+      },
+      "_id": "69c3d295fa57b638ef6bde66",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:29.772Z",
+      "updatedAt": "2026-03-25T12:18:29.772Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zebra Identity",
+        "hi": "ज़ेबरा की पहचान"
+      },
+      "text": {
+        "en": "Did you know zebras are actually black with white stripes,  not the other way around?",
+        "hi": "क्या आप जानते हैं कि ज़ेबरा वास्तव में सफेद धारियों के साथ काले होते हैं, इसके विपरीत नहीं?"
+      },
+      "buttonLabel": {
+        "en": "Zebra Stripes",
+        "hi": "ज़ेबरा धारियाँ"
+      },
+      "_id": "69c3d296fa57b638ef6bde68",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:30.833Z",
+      "updatedAt": "2026-03-25T12:18:30.833Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Python Meals",
+        "hi": "अजगर भोजन"
+      },
+      "text": {
+        "en": "Did you know the Indian Rock Python in the reptile house can go for several months without eating after one large meal?",
+        "hi": "क्या आप जानते हैं कि सरीसृप घर में इंडियन रॉक पायथन एक बड़े भोजन के बाद कई महीनों तक बिना खाए रह सकता है?"
+      },
+      "buttonLabel": {
+        "en": "Python Facts",
+        "hi": "पायथन तथ्य"
+      },
+      "_id": "69c3d298fa57b638ef6bde6a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:32.291Z",
+      "updatedAt": "2026-03-25T12:18:32.291Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Dancing Crane",
+        "hi": "नाचती हुई क्रेन"
+      },
+      "text": {
+        "en": "Did you know the Sarus Cranes in the zoo are known for their elaborate \"dancing\" displays to attract partners?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में सारस क्रेन भागीदारों को आकर्षित करने के लिए अपने विस्तृत \"नृत्य\" प्रदर्शन के लिए जाने जाते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Crane Dance",
+        "hi": "क्रेन नृत्य"
+      },
+      "_id": "69c3d299fa57b638ef6bde6c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:33.080Z",
+      "updatedAt": "2026-03-25T12:18:33.080Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Monitor Tongues",
+        "hi": "जीभ की निगरानी करें"
+      },
+      "text": {
+        "en": "Did you know the Monitor Lizards use their forked tongues to \"taste\" the air and find food,  just like snakes?",
+        "hi": "क्या आप जानते हैं कि मॉनिटर छिपकली सांपों की तरह ही हवा का \"चखने\" और भोजन खोजने के लिए अपनी कांटेदार जीभ का उपयोग करती हैं?"
+      },
+      "buttonLabel": {
+        "en": "Monitor Info",
+        "hi": "मॉनिटर जानकारी"
+      },
+      "_id": "69c3d29afa57b638ef6bde6e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:34.007Z",
+      "updatedAt": "2026-03-25T12:18:34.007Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Wolf Assembly",
+        "hi": "भेड़िया सभा"
+      },
+      "text": {
+        "en": "Did you know the wolves in the zoo howl not at the moon,  but to tell their pack members where they are?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में भेड़िये चाँद को देखकर नहीं, बल्कि अपने झुंड के सदस्यों को यह बताने के लिए चिल्लाते हैं कि वे कहाँ हैं?"
+      },
+      "buttonLabel": {
+        "en": "Wolf Howl",
+        "hi": "वुल्फ हाउल"
+      },
+      "_id": "69c3d29afa57b638ef6bde70",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:34.644Z",
+      "updatedAt": "2026-03-25T12:18:34.644Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Chimp Tools",
+        "hi": "चिम्प उपकरण"
+      },
+      "text": {
+        "en": "Did you know the chimpanzees here have been observed using crumpled leaves as sponges to soak up drinking water?",
+        "hi": "क्या आप जानते हैं कि यहाँ के चिंपैंजी को पीने का पानी सोखने के लिए टूटी हुई पत्तियों को स्पंज के रूप में इस्तेमाल करते देखा गया है?"
+      },
+      "buttonLabel": {
+        "en": "Chimp Smarts",
+        "hi": "चिंप स्मार्ट"
+      },
+      "_id": "69c3d29cfa57b638ef6bde72",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:36.598Z",
+      "updatedAt": "2026-03-25T12:18:36.598Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Baobab Tree",
+        "hi": "बाओबाब वृक्ष"
+      },
+      "text": {
+        "en": "Did you know the zoo has a rare African Baobab tree,  often called the \"Tree of Life\" because it can store water in its trunk?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में एक दुर्लभ अफ़्रीकी बाओबाब पेड़ है, जिसे अक्सर \"जीवन का वृक्ष\" कहा जाता है क्योंकि यह अपने तने में पानी जमा कर सकता है?"
+      },
+      "buttonLabel": {
+        "en": "Tree of Life",
+        "hi": "ज़िन्दगी का पेड़"
+      },
+      "_id": "69c3d29dfa57b638ef6bde74",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:37.593Z",
+      "updatedAt": "2026-03-25T12:18:37.593Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Flamingo Pigment",
+        "hi": "राजहंस वर्णक"
+      },
+      "text": {
+        "en": "Did you know flamingos at the zoo are born grey? Their pink color comes from the carotenoid pigments in the food they eat.",
+        "hi": "क्या आप जानते हैं चिड़ियाघर में राजहंस भूरे रंग के पैदा होते हैं? "
+      },
+      "buttonLabel": {
+        "en": "Pink Birds",
+        "hi": "गुलाबी पक्षी"
+      },
+      "_id": "69c3d29efa57b638ef6bde76",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:38.336Z",
+      "updatedAt": "2026-03-25T12:18:38.336Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Barking Deer",
+        "hi": "भौंकने वाला हिरण"
+      },
+      "text": {
+        "en": "Did you know the Indian Muntjac deer in the zoo actually makes a sound that sounds exactly like a dog’s bark?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में भारतीय मंटजैक हिरण वास्तव में कुत्ते की भौंकने जैसी आवाज निकालता है?"
+      },
+      "buttonLabel": {
+        "en": "Barking Deer",
+        "hi": "भौंकने वाला हिरण"
+      },
+      "_id": "69c3d29efa57b638ef6bde78",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:38.733Z",
+      "updatedAt": "2026-03-25T12:18:38.733Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Tortoise Longevity",
+        "hi": "कछुआ दीर्घायु"
+      },
+      "text": {
+        "en": "Did you know some of the Star Tortoises at the zoo can live to be over 100 years old?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के कुछ स्टार कछुए 100 साल से अधिक उम्र तक जीवित रह सकते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Old Timers",
+        "hi": "पुराने समय के लोग"
+      },
+      "_id": "69c3d29ffa57b638ef6bde7a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:39.145Z",
+      "updatedAt": "2026-03-25T12:18:39.145Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "One-Horned Beauty",
+        "hi": "एक सींग वाली सुन्दरी"
+      },
+      "text": {
+        "en": "Did you know unlike African rhinos which have two horns,  the Indian rhino in Delhi Zoo has only one?",
+        "hi": "क्या आप जानते हैं कि अफ़्रीकी गैंडों के विपरीत, जिनके दो सींग होते हैं, दिल्ली चिड़ियाघर में भारतीय गैंडे के पास केवल एक ही होता है?"
+      },
+      "buttonLabel": {
+        "en": "Rhino Facts",
+        "hi": "राइनो तथ्य"
+      },
+      "_id": "69c3d29ffa57b638ef6bde7c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:39.508Z",
+      "updatedAt": "2026-03-25T12:18:39.508Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Otter Playtime",
+        "hi": "ऊदबिलाव विश्राम का समय"
+      },
+      "text": {
+        "en": "Did you know the zoo’s otters spend hours juggling small stones? This is actually a way for them to practice their coordination.",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के ऊदबिलाव छोटे-छोटे पत्थरों को ढूंढने में घंटों बिताते हैं? "
+      },
+      "buttonLabel": {
+        "en": "Juggling Otters",
+        "hi": "करतब दिखाने वाले ऊदबिलाव"
+      },
+      "_id": "69c3d29ffa57b638ef6bde7e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:39.997Z",
+      "updatedAt": "2026-03-25T12:18:39.997Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Plastic-Free Zone",
+        "hi": "प्लास्टिक मुक्त क्षेत्र"
+      },
+      "text": {
+        "en": "Did you know the Delhi Zoo was one of the first major tourist spots in the capital to strictly ban all single-use plastics?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर राजधानी के पहले प्रमुख पर्यटन स्थलों में से एक था, जिसने सभी एकल-उपयोग प्लास्टिक पर सख्ती से प्रतिबंध लगा दिया था?"
+      },
+      "buttonLabel": {
+        "en": "No Plastic",
+        "hi": "कोई प्लास्टिक नहीं"
+      },
+      "_id": "69c3d2a0fa57b638ef6bde80",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-information",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:40.353Z",
+      "updatedAt": "2026-03-25T12:18:40.353Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Delhi Ridge",
+        "hi": "दिल्ली रिज"
+      },
+      "text": {
+        "en": "Did you know geographically,  the zoo is part of the \"Delhi Ridge, which is the tail end of the ancient Aravalli Mountain Range?\"",
+        "hi": "क्या आप भौगोलिक दृष्टि से जानते हैं, चिड़ियाघर \"दिल्ली रिज का हिस्सा है, जो प्राचीन अरावली पर्वत श्रृंखला का अंतिम छोर है?\""
+      },
+      "buttonLabel": {
+        "en": "The Ridge",
+        "hi": "रिज"
+      },
+      "_id": "69c3d2a0fa57b638ef6bde82",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": " https://delhitourism.gov.in",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:40.705Z",
+      "updatedAt": "2026-03-25T12:18:40.705Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Night Vet Team",
+        "hi": "रात्रि पशुचिकित्सक टीम"
+      },
+      "text": {
+        "en": "Did you know there is a specialized medical team that stays inside the zoo 24/7 to handle any animal emergencies at night?",
+        "hi": "क्या आप जानते हैं कि एक विशेष चिकित्सा टीम है जो रात में किसी भी जानवर की आपात स्थिति से निपटने के लिए चिड़ियाघर के अंदर 24/7 रहती है?"
+      },
+      "buttonLabel": {
+        "en": "Vet Care",
+        "hi": "पशुचिकित्सक की देखभाल"
+      },
+      "_id": "69c3d2a1fa57b638ef6bde84",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/veterinary-care",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:41.172Z",
+      "updatedAt": "2026-03-25T12:18:41.172Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Monkey Bread",
+        "hi": "बंदर की रोटी"
+      },
+      "text": {
+        "en": "Did you know the fruit of the Baobab tree inside the zoo is edible and is often called \"monkey bread\"?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के अंदर बाओबाब पेड़ का फल खाने योग्य होता है और इसे अक्सर \"मंकी ब्रेड\" कहा जाता है?"
+      },
+      "buttonLabel": {
+        "en": "Edible Fruit",
+        "hi": "खाने योग्य फल"
+      },
+      "_id": "69c3d2a1fa57b638ef6bde86",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:41.527Z",
+      "updatedAt": "2026-03-25T12:18:41.527Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Siberian Guests",
+        "hi": "साइबेरियाई मेहमान"
+      },
+      "text": {
+        "en": "Did you know wild Northern Shoveler ducks fly over 4,000 km from Siberia to spend their winters in the Delhi Zoo ponds?",
+        "hi": "क्या आप जानते हैं कि जंगली उत्तरी शॉवेलर बत्तखें दिल्ली चिड़ियाघर के तालाबों में अपनी सर्दियाँ बिताने के लिए साइबेरिया से 4,000 किमी से अधिक दूरी तक उड़ान भरती हैं?"
+      },
+      "buttonLabel": {
+        "en": "Winter Migrants",
+        "hi": "शीतकालीन प्रवासी"
+      },
+      "_id": "69c3d2a1fa57b638ef6bde88",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:41.902Z",
+      "updatedAt": "2026-03-25T12:18:41.902Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Aravalli Flora",
+        "hi": "अरावली वनस्पति"
+      },
+      "text": {
+        "en": "Did you know many of the plants inside the zoo are native to the Aravalli hills and cannot be found anywhere else in Delhi?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के अंदर कई पौधे अरावली पहाड़ियों के मूल निवासी हैं और दिल्ली में कहीं और नहीं पाए जाते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Rare Flora",
+        "hi": "दुर्लभ वनस्पति"
+      },
+      "_id": "69c3d2a2fa57b638ef6bde8a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:42.580Z",
+      "updatedAt": "2026-03-25T12:18:42.580Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Silent Hunt",
+        "hi": "मूक शिकार"
+      },
+      "text": {
+        "en": "Did you know the zoo's leopards have retractable claws that stay sharp because they don't touch the ground when they walk?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के तेंदुओं के पंजे पीछे हटने योग्य होते हैं जो तेज़ रहते हैं क्योंकि वे चलते समय ज़मीन को नहीं छूते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Silent Hunter",
+        "hi": "मूक शिकारी"
+      },
+      "_id": "69c3d2a2fa57b638ef6bde8c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:42.916Z",
+      "updatedAt": "2026-03-25T12:18:42.916Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Cassowary Danger",
+        "hi": "कैसोवरी खतरा"
+      },
+      "text": {
+        "en": "Did you know the Southern Cassowary at the zoo is often called the \"world's most dangerous bird\" due to its dagger-like middle claw?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में दक्षिणी कैसोवरी को उसके खंजर जैसे मध्य पंजे के कारण अक्सर \"दुनिया का सबसे खतरनाक पक्षी\" कहा जाता है?"
+      },
+      "buttonLabel": {
+        "en": "Danger Bird",
+        "hi": "ख़तरा पक्षी"
+      },
+      "_id": "69c3d2a3fa57b638ef6bde8e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:43.332Z",
+      "updatedAt": "2026-03-25T12:18:43.332Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Spider Tails",
+        "hi": "मकड़ी की पूँछ"
+      },
+      "text": {
+        "en": "Did you know a Spider Monkey's tail is so strong it can support its entire body weight, acting like a fifth limb?",
+        "hi": "क्या आप जानते हैं कि स्पाइडर बंदर की पूँछ इतनी मजबूत होती है कि वह पांचवें अंग की तरह काम करते हुए उसके पूरे शरीर का वजन संभाल सकती है?"
+      },
+      "buttonLabel": {
+        "en": "Tail Power",
+        "hi": "पूँछ शक्ति"
+      },
+      "_id": "69c3d2a3fa57b638ef6bde90",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:43.706Z",
+      "updatedAt": "2026-03-25T12:18:43.706Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Lion-Tailed Mane",
+        "hi": "सिंह-पूंछ वाला अयाल"
+      },
+      "text": {
+        "en": "Did you know the Lion-Tailed Macaque is only found in the Western Ghats of India,  and its silver mane protects it from rain?",
+        "hi": "क्या आप जानते हैं कि शेर की पूंछ वाला मकाक केवल भारत के पश्चिमी घाट में पाया जाता है, और इसकी चांदी की अयाल इसे बारिश से बचाती है?"
+      },
+      "buttonLabel": {
+        "en": "Indian Macaque",
+        "hi": "भारतीय मकाक"
+      },
+      "_id": "69c3d2a4fa57b638ef6bde92",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:44.064Z",
+      "updatedAt": "2026-03-25T12:18:44.064Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zoo Library",
+        "hi": "चिड़ियाघर पुस्तकालय"
+      },
+      "text": {
+        "en": "Did you know there is a public library inside the zoo dedicated to wildlife conservation and zoological history?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के अंदर वन्यजीव संरक्षण और प्राणी इतिहास को समर्पित एक सार्वजनिक पुस्तकालय है?"
+      },
+      "buttonLabel": {
+        "en": "Go to Library",
+        "hi": "पुस्तकालय जाएं"
+      },
+      "_id": "69c3d2a4fa57b638ef6bde94",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/education-research",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:44.402Z",
+      "updatedAt": "2026-03-25T12:18:44.402Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Himalayan Bear Nap",
+        "hi": "हिमालयन भालू झपकी"
+      },
+      "text": {
+        "en": "Did you know that while they don't truly hibernate in the Delhi heat,  the Himalayan bears become much less active during winter?",
+        "hi": "क्या आप जानते हैं कि हालांकि वे दिल्ली की गर्मी में वास्तव में शीतनिद्रा में नहीं जाते, हिमालयी भालू सर्दियों के दौरान बहुत कम सक्रिय हो जाते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Bear Nap",
+        "hi": "भालू झपकी"
+      },
+      "_id": "69c3d2a4fa57b638ef6bde96",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:44.742Z",
+      "updatedAt": "2026-03-25T12:18:44.742Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Cheetah Speed",
+        "hi": "चीता की गति"
+      },
+      "text": {
+        "en": "Did you know if a Cheetah were to run across the zoo's main lawn,  it could reach 100 km/h in just 3 seconds?",
+        "hi": "क्या आप जानते हैं कि अगर चीता चिड़ियाघर के मुख्य लॉन में दौड़े, तो वह केवल 3 सेकंड में 100 किमी/घंटा तक पहुंच सकता है?"
+      },
+      "buttonLabel": {
+        "en": "Sprinting Cat",
+        "hi": "दौड़ती हुई बिल्ली"
+      },
+      "_id": "69c3d2a5fa57b638ef6bde98",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:45.113Z",
+      "updatedAt": "2026-03-25T12:18:45.113Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Red Panda Blanket",
+        "hi": "लाल पांडा कंबल"
+      },
+      "text": {
+        "en": "Did you know the Red Pandas use their bushy tails as wraparound blankets to keep their noses warm while they sleep?",
+        "hi": "क्या आप जानते हैं कि लाल पांडा सोते समय अपनी नाक को गर्म रखने के लिए अपनी झाड़ीदार पूंछों का उपयोग कंबल के रूप में करते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Panda Blanket",
+        "hi": "पांडा कंबल"
+      },
+      "_id": "69c3d2a5fa57b638ef6bde9a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:45.538Z",
+      "updatedAt": "2026-03-25T12:18:45.538Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Iguana Third Eye",
+        "hi": "इगुआना तीसरी आँख"
+      },
+      "text": {
+        "en": "Did you know the iguanas at the zoo have a \"third eye\" on top of their heads that helps them detect overhead predators?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में इगुआना के सिर के ऊपर एक \"तीसरी आंख\" होती है जो उन्हें ऊपरी शिकारियों का पता लगाने में मदद करती है?"
+      },
+      "buttonLabel": {
+        "en": "Third Eye",
+        "hi": "तीसरी आंख"
+      },
+      "_id": "69c3d2a6fa57b638ef6bde9c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:46.012Z",
+      "updatedAt": "2026-03-25T12:18:46.012Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Crocodile Tears",
+        "hi": "घड़ियाली आंसू"
+      },
+      "text": {
+        "en": "Did you know crocodiles actually do produce tears? It's not because they are sad, but to clean and lubricate their eyes.",
+        "hi": "क्या आप जानते हैं कि मगरमच्छ वास्तव में आँसू निकालते हैं? "
+      },
+      "buttonLabel": {
+        "en": "Croc Tears",
+        "hi": "मगरमच्छ के आँसू"
+      },
+      "_id": "69c3d2a7fa57b638ef6bde9e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:47.106Z",
+      "updatedAt": "2026-03-25T12:18:47.106Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Golden Jackal Howl",
+        "hi": "गोल्डन जैकल हाउल"
+      },
+      "text": {
+        "en": "Did you know the Golden Jackals in the zoo have a distinct \"communal howl\" that they perform every evening at dusk?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में गोल्डन जैकल्स की एक अलग \"सांप्रदायिक चीख\" होती है जिसे वे हर शाम गोधूलि बेला में करते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Evening Howl",
+        "hi": "शाम की चीख"
+      },
+      "_id": "69c3d2a7fa57b638ef6bdea0",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:47.534Z",
+      "updatedAt": "2026-03-25T12:18:47.534Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Amaltas Gold",
+        "hi": "अमलतास सोना"
+      },
+      "text": {
+        "en": "Did you know in the summer,  the zoo's pathways turn bright yellow due to the blooming of the \"Indian Laburnum\" (Amaltas) trees?",
+        "hi": "क्या आप जानते हैं कि गर्मियों में चिड़ियाघर के रास्ते \"इंडियन लैबर्नम\" (अमलतास) के पेड़ों के खिलने के कारण चमकीले पीले हो जाते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Golden Path",
+        "hi": "स्वर्ण पथ"
+      },
+      "_id": "69c3d2a7fa57b638ef6bdea2",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:47.916Z",
+      "updatedAt": "2026-03-25T12:18:47.916Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Frog Hydration",
+        "hi": "मेंढक जलयोजन"
+      },
+      "text": {
+        "en": "Did you know the frogs in the zoo’s wetland areas don’t drink water with their mouths; they absorb it through their skin?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के आर्द्रभूमि क्षेत्रों में मेंढक अपने मुँह से पानी नहीं पीते हैं; "
+      },
+      "buttonLabel": {
+        "en": "Frog Skin",
+        "hi": "मेंढक की खाल"
+      },
+      "_id": "69c3d2a8fa57b638ef6bdea4",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/reptiles",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:48.526Z",
+      "updatedAt": "2026-03-25T12:18:48.526Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Bird King",
+        "hi": "पक्षी राजा"
+      },
+      "text": {
+        "en": "Did you know the Great Indian Bustard (sometimes seen in conservation talks here) is one of the heaviest flying birds in the world?",
+        "hi": "क्या आप जानते हैं ग्रेट इंडियन बस्टर्ड (कभी-कभी यहां संरक्षण वार्ता में देखा जाता है) दुनिया के सबसे भारी उड़ने वाले पक्षियों में से एक है?"
+      },
+      "buttonLabel": {
+        "en": "Bustard Info",
+        "hi": "बस्टर्ड जानकारी"
+      },
+      "_id": "69c3d2a9fa57b638ef6bdea6",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:49.343Z",
+      "updatedAt": "2026-03-25T12:18:49.343Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Stork Colony",
+        "hi": "सारस कॉलोनी"
+      },
+      "text": {
+        "en": "Did you know the Painted Stork colony at the Delhi Zoo is one of the largest urban nesting sites in all of North India?",
+        "hi": "क्या आप जानते हैं कि दिल्ली चिड़ियाघर में पेंटेड स्टॉर्क कॉलोनी पूरे उत्तर भारत में सबसे बड़े शहरी घोंसले के शिकार स्थलों में से एक है?"
+      },
+      "buttonLabel": {
+        "en": "Stork Nesting",
+        "hi": "सारस का घोंसला"
+      },
+      "_id": "69c3d2a9fa57b638ef6bdea8",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:49.688Z",
+      "updatedAt": "2026-03-25T12:18:49.688Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Antlers vs Horns",
+        "hi": "सींग बनाम सींग"
+      },
+      "text": {
+        "en": "Did you know the deer at the zoo shed their antlers every year,  but the rhinos and cattle keep their horns forever?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में हिरण हर साल अपने सींग गिरा देते हैं, लेकिन गैंडे और मवेशी अपने सींग हमेशा बनाए रखते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Deer Antlers",
+        "hi": "हिरण के सींग"
+      },
+      "_id": "69c3d2aafa57b638ef6bdeaa",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:50.034Z",
+      "updatedAt": "2026-03-25T12:18:50.034Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mountain Ghost",
+        "hi": "पहाड़ी भूत"
+      },
+      "text": {
+        "en": "Did you know the Snow Leopard is so well camouflaged that zookeepers often call it the \"Ghost of the Mountains\"?",
+        "hi": "क्या आप जानते हैं कि हिम तेंदुआ इतनी अच्छी तरह से छिपा हुआ होता है कि चिड़ियाघर के मालिक अक्सर इसे \"पहाड़ों का भूत\" कहते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Snow Leopard",
+        "hi": "हिम तेंदुआ"
+      },
+      "_id": "69c3d2aafa57b638ef6bdeac",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:50.392Z",
+      "updatedAt": "2026-03-25T12:18:50.392Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Water Recycling",
+        "hi": "जल पुनर्चक्रण"
+      },
+      "text": {
+        "en": "Did you know the zoo uses a specialized bio-filter system to clean the water in the bird ponds to keep the residents healthy?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर निवासियों को स्वस्थ रखने के लिए पक्षी तालाबों में पानी को साफ करने के लिए एक विशेष जैव-फिल्टर प्रणाली का उपयोग करता है?"
+      },
+      "buttonLabel": {
+        "en": "Clean Water",
+        "hi": "साफ पानी"
+      },
+      "_id": "69c3d2aafa57b638ef6bdeae",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/veterinary-care",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:50.740Z",
+      "updatedAt": "2026-03-25T12:18:50.740Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "CZA Headquarters",
+        "hi": "सीजेडए मुख्यालय"
+      },
+      "text": {
+        "en": "Did you know the headquarters for the organization that monitors all Indian zoos is located right near the NZP entrance?",
+        "hi": "क्या आप जानते हैं कि सभी भारतीय चिड़ियाघरों की निगरानी करने वाले संगठन का मुख्यालय एनजेडपी प्रवेश द्वार के ठीक पास स्थित है?"
+      },
+      "buttonLabel": {
+        "en": "Visit CZA",
+        "hi": "सीजेडए पर जाएँ"
+      },
+      "_id": "69c3d2abfa57b638ef6bdeb0",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://cza.nic.in/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:51.122Z",
+      "updatedAt": "2026-03-25T12:18:51.122Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Purana Qila View",
+        "hi": "पुराना किला दृश्य"
+      },
+      "text": {
+        "en": "Did you know the best view of the 16th-century Purana Qila (Old Fort) is actually from the back of the zoo’s bird section?",
+        "hi": "क्या आप जानते हैं कि 16वीं सदी के पुराना किला (पुराना किला) का सबसे अच्छा दृश्य वास्तव में चिड़ियाघर के पक्षी अनुभाग के पीछे से होता है?"
+      },
+      "buttonLabel": {
+        "en": "View Fort",
+        "hi": "किला देखें"
+      },
+      "_id": "69c3d2abfa57b638ef6bdeb2",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://asi.nic.in/purana-qila/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:51.458Z",
+      "updatedAt": "2026-03-25T12:18:51.458Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Butterfly Taste",
+        "hi": "तितली का स्वाद"
+      },
+      "text": {
+        "en": "Did you know the butterflies that flutter around the zoo's flower beds taste their food using their feet?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के फूलों के बिस्तरों के चारों ओर उड़ने वाली तितलियाँ अपने पैरों का उपयोग करके अपने भोजन का स्वाद लेती हैं?"
+      },
+      "buttonLabel": {
+        "en": "Butterfly Taste",
+        "hi": "तितली का स्वाद"
+      },
+      "_id": "69c3d2acfa57b638ef6bdeb4",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:52.020Z",
+      "updatedAt": "2026-03-25T12:18:52.020Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "National Mission",
+        "hi": "राष्ट्रीय मिशन"
+      },
+      "text": {
+        "en": "Did you know the primary mission of the NZP is to preserve the gene pool of endangered Indian wildlife?",
+        "hi": "क्या आप जानते हैं कि एनजेडपी का प्राथमिक मिशन लुप्तप्राय भारतीय वन्यजीवों के जीन पूल को संरक्षित करना है?"
+      },
+      "buttonLabel": {
+        "en": "The Mission",
+        "hi": "लक्ष्य"
+      },
+      "_id": "69c3d2acfa57b638ef6bdeb6",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:52.756Z",
+      "updatedAt": "2026-03-25T12:18:52.756Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Flamingo Standing",
+        "hi": "राजहंस खड़ा है"
+      },
+      "text": {
+        "en": "Did you know flamingos stand on one leg to preserve body heat? It takes them almost zero muscle effort to do so!",
+        "hi": "क्या आप जानते हैं कि राजहंस शरीर की गर्मी को सुरक्षित रखने के लिए एक पैर पर खड़े होते हैं? "
+      },
+      "buttonLabel": {
+        "en": "Single Leg",
+        "hi": "एकल पैर"
+      },
+      "_id": "69c3d2adfa57b638ef6bdeb8",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:53.088Z",
+      "updatedAt": "2026-03-25T12:18:53.088Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Elephant Memory",
+        "hi": "हाथी स्मृति"
+      },
+      "text": {
+        "en": "Did you know the zoo's elephants can recognize the voices and scents of their favorite keepers even after years apart?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के हाथी वर्षों के अंतराल के बाद भी अपने पसंदीदा रखवालों की आवाज़ और गंध को पहचान सकते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Smart Elephant",
+        "hi": "चतुर हाथी"
+      },
+      "_id": "69c3d2adfa57b638ef6bdeba",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:53.436Z",
+      "updatedAt": "2026-03-25T12:18:53.436Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zoo Map Loops",
+        "hi": "चिड़ियाघर मानचित्र लूप्स"
+      },
+      "text": {
+        "en": "Did you know the zoo's paths are designed in two \"beats\" (loops) so you can see every animal without ever getting lost?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के रास्ते दो \"बीट्स\" (लूप) में डिज़ाइन किए गए हैं ताकि आप हर जानवर को बिना खोए देख सकें?"
+      },
+      "buttonLabel": {
+        "en": "Park Map",
+        "hi": "पार्क का नक्शा"
+      },
+      "_id": "69c3d2adfa57b638ef6bdebc",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-information",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:53.778Z",
+      "updatedAt": "2026-03-25T12:18:53.778Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Wild Boar Speed",
+        "hi": "जंगली सूअर की गति"
+      },
+      "text": {
+        "en": "Did you know the Wild Boars at the zoo can run at speeds of up to 40 km/h?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर में जंगली सूअर 40 किमी/घंटा तक की गति से दौड़ सकते हैं?"
+      },
+      "buttonLabel": {
+        "en": "Boar Speed",
+        "hi": "सूअर की गति"
+      },
+      "_id": "69c3d2aefa57b638ef6bdebe",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:54.112Z",
+      "updatedAt": "2026-03-25T12:18:54.112Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Blue Bull",
+        "hi": "नीला बैल"
+      },
+      "text": {
+        "en": "Did you know the Nilgai (Blue Bull) is the largest antelope in Asia and is a common sight in the zoo's open enclosures?",
+        "hi": "क्या आप जानते हैं कि नीलगाय (ब्लू बुल) एशिया का सबसे बड़ा मृग है और चिड़ियाघर के खुले बाड़ों में यह आम दिखाई देता है?"
+      },
+      "buttonLabel": {
+        "en": "Nilgai Facts",
+        "hi": "नीलगाय तथ्य"
+      },
+      "_id": "69c3d2aefa57b638ef6bdec0",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:54.457Z",
+      "updatedAt": "2026-03-25T12:18:54.457Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sarus Loyalty",
+        "hi": "सारस वफादारी"
+      },
+      "text": {
+        "en": "Did you know Sarus Cranes are famous for mating for life? If one partner is lost,  the other often remains solitary.",
+        "hi": "क्या आप जानते हैं सारस क्रेन जीवन भर संभोग करने के लिए प्रसिद्ध हैं? "
+      },
+      "buttonLabel": {
+        "en": "Sarus Love",
+        "hi": "सारस लव"
+      },
+      "_id": "69c3d2aefa57b638ef6bdec2",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:54.798Z",
+      "updatedAt": "2026-03-25T12:18:54.798Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mughal Garden Style",
+        "hi": "मुगल गार्डन शैली"
+      },
+      "text": {
+        "en": "Did you know parts of the zoo's landscaping are inspired by \"Charbagh\"—the traditional four-part Mughal garden style?",
+        "hi": "क्या आप जानते हैं कि चिड़ियाघर के भूदृश्य के कुछ हिस्से \"चारबाग\" - पारंपरिक चार-भाग वाली मुगल उद्यान शैली - से प्रेरित हैं?"
+      },
+      "buttonLabel": {
+        "en": "Mughal Garden",
+        "hi": "मुगल गार्डन"
+      },
+      "_id": "69c3d2affa57b638ef6bdec4",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:55.153Z",
+      "updatedAt": "2026-03-25T12:18:55.153Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Owl Silence",
+        "hi": "उल्लू मौन"
+      },
+      "text": {
+        "en": "Did you know owls have specialized feathers that muffle the sound of their wings,  making their flight completely silent?",
+        "hi": "क्या आप जानते हैं कि उल्लुओं के पास विशेष पंख होते हैं जो उनके पंखों की आवाज़ को दबा देते हैं, जिससे उनकी उड़ान पूरी तरह से शांत हो जाती है?"
+      },
+      "buttonLabel": {
+        "en": "Silent Flight",
+        "hi": "मूक उड़ान"
+      },
+      "_id": "69c3d2affa57b638ef6bdec6",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/birds",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-25T12:18:55.559Z",
+      "updatedAt": "2026-03-25T12:18:55.559Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "White Tiger Legacy",
+        "hi": "सफेद बाघ विरासत"
+      },
+      "text": {
+        "en": "The Delhi Zoo was a pioneer in breeding White Tigers; all white tigers in zoos today descend from a single cub named Mohan.",
+        "hi": "दिल्ली चिड़ियाघर सफेद बाघों के प्रजनन में अग्रणी था; "
+      },
+      "buttonLabel": {
+        "en": "Meet the Tigers",
+        "hi": "बाघों से मिलें"
+      },
+      "_id": "69c627af8acb51be7654e060",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:07.821Z",
+      "updatedAt": "2026-03-27T06:46:07.821Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Dancing Deer",
+        "hi": "नाचता हुआ हिरण"
+      },
+      "text": {
+        "en": "The Sangai deer (Brow-antlered deer) is called the \"Dancing Deer\" because of its delicate gait on floating islands in Manipur.",
+        "hi": "संगाई हिरण (भौंह-मृग हिरण) को मणिपुर में तैरते द्वीपों पर अपनी नाजुक चाल के कारण \"डांसिंग हिरण\" कहा जाता है।"
+      },
+      "buttonLabel": {
+        "en": "See it Dance",
+        "hi": "इसे देखें नृत्य"
+      },
+      "_id": "69c627b18acb51be7654e062",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://cza.nic.in/page/en/species-database",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:09.346Z",
+      "updatedAt": "2026-03-27T06:46:09.346Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Painted Stork Hub",
+        "hi": "चित्रित सारस हब"
+      },
+      "text": {
+        "en": "Every August hundreds of wild Painted Storks migrate to the zoo's islands to nestâone of North India's largest natural colonies.",
+        "hi": "हर अगस्त में सैकड़ों जंगली पेंटेड स्टॉर्क उत्तर भारत के सबसे बड़े प्राकृतिक उपनिवेशों में से एक चिड़ियाघर के द्वीपों पर घोंसला बनाने के लिए पलायन करते हैं।"
+      },
+      "buttonLabel": {
+        "en": "View Migration",
+        "hi": "माइग्रेशन देखें"
+      },
+      "_id": "69c627b28acb51be7654e065",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/paisto1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:10.456Z",
+      "updatedAt": "2026-03-27T06:46:10.456Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mughal Heritage",
+        "hi": "मुगल विरासत"
+      },
+      "text": {
+        "en": "The zoo is built on the 16th-century Citadel of Indraprastha grounds right next to the historic Purana Qila (Old Fort).",
+        "hi": "चिड़ियाघर ऐतिहासिक पुराना किला (पुराना किला) के ठीक बगल में 16 वीं शताब्दी के इंद्रप्रस्थ मैदान के गढ़ पर बनाया गया है।"
+      },
+      "buttonLabel": {
+        "en": "Explore History",
+        "hi": "इतिहास का अन्वेषण करें"
+      },
+      "_id": "69c627b38acb51be7654e067",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://delhitourism.gov.in/delhitourism/tourist_place/purana_quila.jsp",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:11.531Z",
+      "updatedAt": "2026-03-27T06:46:11.531Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Kos Minar",
+        "hi": "कोस मीनार"
+      },
+      "text": {
+        "en": "An original 16th-century Mughal-era \"Kos Minar\" (mileage pillar) still stands perfectly preserved inside the zoo grounds.",
+        "hi": "16वीं शताब्दी का मूल मुगल-युग \"कोस मीनार\" (माइलेज स्तंभ) अभी भी चिड़ियाघर के मैदान के अंदर पूरी तरह से संरक्षित है।"
+      },
+      "buttonLabel": {
+        "en": "Find the Pillar",
+        "hi": "स्तंभ खोजें"
+      },
+      "_id": "69c627b48acb51be7654e069",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:12.691Z",
+      "updatedAt": "2026-03-27T06:46:12.691Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Rhino Armor",
+        "hi": "गैंडा कवच"
+      },
+      "text": {
+        "en": "The Indian One-Horned Rhino has skin that looks like a suit of armor but it is actually sensitive to insect bites and sunburn.",
+        "hi": "भारतीय एक सींग वाले गैंडे की त्वचा कवच के सूट की तरह दिखती है लेकिन वास्तव में यह कीड़ों के काटने और धूप की कालिमा के प्रति संवेदनशील होती है।"
+      },
+      "buttonLabel": {
+        "en": "Study Armor",
+        "hi": "कवच का अध्ययन करें"
+      },
+      "_id": "69c627b58acb51be7654e06b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:13.994Z",
+      "updatedAt": "2026-03-27T06:46:13.994Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Ghara",
+        "hi": "घर"
+      },
+      "text": {
+        "en": "Male Gharials (crocodiles) at the zoo have a \"Ghara\" (pot-shaped bump) on their snout used to blow bubbles during courtship.",
+        "hi": "चिड़ियाघर में नर घड़ियाल (मगरमच्छ) के थूथन पर एक \"घारा\" (बर्तन के आकार का उभार) होता है जिसका उपयोग प्रेमालाप के दौरान बुलबुले उड़ाने के लिए किया जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Hear the Bubbles",
+        "hi": "बुलबुले सुनें"
+      },
+      "_id": "69c627b78acb51be7654e0ed",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animaldiversity.org/accounts/Gavialis_gangeticus/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:15.889Z",
+      "updatedAt": "2026-03-27T06:46:15.889Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Asiatic Lion Fold",
+        "hi": "एशियाई शेर तह"
+      },
+      "text": {
+        "en": "Unlike their African cousins the Asiatic lions in Delhi have a distinctive longitudinal fold of skin running along their bellies.",
+        "hi": "अपने अफ़्रीकी भाइयों के विपरीत, दिल्ली के एशियाई शेरों के पेट के साथ-साथ त्वचा की एक विशिष्ट अनुदैर्ध्य तह होती है।"
+      },
+      "buttonLabel": {
+        "en": "Spot the Fold",
+        "hi": "तह का पता लगाएं"
+      },
+      "_id": "69c627ba8acb51be7654e1cd",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:18.215Z",
+      "updatedAt": "2026-03-27T06:46:18.215Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Friday Rest Day",
+        "hi": "शुक्रवार विश्राम दिवस"
+      },
+      "text": {
+        "en": "The Delhi Zoo is strictly closed every Friday to give the animals a full day of peace and quiet from human visitors.",
+        "hi": "दिल्ली चिड़ियाघर हर शुक्रवार को सख्ती से बंद रहता है ताकि जानवरों को मानव आगंतुकों से शांति और शांति का पूरा दिन मिल सके।"
+      },
+      "buttonLabel": {
+        "en": "Check Schedule",
+        "hi": "शेड्यूल जांचें"
+      },
+      "_id": "69c627bb8acb51be7654e1cf",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-information",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:19.622Z",
+      "updatedAt": "2026-03-27T06:46:19.622Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hippos Blood-Sweat",
+        "hi": "दरियाई घोड़े का खून-पसीना"
+      },
+      "text": {
+        "en": "Hippos secrete a red oily fluid called \"blood sweat\" that acts as a natural antibiotic and sunblock for their skin.",
+        "hi": "दरियाई घोड़े \"रक्त पसीना\" नामक एक लाल तैलीय द्रव का स्राव करते हैं जो उनकी त्वचा के लिए प्राकृतिक एंटीबायोटिक और सनब्लॉक के रूप में कार्य करता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Secret",
+        "hi": "रहस्य देखें"
+      },
+      "_id": "69c627bd8acb51be7654e1d1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/hippopotamus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:21.182Z",
+      "updatedAt": "2026-03-27T06:46:21.182Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Jaguar Patterns",
+        "hi": "जगुआर पैटर्न"
+      },
+      "text": {
+        "en": "While they look like Leopards Jaguars have \"rosettes\" with small spots inside the ringsâa unique jungle fingerprint.",
+        "hi": "जबकि वे तेंदुए की तरह दिखते हैं, जगुआर में छल्लों के अंदर छोटे धब्बों के साथ \"रोसेट\" होते हैं - एक अद्वितीय जंगल फिंगरप्रिंट।"
+      },
+      "buttonLabel": {
+        "en": "Identify Spots",
+        "hi": "स्थानों की पहचान करें"
+      },
+      "_id": "69c627be8acb51be7654e1d3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/jaguar",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:22.943Z",
+      "updatedAt": "2026-03-27T06:46:22.943Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Elephant Memory",
+        "hi": "हाथी स्मृति"
+      },
+      "text": {
+        "en": "The zoo's Indian Elephants can recognize themselves in mirrorsâa rare sign of high intelligence in the animal kingdom.",
+        "hi": "चिड़ियाघर के भारतीय हाथी खुद को दर्पणों में पहचान सकते हैं - पशु साम्राज्य में उच्च बुद्धि का एक दुर्लभ संकेत।"
+      },
+      "buttonLabel": {
+        "en": "Check IQ",
+        "hi": "आईक्यू जांचें"
+      },
+      "_id": "69c627c08acb51be7654e1d5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/asian-elephant",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:24.094Z",
+      "updatedAt": "2026-03-27T06:46:24.094Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sloth Bear Vacuum",
+        "hi": "सुस्ती भालू वैक्यूम"
+      },
+      "text": {
+        "en": "Sloth bears can close their nostrils voluntarily and use their gap-toothed snouts like high-powered vacuums to suck up termites.",
+        "hi": "स्लॉथ भालू स्वेच्छा से अपने नथुने बंद कर सकते हैं और दीमकों को चूसने के लिए अपने गैप-दांतेदार थूथन का उपयोग उच्च शक्ति वाले वैक्यूम की तरह कर सकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Watch Feeding",
+        "hi": "दूध पिलाना देखो"
+      },
+      "_id": "69c627c18acb51be7654e1e5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/sloth-bear",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:25.904Z",
+      "updatedAt": "2026-03-27T06:46:25.904Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Blackbuck Speed",
+        "hi": "ब्लैकबक स्पीड"
+      },
+      "text": {
+        "en": "The Indian Blackbuck is one of the fastest land animals in India reaching speeds of up to 80 km/h to escape predators.",
+        "hi": "भारतीय ब्लैकबक भारत में सबसे तेज़ ज़मीनी जानवरों में से एक है जो शिकारियों से बचने के लिए 80 किमी/घंटा तक की गति तक पहुँचता है।"
+      },
+      "buttonLabel": {
+        "en": "Race the Buck",
+        "hi": "बक रेस करो"
+      },
+      "_id": "69c627c38acb51be7654e1e7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:27.423Z",
+      "updatedAt": "2026-03-27T06:46:27.423Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Royal Bengal Stripes",
+        "hi": "रॉयल बंगाल स्ट्राइप्स"
+      },
+      "text": {
+        "en": "No two Royal Bengal Tigers have the same stripe pattern; their skin is also striped just like their fur.",
+        "hi": "किन्हीं भी दो रॉयल बंगाल टाइगर्स की धारियों का पैटर्न एक जैसा नहीं है; "
+      },
+      "buttonLabel": {
+        "en": "Compare Stripes",
+        "hi": "धारियों की तुलना करें"
+      },
+      "_id": "69c627c58acb51be7654e1e9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/bengal-tiger",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:29.245Z",
+      "updatedAt": "2026-03-27T06:46:29.245Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Peafowl Pride",
+        "hi": "मोर गौरव"
+      },
+      "text": {
+        "en": "The Indian Peafowl is our National Bird; a male's \"train\" can contain over 200 shimmering feathers with colorful eye-spots.",
+        "hi": "भारतीय मोर हमारा राष्ट्रीय पक्षी है; "
+      },
+      "buttonLabel": {
+        "en": "See the Display",
+        "hi": "प्रदर्शन देखें"
+      },
+      "_id": "69c627c68acb51be7654e1eb",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/inpea1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:30.740Z",
+      "updatedAt": "2026-03-27T06:46:30.740Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Chimpanzee Tools",
+        "hi": "चिंपैंजी उपकरण"
+      },
+      "text": {
+        "en": "Chimpanzees at the zoo are known to use sticks as tools to \"fish\" for insects showing incredible problem-solving skills.",
+        "hi": "चिड़ियाघर में चिम्पांजी अविश्वसनीय समस्या-समाधान कौशल दिखाने वाले कीड़ों को \"मछली पकड़ने\" के लिए उपकरण के रूप में लाठी का उपयोग करने के लिए जाने जाते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Learn More",
+        "hi": "और अधिक जानें"
+      },
+      "_id": "69c627c88acb51be7654e1ed",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.janegoodall.org/chimpanzees/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:32.137Z",
+      "updatedAt": "2026-03-27T06:46:32.137Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Himalayan Bear V",
+        "hi": "हिमालयन भालू वी"
+      },
+      "text": {
+        "en": "The Himalayan Black Bear has a distinctive white \"V\" or crescent shape on its chest earning it the name \"Moon Bear.\"",
+        "hi": "हिमालयी काले भालू की छाती पर एक विशिष्ट सफेद \"V\" या अर्धचंद्राकार आकृति होती है, जिसके कारण इसे \"मून बियर\" नाम दिया गया है।"
+      },
+      "buttonLabel": {
+        "en": "Spot the Moon",
+        "hi": "चंद्रमा को देखें"
+      },
+      "_id": "69c627c98acb51be7654e1ef",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:33.500Z",
+      "updatedAt": "2026-03-27T06:46:33.500Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Emu Eggs",
+        "hi": "एमु अंडे"
+      },
+      "text": {
+        "en": "Emus lay large dark green eggs that look like polished emeralds; it is the male emu who incubates them for 8 weeks.",
+        "hi": "एमस बड़े गहरे हरे अंडे देते हैं जो पॉलिश किए हुए पन्ने की तरह दिखते हैं; "
+      },
+      "buttonLabel": {
+        "en": "See the Eggs",
+        "hi": "अंडे देखें"
+      },
+      "_id": "69c627cb8acb51be7654e1f1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://australian.museum/learn/animals/birds/emu/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:35.481Z",
+      "updatedAt": "2026-03-27T06:46:35.481Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Nilgai Height",
+        "hi": "नीलगाय की ऊंचाई"
+      },
+      "text": {
+        "en": "The Nilgai is Asia's largest antelope; its name literally means \"Blue Bull\" due to the bluish-grey coat of the adult males.",
+        "hi": "नीलगाय एशिया का सबसे बड़ा मृग है; "
+      },
+      "buttonLabel": {
+        "en": "Meet the Giant",
+        "hi": "विशाल से मिलें"
+      },
+      "_id": "69c627cd8acb51be7654e1f3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.britannica.com/animal/nilgai",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:37.004Z",
+      "updatedAt": "2026-03-27T06:46:37.004Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Leopard Stealth",
+        "hi": "तेंदुआ चुपके से"
+      },
+      "text": {
+        "en": "Leopards are the strongest climbers among big cats and can carry prey twice their weight high up into trees.",
+        "hi": "तेंदुए बड़ी बिल्लियों में सबसे मजबूत पर्वतारोही होते हैं और अपने वजन से दोगुना शिकार को पेड़ों तक ऊपर ले जा सकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "See the Climb",
+        "hi": "चढ़ाई देखें"
+      },
+      "_id": "69c627ce8acb51be7654e1f5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/leopard",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:38.790Z",
+      "updatedAt": "2026-03-27T06:46:38.790Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Python Strength",
+        "hi": "अजगर ताकत"
+      },
+      "text": {
+        "en": "The Indian Rock Python is a non-venomous constrictor that can go for months without eating after a single large meal.",
+        "hi": "इंडियन रॉक पाइथॉन एक गैर-जहरीला अवरोधक है जो एक बार बड़े भोजन के बाद महीनों तक बिना कुछ खाए रह सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Study Pythons",
+        "hi": "पायथन का अध्ययन करें"
+      },
+      "_id": "69c627d08acb51be7654e1f7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/32115-Python-molurus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:40.126Z",
+      "updatedAt": "2026-03-27T06:46:40.126Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sambar Ears",
+        "hi": "सांभर कान"
+      },
+      "text": {
+        "en": "Sambar Deer have massive ears that rotate independently like satellite dishes to detect the slightest sound of a predator.",
+        "hi": "सांभर हिरण के कान बड़े-बड़े होते हैं जो सैटेलाइट डिश की तरह स्वतंत्र रूप से घूमते हैं और किसी शिकारी की हल्की सी भी आवाज का पता लगा लेते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Listen In",
+        "hi": "सुनिए"
+      },
+      "_id": "69c627d18acb51be7654e1f9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:41.633Z",
+      "updatedAt": "2026-03-27T06:46:41.633Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mugger Durability",
+        "hi": "मगर टिकाऊपन"
+      },
+      "text": {
+        "en": "Mugger Crocodiles have existed for millions of years; their name \"Mugger\" comes from the Hindi word 'Magar' meaning monster.",
+        "hi": "मगर मगरमच्छ लाखों वर्षों से अस्तित्व में हैं; "
+      },
+      "buttonLabel": {
+        "en": "Ancient Reptiles",
+        "hi": "प्राचीन सरीसृप"
+      },
+      "_id": "69c627d38acb51be7654e1fb",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animalia.bio/mugger-crocodile",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:43.423Z",
+      "updatedAt": "2026-03-27T06:46:43.423Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Ostrich Eyes",
+        "hi": "शुतुरमुर्ग की आंखें"
+      },
+      "text": {
+        "en": "An Ostrich's eye is bigger than its brain; they are also the only birds that have just two toes on each foot.",
+        "hi": "शुतुरमुर्ग की आंख उसके मस्तिष्क से बड़ी होती है; "
+      },
+      "buttonLabel": {
+        "en": "Check the Eyes",
+        "hi": "आंखों की जांच करें"
+      },
+      "_id": "69c627d48acb51be7654e34b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nationalzoo.si.edu/animals/ostrich",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:44.808Z",
+      "updatedAt": "2026-03-27T06:46:44.808Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zebra Stripes",
+        "hi": "ज़ेबरा धारियाँ"
+      },
+      "text": {
+        "en": "Zebras use their stripes as \"motion dazzle\" to confuse biting flies and predators while they move in a herd.",
+        "hi": "ज़ेबरा झुंड में घूमते समय काटने वाली मक्खियों और शिकारियों को भ्रमित करने के लिए अपनी धारियों का उपयोग \"गति चकाचौंध\" के रूप में करते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Check Stripes",
+        "hi": "धारियों की जाँच करें"
+      },
+      "_id": "69c627d58acb51be7654e34d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/plains-zebra",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:45.875Z",
+      "updatedAt": "2026-03-27T06:46:45.875Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Gaur Power",
+        "hi": "गौर शक्ति"
+      },
+      "text": {
+        "en": "The Indian Gaur is the largest wild cattle species in the world; a full-grown male can weigh over 1000 kilograms.",
+        "hi": "भारतीय गौर दुनिया की सबसे बड़ी जंगली मवेशी प्रजाति है; "
+      },
+      "buttonLabel": {
+        "en": "See the Titan",
+        "hi": "टाइटन देखें"
+      },
+      "_id": "69c627d68acb51be7654e34f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/gaur",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:46.848Z",
+      "updatedAt": "2026-03-27T06:46:46.848Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Barking Deer",
+        "hi": "भौंकने वाला हिरण"
+      },
+      "text": {
+        "en": "The Indian Muntjac is called the \"Barking Deer\" because it lets out a loud dog-like bark when it senses danger.",
+        "hi": "भारतीय मंटजैक को \"बार्किंग डियर\" कहा जाता है क्योंकि जब इसे खतरा महसूस होता है तो यह कुत्ते की तरह जोर से भौंकता है।"
+      },
+      "buttonLabel": {
+        "en": "Hear the Bark",
+        "hi": "बार्क सुनें"
+      },
+      "_id": "69c627d88acb51be7654e351",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/42188-Muntiacus-muntjak",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:48.526Z",
+      "updatedAt": "2026-03-27T06:46:48.526Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Cormorant Diving",
+        "hi": "जलकाग गोताखोरी"
+      },
+      "text": {
+        "en": "The Little Cormorant seen in the zoo ponds is a master diver that can stay underwater for over 30 seconds to catch fish.",
+        "hi": "चिड़ियाघर के तालाबों में देखा जाने वाला लिटिल कॉर्मोरेंट एक मास्टर गोताखोर है जो मछली पकड़ने के लिए 30 सेकंड से अधिक समय तक पानी के नीचे रह सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Watch Diver",
+        "hi": "गोताखोर देखो"
+      },
+      "_id": "69c627da8acb51be7654e356",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/litcor1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:50.272Z",
+      "updatedAt": "2026-03-27T06:46:50.272Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Cassowary Danger",
+        "hi": "कैसोवरी खतरा"
+      },
+      "text": {
+        "en": "The Southern Cassowary has a 5-inch dagger-like claw on its inner toe making it the world's most dangerous bird.",
+        "hi": "साउदर्न कैसोवरी के पैर के अंदरूनी अंगूठे पर 5 इंच का खंजर जैसा पंजा होता है जो इसे दुनिया का सबसे खतरनाक पक्षी बनाता है।"
+      },
+      "buttonLabel": {
+        "en": "View Hazard",
+        "hi": "खतरा देखें"
+      },
+      "_id": "69c627db8acb51be7654e358",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://guinnessworldrecords.com/world-records/most-dangerous-bird",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:51.928Z",
+      "updatedAt": "2026-03-27T06:46:51.928Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Brahminy Kite",
+        "hi": "ब्राह्मणी पतंग"
+      },
+      "text": {
+        "en": "In Indian mythology the Brahminy Kite is often identified as 'Garuda' the sacred mount of the God Vishnu.",
+        "hi": "भारतीय पौराणिक कथाओं में ब्राह्मणी पतंग को अक्सर भगवान विष्णु की पवित्र सवारी 'गरुड़' के रूप में पहचाना जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Mythology",
+        "hi": "पौराणिक कथा"
+      },
+      "_id": "69c627dd8acb51be7654e363",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/brakit1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:53.377Z",
+      "updatedAt": "2026-03-27T06:46:53.377Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Chinkara Water",
+        "hi": "चिंकारा जल"
+      },
+      "text": {
+        "en": "The Chinkara (Indian Gazelle) can survive for long periods without drinking water by getting moisture from plants.",
+        "hi": "चिंकारा (भारतीय चिकारा) पौधों से नमी प्राप्त करके पीने के पानी के बिना लंबे समय तक जीवित रह सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Desert Expert",
+        "hi": "रेगिस्तान विशेषज्ञ"
+      },
+      "_id": "69c627de8acb51be7654e365",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:54.677Z",
+      "updatedAt": "2026-03-27T06:46:54.677Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "African Elephant Ears",
+        "hi": "अफ़्रीकी हाथी के कान"
+      },
+      "text": {
+        "en": "You can tell the African Elephant apart by its ears which are shaped roughly like the continent of Africa.",
+        "hi": "आप अफ़्रीकी हाथी को उसके कानों से अलग पहचान सकते हैं जिनका आकार लगभग अफ़्रीका महाद्वीप जैसा होता है।"
+      },
+      "buttonLabel": {
+        "en": "Compare Ears",
+        "hi": "कानों की तुलना करें"
+      },
+      "_id": "69c627e08acb51be7654e367",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/african-elephant",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:56.555Z",
+      "updatedAt": "2026-03-27T06:46:56.555Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "White Tiger Legacy",
+        "hi": "सफेद बाघ विरासत"
+      },
+      "text": {
+        "en": "The Delhi Zoo was a pioneer in breeding White Tigers; all white tigers in zoos today descend from a single cub named Mohan.",
+        "hi": "दिल्ली चिड़ियाघर सफेद बाघों के प्रजनन में अग्रणी था; "
+      },
+      "buttonLabel": {
+        "en": "Meet the Tigers",
+        "hi": "बाघों से मिलें"
+      },
+      "_id": "69c627e18acb51be7654e377",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:57.617Z",
+      "updatedAt": "2026-03-27T06:46:57.617Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Great Hornbill",
+        "hi": "महान हार्नबिल"
+      },
+      "text": {
+        "en": "The Great Hornbill has a huge yellow \"casque\" on top of its beak which acts as a hollow chamber to amplify its calls.",
+        "hi": "ग्रेट हॉर्नबिल की चोंच के ऊपर एक विशाल पीला \"कास्क\" होता है जो उसकी आवाज़ को बढ़ाने के लिए एक खोखले कक्ष के रूप में कार्य करता है।"
+      },
+      "buttonLabel": {
+        "en": "Check the Beak",
+        "hi": "चोंच की जाँच करें"
+      },
+      "_id": "69c627e18acb51be7654e379",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/grÐµhon1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:57.847Z",
+      "updatedAt": "2026-03-27T06:46:57.847Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Dancing Deer",
+        "hi": "नाचता हुआ हिरण"
+      },
+      "text": {
+        "en": "The Sangai deer (Brow-antlered deer) is called the \"Dancing Deer\" because of its delicate gait on floating islands in Manipur.",
+        "hi": "संगाई हिरण (भौंह-मृग हिरण) को मणिपुर में तैरते द्वीपों पर अपनी नाजुक चाल के कारण \"डांसिंग हिरण\" कहा जाता है।"
+      },
+      "buttonLabel": {
+        "en": "See it Dance",
+        "hi": "इसे देखें नृत्य"
+      },
+      "_id": "69c627e18acb51be7654e37b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://cza.nic.in/page/en/species-database",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:57.955Z",
+      "updatedAt": "2026-03-27T06:46:57.955Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Painted Stork Hub",
+        "hi": "चित्रित सारस हब"
+      },
+      "text": {
+        "en": "Every August hundreds of wild Painted Storks migrate to the zoo's islands to nestâ€”one of North India's largest natural colonies.",
+        "hi": "हर अगस्त में सैकड़ों जंगली पेंटेड स्टॉर्क घोंसले बनाने के लिए चिड़ियाघर के द्वीपों पर चले जाते हैं - जो उत्तर भारत की सबसे बड़ी प्राकृतिक कॉलोनियों में से एक है।"
+      },
+      "buttonLabel": {
+        "en": "View Migration",
+        "hi": "माइग्रेशन देखें"
+      },
+      "_id": "69c627e38acb51be7654e3fa",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/paisto1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:59.071Z",
+      "updatedAt": "2026-03-27T06:46:59.071Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Indian Wolf",
+        "hi": "भारतीय भेड़िया"
+      },
+      "text": {
+        "en": "The Indian Wolf is a master of endurance; they are known to trot for miles without tiring while tracking prey.",
+        "hi": "भारतीय भेड़िया सहनशक्ति में माहिर है; "
+      },
+      "buttonLabel": {
+        "en": "Wolf Facts",
+        "hi": "भेड़िया तथ्य"
+      },
+      "_id": "69c627e38acb51be7654e3ff",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:59.286Z",
+      "updatedAt": "2026-03-27T06:46:59.286Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mughal Heritage",
+        "hi": "मुगल विरासत"
+      },
+      "text": {
+        "en": "The zoo is built on the 16th-century Citadel of Indraprastha grounds right next to the historic Purana Qila (Old Fort).",
+        "hi": "चिड़ियाघर ऐतिहासिक पुराना किला (पुराना किला) के ठीक बगल में 16 वीं शताब्दी के इंद्रप्रस्थ मैदान के गढ़ पर बनाया गया है।"
+      },
+      "buttonLabel": {
+        "en": "Explore History",
+        "hi": "इतिहास का अन्वेषण करें"
+      },
+      "_id": "69c627e38acb51be7654e401",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://delhitourism.gov.in/delhitourism/tourist_place/purana_quila.jsp",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:59.411Z",
+      "updatedAt": "2026-03-27T06:46:59.411Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Kos Minar",
+        "hi": "कोस मीनार"
+      },
+      "text": {
+        "en": "An original 16th-century Mughal-era \"Kos Minar\" (mileage pillar) still stands perfectly preserved inside the zoo grounds.",
+        "hi": "16वीं शताब्दी का मूल मुगल-युग \"कोस मीनार\" (माइलेज स्तंभ) अभी भी चिड़ियाघर के मैदान के अंदर पूरी तरह से संरक्षित है।"
+      },
+      "buttonLabel": {
+        "en": "Find the Pillar",
+        "hi": "स्तंभ खोजें"
+      },
+      "_id": "69c627e38acb51be7654e404",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:46:59.743Z",
+      "updatedAt": "2026-03-27T06:46:59.743Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Rhino Armor",
+        "hi": "गैंडा कवच"
+      },
+      "text": {
+        "en": "The Indian One-Horned Rhino has skin that looks like a suit of armor but it is actually sensitive to insect bites and sunburn.",
+        "hi": "भारतीय एक सींग वाले गैंडे की त्वचा कवच के सूट की तरह दिखती है लेकिन वास्तव में यह कीड़ों के काटने और धूप की कालिमा के प्रति संवेदनशील होती है।"
+      },
+      "buttonLabel": {
+        "en": "Study Armor",
+        "hi": "कवच का अध्ययन करें"
+      },
+      "_id": "69c627e48acb51be7654e406",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:00.088Z",
+      "updatedAt": "2026-03-27T06:47:00.088Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Ghara",
+        "hi": "घर"
+      },
+      "text": {
+        "en": "Male Gharials (crocodiles) at the zoo have a \"Ghara\" (pot-shaped bump) on their snout used to blow bubbles during courtship.",
+        "hi": "चिड़ियाघर में नर घड़ियाल (मगरमच्छ) के थूथन पर एक \"घारा\" (बर्तन के आकार का उभार) होता है जिसका उपयोग प्रेमालाप के दौरान बुलबुले उड़ाने के लिए किया जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Hear the Bubbles",
+        "hi": "बुलबुले सुनें"
+      },
+      "_id": "69c627e48acb51be7654e408",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animaldiversity.org/accounts/Gavialis_gangeticus/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:00.410Z",
+      "updatedAt": "2026-03-27T06:47:00.410Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Asiatic Lion Fold",
+        "hi": "एशियाई शेर तह"
+      },
+      "text": {
+        "en": "Unlike their African cousins the Asiatic lions in Delhi have a distinctive longitudinal fold of skin running along their bellies.",
+        "hi": "अपने अफ़्रीकी भाइयों के विपरीत, दिल्ली के एशियाई शेरों के पेट के साथ-साथ त्वचा की एक विशिष्ट अनुदैर्ध्य तह होती है।"
+      },
+      "buttonLabel": {
+        "en": "Spot the Fold",
+        "hi": "तह का पता लगाएं"
+      },
+      "_id": "69c627e48acb51be7654e40a",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:00.745Z",
+      "updatedAt": "2026-03-27T06:47:00.745Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Friday Rest Day",
+        "hi": "शुक्रवार विश्राम दिवस"
+      },
+      "text": {
+        "en": "The Delhi Zoo is strictly closed every Friday to give the animals a full day of peace and quiet from human visitors.",
+        "hi": "दिल्ली चिड़ियाघर हर शुक्रवार को सख्ती से बंद रहता है ताकि जानवरों को मानव आगंतुकों से शांति और शांति का पूरा दिन मिल सके।"
+      },
+      "buttonLabel": {
+        "en": "Check Schedule",
+        "hi": "शेड्यूल जांचें"
+      },
+      "_id": "69c627e58acb51be7654e40c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-information",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:01.102Z",
+      "updatedAt": "2026-03-27T06:47:01.102Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Star Tortoise",
+        "hi": "सितारा कछुआ"
+      },
+      "text": {
+        "en": "The Indian Star Tortoise has a shell pattern that helps it blend into the tall dry grasses of the scrub forests.",
+        "hi": "इंडियन स्टार कछुए में एक खोल पैटर्न होता है जो इसे झाड़ियों वाले जंगलों की लंबी सूखी घास में घुलने-मिलने में मदद करता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Shell",
+        "hi": "शैल देखें"
+      },
+      "_id": "69c627e58acb51be7654e40e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:01.187Z",
+      "updatedAt": "2026-03-27T06:47:01.187Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hippos Blood-Sweat",
+        "hi": "दरियाई घोड़े का खून-पसीना"
+      },
+      "text": {
+        "en": "Hippos secrete a red oily fluid called \"blood sweat\" that acts as a natural antibiotic and sunblock for their skin.",
+        "hi": "दरियाई घोड़े \"रक्त पसीना\" नामक एक लाल तैलीय द्रव का स्राव करते हैं जो उनकी त्वचा के लिए प्राकृतिक एंटीबायोटिक और सनब्लॉक के रूप में कार्य करता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Secret",
+        "hi": "रहस्य देखें"
+      },
+      "_id": "69c627e58acb51be7654e411",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/hippopotamus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:01.432Z",
+      "updatedAt": "2026-03-27T06:47:01.432Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Jaguar Patterns",
+        "hi": "जगुआर पैटर्न"
+      },
+      "text": {
+        "en": "While they look like Leopards Jaguars have \"rosettes\" with small spots inside the ringsâ€”a unique jungle fingerprint.",
+        "hi": "जबकि वे तेंदुए की तरह दिखते हैं, जगुआर में छल्लों के अंदर छोटे धब्बों के साथ \"रोसेट\" होते हैं - एक अद्वितीय जंगल फिंगरप्रिंट।"
+      },
+      "buttonLabel": {
+        "en": "Identify Spots",
+        "hi": "स्थानों की पहचान करें"
+      },
+      "_id": "69c627e68acb51be7654e413",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/jaguar",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:02.346Z",
+      "updatedAt": "2026-03-27T06:47:02.346Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Pelican Pouches",
+        "hi": "पेलिकन पाउच"
+      },
+      "text": {
+        "en": "The Rosy Pelican can hold up to 13 liters of water in its throat pouch which it uses like a fishing net.",
+        "hi": "रोज़ी पेलिकन अपने गले की थैली में 13 लीटर तक पानी रख सकता है जिसे वह मछली पकड़ने के जाल की तरह उपयोग करता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Pouch",
+        "hi": "थैली देखें"
+      },
+      "_id": "69c627e68acb51be7654e415",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/grwpel1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:02.657Z",
+      "updatedAt": "2026-03-27T06:47:02.657Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Elephant Memory",
+        "hi": "हाथी स्मृति"
+      },
+      "text": {
+        "en": "The zoo's Indian Elephants can recognize themselves in mirrorsâ€”a rare sign of high intelligence in the animal kingdom.",
+        "hi": "चिड़ियाघर के भारतीय हाथी खुद को दर्पणों में पहचान सकते हैं - पशु साम्राज्य में उच्च बुद्धि का एक दुर्लभ संकेत।"
+      },
+      "buttonLabel": {
+        "en": "Check IQ",
+        "hi": "आईक्यू जांचें"
+      },
+      "_id": "69c627e68acb51be7654e417",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/asian-elephant",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:02.896Z",
+      "updatedAt": "2026-03-27T06:47:02.896Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sloth Bear Vacuum",
+        "hi": "सुस्ती भालू वैक्यूम"
+      },
+      "text": {
+        "en": "Sloth bears can close their nostrils voluntarily and use their gap-toothed snouts like high-powered vacuums to suck up termites.",
+        "hi": "स्लॉथ भालू स्वेच्छा से अपने नथुने बंद कर सकते हैं और दीमकों को चूसने के लिए अपने गैप-दांतेदार थूथन का उपयोग उच्च शक्ति वाले वैक्यूम की तरह कर सकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Watch Feeding",
+        "hi": "दूध पिलाना देखो"
+      },
+      "_id": "69c627e78acb51be7654e419",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/sloth-bear",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:03.211Z",
+      "updatedAt": "2026-03-27T06:47:03.211Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Blackbuck Speed",
+        "hi": "ब्लैकबक स्पीड"
+      },
+      "text": {
+        "en": "The Indian Blackbuck is one of the fastest land animals in India reaching speeds of up to 80 km/h to escape predators.",
+        "hi": "भारतीय ब्लैकबक भारत में सबसे तेज़ ज़मीनी जानवरों में से एक है जो शिकारियों से बचने के लिए 80 किमी/घंटा तक की गति तक पहुँचता है।"
+      },
+      "buttonLabel": {
+        "en": "Race the Buck",
+        "hi": "बक रेस करो"
+      },
+      "_id": "69c627e78acb51be7654e41b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:03.557Z",
+      "updatedAt": "2026-03-27T06:47:03.557Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Royal Bengal Stripes",
+        "hi": "रॉयल बंगाल स्ट्राइप्स"
+      },
+      "text": {
+        "en": "No two Royal Bengal Tigers have the same stripe pattern; their skin is also striped just like their fur.",
+        "hi": "किन्हीं भी दो रॉयल बंगाल टाइगर्स की धारियों का पैटर्न एक जैसा नहीं है; "
+      },
+      "buttonLabel": {
+        "en": "Compare Stripes",
+        "hi": "धारियों की तुलना करें"
+      },
+      "_id": "69c627e78acb51be7654e41d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/bengal-tiger",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:03.888Z",
+      "updatedAt": "2026-03-27T06:47:03.888Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "White Tiger Legacy",
+        "hi": "सफेद बाघ विरासत"
+      },
+      "text": {
+        "en": "The Delhi Zoo was a pioneer in breeding White Tigers; all white tigers in zoos today descend from a single cub named Mohan.",
+        "hi": "दिल्ली चिड़ियाघर सफेद बाघों के प्रजनन में अग्रणी था; "
+      },
+      "buttonLabel": {
+        "en": "Meet the Tigers",
+        "hi": "बाघों से मिलें"
+      },
+      "_id": "69c628008acb51be7654e4fd",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/animal/mammals",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:28.542Z",
+      "updatedAt": "2026-03-27T06:47:28.542Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Dancing Deer",
+        "hi": "नाचता हुआ हिरण"
+      },
+      "text": {
+        "en": "The Sangai deer (Brow-antlered deer) is called the \"Dancing Deer\" because of its delicate gait on floating islands in Manipur.",
+        "hi": "संगाई हिरण (भौंह-मृग हिरण) को मणिपुर में तैरते द्वीपों पर अपनी नाजुक चाल के कारण \"डांसिंग हिरण\" कहा जाता है।"
+      },
+      "buttonLabel": {
+        "en": "See it Dance",
+        "hi": "इसे देखें नृत्य"
+      },
+      "_id": "69c628008acb51be7654e5bd",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://cza.nic.in/page/en/species-database",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:28.889Z",
+      "updatedAt": "2026-03-27T06:47:28.889Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Painted Stork Hub",
+        "hi": "चित्रित सारस हब"
+      },
+      "text": {
+        "en": "Every August hundreds of wild Painted Storks migrate to the zoo's islands to nestâ€”one of North India's largest natural colonies.",
+        "hi": "हर अगस्त में सैकड़ों जंगली पेंटेड स्टॉर्क घोंसले बनाने के लिए चिड़ियाघर के द्वीपों पर चले जाते हैं - जो उत्तर भारत की सबसे बड़ी प्राकृतिक कॉलोनियों में से एक है।"
+      },
+      "buttonLabel": {
+        "en": "View Migration",
+        "hi": "माइग्रेशन देखें"
+      },
+      "_id": "69c628018acb51be7654e5bf",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/paisto1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:29.220Z",
+      "updatedAt": "2026-03-27T06:47:29.220Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mughal Heritage",
+        "hi": "मुगल विरासत"
+      },
+      "text": {
+        "en": "The zoo is built on the 16th-century Citadel of Indraprastha grounds right next to the historic Purana Qila (Old Fort).",
+        "hi": "चिड़ियाघर ऐतिहासिक पुराना किला (पुराना किला) के ठीक बगल में 16 वीं शताब्दी के इंद्रप्रस्थ मैदान के गढ़ पर बनाया गया है।"
+      },
+      "buttonLabel": {
+        "en": "Explore History",
+        "hi": "इतिहास का अन्वेषण करें"
+      },
+      "_id": "69c628018acb51be7654e5c1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://delhitourism.gov.in/delhitourism/tourist_place/purana_quila.jsp",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:29.552Z",
+      "updatedAt": "2026-03-27T06:47:29.552Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Kos Minar",
+        "hi": "कोस मीनार"
+      },
+      "text": {
+        "en": "An original 16th-century Mughal-era \"Kos Minar\" (mileage pillar) still stands perfectly preserved inside the zoo grounds.",
+        "hi": "16वीं शताब्दी का मूल मुगल-युग \"कोस मीनार\" (माइलेज स्तंभ) अभी भी चिड़ियाघर के मैदान के अंदर पूरी तरह से संरक्षित है।"
+      },
+      "buttonLabel": {
+        "en": "Find the Pillar",
+        "hi": "स्तंभ खोजें"
+      },
+      "_id": "69c628018acb51be7654e5c3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:29.872Z",
+      "updatedAt": "2026-03-27T06:47:29.872Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Rhino Armor",
+        "hi": "गैंडा कवच"
+      },
+      "text": {
+        "en": "The Indian One-Horned Rhino has skin that looks like a suit of armor but it is actually sensitive to insect bites and sunburn.",
+        "hi": "भारतीय एक सींग वाले गैंडे की त्वचा कवच के सूट की तरह दिखती है लेकिन वास्तव में यह कीड़ों के काटने और धूप की कालिमा के प्रति संवेदनशील होती है।"
+      },
+      "buttonLabel": {
+        "en": "Study Armor",
+        "hi": "कवच का अध्ययन करें"
+      },
+      "_id": "69c628028acb51be7654e5c5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:30.235Z",
+      "updatedAt": "2026-03-27T06:47:30.235Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "The Ghara",
+        "hi": "घर"
+      },
+      "text": {
+        "en": "Male Gharials (crocodiles) at the zoo have a \"Ghara\" (pot-shaped bump) on their snout used to blow bubbles during courtship.",
+        "hi": "चिड़ियाघर में नर घड़ियाल (मगरमच्छ) के थूथन पर एक \"घारा\" (बर्तन के आकार का उभार) होता है जिसका उपयोग प्रेमालाप के दौरान बुलबुले उड़ाने के लिए किया जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Hear the Bubbles",
+        "hi": "बुलबुले सुनें"
+      },
+      "_id": "69c628028acb51be7654e5c7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animaldiversity.org/accounts/Gavialis_gangeticus/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:30.563Z",
+      "updatedAt": "2026-03-27T06:47:30.563Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Asiatic Lion Fold",
+        "hi": "एशियाई शेर तह"
+      },
+      "text": {
+        "en": "Unlike their African cousins the Asiatic lions in Delhi have a distinctive longitudinal fold of skin running along their bellies.",
+        "hi": "अपने अफ़्रीकी भाइयों के विपरीत, दिल्ली के एशियाई शेरों के पेट के साथ-साथ त्वचा की एक विशिष्ट अनुदैर्ध्य तह होती है।"
+      },
+      "buttonLabel": {
+        "en": "Spot the Fold",
+        "hi": "तह का पता लगाएं"
+      },
+      "_id": "69c628028acb51be7654e5c9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:30.943Z",
+      "updatedAt": "2026-03-27T06:47:30.943Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Friday Rest Day",
+        "hi": "शुक्रवार विश्राम दिवस"
+      },
+      "text": {
+        "en": "The Delhi Zoo is strictly closed every Friday to give the animals a full day of peace and quiet from human visitors.",
+        "hi": "दिल्ली चिड़ियाघर हर शुक्रवार को सख्ती से बंद रहता है ताकि जानवरों को मानव आगंतुकों से शांति और शांति का पूरा दिन मिल सके।"
+      },
+      "buttonLabel": {
+        "en": "Check Schedule",
+        "hi": "शेड्यूल जांचें"
+      },
+      "_id": "69c628038acb51be7654e5cb",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-information",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:31.277Z",
+      "updatedAt": "2026-03-27T06:47:31.277Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hippos Blood-Sweat",
+        "hi": "दरियाई घोड़े का खून-पसीना"
+      },
+      "text": {
+        "en": "Hippos secrete a red oily fluid called \"blood sweat\" that acts as a natural antibiotic and sunblock for their skin.",
+        "hi": "दरियाई घोड़े \"रक्त पसीना\" नामक एक लाल तैलीय द्रव का स्राव करते हैं जो उनकी त्वचा के लिए प्राकृतिक एंटीबायोटिक और सनब्लॉक के रूप में कार्य करता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Secret",
+        "hi": "रहस्य देखें"
+      },
+      "_id": "69c628038acb51be7654e5cd",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/hippopotamus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:31.655Z",
+      "updatedAt": "2026-03-27T06:47:31.655Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Jaguar Patterns",
+        "hi": "जगुआर पैटर्न"
+      },
+      "text": {
+        "en": "While they look like Leopards Jaguars have \"rosettes\" with small spots inside the ringsâ€”a unique jungle fingerprint.",
+        "hi": "जबकि वे तेंदुए की तरह दिखते हैं, जगुआर में छल्लों के अंदर छोटे धब्बों के साथ \"रोसेट\" होते हैं - एक अद्वितीय जंगल फिंगरप्रिंट।"
+      },
+      "buttonLabel": {
+        "en": "Identify Spots",
+        "hi": "स्थानों की पहचान करें"
+      },
+      "_id": "69c628038acb51be7654e5cf",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/jaguar",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:31.978Z",
+      "updatedAt": "2026-03-27T06:47:31.978Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Elephant Memory",
+        "hi": "हाथी स्मृति"
+      },
+      "text": {
+        "en": "The zoo's Indian Elephants can recognize themselves in mirrorsâ€”a rare sign of high intelligence in the animal kingdom.",
+        "hi": "चिड़ियाघर के भारतीय हाथी खुद को दर्पणों में पहचान सकते हैं - पशु साम्राज्य में उच्च बुद्धि का एक दुर्लभ संकेत।"
+      },
+      "buttonLabel": {
+        "en": "Check IQ",
+        "hi": "आईक्यू जांचें"
+      },
+      "_id": "69c628048acb51be7654e5d1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/asian-elephant",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:32.315Z",
+      "updatedAt": "2026-03-27T06:47:32.315Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sloth Bear Vacuum",
+        "hi": "सुस्ती भालू वैक्यूम"
+      },
+      "text": {
+        "en": "Sloth bears can close their nostrils voluntarily and use their gap-toothed snouts like high-powered vacuums to suck up termites.",
+        "hi": "स्लॉथ भालू स्वेच्छा से अपने नथुने बंद कर सकते हैं और दीमकों को चूसने के लिए अपने गैप-दांतेदार थूथन का उपयोग उच्च शक्ति वाले वैक्यूम की तरह कर सकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Watch Feeding",
+        "hi": "दूध पिलाना देखो"
+      },
+      "_id": "69c628048acb51be7654e5d3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/sloth-bear",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:32.724Z",
+      "updatedAt": "2026-03-27T06:47:32.724Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Blackbuck Speed",
+        "hi": "ब्लैकबक स्पीड"
+      },
+      "text": {
+        "en": "The Indian Blackbuck is one of the fastest land animals in India reaching speeds of up to 80 km/h to escape predators.",
+        "hi": "भारतीय ब्लैकबक भारत में सबसे तेज़ ज़मीनी जानवरों में से एक है जो शिकारियों से बचने के लिए 80 किमी/घंटा तक की गति तक पहुँचता है।"
+      },
+      "buttonLabel": {
+        "en": "Race the Buck",
+        "hi": "बक रेस करो"
+      },
+      "_id": "69c628058acb51be7654e5d5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:33.088Z",
+      "updatedAt": "2026-03-27T06:47:33.088Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Royal Bengal Stripes",
+        "hi": "रॉयल बंगाल स्ट्राइप्स"
+      },
+      "text": {
+        "en": "No two Royal Bengal Tigers have the same stripe pattern; their skin is also striped just like their fur.",
+        "hi": "किन्हीं भी दो रॉयल बंगाल टाइगर्स की धारियों का पैटर्न एक जैसा नहीं है; "
+      },
+      "buttonLabel": {
+        "en": "Compare Stripes",
+        "hi": "धारियों की तुलना करें"
+      },
+      "_id": "69c628058acb51be7654e5d7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/bengal-tiger",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:33.464Z",
+      "updatedAt": "2026-03-27T06:47:33.464Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Peafowl Pride",
+        "hi": "मोर गौरव"
+      },
+      "text": {
+        "en": "The Indian Peafowl is our National Bird; a male's \"train\" can contain over 200 shimmering feathers with colorful eye-spots.",
+        "hi": "भारतीय मोर हमारा राष्ट्रीय पक्षी है; "
+      },
+      "buttonLabel": {
+        "en": "See the Display",
+        "hi": "प्रदर्शन देखें"
+      },
+      "_id": "69c628058acb51be7654e5d9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/inpea1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:33.809Z",
+      "updatedAt": "2026-03-27T06:47:33.809Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Chimpanzee Tools",
+        "hi": "चिंपैंजी उपकरण"
+      },
+      "text": {
+        "en": "Chimpanzees at the zoo are known to use sticks as tools to \"fish\" for insects showing incredible problem-solving skills.",
+        "hi": "चिड़ियाघर में चिम्पांजी अविश्वसनीय समस्या-समाधान कौशल दिखाने वाले कीड़ों को \"मछली पकड़ने\" के लिए उपकरण के रूप में लाठी का उपयोग करने के लिए जाने जाते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Learn More",
+        "hi": "और अधिक जानें"
+      },
+      "_id": "69c628068acb51be7654e5e9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.janegoodall.org/chimpanzees/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:34.141Z",
+      "updatedAt": "2026-03-27T06:47:34.141Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Himalayan Bear V",
+        "hi": "हिमालयन भालू वी"
+      },
+      "text": {
+        "en": "The Himalayan Black Bear has a distinctive white \"V\" or crescent shape on its chest earning it the name \"Moon Bear.\"",
+        "hi": "हिमालयी काले भालू की छाती पर एक विशिष्ट सफेद \"V\" या अर्धचंद्राकार आकृति होती है, जिसके कारण इसे \"मून बियर\" नाम दिया गया है।"
+      },
+      "buttonLabel": {
+        "en": "Spot the Moon",
+        "hi": "चंद्रमा को देखें"
+      },
+      "_id": "69c628068acb51be7654e5eb",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:34.496Z",
+      "updatedAt": "2026-03-27T06:47:34.496Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Emu Eggs",
+        "hi": "एमु अंडे"
+      },
+      "text": {
+        "en": "Emus lay large dark green eggs that look like polished emeralds; it is the male emu who incubates them for 8 weeks.",
+        "hi": "एमस बड़े गहरे हरे अंडे देते हैं जो पॉलिश किए हुए पन्ने की तरह दिखते हैं; "
+      },
+      "buttonLabel": {
+        "en": "See the Eggs",
+        "hi": "अंडे देखें"
+      },
+      "_id": "69c628068acb51be7654e5ed",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://australian.museum/learn/animals/birds/emu/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:34.825Z",
+      "updatedAt": "2026-03-27T06:47:34.825Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Nilgai Height",
+        "hi": "नीलगाय की ऊंचाई"
+      },
+      "text": {
+        "en": "The Nilgai is Asia's largest antelope; its name literally means \"Blue Bull\" due to the bluish-grey coat of the adult males.",
+        "hi": "नीलगाय एशिया का सबसे बड़ा मृग है; "
+      },
+      "buttonLabel": {
+        "en": "Meet the Giant",
+        "hi": "विशाल से मिलें"
+      },
+      "_id": "69c628078acb51be7654e5ef",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.britannica.com/animal/nilgai",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:35.143Z",
+      "updatedAt": "2026-03-27T06:47:35.143Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Leopard Stealth",
+        "hi": "तेंदुआ चुपके से"
+      },
+      "text": {
+        "en": "Leopards are the strongest climbers among big cats and can carry prey twice their weight high up into trees.",
+        "hi": "तेंदुए बड़ी बिल्लियों में सबसे मजबूत पर्वतारोही होते हैं और अपने वजन से दोगुना शिकार को पेड़ों तक ऊपर ले जा सकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "See the Climb",
+        "hi": "चढ़ाई देखें"
+      },
+      "_id": "69c628078acb51be7654e5f1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/leopard",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:35.497Z",
+      "updatedAt": "2026-03-27T06:47:35.497Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Python Strength",
+        "hi": "अजगर ताकत"
+      },
+      "text": {
+        "en": "The Indian Rock Python is a non-venomous constrictor that can go for months without eating after a single large meal.",
+        "hi": "इंडियन रॉक पाइथॉन एक गैर-जहरीला अवरोधक है जो एक बार बड़े भोजन के बाद महीनों तक बिना कुछ खाए रह सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Study Pythons",
+        "hi": "पायथन का अध्ययन करें"
+      },
+      "_id": "69c628078acb51be7654e5f3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/32115-Python-molurus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:35.818Z",
+      "updatedAt": "2026-03-27T06:47:35.818Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sambar Ears",
+        "hi": "सांभर कान"
+      },
+      "text": {
+        "en": "Sambar Deer have massive ears that rotate independently like satellite dishes to detect the slightest sound of a predator.",
+        "hi": "सांभर हिरण के कान बड़े-बड़े होते हैं जो सैटेलाइट डिश की तरह स्वतंत्र रूप से घूमते हैं और किसी शिकारी की हल्की सी भी आवाज का पता लगा लेते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Listen In",
+        "hi": "सुनिए"
+      },
+      "_id": "69c628088acb51be7654e5f5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:36.142Z",
+      "updatedAt": "2026-03-27T06:47:36.142Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Mugger Durability",
+        "hi": "मगर टिकाऊपन"
+      },
+      "text": {
+        "en": "Mugger Crocodiles have existed for millions of years; their name \"Mugger\" comes from the Hindi word 'Magar' meaning monster.",
+        "hi": "मगर मगरमच्छ लाखों वर्षों से अस्तित्व में हैं; "
+      },
+      "buttonLabel": {
+        "en": "Ancient Reptiles",
+        "hi": "प्राचीन सरीसृप"
+      },
+      "_id": "69c628088acb51be7654e5f7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animalia.bio/mugger-crocodile",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:36.478Z",
+      "updatedAt": "2026-03-27T06:47:36.478Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Ostrich Eyes",
+        "hi": "शुतुरमुर्ग की आंखें"
+      },
+      "text": {
+        "en": "An Ostrich's eye is bigger than its brain; they are also the only birds that have just two toes on each foot.",
+        "hi": "शुतुरमुर्ग की आंख उसके मस्तिष्क से बड़ी होती है; "
+      },
+      "buttonLabel": {
+        "en": "Check the Eyes",
+        "hi": "आंखों की जांच करें"
+      },
+      "_id": "69c628088acb51be7654e5f9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nationalzoo.si.edu/animals/ostrich",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:36.838Z",
+      "updatedAt": "2026-03-27T06:47:36.838Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zebra Stripes",
+        "hi": "ज़ेबरा धारियाँ"
+      },
+      "text": {
+        "en": "Zebras use their stripes as \"motion dazzle\" to confuse biting flies and predators while they move in a herd.",
+        "hi": "ज़ेबरा झुंड में घूमते समय काटने वाली मक्खियों और शिकारियों को भ्रमित करने के लिए अपनी धारियों का उपयोग \"गति चकाचौंध\" के रूप में करते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Check Stripes",
+        "hi": "धारियों की जाँच करें"
+      },
+      "_id": "69c628098acb51be7654e5fb",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/plains-zebra",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:37.149Z",
+      "updatedAt": "2026-03-27T06:47:37.149Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Gaur Power",
+        "hi": "गौर शक्ति"
+      },
+      "text": {
+        "en": "The Indian Gaur is the largest wild cattle species in the world; a full-grown male can weigh over 1000 kilograms.",
+        "hi": "भारतीय गौर दुनिया की सबसे बड़ी जंगली मवेशी प्रजाति है; "
+      },
+      "buttonLabel": {
+        "en": "See the Titan",
+        "hi": "टाइटन देखें"
+      },
+      "_id": "69c628098acb51be7654e5fd",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/gaur",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:37.465Z",
+      "updatedAt": "2026-03-27T06:47:37.465Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Barking Deer",
+        "hi": "भौंकने वाला हिरण"
+      },
+      "text": {
+        "en": "The Indian Muntjac is called the \"Barking Deer\" because it lets out a loud dog-like bark when it senses danger.",
+        "hi": "भारतीय मंटजैक को \"बार्किंग डियर\" कहा जाता है क्योंकि जब इसे खतरा महसूस होता है तो यह कुत्ते की तरह जोर से भौंकता है।"
+      },
+      "buttonLabel": {
+        "en": "Hear the Bark",
+        "hi": "बार्क सुनें"
+      },
+      "_id": "69c628098acb51be7654e5ff",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/42188-Muntiacus-muntjak",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:37.812Z",
+      "updatedAt": "2026-03-27T06:47:37.812Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Cormorant Diving",
+        "hi": "जलकाग गोताखोरी"
+      },
+      "text": {
+        "en": "The Little Cormorant seen in the zoo ponds is a master diver that can stay underwater for over 30 seconds to catch fish.",
+        "hi": "चिड़ियाघर के तालाबों में देखा जाने वाला लिटिल कॉर्मोरेंट एक मास्टर गोताखोर है जो मछली पकड़ने के लिए 30 सेकंड से अधिक समय तक पानी के नीचे रह सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Watch Diver",
+        "hi": "गोताखोर देखो"
+      },
+      "_id": "69c6280a8acb51be7654e601",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/litcor1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:38.150Z",
+      "updatedAt": "2026-03-27T06:47:38.150Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Cassowary Danger",
+        "hi": "कैसोवरी खतरा"
+      },
+      "text": {
+        "en": "The Southern Cassowary has a 5-inch dagger-like claw on its inner toe making it the world's most dangerous bird.",
+        "hi": "साउदर्न कैसोवरी के पैर के अंदरूनी अंगूठे पर 5 इंच का खंजर जैसा पंजा होता है जो इसे दुनिया का सबसे खतरनाक पक्षी बनाता है।"
+      },
+      "buttonLabel": {
+        "en": "View Hazard",
+        "hi": "खतरा देखें"
+      },
+      "_id": "69c6280a8acb51be7654e603",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://guinnessworldrecords.com/world-records/most-dangerous-bird",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:38.489Z",
+      "updatedAt": "2026-03-27T06:47:38.489Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Brahminy Kite",
+        "hi": "ब्राह्मणी पतंग"
+      },
+      "text": {
+        "en": "In Indian mythology the Brahminy Kite is often identified as 'Garuda' the sacred mount of the God Vishnu.",
+        "hi": "भारतीय पौराणिक कथाओं में ब्राह्मणी पतंग को अक्सर भगवान विष्णु की पवित्र सवारी 'गरुड़' के रूप में पहचाना जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Mythology",
+        "hi": "पौराणिक कथा"
+      },
+      "_id": "69c6280a8acb51be7654e605",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/brakit1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:38.812Z",
+      "updatedAt": "2026-03-27T06:47:38.812Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Chinkara Water",
+        "hi": "चिंकारा जल"
+      },
+      "text": {
+        "en": "The Chinkara (Indian Gazelle) can survive for long periods without drinking water by getting moisture from plants.",
+        "hi": "चिंकारा (भारतीय चिकारा) पौधों से नमी प्राप्त करके पीने के पानी के बिना लंबे समय तक जीवित रह सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Desert Expert",
+        "hi": "रेगिस्तान विशेषज्ञ"
+      },
+      "_id": "69c6280b8acb51be7654e607",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:39.187Z",
+      "updatedAt": "2026-03-27T06:47:39.187Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "African Elephant Ears",
+        "hi": "अफ़्रीकी हाथी के कान"
+      },
+      "text": {
+        "en": "You can tell the African Elephant apart by its ears which are shaped roughly like the continent of Africa.",
+        "hi": "आप अफ़्रीकी हाथी को उसके कानों से अलग पहचान सकते हैं जिनका आकार लगभग अफ़्रीका महाद्वीप जैसा होता है।"
+      },
+      "buttonLabel": {
+        "en": "Compare Ears",
+        "hi": "कानों की तुलना करें"
+      },
+      "_id": "69c6280b8acb51be7654e609",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/african-elephant",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:39.590Z",
+      "updatedAt": "2026-03-27T06:47:39.590Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Great Hornbill",
+        "hi": "महान हार्नबिल"
+      },
+      "text": {
+        "en": "The Great Hornbill has a huge yellow \"casque\" on top of its beak which acts as a hollow chamber to amplify its calls.",
+        "hi": "ग्रेट हॉर्नबिल की चोंच के ऊपर एक विशाल पीला \"कास्क\" होता है जो उसकी आवाज़ को बढ़ाने के लिए एक खोखले कक्ष के रूप में कार्य करता है।"
+      },
+      "buttonLabel": {
+        "en": "Check the Beak",
+        "hi": "चोंच की जाँच करें"
+      },
+      "_id": "69c6280b8acb51be7654e60b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/grÐµhon1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:39.952Z",
+      "updatedAt": "2026-03-27T06:47:39.952Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Indian Wolf",
+        "hi": "भारतीय भेड़िया"
+      },
+      "text": {
+        "en": "The Indian Wolf is a master of endurance; they are known to trot for miles without tiring while tracking prey.",
+        "hi": "भारतीय भेड़िया सहनशक्ति में माहिर है; "
+      },
+      "buttonLabel": {
+        "en": "Wolf Facts",
+        "hi": "भेड़िया तथ्य"
+      },
+      "_id": "69c6280c8acb51be7654e60d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:40.280Z",
+      "updatedAt": "2026-03-27T06:47:40.280Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Star Tortoise",
+        "hi": "सितारा कछुआ"
+      },
+      "text": {
+        "en": "The Indian Star Tortoise has a shell pattern that helps it blend into the tall dry grasses of the scrub forests.",
+        "hi": "इंडियन स्टार कछुए में एक खोल पैटर्न होता है जो इसे झाड़ियों वाले जंगलों की लंबी सूखी घास में घुलने-मिलने में मदद करता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Shell",
+        "hi": "शैल देखें"
+      },
+      "_id": "69c6280c8acb51be7654e60f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:40.603Z",
+      "updatedAt": "2026-03-27T06:47:40.603Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Pelican Pouches",
+        "hi": "पेलिकन पाउच"
+      },
+      "text": {
+        "en": "The Rosy Pelican can hold up to 13 liters of water in its throat pouch which it uses like a fishing net.",
+        "hi": "रोज़ी पेलिकन अपने गले की थैली में 13 लीटर तक पानी रख सकता है जिसे वह मछली पकड़ने के जाल की तरह उपयोग करता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Pouch",
+        "hi": "थैली देखें"
+      },
+      "_id": "69c6280c8acb51be7654e611",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/grwpel1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:40.950Z",
+      "updatedAt": "2026-03-27T06:47:40.950Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Macaque Society",
+        "hi": "मकाक सोसायटी"
+      },
+      "text": {
+        "en": "The Lion-tailed Macaque is one of the most endangered primates; it lives in complex social groups led by a dominant male.",
+        "hi": "शेर-पूंछ वाला मकाक सबसे लुप्तप्राय प्राइमेट्स में से एक है; "
+      },
+      "buttonLabel": {
+        "en": "Social Study",
+        "hi": "सामाजिक अध्ययन"
+      },
+      "_id": "69c6280d8acb51be7654e613",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:41.283Z",
+      "updatedAt": "2026-03-27T06:47:41.283Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hog Deer Height",
+        "hi": "हॉग हिरण की ऊँचाई"
+      },
+      "text": {
+        "en": "The Hog Deer gets its name from its habit of running through the forest with its head down like a wild hog.",
+        "hi": "हॉग डियर को इसका नाम जंगली सूअर की तरह सिर झुकाकर जंगल में दौड़ने की आदत के कारण मिला है।"
+      },
+      "buttonLabel": {
+        "en": "Watch it Run",
+        "hi": "इसे देखो भागो"
+      },
+      "_id": "69c6280f8acb51be7654e6d3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:43.065Z",
+      "updatedAt": "2026-03-27T06:47:43.065Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Swamp Deer Hooves",
+        "hi": "दलदली हिरण के खुर"
+      },
+      "text": {
+        "en": "The Barasingha (Swamp Deer) has splayed hooves that prevent it from sinking into the soft mud of marshy areas.",
+        "hi": "बारासिंघा (दलदल हिरण) के खुर फैले हुए होते हैं जो इसे दलदली क्षेत्रों की नरम मिट्टी में डूबने से रोकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Marsh Facts",
+        "hi": "मार्श तथ्य"
+      },
+      "_id": "69c628108acb51be7654e6d5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:44.235Z",
+      "updatedAt": "2026-03-27T06:47:44.235Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Jackal Intelligence",
+        "hi": "गीदड़ बुद्धि"
+      },
+      "text": {
+        "en": "Golden Jackals are highly adaptable and have been known to follow tigers to scavenge the remains of their kills.",
+        "hi": "गोल्डन जैकल्स अत्यधिक अनुकूलनीय होते हैं और बाघों का पीछा करके उनके शिकार के अवशेष निकालने के लिए जाने जाते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Meet Jackals",
+        "hi": "गीदड़ों से मिलें"
+      },
+      "_id": "69c628128acb51be7654e6e5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animaldiversity.org/accounts/Canis_aureus/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:46.982Z",
+      "updatedAt": "2026-03-27T06:47:46.982Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Red Junglefowl",
+        "hi": "लाल जंगलमुर्गी"
+      },
+      "text": {
+        "en": "The Red Junglefowl found in the zoo is the primary wild ancestor of all the domestic chickens in the world today.",
+        "hi": "चिड़ियाघर में पाया जाने वाला रेड जंगलफाउल आज दुनिया की सभी घरेलू मुर्गियों का प्राथमिक जंगली पूर्वज है।"
+      },
+      "buttonLabel": {
+        "en": "The Original",
+        "hi": "मूल"
+      },
+      "_id": "69c628148acb51be7654e6e7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/redjun1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:48.671Z",
+      "updatedAt": "2026-03-27T06:47:48.671Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Spotted Deer",
+        "hi": "चित्तीदार हिरण"
+      },
+      "text": {
+        "en": "Also known as 'Chital' these deer never lose their white spots even as they grow into adulthood.",
+        "hi": "'चीतल' के नाम से भी जाने जाने वाले ये हिरण वयस्क होने पर भी अपने सफेद धब्बे नहीं खोते।"
+      },
+      "buttonLabel": {
+        "en": "See the Spots",
+        "hi": "स्पॉट देखें"
+      },
+      "_id": "69c628158acb51be7654e6e9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/42211-Axis-axis",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:49.569Z",
+      "updatedAt": "2026-03-27T06:47:49.569Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hyena Laugh",
+        "hi": "लकड़बग्घा हँसा"
+      },
+      "text": {
+        "en": "The Striped Hyena doesn't actually \"laugh\" like its African cousin but it makes various chattering sounds when excited.",
+        "hi": "धारीदार लकड़बग्घा वास्तव में अपने अफ्रीकी चचेरे भाई की तरह \"हँसता\" नहीं है, लेकिन उत्तेजित होने पर यह विभिन्न प्रकार की बकबक की आवाज़ें निकालता है।"
+      },
+      "buttonLabel": {
+        "en": "Hear the Sound",
+        "hi": "ध्वनि सुनें"
+      },
+      "_id": "69c628168acb51be7654e6eb",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:50.362Z",
+      "updatedAt": "2026-03-27T06:47:50.362Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Porcupine Quills",
+        "hi": "पोरक्यूपाइन पंख"
+      },
+      "text": {
+        "en": "An Indian Crested Porcupine's quills are actually modified hairs; it can rattle them to warn off curious predators.",
+        "hi": "एक भारतीय क्रेस्टेड साही की कलम वास्तव में संशोधित बाल हैं; "
+      },
+      "buttonLabel": {
+        "en": "Rattle Quills",
+        "hi": "रैटल क्विल्स"
+      },
+      "_id": "69c628178acb51be7654e6ed",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nationalzoo.si.edu/animals/indian-crested-porcupine",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:51.347Z",
+      "updatedAt": "2026-03-27T06:47:51.347Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Green Lung",
+        "hi": "हरा फेफड़ा"
+      },
+      "text": {
+        "en": "The Delhi Zoo's 176 acres host over 5000 trees providing a vital \"green lung\" that purifies the city's air.",
+        "hi": "दिल्ली चिड़ियाघर के 176 एकड़ क्षेत्र में 5000 से अधिक पेड़ हैं जो एक महत्वपूर्ण \"हरित फेफड़ा\" प्रदान करते हैं जो शहर की हवा को शुद्ध करता है।"
+      },
+      "buttonLabel": {
+        "en": "Green Living",
+        "hi": "सुफुर्तिमान जीवन"
+      },
+      "_id": "69c628188acb51be7654e6ef",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/about-us",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:52.888Z",
+      "updatedAt": "2026-03-27T06:47:52.888Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Wildlife Library",
+        "hi": "वन्यजीव पुस्तकालय"
+      },
+      "text": {
+        "en": "The zoo has a dedicated library on site with thousands of books about birds animals and Indian wildlife history.",
+        "hi": "चिड़ियाघर में एक समर्पित पुस्तकालय है जिसमें पक्षियों, जानवरों और भारतीय वन्यजीव इतिहास के बारे में हजारों किताबें हैं।"
+      },
+      "buttonLabel": {
+        "en": "Visit Library",
+        "hi": "लाइब्रेरी पर जाएँ"
+      },
+      "_id": "69c6281a8acb51be7654e6f1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/visitor-facilities",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:54.855Z",
+      "updatedAt": "2026-03-27T06:47:54.855Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Azimganj Sarai",
+        "hi": "अजीमगंज सराय"
+      },
+      "text": {
+        "en": "The zoo's first animals were kept in the ancient Azimganj Sarai a Mughal rest house for travelers from centuries ago.",
+        "hi": "चिड़ियाघर के पहले जानवरों को प्राचीन अजीमगंज सराय में रखा गया था, जो सदियों पहले यात्रियों के लिए एक मुगल विश्राम गृह था।"
+      },
+      "buttonLabel": {
+        "en": "Ancient Ruins",
+        "hi": "प्राचीन खंडहर"
+      },
+      "_id": "69c6281c8acb51be7654e7b1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/history",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:56.050Z",
+      "updatedAt": "2026-03-27T06:47:56.050Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Conservation Breeding",
+        "hi": "संरक्षण प्रजनन"
+      },
+      "text": {
+        "en": "The Delhi Zoo participates in a global program to save endangered species like the Asiatic Lion from extinction.",
+        "hi": "दिल्ली चिड़ियाघर एशियाई शेर जैसी लुप्तप्राय प्रजातियों को विलुप्त होने से बचाने के लिए एक वैश्विक कार्यक्रम में भाग लेता है।"
+      },
+      "buttonLabel": {
+        "en": "Save Species",
+        "hi": "प्रजातियाँ सहेजें"
+      },
+      "_id": "69c6281d8acb51be7654e7b3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://cza.nic.in/page/en/conservation-breeding",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:57.959Z",
+      "updatedAt": "2026-03-27T06:47:57.959Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zoo School",
+        "hi": "चिड़ियाघर स्कूल"
+      },
+      "text": {
+        "en": "The National Zoological Park offers internship programs for students to learn about veterinary care and animal behavior.",
+        "hi": "राष्ट्रीय प्राणी उद्यान छात्रों को पशु चिकित्सा देखभाल और पशु व्यवहार के बारे में जानने के लिए इंटर्नशिप कार्यक्रम प्रदान करता है।"
+      },
+      "buttonLabel": {
+        "en": "Join Program",
+        "hi": "कार्यक्रम में शामिल हों"
+      },
+      "_id": "69c6281f8acb51be7654e7b5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nzpnewdelhi.gov.in/en/page/education_and_conservation",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:47:59.384Z",
+      "updatedAt": "2026-03-27T06:47:59.384Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Flamingo Filters",
+        "hi": "राजहंस फ़िल्टर"
+      },
+      "text": {
+        "en": "Flamingos are filter feeders; they use their specialized beaks to strain small organisms from the water while upside down.",
+        "hi": "राजहंस फिल्टर फीडर हैं; "
+      },
+      "buttonLabel": {
+        "en": "Watch Filter",
+        "hi": "फ़िल्टर देखें"
+      },
+      "_id": "69c628218acb51be7654e7c5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/grfla1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:01.267Z",
+      "updatedAt": "2026-03-27T06:48:01.267Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Indian Cobra Hood",
+        "hi": "भारतीय कोबरा हुड"
+      },
+      "text": {
+        "en": "The cobra spreads its hood by extending its long ribs; the \"eye\" pattern on the back is meant to scare away predators.",
+        "hi": "कोबरा अपनी लंबी पसलियों को फैलाकर अपना फन फैलाता है; "
+      },
+      "buttonLabel": {
+        "en": "See the Hood",
+        "hi": "हुड देखें"
+      },
+      "_id": "69c628238acb51be7654e7c7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animalia.bio/indian-cobra",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:03.103Z",
+      "updatedAt": "2026-03-27T06:48:03.103Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Gibbon Song",
+        "hi": "गिब्बन गीत"
+      },
+      "text": {
+        "en": "Hoolock Gibbons are the only apes found in India; they are known for their loud melodic \"songs\" used to mark territory.",
+        "hi": "हूलॉक गिबन्स भारत में पाए जाने वाले एकमात्र वानर हैं; "
+      },
+      "buttonLabel": {
+        "en": "Hear the Song",
+        "hi": "गाना सुनें"
+      },
+      "_id": "69c628258acb51be7654e7c9",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.worldwildlife.org/species/hoolock-gibbon",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:05.836Z",
+      "updatedAt": "2026-03-27T06:48:05.836Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Turtle Longevity",
+        "hi": "कछुआ दीर्घायु"
+      },
+      "text": {
+        "en": "Some turtles in the zoo's reptile house can live for over 100 years outlasting many human generations.",
+        "hi": "चिड़ियाघर के सरीसृप घर में कुछ कछुए कई मानव पीढ़ियों तक 100 से अधिक वर्षों तक जीवित रह सकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Ancient Aging",
+        "hi": "प्राचीन बुढ़ापा"
+      },
+      "_id": "69c628278acb51be7654e7cb",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:07.438Z",
+      "updatedAt": "2026-03-27T06:48:07.438Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Night Heron Eyes",
+        "hi": "रात्रि बगुले की आंखें"
+      },
+      "text": {
+        "en": "The Black-crowned Night Heron has large red eyes that help it see clearly in low light while hunting at dusk.",
+        "hi": "ब्लैक-क्राउन्ड नाइट हेरॉन की बड़ी लाल आंखें होती हैं जो इसे शाम के समय शिकार करते समय कम रोशनी में स्पष्ट रूप से देखने में मदद करती हैं।"
+      },
+      "buttonLabel": {
+        "en": "Night Vision",
+        "hi": "रात्रि दर्शन"
+      },
+      "_id": "69c628298acb51be7654e88b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.allaboutbirds.org/guide/Black-crowned_Night-Heron/id",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:09.056Z",
+      "updatedAt": "2026-03-27T06:48:09.056Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Goral Climbers",
+        "hi": "गोरल पर्वतारोही"
+      },
+      "text": {
+        "en": "The Himalayan Goral is a goat-antelope that can easily navigate near-vertical cliffs in its mountainous home.",
+        "hi": "हिमालयन गोरल एक बकरी-मृग है जो अपने पहाड़ी घर में निकट-ऊर्ध्वाधर चट्टानों पर आसानी से नेविगेट कर सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Mountain Pro",
+        "hi": "माउंटेन प्रो"
+      },
+      "_id": "69c6282a8acb51be7654e88d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/42385-Naemorhedus-goral",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:10.683Z",
+      "updatedAt": "2026-03-27T06:48:10.683Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Eurasian Spoonbill",
+        "hi": "यूरेशियन स्पूनबिल"
+      },
+      "text": {
+        "en": "The spoon-shaped bill of this bird is highly sensitive to touch helping it find prey in murky water without seeing it.",
+        "hi": "इस पक्षी की चम्मच के आकार की चोंच स्पर्श के प्रति अत्यधिक संवेदनशील होती है, जिससे इसे गंदे पानी में बिना देखे शिकार ढूंढने में मदद मिलती है।"
+      },
+      "buttonLabel": {
+        "en": "Spoon Power",
+        "hi": "चम्मच शक्ति"
+      },
+      "_id": "69c6282c8acb51be7654e88f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/eurspo1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:12.634Z",
+      "updatedAt": "2026-03-27T06:48:12.634Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Civet Scent",
+        "hi": "सिवेट सुगंध"
+      },
+      "text": {
+        "en": "The Asian Palm Civet has a scent gland that produces a musky secretion used to mark its nocturnal path.",
+        "hi": "एशियन पाम सिवेट में एक गंध ग्रंथि होती है जो एक मांसल स्राव उत्पन्न करती है जिसका उपयोग इसके रात्रि पथ को चिह्नित करने के लिए किया जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Follow Scent",
+        "hi": "खुशबू का पालन करें"
+      },
+      "_id": "69c6282d8acb51be7654e89f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animaldiversity.org/accounts/Paradoxurus_hermaphroditus/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:13.830Z",
+      "updatedAt": "2026-03-27T06:48:13.830Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Leopard Rosettes",
+        "hi": "तेंदुआ रोसेट्स"
+      },
+      "text": {
+        "en": "Unlike a Jaguar's spots a Leopard's rosettes are empty in the middle without a central spot.",
+        "hi": "जगुआर के धब्बों के विपरीत तेंदुए के रोसेट बीच में बिना केंद्रीय स्थान के खाली होते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Identify Cat",
+        "hi": "बिल्ली को पहचानें"
+      },
+      "_id": "69c6282f8acb51be7654e8a1",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.nationalgeographic.com/animals/mammals/facts/leopard",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:15.893Z",
+      "updatedAt": "2026-03-27T06:48:15.893Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Golden Pheasant",
+        "hi": "सुनहरा तीतर"
+      },
+      "text": {
+        "en": "The male Golden Pheasant has a spectacular golden crest and bright red body making it one of the most beautiful birds.",
+        "hi": "नर गोल्डन तीतर के पास एक शानदार सुनहरी कलगी और चमकीला लाल शरीर है जो इसे सबसे सुंदर पक्षियों में से एक बनाता है।"
+      },
+      "buttonLabel": {
+        "en": "View Colors",
+        "hi": "रंग देखें"
+      },
+      "_id": "69c628318acb51be7654e8a3",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/1162-Chrysolophus-pictus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:17.308Z",
+      "updatedAt": "2026-03-27T06:48:17.308Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Rat Snake Speed",
+        "hi": "चूहे साँप की गति"
+      },
+      "text": {
+        "en": "The Common Rat Snake is non-venomous and incredibly fast; it is often mistaken for a Cobra because of its size.",
+        "hi": "कॉमन रैट स्नेक गैर विषैला और अविश्वसनीय रूप से तेज़ होता है; "
+      },
+      "buttonLabel": {
+        "en": "Speedy Snake",
+        "hi": "शीघ्र साँप"
+      },
+      "_id": "69c628328acb51be7654e8a5",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/27333-Ptyas-mucosa",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:18.876Z",
+      "updatedAt": "2026-03-27T06:48:18.876Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sand Boa Tail",
+        "hi": "सैंड बोआ पूंछ"
+      },
+      "text": {
+        "en": "The Indian Sand Boa has a tail that looks like a second head to trick predators into attacking the wrong end.",
+        "hi": "इंडियन सैंड बोआ की एक पूंछ होती है जो शिकारियों को गलत छोर पर हमला करने के लिए धोखा देने के लिए दूसरे सिर की तरह दिखती है।"
+      },
+      "buttonLabel": {
+        "en": "Double Head",
+        "hi": "दोहरा सिर"
+      },
+      "_id": "69c628348acb51be7654e8a7",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/32225-Eryx-johnii",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:20.269Z",
+      "updatedAt": "2026-03-27T06:48:20.269Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Monitor Tongue",
+        "hi": "जीभ की निगरानी करें"
+      },
+      "text": {
+        "en": "Monitor lizards use their forked tongues to \"smell\" the air just like snakes do to track their prey.",
+        "hi": "मॉनिटर छिपकलियां हवा को \"सूंघने\" के लिए अपनी कांटेदार जीभ का उपयोग करती हैं, जैसे सांप अपने शिकार को ट्रैक करने के लिए करते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Flick Tongue",
+        "hi": "जीभ झटका"
+      },
+      "_id": "69c628368acb51be7654e967",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nationalzoo.si.edu/animals/komodo-dragon",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:22.343Z",
+      "updatedAt": "2026-03-27T06:48:22.343Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Budgerigar Mimics",
+        "hi": "बुडगेरिगर नकल"
+      },
+      "text": {
+        "en": "Budgerigars (Budgies) are small parrots that are actually capable of learning and mimicking hundreds of human words.",
+        "hi": "बुडगेरिगार (बुजी) छोटे तोते हैं जो वास्तव में सैकड़ों मानव शब्दों को सीखने और उनकी नकल करने में सक्षम हैं।"
+      },
+      "buttonLabel": {
+        "en": "Little Talkers",
+        "hi": "छोटी बात करने वाले"
+      },
+      "_id": "69c628388acb51be7654e969",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.britannica.com/animal/budgerigar",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:24.033Z",
+      "updatedAt": "2026-03-27T06:48:24.033Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zebra Finch Song",
+        "hi": "ज़ेबरा फिंच गाना"
+      },
+      "text": {
+        "en": "Male Zebra Finches learn their unique songs from their fathers; no two males sing exactly the same tune.",
+        "hi": "नर ज़ेबरा फ़िंच अपने अनूठे गीत अपने पिता से सीखते हैं; "
+      },
+      "buttonLabel": {
+        "en": "Hear the Tune",
+        "hi": "धुन सुनें"
+      },
+      "_id": "69c628398acb51be7654e96b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/zebfin1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:25.756Z",
+      "updatedAt": "2026-03-27T06:48:25.756Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Lady Amherst",
+        "hi": "लेडी एमहर्स्ट"
+      },
+      "text": {
+        "en": "Named after the wife of a Governor-General of India this pheasant has a 3-foot long silver and black tail.",
+        "hi": "भारत के गवर्नर-जनरल की पत्नी के नाम पर रखे गए इस तीतर की 3 फुट लंबी चांदी और काली पूंछ है।"
+      },
+      "buttonLabel": {
+        "en": "Tail Length",
+        "hi": "पूंछ की लंबाई"
+      },
+      "_id": "69c6283b8acb51be7654e97b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/1164-Chrysolophus-amherstiae",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:27.662Z",
+      "updatedAt": "2026-03-27T06:48:27.662Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sarus Crane Height",
+        "hi": "सारस क्रेन की ऊँचाई"
+      },
+      "text": {
+        "en": "The Sarus Crane is the world's tallest flying bird standing at a height of nearly 6 feetâ€”almost human size!",
+        "hi": "सारस क्रेन दुनिया का सबसे ऊंचा उड़ने वाला पक्षी है जो लगभग 6 फीट की ऊंचाई पर खड़ा होता है - लगभग मानव आकार!"
+      },
+      "buttonLabel": {
+        "en": "Tallest Bird",
+        "hi": "सबसे ऊँचा पक्षी"
+      },
+      "_id": "69c6283d8acb51be7654e97d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:29.221Z",
+      "updatedAt": "2026-03-27T06:48:29.221Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Egyptian Vulture",
+        "hi": "मिस्र का गिद्ध"
+      },
+      "text": {
+        "en": "This intelligent bird is known to use rocks as tools to crack open thick-shelled ostrich eggs in the wild.",
+        "hi": "यह बुद्धिमान पक्षी जंगल में मोटे खोल वाले शुतुरमुर्ग के अंडों को तोड़ने के लिए चट्टानों का उपयोग उपकरण के रूप में करने के लिए जाना जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Tool User",
+        "hi": "उपकरण उपयोगकर्ता"
+      },
+      "_id": "69c6283e8acb51be7654e97f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/egyvul1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:30.607Z",
+      "updatedAt": "2026-03-27T06:48:30.607Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Silver Pheasant",
+        "hi": "चाँदी का तीतर"
+      },
+      "text": {
+        "en": "The male Silver Pheasant is known for its bold white and black plumage and bright red face patch.",
+        "hi": "नर सिल्वर तीतर अपने सफ़ेद और काले पंखों और चेहरे पर चमकीले लाल धब्बे के लिए जाना जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Bold Contrast",
+        "hi": "बोल्ड कंट्रास्ट"
+      },
+      "_id": "69c628408acb51be7654e981",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/1172-Lophura-nycthemera",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:32.280Z",
+      "updatedAt": "2026-03-27T06:48:32.280Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Red-and-Green Macaw",
+        "hi": "लाल और हरा एक प्रकार का तोता"
+      },
+      "text": {
+        "en": "These large parrots use their powerful beaks to crush even the hardest nuts and can apply 2000 pounds of pressure.",
+        "hi": "ये बड़े तोते अपनी शक्तिशाली चोंचों का उपयोग करके सबसे कठोर मेवों को भी कुचल देते हैं और 2000 पाउंड दबाव डाल सकते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Strong Bite",
+        "hi": "जोरदार दंश"
+      },
+      "_id": "69c628418acb51be7654e983",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animalia.bio/red-and-green-macaw",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:33.472Z",
+      "updatedAt": "2026-03-27T06:48:33.472Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Hanuman Langur",
+        "hi": "हनुमान लंगूर"
+      },
+      "text": {
+        "en": "Known as the \"Sacred Langur\" in India they are protected by local people and are seen living near temples.",
+        "hi": "भारत में इन्हें \"पवित्र लंगूर\" के रूप में जाना जाता है, इन्हें स्थानीय लोगों द्वारा संरक्षित किया जाता है और इन्हें मंदिरों के पास रहते हुए देखा जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Sacred Ape",
+        "hi": "पवित्र वानर"
+      },
+      "_id": "69c628428acb51be7654ea43",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/43491-Semnopithecus-entellus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:34.856Z",
+      "updatedAt": "2026-03-27T06:48:34.856Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Bengal Fox Ears",
+        "hi": "बंगाल फॉक्स कान"
+      },
+      "text": {
+        "en": "The Bengal Fox has exceptionally large ears relative to its body size which help it dissipate heat in hot weather.",
+        "hi": "बंगाल फॉक्स के कान उसके शरीर के आकार की तुलना में असाधारण रूप से बड़े होते हैं जो उसे गर्म मौसम में गर्मी दूर करने में मदद करते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Cool Ears",
+        "hi": "शांत कान"
+      },
+      "_id": "69c628448acb51be7654ea45",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:36.565Z",
+      "updatedAt": "2026-03-27T06:48:36.565Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Macaque Pouches",
+        "hi": "मकाक पाउच"
+      },
+      "text": {
+        "en": "Macaques have cheek pouches that allow them to store as much food as their stomach can hold for eating later.",
+        "hi": "मकाक में गाल की थैली होती है जो उन्हें उतना भोजन संग्रहीत करने की अनुमति देती है जितना उनका पेट बाद में खाने के लिए रख सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Store Food",
+        "hi": "खाना स्टोर करें"
+      },
+      "_id": "69c628468acb51be7654ea47",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.britannica.com/animal/macaque",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:38.396Z",
+      "updatedAt": "2026-03-27T06:48:38.396Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Flying Fox Wings",
+        "hi": "फ्लाइंग फॉक्स पंख"
+      },
+      "text": {
+        "en": "The Indian Flying Fox is one of the world's largest bats with a wingspan that can reach up to 4 or 5 feet.",
+        "hi": "इंडियन फ्लाइंग फॉक्स दुनिया के सबसे बड़े चमगादड़ों में से एक है जिसके पंखों का फैलाव 4 या 5 फीट तक हो सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Big Wings",
+        "hi": "बड़े पंख"
+      },
+      "_id": "69c628488acb51be7654ea57",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animaldiversity.org/accounts/Pteropus_giganteus/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:40.301Z",
+      "updatedAt": "2026-03-27T06:48:40.301Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Otter Socializing",
+        "hi": "ऊदबिलाव समाजीकरण"
+      },
+      "text": {
+        "en": "Smooth-coated otters found in India are highly social and are often seen playing and grooming in family groups.",
+        "hi": "भारत में पाए जाने वाले चिकने बालों वाले ऊदबिलाव अत्यधिक सामाजिक होते हैं और इन्हें अक्सर पारिवारिक समूहों में खेलते और संवरते देखा जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Playful Otters",
+        "hi": "चंचल ऊदबिलाव"
+      },
+      "_id": "69c6284a8acb51be7654ea59",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.iucnredlist.org/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:42.041Z",
+      "updatedAt": "2026-03-27T06:48:42.041Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Darter Snake-Bird",
+        "hi": "डार्टर साँप-पक्षी"
+      },
+      "text": {
+        "en": "The Darter is called the \"Snake-bird\" because its long thin neck looks like a snake when it swims underwater.",
+        "hi": "डार्टर को \"स्नेक-बर्ड\" कहा जाता है क्योंकि जब यह पानी के अंदर तैरता है तो इसकी लंबी पतली गर्दन सांप की तरह दिखती है।"
+      },
+      "buttonLabel": {
+        "en": "Snake Neck",
+        "hi": "साँप की गर्दन"
+      },
+      "_id": "69c6284c8acb51be7654ea5b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/oridan1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:44.201Z",
+      "updatedAt": "2026-03-27T06:48:44.201Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Pied Kingfisher",
+        "hi": "चितकबरा किंगफिशर"
+      },
+      "text": {
+        "en": "This bird is famous for its \"hovering\" technique where it stays perfectly still in mid-air before diving for fish.",
+        "hi": "यह पक्षी अपनी \"होवरिंग\" तकनीक के लिए प्रसिद्ध है जहां यह मछली के लिए गोता लगाने से पहले मध्य हवा में पूरी तरह से स्थिर रहता है।"
+      },
+      "buttonLabel": {
+        "en": "Hover Dive",
+        "hi": "होवर डाइव"
+      },
+      "_id": "69c6284d8acb51be7654eb1b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/piekin1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:45.873Z",
+      "updatedAt": "2026-03-27T06:48:45.873Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Yellow-Wattled Lapwing",
+        "hi": "पीला-वाटल्ड लैपविंग"
+      },
+      "text": {
+        "en": "This bird prefers dry open ground and is known for the bright yellow fleshy \"wattles\" in front of its eyes.",
+        "hi": "यह पक्षी सूखी खुली जमीन पसंद करता है और अपनी आंखों के सामने चमकीले पीले मांसल \"वॉटल्स\" के लिए जाना जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Yellow Mask",
+        "hi": "पीला मुखौटा"
+      },
+      "_id": "69c6284f8acb51be7654eb1d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/yewlap1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:47.713Z",
+      "updatedAt": "2026-03-27T06:48:47.713Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Crimson Barbet",
+        "hi": "क्रिमसन बार्बेट"
+      },
+      "text": {
+        "en": "Also known as the \"Coppersmith Barbet\" because its repetitive call sounds like a hammer hitting copper metal.",
+        "hi": "इसे \"कॉपरस्मिथ बारबेट\" के रूप में भी जाना जाता है क्योंकि इसकी बार-बार की जाने वाली आवाज़ तांबे की धातु पर हथौड़े से प्रहार करने जैसी लगती है।"
+      },
+      "buttonLabel": {
+        "en": "Hear Hammer",
+        "hi": "हथौड़ा सुनो"
+      },
+      "_id": "69c628518acb51be7654eb1f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/copbar1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:49.504Z",
+      "updatedAt": "2026-03-27T06:48:49.504Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Indian Hoopoe",
+        "hi": "भारतीय हुपु"
+      },
+      "text": {
+        "en": "The Hoopoe has a spectacular crest of feathers that it fans out when it is excited or alarmed.",
+        "hi": "हूपो के पास पंखों की एक शानदार कलगी होती है जिसे वह उत्तेजित या चिंतित होने पर पंखा कर लेता है।"
+      },
+      "buttonLabel": {
+        "en": "See the Crest",
+        "hi": "शिखा देखें"
+      },
+      "_id": "69c628538acb51be7654eb21",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/hoopoe1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:51.547Z",
+      "updatedAt": "2026-03-27T06:48:51.547Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Golden-Backed Woodpecker",
+        "hi": "सुनहरी पीठ वाला कठफोड़वा"
+      },
+      "text": {
+        "en": "This woodpecker has a specialized \"shock-absorber\" skull that protects its brain while it hammers on trees.",
+        "hi": "इस कठफोड़वा के पास एक विशेष \"शॉक-अवशोषक\" खोपड़ी होती है जो पेड़ों पर हथौड़े मारते समय उसके मस्तिष्क की रक्षा करती है।"
+      },
+      "buttonLabel": {
+        "en": "Safe Hammer",
+        "hi": "सुरक्षित हथौड़ा"
+      },
+      "_id": "69c628558acb51be7654eb31",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/comfla1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:53.334Z",
+      "updatedAt": "2026-03-27T06:48:53.334Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Parakeet Nesting",
+        "hi": "तोते का घोंसला"
+      },
+      "text": {
+        "en": "Rose-ringed parakeets often nest in hollow tree cavities or even in holes in old buildings inside the zoo.",
+        "hi": "गुलाब के छल्ले वाले तोते अक्सर खोखले पेड़ों की खोहों में या चिड़ियाघर के अंदर पुरानी इमारतों के बिलों में भी घोंसला बनाते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Urban Nest",
+        "hi": "शहरी घोंसला"
+      },
+      "_id": "69c628578acb51be7654eb33",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/rorpar1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:55.181Z",
+      "updatedAt": "2026-03-27T06:48:55.181Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Sun Parakeet",
+        "hi": "सन तोता"
+      },
+      "text": {
+        "en": "These small South American parrots are famous for their brilliant yellow and orange \"sunset\" colored feathers.",
+        "hi": "ये छोटे दक्षिण अमेरिकी तोते अपने शानदार पीले और नारंगी \"सूर्यास्त\" रंग के पंखों के लिए प्रसिद्ध हैं।"
+      },
+      "buttonLabel": {
+        "en": "Sunset Bird",
+        "hi": "सूर्यास्त पक्षी"
+      },
+      "_id": "69c628588acb51be7654eb35",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/sunpar1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:56.659Z",
+      "updatedAt": "2026-03-27T06:48:56.659Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Blue-and-Yellow Macaw",
+        "hi": "नीला और पीला मैकॉ"
+      },
+      "text": {
+        "en": "These birds can live for over 50 years and are known to be extremely loud and social in their jungle homes.",
+        "hi": "ये पक्षी 50 से अधिक वर्षों तक जीवित रह सकते हैं और अपने जंगल के घरों में बेहद शोरगुल वाले और मिलनसार होने के लिए जाने जाते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Social Parrot",
+        "hi": "सामाजिक तोता"
+      },
+      "_id": "69c6285a8acb51be7654eb37",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://nationalzoo.si.edu/animals/blue-and-yellow-macaw",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:58.434Z",
+      "updatedAt": "2026-03-27T06:48:58.434Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Cockatiel Crest",
+        "hi": "कॉकटेल क्रेस्ट"
+      },
+      "text": {
+        "en": "A cockatiel uses its crest to express its mood; vertical for excited flat for angry and slanted for relaxed.",
+        "hi": "एक कॉकटेल अपने मूड को व्यक्त करने के लिए अपनी शिखा का उपयोग करता है; "
+      },
+      "buttonLabel": {
+        "en": "Mood Crest",
+        "hi": "मूड क्रेस्ट"
+      },
+      "_id": "69c6285b8acb51be7654eb39",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/14271-Nymphicus-hollandicus",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:48:59.957Z",
+      "updatedAt": "2026-03-27T06:48:59.957Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zebra Finch Beak",
+        "hi": "ज़ेबरा फिंच चोंच"
+      },
+      "text": {
+        "en": "A Zebra Finch's beak color can tell you its gender; males usually have bright red beaks while females have orange.",
+        "hi": "ज़ेबरा फिंच की चोंच का रंग आपको उसका लिंग बता सकता है; "
+      },
+      "buttonLabel": {
+        "en": "Beak Check",
+        "hi": "चोंच की जाँच"
+      },
+      "_id": "69c6285d8acb51be7654eb3b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/zebfin1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:01.383Z",
+      "updatedAt": "2026-03-27T06:49:01.383Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Great Horned Owl",
+        "hi": "बड़े सींग वाला उल्लू"
+      },
+      "text": {
+        "en": "These owls have \"ear tufts\" which are not ears at all but feathers used for communication and camouflage.",
+        "hi": "इन उल्लुओं के पास \"कान के गुच्छे\" होते हैं जो बिल्कुल कान नहीं होते बल्कि पंख होते हैं जिनका उपयोग संचार और छलावरण के लिए किया जाता है।"
+      },
+      "buttonLabel": {
+        "en": "Check Tufts",
+        "hi": "टफ्ट्स की जाँच करें"
+      },
+      "_id": "69c6285e8acb51be7654eb3d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.allaboutbirds.org/guide/Great_Horned_Owl/id",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:02.735Z",
+      "updatedAt": "2026-03-27T06:49:02.735Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Black Swan Neck",
+        "hi": "काली हंस गर्दन"
+      },
+      "text": {
+        "en": "The Black Swan has the longest neck of any swan allowing it to reach deep underwater to find tasty plants.",
+        "hi": "काले हंस की गर्दन किसी भी हंस की तुलना में सबसे लंबी होती है, जिससे वह स्वादिष्ट पौधों को खोजने के लिए गहरे पानी के भीतर तक पहुंच सकता है।"
+      },
+      "buttonLabel": {
+        "en": "Long Neck",
+        "hi": "लंबी गर्दन"
+      },
+      "_id": "69c6285f8acb51be7654eb3f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://animaldiversity.org/accounts/Cygnus_atratus/",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:03.692Z",
+      "updatedAt": "2026-03-27T06:49:03.692Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Rhea Flightless",
+        "hi": "रिया फ्लाइटलेस"
+      },
+      "text": {
+        "en": "The Greater Rhea from South America is a large flightless bird that uses its wings like rudders to turn while running.",
+        "hi": "दक्षिण अमेरिका का ग्रेटर रिया एक बड़ा उड़ने में असमर्थ पक्षी है जो दौड़ते समय घूमने के लिए अपने पंखों को पतवार की तरह इस्तेमाल करता है।"
+      },
+      "buttonLabel": {
+        "en": "Speed Runner",
+        "hi": "स्पीड धावक"
+      },
+      "_id": "69c628618acb51be7654eb41",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.inaturalist.org/taxa/524-Rhea-americana",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:05.158Z",
+      "updatedAt": "2026-03-27T06:49:05.158Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Kalij Pheasant",
+        "hi": "कालिज तीतर"
+      },
+      "text": {
+        "en": "The Kalij Pheasant is often found in the thick undergrowth of Himalayan forests where it stays hidden from predators.",
+        "hi": "कालिज तीतर अक्सर हिमालय के जंगलों की घनी झाड़ियों में पाया जाता है जहां यह शिकारियों से छिपा रहता है।"
+      },
+      "buttonLabel": {
+        "en": "Forest Ghost",
+        "hi": "वन भूत"
+      },
+      "_id": "69c628628acb51be7654eb43",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/kalphe1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:06.900Z",
+      "updatedAt": "2026-03-27T06:49:06.900Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Spotted Owlet",
+        "hi": "चित्तीदार उल्लू"
+      },
+      "text": {
+        "en": "These small owls are often seen in pairs sitting on tree branches during the day while they sleep.",
+        "hi": "ये छोटे उल्लू अक्सर दिन में सोते समय जोड़े में पेड़ की शाखाओं पर बैठे दिखाई देते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Owlet Pair",
+        "hi": "उल्लू की जोड़ी"
+      },
+      "_id": "69c628658acb51be7654ec15",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/spoowl1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:09.692Z",
+      "updatedAt": "2026-03-27T06:49:09.692Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Barn Owl Silent",
+        "hi": "खलिहान उल्लू चुप"
+      },
+      "text": {
+        "en": "The Barn Owl has special \"fringed\" feathers that allow it to fly in absolute silence while hunting at night.",
+        "hi": "बार्न उल्लू के पास विशेष \"झालरदार\" पंख होते हैं जो इसे रात में शिकार करते समय पूर्ण शांति में उड़ने की अनुमति देते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Silent Hunter",
+        "hi": "मूक शिकारी"
+      },
+      "_id": "69c628678acb51be7654ec17",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://www.allaboutbirds.org/guide/Barn_Owl/id",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:11.016Z",
+      "updatedAt": "2026-03-27T06:49:11.016Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Koel Rainy Season",
+        "hi": "कोयल वर्षा ऋतु"
+      },
+      "text": {
+        "en": "The Asian Koel is most vocal during the Indian monsoon season; it is a brood parasite that lays eggs in crows' nests.",
+        "hi": "भारतीय मानसून के मौसम के दौरान एशियाई कोयल सबसे अधिक मुखर होती है; "
+      },
+      "buttonLabel": {
+        "en": "Monsoon Call",
+        "hi": "मानसून कॉल"
+      },
+      "_id": "69c628688acb51be7654ec19",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/asikoe1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:12.162Z",
+      "updatedAt": "2026-03-27T06:49:12.162Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Crow Pheasant",
+        "hi": "कौवा तीतर"
+      },
+      "text": {
+        "en": "Also known as the Greater Coucal this bird has bright copper-colored wings and a deep booming \"oop-oop\" call.",
+        "hi": "ग्रेटर कूकल के नाम से भी जाने जाने वाले इस पक्षी के चमकीले तांबे के रंग के पंख और गहरी तेज़ \"उफ़-उफ़\" आवाज़ होती है।"
+      },
+      "buttonLabel": {
+        "en": "Copper Wing",
+        "hi": "कॉपर विंग"
+      },
+      "_id": "69c6286b8acb51be7654ec1b",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/grecou1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:15.300Z",
+      "updatedAt": "2026-03-27T06:49:15.300Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Pied Crested Cuckoo",
+        "hi": "पाइड क्रेस्टेड कोयल"
+      },
+      "text": {
+        "en": "Legend says this bird only drinks raindrops; its arrival in North India is seen as the official start of the Monsoon.",
+        "hi": "किंवदंती है कि यह पक्षी केवल बारिश की बूँदें पीता है; "
+      },
+      "buttonLabel": {
+        "en": "Rain Bird",
+        "hi": "वर्षा पक्षी"
+      },
+      "_id": "69c6286d8acb51be7654ec1d",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/piccuc1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:17.044Z",
+      "updatedAt": "2026-03-27T06:49:17.044Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Palm Swift",
+        "hi": "पाम स्विफ्ट"
+      },
+      "text": {
+        "en": "These tiny birds build their nests on the underside of palm leaves using their own sticky saliva as glue.",
+        "hi": "ये छोटे पक्षी अपनी चिपचिपी लार को गोंद के रूप में उपयोग करके ताड़ के पत्तों के नीचे अपना घोंसला बनाते हैं।"
+      },
+      "buttonLabel": {
+        "en": "Saliva Nest",
+        "hi": "लार घोंसला"
+      },
+      "_id": "69c6286e8acb51be7654ec1f",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/palswi1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:18.175Z",
+      "updatedAt": "2026-03-27T06:49:18.175Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Green Bee-eater",
+        "hi": "हरी मधुमक्खी खाने वाला"
+      },
+      "text": {
+        "en": "This bird is an expert at catching bees in mid-air; it rubs the bee against a branch to remove the stinger before eating.",
+        "hi": "यह पक्षी हवा में मधुमक्खियों को पकड़ने में माहिर है; "
+      },
+      "buttonLabel": {
+        "en": "Bee Hunter",
+        "hi": "मधुमक्खी शिकारी"
+      },
+      "_id": "69c628708acb51be7654ec2c",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/grbeea1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:20.157Z",
+      "updatedAt": "2026-03-27T06:49:20.157Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Indian Roller",
+        "hi": "भारतीय रोलर"
+      },
+      "text": {
+        "en": "The Indian Roller is the state bird of several Indian states; it gets its name from its spectacular aerial acrobatic displays.",
+        "hi": "इंडियन रोलर कई भारतीय राज्यों का राज्य पक्षी है; "
+      },
+      "buttonLabel": {
+        "en": "Acrobat Bird",
+        "hi": "कलाबाज़ पक्षी"
+      },
+      "_id": "69c628718acb51be7654ec2e",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/indrol2",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:21.689Z",
+      "updatedAt": "2026-03-27T06:49:21.689Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Blue-throated Barbet",
+        "hi": "नीले गले वाला बार्बेट"
+      },
+      "text": {
+        "en": "This bird lives in the upper canopy of the forest and is hard to see despite its bright green and blue colors.",
+        "hi": "यह पक्षी जंगल की ऊपरी छतरी में रहता है और अपने चमकीले हरे और नीले रंग के बावजूद इसे देखना मुश्किल है।"
+      },
+      "buttonLabel": {
+        "en": "Canopy Bird",
+        "hi": "चंदवा पक्षी"
+      },
+      "_id": "69c628738acb51be7654ec30",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "link": "https://ebird.org/species/bthbar1",
+      "image": "",
+      "isHidden": false,
+      "createdAt": "2026-03-27T06:49:23.515Z",
+      "updatedAt": "2026-03-27T06:49:23.515Z",
+      "__v": 0
+    }
+  ]
+}

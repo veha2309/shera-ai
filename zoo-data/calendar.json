@@ -1,0 +1,1059 @@
+{
+  "status": true,
+  "data": [
+    {
+      "title": {
+        "en": "National Birding Day",
+        "hi": "राष्ट्रीय पक्षी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cb99bef4b481be08dfc36e",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/Uh2OthC13XZI-Tue Mar 31 2026 09:54:03 GMT+0000 (Coordinated Universal Time)-National birding day.jpeg",
+      "date": "2026-04-03T00:00:00.000Z",
+      "createdAt": "2026-03-31T09:54:06.107Z",
+      "updatedAt": "2026-03-31T09:54:06.107Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Zoo Lovers Day",
+        "hi": "चिड़ियाघर प्रेमी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cba673f4b481be08e1007c",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/o6hmSV7Ul35Q-Tue Mar 31 2026 10:48:14 GMT+0000 (Coordinated Universal Time)-Zoo lovers day.jpeg",
+      "date": "2026-04-08T00:00:00.000Z",
+      "createdAt": "2026-03-31T10:48:19.822Z",
+      "updatedAt": "2026-03-31T10:48:19.822Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "National Dolphin Day",
+        "hi": "राष्ट्रीय डॉल्फिन दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cba6d4f4b481be08e10094",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/6zMfjfd9ZTU8-Tue Mar 31 2026 10:49:53 GMT+0000 (Coordinated Universal Time)-National dolphin day.jpeg",
+      "date": "2026-04-14T00:00:00.000Z",
+      "createdAt": "2026-03-31T10:49:56.190Z",
+      "updatedAt": "2026-03-31T10:49:56.190Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Save the Elephant Day",
+        "hi": "हाथी दिवस बचाओ"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cba787f4b481be08e102b0",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/JLvWZphk6r9a-Tue Mar 31 2026 10:52:51 GMT+0000 (Coordinated Universal Time)-Save the elephant day.png",
+      "date": "2026-04-16T00:00:00.000Z",
+      "createdAt": "2026-03-31T10:52:55.952Z",
+      "updatedAt": "2026-03-31T10:52:55.952Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Bat Appreciation Day",
+        "hi": "अंतर्राष्ट्रीय चमगादड़ प्रशंसा दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cba8bbf4b481be08e1106f",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/FyplQ99RZ2mR-Tue Mar 31 2026 10:57:54 GMT+0000 (Coordinated Universal Time)-International Bat appreciation day.avif",
+      "date": "2026-04-17T00:00:00.000Z",
+      "createdAt": "2026-03-31T10:58:03.078Z",
+      "updatedAt": "2026-03-31T10:58:03.078Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Earth day",
+        "hi": "विश्व पृथ्वी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cba9d7f4b481be08e1165d",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/WygfWTxc3skO-Tue Mar 31 2026 11:02:45 GMT+0000 (Coordinated Universal Time)-World Earth day.jpeg",
+      "date": "2026-04-22T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:02:47.513Z",
+      "updatedAt": "2026-03-31T11:02:47.513Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Day for Animals in Laboratories",
+        "hi": "प्रयोगशालाओं में पशुओं के लिए विश्व दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbaa46f4b481be08e117f5",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/Pibrs33dDrau-Tue Mar 31 2026 11:04:34 GMT+0000 (Coordinated Universal Time)-World day for animals in laboratories.png",
+      "date": "2026-04-24T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:04:38.589Z",
+      "updatedAt": "2026-03-31T11:04:38.589Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Penguin Day",
+        "hi": "विश्व पेंगुइन दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbaad8f4b481be08e11b16",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/5dDLJ326A87B-Tue Mar 31 2026 11:07:00 GMT+0000 (Coordinated Universal Time)-World penguin day.jpeg",
+      "date": "2026-04-25T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:07:04.403Z",
+      "updatedAt": "2026-03-31T11:07:04.403Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Hyena Day",
+        "hi": "अंतर्राष्ट्रीय लकड़बग्घा दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbab8c743bdb164c0c1e7d",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/4y7IpBbnCn5L-Tue Mar 31 2026 11:10:01 GMT+0000 (Coordinated Universal Time)-International Hyena Day.jpeg",
+      "date": "2026-04-27T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:10:04.205Z",
+      "updatedAt": "2026-03-31T11:10:04.205Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Save the Rhino Day",
+        "hi": "गैंडा दिवस बचाएं"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbac6d743bdb164c0c2610",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/cmsMtQXCMfz2-Tue Mar 31 2026 11:13:47 GMT+0000 (Coordinated Universal Time)-save the rhino day.jpg",
+      "date": "2026-05-01T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:13:49.316Z",
+      "updatedAt": "2026-03-31T11:13:49.316Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Leopard Day",
+        "hi": "अंतर्राष्ट्रीय तेंदुआ दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbb0d1743bdb164c0c3732",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/DM2crVJND6kH-Tue Mar 31 2026 11:32:28 GMT+0000 (Coordinated Universal Time)-International Leopard Day.jpg",
+      "date": "2026-05-03T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:32:33.378Z",
+      "updatedAt": "2026-03-31T11:32:33.378Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Endemic Bird Day",
+        "hi": "स्थानिक पक्षी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbb19f743bdb164c0c39c1",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/kG5Qs4TSN5an-Tue Mar 31 2026 11:35:55 GMT+0000 (Coordinated Universal Time)-ChatGPT Image Mar 31, 2026, 05_04_58 PM.png",
+      "date": "2026-05-10T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:35:59.064Z",
+      "updatedAt": "2026-03-31T11:35:59.064Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Bee Day",
+        "hi": "विश्व मधुमक्खी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbb216743bdb164c0c3bcb",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/4YHVLx75iBy4-Tue Mar 31 2026 11:37:55 GMT+0000 (Coordinated Universal Time)-World bee day.jpeg",
+      "date": "2026-05-20T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:37:58.334Z",
+      "updatedAt": "2026-03-31T11:37:58.334Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Biodiversity Day",
+        "hi": "अंतर्राष्ट्रीय जैव विविधता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbb2d0743bdb164c0c467e",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/TEBOkjEnknbn-Tue Mar 31 2026 11:41:02 GMT+0000 (Coordinated Universal Time)-International biodiversity day.jpeg",
+      "date": "2026-05-22T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:41:04.611Z",
+      "updatedAt": "2026-03-31T11:41:04.611Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Turtle Day & World Turtle Day",
+        "hi": "अंतर्राष्ट्रीय कछुआ दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cbb461743bdb164c0c6409",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/Xfsutx3hzFRE-Tue Mar 31 2026 11:47:42 GMT+0000 (Coordinated Universal Time)-International turtle day.png",
+      "date": "2026-05-23T00:00:00.000Z",
+      "createdAt": "2026-03-31T11:47:45.142Z",
+      "updatedAt": "2026-03-31T11:47:45.142Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Environment Day",
+        "hi": "विश्व पर्यावरण दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccb1c42a594df3f25740ea",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/L259Gi8cOjcC-Wed Apr 01 2026 05:48:50 GMT+0000 (Coordinated Universal Time)-World environment day.jpeg",
+      "date": "2026-06-05T00:00:00.000Z",
+      "createdAt": "2026-04-01T05:48:52.095Z",
+      "updatedAt": "2026-04-01T05:48:52.095Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Ocean Day",
+        "hi": "विश्व महासागर दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccb22f2a594df3f257441c",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/QqeXFCYBX7hl-Wed Apr 01 2026 05:50:35 GMT+0000 (Coordinated Universal Time)-World Ocean Day.png",
+      "date": "2026-06-08T00:00:00.000Z",
+      "createdAt": "2026-04-01T05:50:39.339Z",
+      "updatedAt": "2026-04-01T05:50:39.339Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Sea Turtle Day",
+        "hi": "विश्व समुद्री कछुआ दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccb29f2a594df3f25748c2",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/NaLQKRV16n52-Wed Apr 01 2026 05:52:24 GMT+0000 (Coordinated Universal Time)-World Sea Turtle Day.jpeg",
+      "date": "2026-06-16T00:00:00.000Z",
+      "createdAt": "2026-04-01T05:52:31.903Z",
+      "updatedAt": "2026-04-01T05:52:31.903Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Day to combat Desertification and Drought",
+        "hi": "मरुस्थलीकरण और सूखे से निपटने के लिए विश्व दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccb6222a594df3f2577fa6",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/6PBEebF1AziU-Wed Apr 01 2026 06:07:28 GMT+0000 (Coordinated Universal Time)-World Day to combat Desertification and Drought.jpeg",
+      "date": "2026-06-17T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:07:30.928Z",
+      "updatedAt": "2026-04-01T06:07:30.928Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Crocodile day",
+        "hi": "विश्व मगरमच्छ दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccb5ad2a594df3f2577ed9",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/njUcRX0fRR9h-Wed Apr 01 2026 06:05:31 GMT+0000 (Coordinated Universal Time)-World Crocodile Day.jpeg",
+      "date": "2026-06-17T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:05:33.590Z",
+      "updatedAt": "2026-04-01T06:05:33.590Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Climate Change Day",
+        "hi": "अंतर्राष्ट्रीय जलवायु परिवर्तन दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccb7452a594df3f2578280",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/PcUkValWErlk-Wed Apr 01 2026 06:12:19 GMT+0000 (Coordinated Universal Time)-International Climate Change Day.png",
+      "date": "2026-06-21T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:12:21.235Z",
+      "updatedAt": "2026-04-01T06:12:21.235Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Giraffe Day",
+        "hi": "विश्व जिराफ़ दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccb6632a594df3f25781a3",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/HqpXMSHztYD5-Wed Apr 01 2026 06:08:33 GMT+0000 (Coordinated Universal Time)-World Giraffe Day.jpeg",
+      "date": "2026-06-21T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:08:35.638Z",
+      "updatedAt": "2026-04-01T06:08:35.638Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Van Mahotsav",
+        "hi": "वन महोत्सव"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccbc2e2a594df3f257aac8",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/FsIPPrby9UH9-Wed Apr 01 2026 06:33:15 GMT+0000 (Coordinated Universal Time)-van mahotsav.png",
+      "date": "2026-07-01T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:33:18.219Z",
+      "updatedAt": "2026-04-01T06:33:18.219Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Seabird Day",
+        "hi": "विश्व समुद्री पक्षी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccbcd42a594df3f257be74",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/oukTWmTK4ojH-Wed Apr 01 2026 06:36:00 GMT+0000 (Coordinated Universal Time)-World seabird day.jpeg",
+      "date": "2026-07-03T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:36:04.105Z",
+      "updatedAt": "2026-04-01T06:36:04.105Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Shark Awareness Day",
+        "hi": "शार्क जागरूकता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccbe322a594df3f257c0fe",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/eXkVDwmQUHOw-Wed Apr 01 2026 06:41:52 GMT+0000 (Coordinated Universal Time)-Shark Awareness Day.jpeg",
+      "date": "2026-07-14T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:41:54.928Z",
+      "updatedAt": "2026-04-01T06:41:54.928Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Chimpanzee Day",
+        "hi": "विश्व चिंपैंजी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccbd622a594df3f257c09c",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/Bk6Bk1pnxImw-Wed Apr 01 2026 06:38:21 GMT+0000 (Coordinated Universal Time)-World Chimpanzee Day.jpeg",
+      "date": "2026-07-14T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:38:26.752Z",
+      "updatedAt": "2026-04-01T06:38:26.752Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Snake Day",
+        "hi": "विश्व सर्प दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccbe892a594df3f257c129",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/ftA03zWm0aif-Wed Apr 01 2026 06:43:18 GMT+0000 (Coordinated Universal Time)-World Snake Day.jpeg",
+      "date": "2026-07-16T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:43:21.276Z",
+      "updatedAt": "2026-04-01T06:43:21.276Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Mangrove Day",
+        "hi": "अंतर्राष्ट्रीय मैंग्रोव दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccbfb42a594df3f257c435",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/QgvqGBTjG1QT-Wed Apr 01 2026 06:48:18 GMT+0000 (Coordinated Universal Time)-International Mangrove Day.jpeg",
+      "date": "2026-07-26T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:48:20.560Z",
+      "updatedAt": "2026-04-01T06:48:20.560Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Tiger Day",
+        "hi": "अंतर्राष्ट्रीय बाघ दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccc0102a594df3f257c45e",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/PVpgr3lY2W93-Wed Apr 01 2026 06:49:50 GMT+0000 (Coordinated Universal Time)-International Tiger Day.jpeg",
+      "date": "2026-07-29T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:49:52.128Z",
+      "updatedAt": "2026-04-01T06:49:52.128Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "National Tree Day",
+        "hi": "राष्ट्रीय वृक्ष दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccc0452a594df3f257c47a",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/ngjBj7MxiKxl-Wed Apr 01 2026 06:50:43 GMT+0000 (Coordinated Universal Time)-National Tree Day.jpeg",
+      "date": "2026-07-31T00:00:00.000Z",
+      "createdAt": "2026-04-01T06:50:45.105Z",
+      "updatedAt": "2026-04-01T06:50:45.105Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Owl Awareness Day",
+        "hi": "अंतर्राष्ट्रीय उल्लू जागरूकता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cce89a2a594df3f25adff8",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/421PI2wfeDwp-Wed Apr 01 2026 09:42:48 GMT+0000 (Coordinated Universal Time)-International Owl Awareness Day.jpeg",
+      "date": "2026-08-04T00:00:00.000Z",
+      "createdAt": "2026-04-01T09:42:50.399Z",
+      "updatedAt": "2026-04-01T09:42:50.399Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Lion Day",
+        "hi": "विश्व शेर दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccea042a594df3f25b1d7b",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/A6pCEXg6rRwd-Wed Apr 01 2026 09:48:50 GMT+0000 (Coordinated Universal Time)-World Lion Day.jpeg",
+      "date": "2026-08-10T00:00:00.000Z",
+      "createdAt": "2026-04-01T09:48:52.672Z",
+      "updatedAt": "2026-04-01T09:48:52.672Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Elephant Day",
+        "hi": "विश्व हाथी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccea402a594df3f25b1e36",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/4AoE51rBh9wg-Wed Apr 01 2026 09:49:50 GMT+0000 (Coordinated Universal Time)-World Elephant Day.jpeg",
+      "date": "2026-08-12T00:00:00.000Z",
+      "createdAt": "2026-04-01T09:49:52.628Z",
+      "updatedAt": "2026-04-01T09:49:52.628Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Lizard Day",
+        "hi": "विश्व छिपकली दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cceaab2a594df3f25b2047",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/CFY601wzlgiX-Wed Apr 01 2026 09:51:37 GMT+0000 (Coordinated Universal Time)-World Lizard Day.jpeg",
+      "date": "2026-08-14T00:00:00.000Z",
+      "createdAt": "2026-04-01T09:51:39.952Z",
+      "updatedAt": "2026-04-01T09:51:39.952Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Orangutan Day",
+        "hi": "विश्व ओरंगुटान दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cceb142a594df3f25b21ca",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/IXaLmmmqXySO-Wed Apr 01 2026 09:53:22 GMT+0000 (Coordinated Universal Time)-World Orangutan Day.jpeg",
+      "date": "2026-08-19T00:00:00.000Z",
+      "createdAt": "2026-04-01T09:53:24.686Z",
+      "updatedAt": "2026-04-01T09:53:24.686Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Mosquito Day",
+        "hi": "विश्व मच्छर दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cceb4f2a594df3f25b26fb",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/Bcj3Pspm1EZb-Wed Apr 01 2026 09:54:22 GMT+0000 (Coordinated Universal Time)-World Mosquito Day.jpeg",
+      "date": "2026-08-20T00:00:00.000Z",
+      "createdAt": "2026-04-01T09:54:23.554Z",
+      "updatedAt": "2026-04-01T09:54:23.554Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Whale Shark Day",
+        "hi": "अंतर्राष्ट्रीय व्हेल शार्क दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cceba42a594df3f25b533b",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/taY4f0VDCmzf-Wed Apr 01 2026 09:55:46 GMT+0000 (Coordinated Universal Time)-International Whale Shark Day.jpeg",
+      "date": "2026-08-30T00:00:00.000Z",
+      "createdAt": "2026-04-01T09:55:48.288Z",
+      "updatedAt": "2026-04-01T09:55:48.288Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "National Wildlife Day",
+        "hi": "राष्ट्रीय वन्यजीव दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cceee32a594df3f25bb761",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/MWDurg195R7X-Wed Apr 01 2026 10:09:38 GMT+0000 (Coordinated Universal Time)-National Wildlife Day.jpeg",
+      "date": "2026-09-04T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:09:39.539Z",
+      "updatedAt": "2026-04-01T10:09:39.539Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Red Panda Day",
+        "hi": "अंतर्राष्ट्रीय लाल पांडा दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccef542a594df3f25bb82e",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/WS6HbvLo973N-Wed Apr 01 2026 10:11:30 GMT+0000 (Coordinated Universal Time)-International Red Panda Day.jpeg",
+      "date": "2026-09-05T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:11:32.129Z",
+      "updatedAt": "2026-04-01T10:11:32.129Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Vulture Awareness Day",
+        "hi": "अंतर्राष्ट्रीय गिद्ध जागरूकता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf0152a594df3f25bc6b0",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/7gO5n9Hyw5fl-Wed Apr 01 2026 10:14:39 GMT+0000 (Coordinated Universal Time)-International Vulture Awareness Day.jpeg",
+      "date": "2026-09-06T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:14:45.535Z",
+      "updatedAt": "2026-04-01T10:14:45.535Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "National Iguana Awareness Day",
+        "hi": "राष्ट्रीय इगुआना जागरूकता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf0ba2a594df3f25bda26",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/VYESK04y4QDE-Wed Apr 01 2026 10:17:27 GMT+0000 (Coordinated Universal Time)-National Iguana Awareness Day.jpeg",
+      "date": "2026-09-08T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:17:30.732Z",
+      "updatedAt": "2026-04-01T10:17:30.732Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Snake Awareness Day",
+        "hi": "अंतर्राष्ट्रीय साँप जागरूकता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf20c2a594df3f25bea89",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/bbFIiDbtJR1K-Wed Apr 01 2026 10:23:05 GMT+0000 (Coordinated Universal Time)-International snake awareness day.png",
+      "date": "2026-09-20T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:23:08.583Z",
+      "updatedAt": "2026-04-01T10:23:08.583Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Rhino Day",
+        "hi": "विश्व गैंडा दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf2ea2a594df3f25bf4cc",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/xnk30l44GqvI-Wed Apr 01 2026 10:26:48 GMT+0000 (Coordinated Universal Time)-World Rhino Day.jpeg",
+      "date": "2026-09-22T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:26:50.267Z",
+      "updatedAt": "2026-04-01T10:26:50.267Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Elephant Appreciation Day",
+        "hi": "हाथी प्रशंसा दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf2a82a594df3f25befae",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/FwMCsw4vDlFr-Wed Apr 01 2026 10:25:42 GMT+0000 (Coordinated Universal Time)-Elephant Appreciation Day.png",
+      "date": "2026-09-22T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:25:44.865Z",
+      "updatedAt": "2026-04-01T10:25:44.865Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Raccoon Appreciation Day",
+        "hi": "अंतर्राष्ट्रीय रैकून प्रशंसा दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf3d32a594df3f25c02d8",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/OhzO6OpDyeaZ-Wed Apr 01 2026 10:30:37 GMT+0000 (Coordinated Universal Time)-International Raccoon Appreciation Day.jpeg",
+      "date": "2026-10-01T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:30:43.753Z",
+      "updatedAt": "2026-04-01T10:30:43.753Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Wildlife Week",
+        "hi": "वन्य जीव सप्ताह"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf6032a594df3f25c286f",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/uPoSBMkRRgDr-Wed Apr 01 2026 10:40:02 GMT+0000 (Coordinated Universal Time)-Wildlife Week.png",
+      "date": "2026-10-02T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:40:03.263Z",
+      "updatedAt": "2026-04-01T10:40:03.263Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Animal Day",
+        "hi": "विश्व पशु दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf6582a594df3f25c3b74",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/RPsl43848II7-Wed Apr 01 2026 10:41:26 GMT+0000 (Coordinated Universal Time)-World Animal Day.jpeg",
+      "date": "2026-10-04T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:41:28.060Z",
+      "updatedAt": "2026-04-01T10:41:28.060Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "National Salmon Day",
+        "hi": "राष्ट्रीय सामन दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf6a32a594df3f25c4d62",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/ymOvBkZJmq1I-Wed Apr 01 2026 10:42:41 GMT+0000 (Coordinated Universal Time)-National Salmon Day.jpeg",
+      "date": "2026-10-08T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:42:43.341Z",
+      "updatedAt": "2026-04-01T10:42:43.341Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Sloth Day",
+        "hi": "अंतर्राष्ट्रीय सुस्ती दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccf6f32a594df3f25c4d82",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/NhoLFzkSH41K-Wed Apr 01 2026 10:44:01 GMT+0000 (Coordinated Universal Time)-International Sloth Day.jpeg",
+      "date": "2026-10-20T00:00:00.000Z",
+      "createdAt": "2026-04-01T10:44:03.193Z",
+      "updatedAt": "2026-04-01T10:44:03.193Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Reptile Awareness Day",
+        "hi": "सरीसृप जागरूकता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccfc0f2a594df3f25cc65c",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/99NRzU45gbHI-Wed Apr 01 2026 11:05:49 GMT+0000 (Coordinated Universal Time)-Reptile Awareness Day.jpeg",
+      "date": "2026-10-21T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:05:51.944Z",
+      "updatedAt": "2026-04-01T11:05:51.944Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Snow Leopard day",
+        "hi": "अंतर्राष्ट्रीय हिम तेंदुआ दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccfcc82a594df3f25cdfb6",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/z6VyQRbYQDtq-Wed Apr 01 2026 11:08:51 GMT+0000 (Coordinated Universal Time)-International Snow Leopard day.jpeg",
+      "date": "2026-10-23T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:08:56.865Z",
+      "updatedAt": "2026-04-01T11:08:56.865Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Gibbon Day",
+        "hi": "अंतर्राष्ट्रीय गिब्बन दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccfd272a594df3f25ce4dc",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/asd2roqjRSln-Wed Apr 01 2026 11:10:29 GMT+0000 (Coordinated Universal Time)-International Gibbon Day.jpeg",
+      "date": "2026-10-24T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:10:31.796Z",
+      "updatedAt": "2026-04-01T11:10:31.796Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Bison Day",
+        "hi": "बाइसन दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccfdfd2a594df3f25d2d22",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/QenRsxV102rj-Wed Apr 01 2026 11:14:04 GMT+0000 (Coordinated Universal Time)-Bison Day.jpeg",
+      "date": "2026-11-01T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:14:05.501Z",
+      "updatedAt": "2026-04-01T11:14:05.501Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Jellyfish Day",
+        "hi": "जेलिफ़िश दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccfe412a594df3f25d2d3b",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/ktoyGgfX9TUS-Wed Apr 01 2026 11:15:11 GMT+0000 (Coordinated Universal Time)-Jellyfish Day.jpeg",
+      "date": "2026-11-03T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:15:13.713Z",
+      "updatedAt": "2026-04-01T11:15:13.713Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Birds Day",
+        "hi": "विश्व पक्षी दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccff372a594df3f25d7e2f",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/0I2qpxfYw12V-Wed Apr 01 2026 11:19:17 GMT+0000 (Coordinated Universal Time)-World Birds Day.png",
+      "date": "2026-11-12T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:19:19.166Z",
+      "updatedAt": "2026-04-01T11:19:19.166Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Jaguar Day",
+        "hi": "अंतर्राष्ट्रीय जगुआर दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69ccff782a594df3f25d7e3b",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/1iGe5xOjVUUH-Wed Apr 01 2026 11:20:22 GMT+0000 (Coordinated Universal Time)-International Jaguar Day.jpeg",
+      "date": "2026-11-29T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:20:24.572Z",
+      "updatedAt": "2026-04-01T11:20:24.572Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "World Wildlife Conservation Day",
+        "hi": "विश्व वन्यजीव संरक्षण दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cd00df2a594df3f25d9434",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/cOzGElSTp44n-Wed Apr 01 2026 11:26:20 GMT+0000 (Coordinated Universal Time)-World Wildlife Conservation Day.jpeg",
+      "date": "2026-12-04T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:26:23.741Z",
+      "updatedAt": "2026-04-01T11:26:23.741Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Cheetah Day",
+        "hi": "अंतर्राष्ट्रीय चीता दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cd00822a594df3f25d9411",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/e6qOp5CXNxyp-Wed Apr 01 2026 11:24:48 GMT+0000 (Coordinated Universal Time)-International Cheetah Day.jpeg",
+      "date": "2026-12-04T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:24:50.425Z",
+      "updatedAt": "2026-04-01T11:24:50.425Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Animal Rights Day",
+        "hi": "अंतर्राष्ट्रीय पशु अधिकार दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cd012a2a594df3f25d9453",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/ZcRGxn2iYWXY-Wed Apr 01 2026 11:27:34 GMT+0000 (Coordinated Universal Time)-International Animal Rights Day.jpeg",
+      "date": "2026-12-10T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:27:38.397Z",
+      "updatedAt": "2026-04-01T11:27:38.397Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "International Monkey Day",
+        "hi": "अंतर्राष्ट्रीय बंदर दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cd01a72a594df3f25d96d2",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/GlLL9MChkNn7-Wed Apr 01 2026 11:29:42 GMT+0000 (Coordinated Universal Time)-International Monkey Day.png",
+      "date": "2026-12-14T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:29:43.776Z",
+      "updatedAt": "2026-04-01T11:29:43.776Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Visit the Zoo Day",
+        "hi": "चिड़ियाघर दिवस पर जाएँ"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cd01f82a594df3f25d9bd9",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/NBtNsxyaELX4-Wed Apr 01 2026 11:31:02 GMT+0000 (Coordinated Universal Time)-Visit the Zoo Day.jpeg",
+      "date": "2026-12-27T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:31:04.892Z",
+      "updatedAt": "2026-04-01T11:31:04.892Z",
+      "__v": 0
+    },
+    {
+      "title": {
+        "en": "Nandankanan Biological Park Foundation Day",
+        "hi": "नंदनकानन जैविक उद्यान स्थापना दिवस"
+      },
+      "body": {
+        "en": "",
+        "hi": ""
+      },
+      "_id": "69cd028a2a594df3f25da610",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/4JTeldRrYEUC-Wed Apr 01 2026 11:33:27 GMT+0000 (Coordinated Universal Time)-nandankanan biological park foundation day.jpeg",
+      "date": "2026-12-29T00:00:00.000Z",
+      "createdAt": "2026-04-01T11:33:30.616Z",
+      "updatedAt": "2026-04-01T11:33:30.616Z",
+      "__v": 0
+    }
+  ]
+}

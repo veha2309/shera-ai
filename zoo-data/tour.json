@@ -1,0 +1,5352 @@
+{
+  "status": true,
+  "data": [
+    {
+      "name": {
+        "en": "Express Tour",
+        "hi": "एक्सप्रेस यात्रा"
+      },
+      "tag": {
+        "en": "#LimitedTime #EasyExplorers",
+        "hi": "#सीमित समय #ईज़ीएक्सप्लोरर्स"
+      },
+      "narrative": {
+        "en": "This is your 1st stop at Water Birds Buggy Point. Here you will see Sambar Deer, Painted Stork, Blackbuck, Lion Tailed Macaque, Asiatic Black Bear 2, Hamadryas Baboon.\n\nThis is your 2nd stop at Rhinoceros Buggy Point. Here you will see Indian Rhinoceros (Greater One-Horned Rhinoceros), Asiatic Black Bear 2, Sloth Bear, Brow antlered Deer (Sangai).\n\nThis is your 3rd stop at White Tiger Buggy Point. Here you will see White Tiger, Indian Crested Porcupine, Asian Palm Civet, Indian  Jackal, Indian Wolf.\n\nThis is your 4th stop at Royal Bengal Tiger Buggy Point. Here you will see Royal Bengal Tiger, Reptile House, Siamese Crocodile, Marsh Crocodile, Common Ostrich, Emu.",
+        "hi": "वॉटर बर्ड्स बग्गी पॉइंट पर यह आपका पहला पड़ाव है। \n\nगैंडा बग्गी प्वाइंट पर यह आपका दूसरा पड़ाव है। \n\nव्हाइट टाइगर बग्गी पॉइंट पर यह आपका तीसरा पड़ाव है। \n\nरॉयल बंगाल टाइगर बग्गी पॉइंट पर यह आपका चौथा पड़ाव है। "
+      },
+      "description": {
+        "en": "The Quick Explorer Trail is a 1–2 hour, 3 km loop covering 30+ animals, perfect for a quick visit. It passes through key zones and features big cats, primates, bears, and aquatic and reptile species.",
+        "hi": "क्विक एक्सप्लोरर ट्रेल 1-2 घंटे, 3 किमी का लूप है जो 30+ जानवरों को कवर करता है, जो त्वरित यात्रा के लिए बिल्कुल उपयुक्त है। "
+      },
+      "_id": "69ce45df30028f2a39ac16d5",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/x9819Se4GF06-1775482575737-Gemini_Generated_Image_j58rg3j58rg3j58r.png",
+      "duration": 120,
+      "distance": 3000,
+      "key_highlights": [
+        {
+          "en": "Sambar Deer",
+          "hi": "सांभर हिरण",
+          "_id": "69d3badc15eaf4c5297743dd"
+        },
+        {
+          "en": "Painted Stork",
+          "hi": "चित्रित सारस",
+          "_id": "69d3badc15eaf4c5297743de"
+        },
+        {
+          "en": "Blackbuck",
+          "hi": "काला हिरण",
+          "_id": "69d3badc15eaf4c5297743df"
+        },
+        {
+          "en": "Lion Tailed Macaque",
+          "hi": "शेर-पूंछ वाला मकाक",
+          "_id": "69d3badc15eaf4c5297743e0"
+        },
+        {
+          "en": "Asiatic Black Bear 2",
+          "hi": "एशियाई काला भालू 2",
+          "_id": "69d3badc15eaf4c5297743e1"
+        },
+        {
+          "en": "Hamadryas Baboon",
+          "hi": "हमाद्रीस बबून",
+          "_id": "69d3badc15eaf4c5297743e2"
+        },
+        {
+          "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+          "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)",
+          "_id": "69d3badc15eaf4c5297743e3"
+        },
+        {
+          "en": "Sloth Bear",
+          "hi": "रीछ भालू",
+          "_id": "69d3badc15eaf4c5297743e4"
+        },
+        {
+          "en": "Brow antlered Deer (Sangai)",
+          "hi": "भौंह-मृग हिरण (संगाई)",
+          "_id": "69d3badc15eaf4c5297743e5"
+        },
+        {
+          "en": "White Tiger",
+          "hi": "सफेद बाघ",
+          "_id": "69d3badc15eaf4c5297743e6"
+        },
+        {
+          "en": "Indian Crested Porcupine",
+          "hi": "इंडियन क्रेस्टेड साही",
+          "_id": "69d3badc15eaf4c5297743e7"
+        },
+        {
+          "en": "Asian Palm Civet",
+          "hi": "कस्तूरी बिल्ली",
+          "_id": "69d3badc15eaf4c5297743e8"
+        },
+        {
+          "en": "Indian  Jackal",
+          "hi": "भारतीय सियार",
+          "_id": "69d3badc15eaf4c5297743e9"
+        },
+        {
+          "en": "Indian Wolf",
+          "hi": "भारतीय भेड़िया",
+          "_id": "69d3badc15eaf4c5297743ea"
+        },
+        {
+          "en": "Royal Bengal Tiger",
+          "hi": "रॉयल बंगाल टाइगर",
+          "_id": "69d3badc15eaf4c5297743eb"
+        },
+        {
+          "en": "Reptile House",
+          "hi": "सरीसृप गृह",
+          "_id": "69d3badc15eaf4c5297743ec"
+        },
+        {
+          "en": "Siamese Crocodile",
+          "hi": "सियामी मगरमच्छ",
+          "_id": "69d3badc15eaf4c5297743ed"
+        },
+        {
+          "en": "Marsh Crocodile",
+          "hi": "दलदली मगरमच्छ",
+          "_id": "69d3badc15eaf4c5297743ee"
+        },
+        {
+          "en": "Common Ostrich",
+          "hi": "आम शुतुरमुर्ग",
+          "_id": "69d3badc15eaf4c5297743ef"
+        },
+        {
+          "en": "Emu",
+          "hi": "एमु",
+          "_id": "69d3badc15eaf4c5297743f0"
+        }
+      ],
+      "stops": [
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Water Birds Buggy Point",
+              "hi": "जल पक्षी बग्गी प्वाइंट"
+            },
+            "location_name": {
+              "en": "Water Birds Buggy Point",
+              "hi": "बुग्गी प्वाइंट 2"
+            },
+            "_id": "69c3c794a5d4d801266925fa",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df646e",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sambar Deer",
+                  "hi": "सांभर हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sambar Deer 1",
+                    "hi": "सांबर हिरण 1"
+                  },
+                  "scientific_name": {
+                    "en": "Rusa unicolor",
+                    "hi": "रूसा यूनिकोलर"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, marshlands, and grasslands.",
+                    "hi": "वन, दलदली भूमि और घास के मैदान।"
+                  },
+                  "_id": "69b3e3f46f7a0f1da140c20b"
+                },
+                "locationId": "69d0fe4cf25be44811df6358"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Painted Stork ",
+                  "hi": "चित्रित सारस"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Painted Stork",
+                    "hi": "चित्रित सारस"
+                  },
+                  "scientific_name": {
+                    "en": "Mycteria leucocephala",
+                    "hi": "मिक्टेरिया ल्यूकोसेफाला"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Wetlands, shallow lakes, marshes, and riverbanks.",
+                    "hi": "आर्द्रभूमियाँ, उथली झीलें, दलदल और नदी तट।"
+                  },
+                  "_id": "69a91b933dc9a64a191f4dfd"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Blackbuck",
+                  "hi": "काला हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Blackbuck 1",
+                    "hi": "काला हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Antilope cervicapra",
+                    "hi": "एंटीलोप सर्विकैप्रा"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Grasslands, open plains, scrublands.",
+                    "hi": "घास के मैदान, खुले मैदान, झाड़ियाँ।"
+                  },
+                  "_id": "69a91b963dc9a64a191f4e44"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Lion Tailed Macaque",
+                  "hi": "शेर की पूंछ वाला मकाक"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Lion Tailed Macaque",
+                    "hi": "शेर-पूंछ वाला मकाक"
+                  },
+                  "scientific_name": {
+                    "en": "Macaca silenus",
+                    "hi": "मकाका सिलीनस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Tropical rainforests.",
+                    "hi": "उष्णकटिबंधीय वर्षावन."
+                  },
+                  "_id": "69a91b993dc9a64a191f4e7b"
+                },
+                "locationId": "69d0fe58f25be44811df6446"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Black Bear 2",
+                  "hi": "एशियाई काला भालू 2"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Black Bear 2",
+                    "hi": "एशियाई काला भालू 2"
+                  },
+                  "scientific_name": {
+                    "en": "Ursus thibetanus",
+                    "hi": " उर्सस थिबेटानस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, shrublands, grasslands, and wetlands.",
+                    "hi": "वन, झाड़ियाँ, घास के मैदान और आर्द्रभूमि।"
+                  },
+                  "_id": "69b3e6066f7a0f1da1412c0c"
+                },
+                "locationId": "69d0fe58f25be44811df641e"
+              },
+              {
+                "name": {
+                  "en": "a",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Hamadryas Baboon",
+                  "hi": "हमाद्रीस बबून"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Hamadryas Baboon",
+                    "hi": "हमाद्रीस बबून"
+                  },
+                  "scientific_name": {
+                    "en": "Papio hamadryas",
+                    "hi": "पापियो हमाद्रयस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rocky deserts, savannas, and cliffs.",
+                    "hi": "चट्टानी रेगिस्तान, सवाना और चट्टानें।"
+                  },
+                  "_id": "69a91ba73dc9a64a191f517f"
+                },
+                "locationId": "69d0fe58f25be44811df6448"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:32.695Z",
+            "updatedAt": "2026-04-06T13:27:45.588Z",
+            "__v": 0
+          },
+          "_id": "69d36e40ca101e80c4fb02a3"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Rhinoceros Buggy Point",
+              "hi": "बुग्गी पॉइंट 5"
+            },
+            "location_name": {
+              "en": "Rhinoceros Buggy Point",
+              "hi": "बुग्गी पॉइंट 5"
+            },
+            "_id": "69c3c795a5d4d80126692600",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df647a",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+                  "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+                    "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)"
+                  },
+                  "scientific_name": {
+                    "en": "Rhinoceros unicornis",
+                    "hi": "राइनोसेरस यूनिकॉर्निस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, floodplains, and swampy forests.",
+                    "hi": "घास के मैदान, बाढ़ के मैदान और दलदली जंगल।"
+                  },
+                  "_id": "69a91b9d3dc9a64a191f4ec8"
+                },
+                "locationId": "69d0fe4df25be44811df636b"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Black Bear",
+                  "hi": "एशियाई काला भालू"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Black Bear 2",
+                    "hi": "एशियाई काला भालू 2"
+                  },
+                  "scientific_name": {
+                    "en": "Ursus thibetanus",
+                    "hi": " उर्सस थिबेटानस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, shrublands, grasslands, and wetlands.",
+                    "hi": "वन, झाड़ियाँ, घास के मैदान और आर्द्रभूमि।"
+                  },
+                  "_id": "69b3e6066f7a0f1da1412c0c"
+                },
+                "locationId": "69d0fe58f25be44811df641e"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sloth Bear",
+                  "hi": "सुस्त भालू"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sloth Bear",
+                    "hi": "सुस्त भालू"
+                  },
+                  "scientific_name": {
+                    "en": "Melursus ursinus",
+                    "hi": "मेलर्सस उर्सिनस"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dry forests, shrubland, and grasslands.",
+                    "hi": "सूखे जंगल, झाड़ियाँ और घास के मैदान।"
+                  },
+                  "_id": "69a91b993dc9a64a191f4e85"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Brow-antlered Deer (Sangai)",
+                  "hi": "भौंह-मृग हिरण (संगाई)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Brow antlered Deer (Sangai) 1",
+                    "hi": "भौंह-मृग हिरण (संगाई)"
+                  },
+                  "scientific_name": {
+                    "en": "Rucervus eldii",
+                    "hi": "रुसेर्वस एल्डी"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, woodlands, shrublands, wetlands, and grasslands.",
+                    "hi": "जंगल, जंगल, झाड़ियाँ, आर्द्रभूमि और घास के मैदान।"
+                  },
+                  "_id": "69a91b9d3dc9a64a191f4ed2"
+                },
+                "locationId": "69d0fe57f25be44811df63eb"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:33.333Z",
+            "updatedAt": "2026-04-06T13:27:45.646Z",
+            "__v": 0
+          },
+          "_id": "69d3badc15eaf4c5297743f2"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "White Tiger Buggy Point",
+              "hi": "व्हाइट टाइगर बग्गी पॉइंट"
+            },
+            "location_name": {
+              "en": "White Tiger Buggy Point",
+              "hi": ""
+            },
+            "_id": "69d0ff599d9d06f1ac035eea",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df64a0",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "White Tiger",
+                  "hi": "सफेद बाघ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "White Tiger",
+                    "hi": "सफेद बाघ"
+                  },
+                  "scientific_name": {
+                    "en": "Panthera tigris tigris (Leucistic Morph)",
+                    "hi": "पैंथेरा टाइग्रिस टाइग्रिस (ल्यूसीस्टिक रूप) "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, mangroves, and grasslands.",
+                    "hi": "वन, मैंग्रोव और घास के मैदान।"
+                  },
+                  "_id": "69a91b9a3dc9a64a191f4e99"
+                },
+                "locationId": "69d0fe51f25be44811df63ac"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Crested Porcupine",
+                  "hi": "इंडियन क्रेस्टेड साही"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Crested Porcupine",
+                    "hi": "इंडियन क्रेस्टेड साही"
+                  },
+                  "scientific_name": {
+                    "en": "Hystrix indica",
+                    "hi": "हायस्ट्रिक्स इंडिका "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, forests, and rocky hill regions.",
+                    "hi": "घास के मैदान, जंगल और चट्टानी पहाड़ी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4ead"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asian Palm Civet",
+                  "hi": "एशियन पाम सिवेट"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asian Palm Civet",
+                    "hi": "एशियन पाम सिवेट"
+                  },
+                  "scientific_name": {
+                    "en": "Paradoxurus hermaphroditus",
+                    "hi": " पैराडॉक्स्यूरस हरमैफ्रोडाइटस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical forests, agricultural plantations, and urban areas.",
+                    "hi": "उष्णकटिबंधीय वन, कृषि बागान और शहरी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4e9e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian  Jackal",
+                  "hi": "भारतीय सियार"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Jackal",
+                    "hi": "भारतीय सियार"
+                  },
+                  "scientific_name": {
+                    "en": "Canis aureus indicus",
+                    "hi": "Canis aureus indicus"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forest edges, grasslands, and villages.",
+                    "hi": "जंगल के किनारे, घास के मैदान और गाँव।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e4e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Wolf",
+                  "hi": "भारतीय भेड़िया"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Wolf",
+                    "hi": "भारतीय भेड़िया"
+                  },
+                  "scientific_name": {
+                    "en": "Canis lupus pallipes",
+                    "hi": "कैनिस ल्यूपस पल्लिप्स"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Semi-arid grasslands, and scrublands.",
+                    "hi": "अर्ध-शुष्क घास के मैदान और झाड़ियाँ।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e53"
+                },
+                "locationId": null
+              }
+            ],
+            "createdAt": "2026-04-04T12:08:57.921Z",
+            "updatedAt": "2026-04-06T13:27:45.764Z",
+            "__v": 0
+          },
+          "_id": "69d3badc15eaf4c5297743f3"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Royal Bengal Tiger Buggy Point",
+              "hi": "बुग्गी प्वाइंट 1"
+            },
+            "location_name": {
+              "en": "Royal Bengal Tiger Buggy Point",
+              "hi": "बुग्गी प्वाइंट 1"
+            },
+            "_id": "69c3c794a5d4d801266925f8",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df646c",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Bengal Tiger",
+                  "hi": "बंगाल टाइगर"
+                },
+                "type": "animal",
+                "animalId": null,
+                "locationId": "69d0fe50f25be44811df639f"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Reptile House",
+                  "hi": "सरीसृपों का घर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Reptile House",
+                    "hi": "सरीसृप गृह"
+                  },
+                  "scientific_name": {
+                    "en": "Multiple species (Reptilia)",
+                    "hi": "विभिन्न प्रजातियाँ (रेप्टिलिया)"
+                  },
+                  "category": {
+                    "en": "Reptiles",
+                    "hi": "सरीसृप"
+                  },
+                  "habitat": {
+                    "en": "Forests, deserts, wetlands, rivers, and rocky areas depending on the species.",
+                    "hi": "प्रजातियों के आधार पर जंगल, रेगिस्तान, आर्द्रभूमि, नदियाँ और चट्टानी क्षेत्र।"
+                  },
+                  "_id": "69b3fa3c6f7a0f1da1417e4f"
+                },
+                "locationId": "69d0fe58f25be44811df63fb"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Siamese Crocodile",
+                  "hi": "स्याम देश का मगरमच्छ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Siamese Crocodile",
+                    "hi": "सियामी मगरमच्छ"
+                  },
+                  "scientific_name": {
+                    "en": "Crocodylus siamensis",
+                    "hi": "क्रोकोडायलस सियामेन्सिस"
+                  },
+                  "category": {
+                    "en": "Reptiles",
+                    "hi": "सरीसृप"
+                  },
+                  "habitat": {
+                    "en": "Slow-moving rivers, marshes, swamps, and freshwater wetlands.",
+                    "hi": "धीमी गति से बहने वाली नदियाँ, दलदल, दलदल और मीठे पानी की आर्द्रभूमियाँ।"
+                  },
+                  "_id": "69a91ba83dc9a64a191f5189"
+                },
+                "locationId": "69d0fe53f25be44811df63b8"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Marsh Crocodile",
+                  "hi": "मार्श मगरमच्छ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Marsh Crocodile 2",
+                    "hi": "दलदली मगरमच्छ"
+                  },
+                  "scientific_name": {
+                    "en": "Crocodylus palustris",
+                    "hi": "क्रोकोडाइलस पालुस्ट्रिस"
+                  },
+                  "category": {
+                    "en": "Reptiles",
+                    "hi": "सरीसृप"
+                  },
+                  "habitat": {
+                    "en": "Freshwater lakes, rivers, marshes, and reservoirs.",
+                    "hi": "मीठे पानी की झीलें, नदियाँ, दलदल और जलाशय।"
+                  },
+                  "_id": "69b14a2f6342da015966f5a9"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Common Ostrich",
+                  "hi": "आम शुतुरमुर्ग"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Common Ostrich",
+                    "hi": "आम शुतुरमुर्ग"
+                  },
+                  "scientific_name": {
+                    "en": "Struthio camelus",
+                    "hi": "स्ट्रूथियो कैमलस "
+                  },
+                  "category": {
+                    "en": "Bird ",
+                    "hi": "पक्षी "
+                  },
+                  "habitat": {
+                    "en": " Savannas, deserts, and grasslands.",
+                    "hi": "सवाना, रेगिस्तान और घास के मैदान।"
+                  },
+                  "_id": "69a91ba53dc9a64a191f5150"
+                },
+                "locationId": "69d0fe56f25be44811df63dc"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Emu",
+                  "hi": "एमु"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Emu",
+                    "hi": "एमु"
+                  },
+                  "scientific_name": {
+                    "en": "Dromaius novaehollandiae",
+                    "hi": "ड्रोमायस नोवाएहॉलैंडिए "
+                  },
+                  "category": {
+                    "en": "Bird ",
+                    "hi": "पक्षी "
+                  },
+                  "habitat": {
+                    "en": "Grasslands, savannas, and open forests.",
+                    "hi": "घास के मैदान, सवाना और खुले जंगल।"
+                  },
+                  "_id": "69a91ba43dc9a64a191f512d"
+                },
+                "locationId": "69d0fe56f25be44811df63e0"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:32.391Z",
+            "updatedAt": "2026-04-06T13:27:45.564Z",
+            "__v": 0
+          },
+          "_id": "69d3badc15eaf4c5297743f4"
+        }
+      ],
+      "no_of_stops": 4,
+      "target_species": [
+        {
+          "en": "Sambar Deer",
+          "hi": "सांभर हिरण",
+          "_id": "69d3badc15eaf4c5297743f5"
+        },
+        {
+          "en": "Painted Stork",
+          "hi": "चित्रित सारस",
+          "_id": "69d3badc15eaf4c5297743f6"
+        },
+        {
+          "en": "Blackbuck",
+          "hi": "काला हिरण",
+          "_id": "69d3badc15eaf4c5297743f7"
+        },
+        {
+          "en": "Lion Tailed Macaque",
+          "hi": "शेर-पूंछ वाला मकाक",
+          "_id": "69d3badc15eaf4c5297743f8"
+        },
+        {
+          "en": "Asiatic Black Bear 2",
+          "hi": "एशियाई काला भालू 2",
+          "_id": "69d3badc15eaf4c5297743f9"
+        },
+        {
+          "en": "Hamadryas Baboon",
+          "hi": "हमाद्रीस बबून",
+          "_id": "69d3badc15eaf4c5297743fa"
+        },
+        {
+          "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+          "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)",
+          "_id": "69d3badc15eaf4c5297743fb"
+        },
+        {
+          "en": "Sloth Bear",
+          "hi": "रीछ भालू",
+          "_id": "69d3badc15eaf4c5297743fc"
+        },
+        {
+          "en": "Brow antlered Deer (Sangai)",
+          "hi": "भौंह-मृग हिरण (संगाई)",
+          "_id": "69d3badc15eaf4c5297743fd"
+        },
+        {
+          "en": "White Tiger",
+          "hi": "सफेद बाघ",
+          "_id": "69d3badc15eaf4c5297743fe"
+        },
+        {
+          "en": "Indian Crested Porcupine",
+          "hi": "इंडियन क्रेस्टेड साही",
+          "_id": "69d3badc15eaf4c5297743ff"
+        },
+        {
+          "en": "Asian Palm Civet",
+          "hi": "कस्तूरी बिल्ली",
+          "_id": "69d3badc15eaf4c529774400"
+        },
+        {
+          "en": "Indian  Jackal",
+          "hi": "भारतीय सियार",
+          "_id": "69d3badc15eaf4c529774401"
+        },
+        {
+          "en": "Indian Wolf",
+          "hi": "भारतीय भेड़िया",
+          "_id": "69d3badc15eaf4c529774402"
+        },
+        {
+          "en": "Royal Bengal Tiger",
+          "hi": "रॉयल बंगाल टाइगर",
+          "_id": "69d3badc15eaf4c529774403"
+        },
+        {
+          "en": "Reptile House",
+          "hi": "सरीसृप गृह",
+          "_id": "69d3badc15eaf4c529774404"
+        },
+        {
+          "en": "Siamese Crocodile",
+          "hi": "सियामी मगरमच्छ",
+          "_id": "69d3badc15eaf4c529774405"
+        },
+        {
+          "en": "Marsh Crocodile",
+          "hi": "दलदली मगरमच्छ",
+          "_id": "69d3badc15eaf4c529774406"
+        },
+        {
+          "en": "Common Ostrich",
+          "hi": "आम शुतुरमुर्ग",
+          "_id": "69d3badc15eaf4c529774407"
+        },
+        {
+          "en": "Emu",
+          "hi": "एमु",
+          "_id": "69d3badc15eaf4c529774408"
+        }
+      ],
+      "createdAt": "2026-04-02T10:33:03.425Z",
+      "updatedAt": "2026-04-10T04:17:11.760Z",
+      "__v": 0
+    },
+    {
+      "name": {
+        "en": "Family Tour",
+        "hi": "पारिवारिक यात्रा"
+      },
+      "tag": {
+        "en": "#FamilyTour #ZooGuide",
+        "hi": "#फैमिलीटूर #चिड़ियाघरगाइड"
+      },
+      "narrative": {
+        "en": "This is your 1st stop at Water Birds Buggy Point. Here you will see Sambar Deer, Painted Stork, Blackbuck, Lion Tailed Macaque, Asiatic Black Bear 2, Hamadryas Baboon.\n\nThis is your 2nd stop at Rhinoceros Buggy Point. Here you will see Indian Rhinoceros (Greater One-Horned Rhinoceros), Asiatic Black Bear 2, Sloth Bear, Brow antlered Deer (Sangai).\n\nThis is your 3rd stop at Hippopotamus Buggy Point. Here you will see Hippopotamus, Sika Deer, Chinkara , Wild Boar, Indian Peafowl (Leucistic), Asiatic Lion 2.\n\nThis is your 4th stop at Lion Buggi Point. Here you will see Asiatic Lion 1, Stump tailed Macaque, Asian Palm Civet, Aquatic Birds Aviary, Rhesus Macaque.\n\nThis is your 5th stop at Elephant Buggy Point. Here you will see Indian Elephant, Asiatic Wild Dog (Dhole), Smooth coated Otter.\n\nThis is your 6th stop at White Tiger Buggy Point. Here you will see White Tiger, Indian Crested Porcupine, Asian Palm Civet, Indian  Jackal, Indian Wolf.\n\nThis is your 7th stop at Royal Bengal Tiger Buggy Point. Here you will see Royal Bengal Tiger, Reptile House, Siamese Crocodile, Marsh Crocodile, Common Ostrich, Emu.",
+        "hi": "वॉटर बर्ड्स बग्गी पॉइंट पर यह आपका पहला पड़ाव है। \n\nगैंडा बग्गी प्वाइंट पर यह आपका दूसरा पड़ाव है। \n\nहिप्पोपोटामस बग्गी प्वाइंट पर यह आपका तीसरा पड़ाव है। \n\nलायन बुग्गी पॉइंट पर यह आपका चौथा पड़ाव है। \n\nएलीफेंट बग्गी पॉइंट पर यह आपका 5वां पड़ाव है। \n\nव्हाइट टाइगर बग्गी पॉइंट पर यह आपका छठा पड़ाव है। \n\nरॉयल बंगाल टाइगर बग्गी पॉइंट पर यह आपका सातवां पड़ाव है। "
+      },
+      "description": {
+        "en": "The Family Tour is a 2–3 hour, 6 km loop covering 45+ species like Tigers, Rhinos, Elephants, and Lions. It’s a kid-friendly route with rest stops and starts and ends at the main gate.",
+        "hi": "फैमिली टूर 2-3 घंटे, 6 किमी का लूप है जिसमें बाघ, गैंडा, हाथी और शेर जैसी 45+ प्रजातियों को शामिल किया गया है। "
+      },
+      "_id": "69d0bbc26eccf156e4d30575",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/isSkj2DBrRVm-1775482366961-Gemini_Generated_Image_e0hk1se0hk1se0hk.png",
+      "duration": 180,
+      "distance": 6000,
+      "key_highlights": [
+        {
+          "en": "Sambar Deer",
+          "hi": "सांभर हिरण",
+          "_id": "69d3baa815eaf4c5297741d8"
+        },
+        {
+          "en": "Painted Stork",
+          "hi": "चित्रित सारस",
+          "_id": "69d3baa815eaf4c5297741d9"
+        },
+        {
+          "en": "Blackbuck",
+          "hi": "काला हिरण",
+          "_id": "69d3baa815eaf4c5297741da"
+        },
+        {
+          "en": "Lion Tailed Macaque",
+          "hi": "शेर-पूंछ वाला मकाक",
+          "_id": "69d3baa815eaf4c5297741db"
+        },
+        {
+          "en": "Asiatic Black Bear 2",
+          "hi": "एशियाई काला भालू 2",
+          "_id": "69d3baa815eaf4c5297741dc"
+        },
+        {
+          "en": "Hamadryas Baboon",
+          "hi": "हमाद्रीस बबून",
+          "_id": "69d3baa815eaf4c5297741dd"
+        },
+        {
+          "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+          "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)",
+          "_id": "69d3baa815eaf4c5297741de"
+        },
+        {
+          "en": "Sloth Bear",
+          "hi": "रीछ भालू",
+          "_id": "69d3baa815eaf4c5297741df"
+        },
+        {
+          "en": "Brow antlered Deer (Sangai)",
+          "hi": "भौंह-मृग हिरण (संगाई)",
+          "_id": "69d3baa815eaf4c5297741e0"
+        },
+        {
+          "en": "Hippopotamus",
+          "hi": "दरियाई घोड़ा",
+          "_id": "69d3baa815eaf4c5297741e1"
+        },
+        {
+          "en": "Sika Deer",
+          "hi": "सिका हिरण",
+          "_id": "69d3baa815eaf4c5297741e2"
+        },
+        {
+          "en": "Chinkara ",
+          "hi": "चिंकारा",
+          "_id": "69d3baa815eaf4c5297741e3"
+        },
+        {
+          "en": "Wild Boar",
+          "hi": "जंगली सूअर",
+          "_id": "69d3baa815eaf4c5297741e4"
+        },
+        {
+          "en": "Indian Peafowl (Leucistic)",
+          "hi": "भारतीय मोर (ल्यूसिस्टिक)",
+          "_id": "69d3baa815eaf4c5297741e5"
+        },
+        {
+          "en": "Asiatic Lion 2",
+          "hi": "एशियाई सिंह 2",
+          "_id": "69d3baa815eaf4c5297741e6"
+        },
+        {
+          "en": "Asiatic Lion 1",
+          "hi": "एशियाई सिंह 1",
+          "_id": "69d3baa815eaf4c5297741e7"
+        },
+        {
+          "en": "Stump tailed Macaque",
+          "hi": "छोटी पूँछ वाला बंदर",
+          "_id": "69d3baa815eaf4c5297741e8"
+        },
+        {
+          "en": "Asian Palm Civet",
+          "hi": "कस्तूरी बिल्ली",
+          "_id": "69d3baa815eaf4c5297741e9"
+        },
+        {
+          "en": "Aquatic Birds Aviary",
+          "hi": "जलीय पक्षी एवियरी",
+          "_id": "69d3baa815eaf4c5297741ea"
+        },
+        {
+          "en": "Rhesus Macaque",
+          "hi": "रीसस बंदर",
+          "_id": "69d3baa815eaf4c5297741eb"
+        },
+        {
+          "en": "Indian Elephant",
+          "hi": "भारतीय हाथी",
+          "_id": "69d3baa815eaf4c5297741ec"
+        },
+        {
+          "en": "Asiatic Wild Dog (Dhole)",
+          "hi": "एशियाई जंगली कुत्ता (ढोल)",
+          "_id": "69d3baa815eaf4c5297741ed"
+        },
+        {
+          "en": "Smooth coated Otter",
+          "hi": "चिकनी खाल वाला ऊदबिलाव",
+          "_id": "69d3baa815eaf4c5297741ee"
+        },
+        {
+          "en": "White Tiger",
+          "hi": "सफेद बाघ",
+          "_id": "69d3baa815eaf4c5297741ef"
+        },
+        {
+          "en": "Indian Crested Porcupine",
+          "hi": "इंडियन क्रेस्टेड साही",
+          "_id": "69d3baa815eaf4c5297741f0"
+        },
+        {
+          "en": "Indian  Jackal",
+          "hi": "भारतीय सियार",
+          "_id": "69d3baa815eaf4c5297741f1"
+        },
+        {
+          "en": "Indian Wolf",
+          "hi": "भारतीय भेड़िया",
+          "_id": "69d3baa815eaf4c5297741f2"
+        },
+        {
+          "en": "Royal Bengal Tiger",
+          "hi": "रॉयल बंगाल टाइगर",
+          "_id": "69d3baa815eaf4c5297741f3"
+        },
+        {
+          "en": "Reptile House",
+          "hi": "सरीसृप गृह",
+          "_id": "69d3baa815eaf4c5297741f4"
+        },
+        {
+          "en": "Siamese Crocodile",
+          "hi": "सियामी मगरमच्छ",
+          "_id": "69d3baa815eaf4c5297741f5"
+        },
+        {
+          "en": "Marsh Crocodile",
+          "hi": "दलदली मगरमच्छ",
+          "_id": "69d3baa815eaf4c5297741f6"
+        },
+        {
+          "en": "Common Ostrich",
+          "hi": "आम शुतुरमुर्ग",
+          "_id": "69d3baa815eaf4c5297741f7"
+        },
+        {
+          "en": "Emu",
+          "hi": "एमु",
+          "_id": "69d3baa815eaf4c5297741f8"
+        }
+      ],
+      "stops": [
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Water Birds Buggy Point",
+              "hi": "जल पक्षी बग्गी प्वाइंट"
+            },
+            "location_name": {
+              "en": "Water Birds Buggy Point",
+              "hi": "बुग्गी प्वाइंट 2"
+            },
+            "_id": "69c3c794a5d4d801266925fa",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df646e",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sambar Deer",
+                  "hi": "सांभर हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sambar Deer 1",
+                    "hi": "सांबर हिरण 1"
+                  },
+                  "scientific_name": {
+                    "en": "Rusa unicolor",
+                    "hi": "रूसा यूनिकोलर"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, marshlands, and grasslands.",
+                    "hi": "वन, दलदली भूमि और घास के मैदान।"
+                  },
+                  "_id": "69b3e3f46f7a0f1da140c20b"
+                },
+                "locationId": "69d0fe4cf25be44811df6358"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Painted Stork ",
+                  "hi": "चित्रित सारस"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Painted Stork",
+                    "hi": "चित्रित सारस"
+                  },
+                  "scientific_name": {
+                    "en": "Mycteria leucocephala",
+                    "hi": "मिक्टेरिया ल्यूकोसेफाला"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Wetlands, shallow lakes, marshes, and riverbanks.",
+                    "hi": "आर्द्रभूमियाँ, उथली झीलें, दलदल और नदी तट।"
+                  },
+                  "_id": "69a91b933dc9a64a191f4dfd"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Blackbuck",
+                  "hi": "काला हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Blackbuck 1",
+                    "hi": "काला हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Antilope cervicapra",
+                    "hi": "एंटीलोप सर्विकैप्रा"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Grasslands, open plains, scrublands.",
+                    "hi": "घास के मैदान, खुले मैदान, झाड़ियाँ।"
+                  },
+                  "_id": "69a91b963dc9a64a191f4e44"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Lion Tailed Macaque",
+                  "hi": "शेर की पूंछ वाला मकाक"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Lion Tailed Macaque",
+                    "hi": "शेर-पूंछ वाला मकाक"
+                  },
+                  "scientific_name": {
+                    "en": "Macaca silenus",
+                    "hi": "मकाका सिलीनस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Tropical rainforests.",
+                    "hi": "उष्णकटिबंधीय वर्षावन."
+                  },
+                  "_id": "69a91b993dc9a64a191f4e7b"
+                },
+                "locationId": "69d0fe58f25be44811df6446"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Black Bear 2",
+                  "hi": "एशियाई काला भालू 2"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Black Bear 2",
+                    "hi": "एशियाई काला भालू 2"
+                  },
+                  "scientific_name": {
+                    "en": "Ursus thibetanus",
+                    "hi": " उर्सस थिबेटानस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, shrublands, grasslands, and wetlands.",
+                    "hi": "वन, झाड़ियाँ, घास के मैदान और आर्द्रभूमि।"
+                  },
+                  "_id": "69b3e6066f7a0f1da1412c0c"
+                },
+                "locationId": "69d0fe58f25be44811df641e"
+              },
+              {
+                "name": {
+                  "en": "a",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Hamadryas Baboon",
+                  "hi": "हमाद्रीस बबून"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Hamadryas Baboon",
+                    "hi": "हमाद्रीस बबून"
+                  },
+                  "scientific_name": {
+                    "en": "Papio hamadryas",
+                    "hi": "पापियो हमाद्रयस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rocky deserts, savannas, and cliffs.",
+                    "hi": "चट्टानी रेगिस्तान, सवाना और चट्टानें।"
+                  },
+                  "_id": "69a91ba73dc9a64a191f517f"
+                },
+                "locationId": "69d0fe58f25be44811df6448"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:32.695Z",
+            "updatedAt": "2026-04-06T13:27:45.588Z",
+            "__v": 0
+          },
+          "_id": "69d0bbc26eccf156e4d3057b"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Rhinoceros Buggy Point",
+              "hi": "बुग्गी पॉइंट 5"
+            },
+            "location_name": {
+              "en": "Rhinoceros Buggy Point",
+              "hi": "बुग्गी पॉइंट 5"
+            },
+            "_id": "69c3c795a5d4d80126692600",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df647a",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+                  "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+                    "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)"
+                  },
+                  "scientific_name": {
+                    "en": "Rhinoceros unicornis",
+                    "hi": "राइनोसेरस यूनिकॉर्निस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, floodplains, and swampy forests.",
+                    "hi": "घास के मैदान, बाढ़ के मैदान और दलदली जंगल।"
+                  },
+                  "_id": "69a91b9d3dc9a64a191f4ec8"
+                },
+                "locationId": "69d0fe4df25be44811df636b"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Black Bear",
+                  "hi": "एशियाई काला भालू"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Black Bear 2",
+                    "hi": "एशियाई काला भालू 2"
+                  },
+                  "scientific_name": {
+                    "en": "Ursus thibetanus",
+                    "hi": " उर्सस थिबेटानस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, shrublands, grasslands, and wetlands.",
+                    "hi": "वन, झाड़ियाँ, घास के मैदान और आर्द्रभूमि।"
+                  },
+                  "_id": "69b3e6066f7a0f1da1412c0c"
+                },
+                "locationId": "69d0fe58f25be44811df641e"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sloth Bear",
+                  "hi": "सुस्त भालू"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sloth Bear",
+                    "hi": "सुस्त भालू"
+                  },
+                  "scientific_name": {
+                    "en": "Melursus ursinus",
+                    "hi": "मेलर्सस उर्सिनस"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dry forests, shrubland, and grasslands.",
+                    "hi": "सूखे जंगल, झाड़ियाँ और घास के मैदान।"
+                  },
+                  "_id": "69a91b993dc9a64a191f4e85"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Brow-antlered Deer (Sangai)",
+                  "hi": "भौंह-मृग हिरण (संगाई)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Brow antlered Deer (Sangai) 1",
+                    "hi": "भौंह-मृग हिरण (संगाई)"
+                  },
+                  "scientific_name": {
+                    "en": "Rucervus eldii",
+                    "hi": "रुसेर्वस एल्डी"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, woodlands, shrublands, wetlands, and grasslands.",
+                    "hi": "जंगल, जंगल, झाड़ियाँ, आर्द्रभूमि और घास के मैदान।"
+                  },
+                  "_id": "69a91b9d3dc9a64a191f4ed2"
+                },
+                "locationId": "69d0fe57f25be44811df63eb"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:33.333Z",
+            "updatedAt": "2026-04-06T13:27:45.646Z",
+            "__v": 0
+          },
+          "_id": "69d3baa815eaf4c5297741fa"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Hippopotamus Buggy Point",
+              "hi": "बुग्गी प्वाइंट 8"
+            },
+            "location_name": {
+              "en": "Hippopotamus Buggy Point",
+              "hi": "बुग्गी प्वाइंट 8"
+            },
+            "_id": "69c3c796a5d4d80126692609",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df6488",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Hippopotamus",
+                  "hi": "जलहस्ती"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Hippopotamus",
+                    "hi": "जलहस्ती"
+                  },
+                  "scientific_name": {
+                    "en": "Hippopotamus amphibius",
+                    "hi": "हिप्पोपोटेमस एम्फ़ीबियस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rivers, lakes, and freshwater wetlands.",
+                    "hi": "नदियाँ, झीलें और मीठे पानी की आर्द्रभूमियाँ।"
+                  },
+                  "_id": "69a91ba73dc9a64a191f517a"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sikka Deer",
+                  "hi": "सिक्का हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sika Deer",
+                    "hi": "सिका हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Cervus nippon",
+                    "hi": " सर्वस निप्पोन"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, grasslands, and shrublands.",
+                    "hi": "वन, घास के मैदान और झाड़ियाँ।"
+                  },
+                  "_id": "69a91ba83dc9a64a191f5184"
+                },
+                "locationId": "69d0fe59f25be44811df6778"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Chinkara",
+                  "hi": "चिंकारा"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Chinkara ",
+                    "hi": "चिंकारा"
+                  },
+                  "scientific_name": {
+                    "en": "Gazella bennettii",
+                    "hi": " गज़ेला बेनेट्टी"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Arid plains, deserts, and dry scrublands.",
+                    "hi": "शुष्क मैदान, रेगिस्तान और शुष्क झाड़ियाँ।"
+                  },
+                  "_id": "69a91b983dc9a64a191f4e67"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Wild Boar",
+                  "hi": "जंगली सूअर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Wild Boar",
+                    "hi": "जंगली सूअर"
+                  },
+                  "scientific_name": {
+                    "en": "Sus scrofa",
+                    "hi": "सस स्क्रोफा"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, wetlands, grasslands, and agricultural areas.",
+                    "hi": "वन, आर्द्रभूमि, घास के मैदान और कृषि क्षेत्र।"
+                  },
+                  "_id": "69a91b9c3dc9a64a191f4ec3"
+                },
+                "locationId": "69d0fe58f25be44811df6426"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Peafowl (Leucistic)",
+                  "hi": "भारतीय मोर (ल्यूसिस्टिक)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Peafowl (Leucistic) 1",
+                    "hi": "भारतीय मोर (ल्यूसिस्टिक)"
+                  },
+                  "scientific_name": {
+                    "en": "Pavo cristatus ",
+                    "hi": "पावो क्रिस्टेटस"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Forest edges, farmlands, scrublands, and open woodland areas.",
+                    "hi": "जंगल के किनारे, खेत, झाड़ियाँ और खुले वन क्षेत्र।"
+                  },
+                  "_id": "69a91b903dc9a64a191f4dc6"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Lion 2",
+                  "hi": "एशियाई सिंह 2"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Lion 2",
+                    "hi": "एशियाई सिंह 2"
+                  },
+                  "scientific_name": {
+                    "en": "Panthera leo persica",
+                    "hi": "पैंथेरा लियो पर्सिका"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dry forests, scrublands, and grasslands.",
+                    "hi": "सूखे जंगल, झाड़ियाँ और घास के मैदान।"
+                  },
+                  "_id": "69a91b9a3dc9a64a191f4e8a"
+                },
+                "locationId": "69d0fe58f25be44811df6424"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:34.292Z",
+            "updatedAt": "2026-04-06T13:27:45.707Z",
+            "__v": 0
+          },
+          "_id": "69d3baa815eaf4c5297741fb"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Lion Buggi Point",
+              "hi": "लायन बग्गी पॉइंट"
+            },
+            "location_name": {
+              "en": "Lion Buggi Point",
+              "hi": ""
+            },
+            "_id": "69d0ff599d9d06f1ac035eec",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe59f25be44811df6784",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Lion 1",
+                  "hi": "एशियाई सिंह 1"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Lion 1",
+                    "hi": "एशियाई सिंह 1"
+                  },
+                  "scientific_name": {
+                    "en": "Panthera leo persica",
+                    "hi": "पैंथेरा लियो पर्सिका"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dry deciduous forests, grasslands, and scrub forests.",
+                    "hi": "शुष्क पर्णपाती वन, घास के मैदान और झाड़ियाँ वन।"
+                  },
+                  "_id": "69b3b42f810fae910cbc4a07"
+                },
+                "locationId": "69d0fe4ff25be44811df6387"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Stump Tailed Macaque",
+                  "hi": "स्टंप टेल्ड मकाक"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Stump tailed Macaque",
+                    "hi": "छोटी पूँछ वाला बंदर"
+                  },
+                  "scientific_name": {
+                    "en": "Macaca arctoides",
+                    "hi": "मैकाका आर्क्टोइड्स"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dense forests and hilly terrain.",
+                    "hi": "घने जंगल और पहाड़ी इलाका."
+                  },
+                  "_id": "69a91b993dc9a64a191f4e80"
+                },
+                "locationId": "69d0fe4ff25be44811df6383"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asian Palm Civet",
+                  "hi": "एशियन पाम सिवेट"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asian Palm Civet",
+                    "hi": "एशियन पाम सिवेट"
+                  },
+                  "scientific_name": {
+                    "en": "Paradoxurus hermaphroditus",
+                    "hi": " पैराडॉक्स्यूरस हरमैफ्रोडाइटस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical forests, agricultural plantations, and urban areas.",
+                    "hi": "उष्णकटिबंधीय वन, कृषि बागान और शहरी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4e9e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Aquatic Birds Aviary",
+                  "hi": "जलीय पक्षी एवियरी"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Aquatic Birds Aviary",
+                    "hi": "जलीय पक्षी एवियरी"
+                  },
+                  "scientific_name": {
+                    "en": "Mixed species aviary (various aquatic bird species)",
+                    "hi": "मिश्रित प्रजाति एवियरी (विभिन्न जलीय पक्षी प्रजातियाँ)"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Lakes, ponds, wetlands, marshes, rivers, and coastal areas.",
+                    "hi": "झीलें, तालाब, आर्द्रभूमि, दलदल, नदियाँ और तटीय क्षेत्र।"
+                  },
+                  "_id": "69b3b93a810fae910cbd3af6"
+                },
+                "locationId": "69d0fe59f25be44811df66ec"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Rhesus Macaque",
+                  "hi": "रीसस मकाक"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Rhesus Macaque 1",
+                    "hi": "रीसस बंदर"
+                  },
+                  "scientific_name": {
+                    "en": "Macaca mulatta",
+                    "hi": "मैकाका मुलाटा"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, urban areas, and farmlands.",
+                    "hi": "वन, शहरी क्षेत्र और खेत।"
+                  },
+                  "_id": "69a91b983dc9a64a191f4e71"
+                },
+                "locationId": null
+              }
+            ],
+            "createdAt": "2026-04-04T12:08:57.944Z",
+            "updatedAt": "2026-04-06T13:27:45.791Z",
+            "__v": 0
+          },
+          "_id": "69d3baa815eaf4c5297741fc"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Elephant Buggy Point",
+              "hi": ""
+            },
+            "location_name": {
+              "en": "Elephant Buggy Point",
+              "hi": ""
+            },
+            "_id": "69d0ff599d9d06f1ac035ee6",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df648c",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Elephant",
+                  "hi": "भारतीय हाथी"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Elephant",
+                    "hi": "भारतीय हाथी"
+                  },
+                  "scientific_name": {
+                    "en": "Elephas maximus",
+                    "hi": "एलेफस मैक्सिमस"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests and grasslands.",
+                    "hi": "यह जंगलों और घास के मैदानों में रहता है।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e5d"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Wild Dog (Dhole)",
+                  "hi": "एशियाई जंगली कुत्ता (ढोल)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Wild Dog (Dhole)",
+                    "hi": "एशियाई जंगली कुत्ता (ढोल)"
+                  },
+                  "scientific_name": {
+                    "en": "Cuon alpinus",
+                    "hi": "क्यून ऐल्पिनस"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical and subtropical forests, grasslands, and mountainous regions.",
+                    "hi": "उष्णकटिबंधीय और उपोष्णकटिबंधीय वन, घास के मैदान और पहाड़ी क्षेत्र।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e58"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Smooth Coated Otter",
+                  "hi": "चिकना लेपित ऊदबिलाव"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Smooth coated Otter",
+                    "hi": "चिकनी खाल वाला ऊदबिलाव"
+                  },
+                  "scientific_name": {
+                    "en": "Lutrogale perspicillata",
+                    "hi": "लुट्रोगेल पर्सपिसिलाटा"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rivers, lakes, wetlands, mangroves, and coastal areas.",
+                    "hi": "नदियाँ, झीलें, आर्द्रभूमियाँ, मैंग्रोव और तटीय क्षेत्र।"
+                  },
+                  "_id": "69b3af6e810fae910cbc304a"
+                },
+                "locationId": "69d0fe58f25be44811df6418"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "type": "animal",
+                "animalId": null
+              }
+            ],
+            "createdAt": "2026-04-04T12:08:57.875Z",
+            "updatedAt": "2026-04-06T13:27:45.727Z",
+            "__v": 0
+          },
+          "_id": "69d3baa815eaf4c5297741fd"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "White Tiger Buggy Point",
+              "hi": "व्हाइट टाइगर बग्गी पॉइंट"
+            },
+            "location_name": {
+              "en": "White Tiger Buggy Point",
+              "hi": ""
+            },
+            "_id": "69d0ff599d9d06f1ac035eea",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df64a0",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "White Tiger",
+                  "hi": "सफेद बाघ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "White Tiger",
+                    "hi": "सफेद बाघ"
+                  },
+                  "scientific_name": {
+                    "en": "Panthera tigris tigris (Leucistic Morph)",
+                    "hi": "पैंथेरा टाइग्रिस टाइग्रिस (ल्यूसीस्टिक रूप) "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, mangroves, and grasslands.",
+                    "hi": "वन, मैंग्रोव और घास के मैदान।"
+                  },
+                  "_id": "69a91b9a3dc9a64a191f4e99"
+                },
+                "locationId": "69d0fe51f25be44811df63ac"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Crested Porcupine",
+                  "hi": "इंडियन क्रेस्टेड साही"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Crested Porcupine",
+                    "hi": "इंडियन क्रेस्टेड साही"
+                  },
+                  "scientific_name": {
+                    "en": "Hystrix indica",
+                    "hi": "हायस्ट्रिक्स इंडिका "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, forests, and rocky hill regions.",
+                    "hi": "घास के मैदान, जंगल और चट्टानी पहाड़ी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4ead"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asian Palm Civet",
+                  "hi": "एशियन पाम सिवेट"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asian Palm Civet",
+                    "hi": "एशियन पाम सिवेट"
+                  },
+                  "scientific_name": {
+                    "en": "Paradoxurus hermaphroditus",
+                    "hi": " पैराडॉक्स्यूरस हरमैफ्रोडाइटस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical forests, agricultural plantations, and urban areas.",
+                    "hi": "उष्णकटिबंधीय वन, कृषि बागान और शहरी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4e9e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian  Jackal",
+                  "hi": "भारतीय सियार"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Jackal",
+                    "hi": "भारतीय सियार"
+                  },
+                  "scientific_name": {
+                    "en": "Canis aureus indicus",
+                    "hi": "Canis aureus indicus"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forest edges, grasslands, and villages.",
+                    "hi": "जंगल के किनारे, घास के मैदान और गाँव।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e4e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Wolf",
+                  "hi": "भारतीय भेड़िया"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Wolf",
+                    "hi": "भारतीय भेड़िया"
+                  },
+                  "scientific_name": {
+                    "en": "Canis lupus pallipes",
+                    "hi": "कैनिस ल्यूपस पल्लिप्स"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Semi-arid grasslands, and scrublands.",
+                    "hi": "अर्ध-शुष्क घास के मैदान और झाड़ियाँ।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e53"
+                },
+                "locationId": null
+              }
+            ],
+            "createdAt": "2026-04-04T12:08:57.921Z",
+            "updatedAt": "2026-04-06T13:27:45.764Z",
+            "__v": 0
+          },
+          "_id": "69d3baa815eaf4c5297741fe"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Royal Bengal Tiger Buggy Point",
+              "hi": "बुग्गी प्वाइंट 1"
+            },
+            "location_name": {
+              "en": "Royal Bengal Tiger Buggy Point",
+              "hi": "बुग्गी प्वाइंट 1"
+            },
+            "_id": "69c3c794a5d4d801266925f8",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df646c",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Bengal Tiger",
+                  "hi": "बंगाल टाइगर"
+                },
+                "type": "animal",
+                "animalId": null,
+                "locationId": "69d0fe50f25be44811df639f"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Reptile House",
+                  "hi": "सरीसृपों का घर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Reptile House",
+                    "hi": "सरीसृप गृह"
+                  },
+                  "scientific_name": {
+                    "en": "Multiple species (Reptilia)",
+                    "hi": "विभिन्न प्रजातियाँ (रेप्टिलिया)"
+                  },
+                  "category": {
+                    "en": "Reptiles",
+                    "hi": "सरीसृप"
+                  },
+                  "habitat": {
+                    "en": "Forests, deserts, wetlands, rivers, and rocky areas depending on the species.",
+                    "hi": "प्रजातियों के आधार पर जंगल, रेगिस्तान, आर्द्रभूमि, नदियाँ और चट्टानी क्षेत्र।"
+                  },
+                  "_id": "69b3fa3c6f7a0f1da1417e4f"
+                },
+                "locationId": "69d0fe58f25be44811df63fb"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Siamese Crocodile",
+                  "hi": "स्याम देश का मगरमच्छ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Siamese Crocodile",
+                    "hi": "सियामी मगरमच्छ"
+                  },
+                  "scientific_name": {
+                    "en": "Crocodylus siamensis",
+                    "hi": "क्रोकोडायलस सियामेन्सिस"
+                  },
+                  "category": {
+                    "en": "Reptiles",
+                    "hi": "सरीसृप"
+                  },
+                  "habitat": {
+                    "en": "Slow-moving rivers, marshes, swamps, and freshwater wetlands.",
+                    "hi": "धीमी गति से बहने वाली नदियाँ, दलदल, दलदल और मीठे पानी की आर्द्रभूमियाँ।"
+                  },
+                  "_id": "69a91ba83dc9a64a191f5189"
+                },
+                "locationId": "69d0fe53f25be44811df63b8"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Marsh Crocodile",
+                  "hi": "मार्श मगरमच्छ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Marsh Crocodile 2",
+                    "hi": "दलदली मगरमच्छ"
+                  },
+                  "scientific_name": {
+                    "en": "Crocodylus palustris",
+                    "hi": "क्रोकोडाइलस पालुस्ट्रिस"
+                  },
+                  "category": {
+                    "en": "Reptiles",
+                    "hi": "सरीसृप"
+                  },
+                  "habitat": {
+                    "en": "Freshwater lakes, rivers, marshes, and reservoirs.",
+                    "hi": "मीठे पानी की झीलें, नदियाँ, दलदल और जलाशय।"
+                  },
+                  "_id": "69b14a2f6342da015966f5a9"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Common Ostrich",
+                  "hi": "आम शुतुरमुर्ग"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Common Ostrich",
+                    "hi": "आम शुतुरमुर्ग"
+                  },
+                  "scientific_name": {
+                    "en": "Struthio camelus",
+                    "hi": "स्ट्रूथियो कैमलस "
+                  },
+                  "category": {
+                    "en": "Bird ",
+                    "hi": "पक्षी "
+                  },
+                  "habitat": {
+                    "en": " Savannas, deserts, and grasslands.",
+                    "hi": "सवाना, रेगिस्तान और घास के मैदान।"
+                  },
+                  "_id": "69a91ba53dc9a64a191f5150"
+                },
+                "locationId": "69d0fe56f25be44811df63dc"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Emu",
+                  "hi": "एमु"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Emu",
+                    "hi": "एमु"
+                  },
+                  "scientific_name": {
+                    "en": "Dromaius novaehollandiae",
+                    "hi": "ड्रोमायस नोवाएहॉलैंडिए "
+                  },
+                  "category": {
+                    "en": "Bird ",
+                    "hi": "पक्षी "
+                  },
+                  "habitat": {
+                    "en": "Grasslands, savannas, and open forests.",
+                    "hi": "घास के मैदान, सवाना और खुले जंगल।"
+                  },
+                  "_id": "69a91ba43dc9a64a191f512d"
+                },
+                "locationId": "69d0fe56f25be44811df63e0"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:32.391Z",
+            "updatedAt": "2026-04-06T13:27:45.564Z",
+            "__v": 0
+          },
+          "_id": "69d3baa815eaf4c5297741ff"
+        }
+      ],
+      "no_of_stops": 7,
+      "target_species": [
+        {
+          "en": "Sambar Deer",
+          "hi": "सांभर हिरण",
+          "_id": "69d3baa815eaf4c529774200"
+        },
+        {
+          "en": "Painted Stork",
+          "hi": "चित्रित सारस",
+          "_id": "69d3baa815eaf4c529774201"
+        },
+        {
+          "en": "Blackbuck",
+          "hi": "काला हिरण",
+          "_id": "69d3baa815eaf4c529774202"
+        },
+        {
+          "en": "Lion Tailed Macaque",
+          "hi": "शेर-पूंछ वाला मकाक",
+          "_id": "69d3baa815eaf4c529774203"
+        },
+        {
+          "en": "Asiatic Black Bear 2",
+          "hi": "एशियाई काला भालू 2",
+          "_id": "69d3baa815eaf4c529774204"
+        },
+        {
+          "en": "Hamadryas Baboon",
+          "hi": "हमाद्रीस बबून",
+          "_id": "69d3baa815eaf4c529774205"
+        },
+        {
+          "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+          "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)",
+          "_id": "69d3baa815eaf4c529774206"
+        },
+        {
+          "en": "Sloth Bear",
+          "hi": "रीछ भालू",
+          "_id": "69d3baa815eaf4c529774207"
+        },
+        {
+          "en": "Brow antlered Deer (Sangai)",
+          "hi": "भौंह-मृग हिरण (संगाई)",
+          "_id": "69d3baa815eaf4c529774208"
+        },
+        {
+          "en": "Hippopotamus",
+          "hi": "दरियाई घोड़ा",
+          "_id": "69d3baa815eaf4c529774209"
+        },
+        {
+          "en": "Sika Deer",
+          "hi": "सिका हिरण",
+          "_id": "69d3baa815eaf4c52977420a"
+        },
+        {
+          "en": "Chinkara ",
+          "hi": "चिंकारा",
+          "_id": "69d3baa815eaf4c52977420b"
+        },
+        {
+          "en": "Wild Boar",
+          "hi": "जंगली सूअर",
+          "_id": "69d3baa815eaf4c52977420c"
+        },
+        {
+          "en": "Indian Peafowl (Leucistic)",
+          "hi": "भारतीय मोर (ल्यूसिस्टिक)",
+          "_id": "69d3baa815eaf4c52977420d"
+        },
+        {
+          "en": "Asiatic Lion 2",
+          "hi": "एशियाई सिंह 2",
+          "_id": "69d3baa815eaf4c52977420e"
+        },
+        {
+          "en": "Asiatic Lion 1",
+          "hi": "एशियाई सिंह 1",
+          "_id": "69d3baa815eaf4c52977420f"
+        },
+        {
+          "en": "Stump tailed Macaque",
+          "hi": "छोटी पूँछ वाला बंदर",
+          "_id": "69d3baa815eaf4c529774210"
+        },
+        {
+          "en": "Asian Palm Civet",
+          "hi": "कस्तूरी बिल्ली",
+          "_id": "69d3baa815eaf4c529774211"
+        },
+        {
+          "en": "Aquatic Birds Aviary",
+          "hi": "जलीय पक्षी एवियरी",
+          "_id": "69d3baa815eaf4c529774212"
+        },
+        {
+          "en": "Rhesus Macaque",
+          "hi": "रीसस बंदर",
+          "_id": "69d3baa815eaf4c529774213"
+        },
+        {
+          "en": "Indian Elephant",
+          "hi": "भारतीय हाथी",
+          "_id": "69d3baa815eaf4c529774214"
+        },
+        {
+          "en": "Asiatic Wild Dog (Dhole)",
+          "hi": "एशियाई जंगली कुत्ता (ढोल)",
+          "_id": "69d3baa815eaf4c529774215"
+        },
+        {
+          "en": "Smooth coated Otter",
+          "hi": "चिकनी खाल वाला ऊदबिलाव",
+          "_id": "69d3baa815eaf4c529774216"
+        },
+        {
+          "en": "White Tiger",
+          "hi": "सफेद बाघ",
+          "_id": "69d3baa815eaf4c529774217"
+        },
+        {
+          "en": "Indian Crested Porcupine",
+          "hi": "इंडियन क्रेस्टेड साही",
+          "_id": "69d3baa815eaf4c529774218"
+        },
+        {
+          "en": "Indian  Jackal",
+          "hi": "भारतीय सियार",
+          "_id": "69d3baa815eaf4c529774219"
+        },
+        {
+          "en": "Indian Wolf",
+          "hi": "भारतीय भेड़िया",
+          "_id": "69d3baa815eaf4c52977421a"
+        },
+        {
+          "en": "Royal Bengal Tiger",
+          "hi": "रॉयल बंगाल टाइगर",
+          "_id": "69d3baa815eaf4c52977421b"
+        },
+        {
+          "en": "Reptile House",
+          "hi": "सरीसृप गृह",
+          "_id": "69d3baa815eaf4c52977421c"
+        },
+        {
+          "en": "Siamese Crocodile",
+          "hi": "सियामी मगरमच्छ",
+          "_id": "69d3baa815eaf4c52977421d"
+        },
+        {
+          "en": "Marsh Crocodile",
+          "hi": "दलदली मगरमच्छ",
+          "_id": "69d3baa815eaf4c52977421e"
+        },
+        {
+          "en": "Common Ostrich",
+          "hi": "आम शुतुरमुर्ग",
+          "_id": "69d3baa815eaf4c52977421f"
+        },
+        {
+          "en": "Emu",
+          "hi": "एमु",
+          "_id": "69d3baa815eaf4c529774220"
+        }
+      ],
+      "createdAt": "2026-04-04T07:20:34.267Z",
+      "updatedAt": "2026-04-10T04:16:39.924Z",
+      "__v": 0
+    },
+    {
+      "name": {
+        "en": "Explorer Tour",
+        "hi": "एक्सप्लोरर टूर"
+      },
+      "tag": {
+        "en": "#ExplorerTour #EcoTrail #FullZooLoop",
+        "hi": "#एक्सप्लोररटूर #इकोट्रेल #फुलज़ूलूप"
+      },
+      "narrative": {
+        "en": "This is your 1st stop at Water Birds Buggy Point. Here you will see Sambar Deer, Painted Stork, Blackbuck, Lion Tailed Macaque, Asiatic Black Bear 2, Hamadryas Baboon.\n\nThis is your 2nd stop at Sambar Deer Buggy Point. Here you will see Blackbuck, Hog Deer, Whitebuck, Bengal Fox, Gaur, Indian Star Tortoise.\n\nThis is your 3rd stop at Small Cats Buggy Point. Here you will see Bengal Fox, Gaur, Spotted Deer, Brow antlered Deer (Sangai).\n\nThis is your 4th stop at Rhinoceros Buggy Point. Here you will see Indian Rhinoceros (Greater One-Horned Rhinoceros), Asiatic Black Bear 2, Sloth Bear, Brow antlered Deer (Sangai).\n\nThis is your 5th stop at Birds Buggy Point. Here you will see Blue and Gold Macaw, Red and Blue Macaw, Illiger’s Macaw (Blue-winged Macaw), Eclectus Parrot, Bare eyed Cockatoo, African Grey Parrot, Khalij Pheasant 2, Lady Amherst’s Pheasant, Golden Pheasant, Silver Pheasant, Grey Francolin, Black Partridge, Rose-ringed Parakeet, Indian Grey Hornbill, Red Jungle Fowl 1, Alexandrine Parakeet, Indian Peafowl, White Peacock, Spotted Dove.\n\nThis is your 6th stop at Raptors Buggy Point. Here you will see Great Horned Owl, Striped Hyena, Black Kite, Brahminy Kite, Egyptian Vulture, Wild Boar.\n\nThis is your 7th stop at Hippopotamus Buggy Point. Here you will see Hippopotamus, Sika Deer, Chinkara , Wild Boar, Indian Peafowl (Leucistic), Asiatic Lion 2.\n\nThis is your 8th stop at Lion Buggi Point. Here you will see Asiatic Lion 1, Stump tailed Macaque, Asian Palm Civet, Aquatic Birds Aviary, Rhesus Macaque.\n\nThis is your 9th stop at Elephant Buggy Point. Here you will see Indian Elephant, Asiatic Wild Dog (Dhole), Smooth coated Otter.\n\nThis is your 10th stop at White Tiger Buggy Point. Here you will see White Tiger, Indian Crested Porcupine, Asian Palm Civet, Indian  Jackal, Indian Wolf.",
+        "hi": "वॉटर बर्ड्स बग्गी पॉइंट पर यह आपका पहला पड़ाव है। \n\nसांबर डियर बग्गी पॉइंट पर यह आपका दूसरा पड़ाव है। \n\nस्मॉल कैट्स बग्गी पॉइंट पर यह आपका तीसरा पड़ाव है। \n\nगैंडा बग्गी प्वाइंट पर यह आपका चौथा पड़ाव है। \n\nबर्ड्स बग्गी पॉइंट पर यह आपका 5वां पड़ाव है। \n\nरैप्टर्स बग्गी पॉइंट पर यह आपका छठा पड़ाव है। \n\nहिप्पोपोटामस बग्गी प्वाइंट पर यह आपका सातवां पड़ाव है। \n\nलायन बुग्गी पॉइंट पर यह आपका आठवां पड़ाव है। \n\nएलीफेंट बग्गी प्वाइंट पर यह आपका 9वां पड़ाव है। \n\nव्हाइट टाइगर बग्गी प्वाइंट पर यह आपका 10वां पड़ाव है। "
+      },
+      "description": {
+        "en": "The Explorer Tour (Green Route) is a 4-hour, 7–8 km loop covering all 10 stops and 60+ species. It offers a complete wildlife experience with highlights like tigers, elephants, rare deer, primates, and diverse birdlife.",
+        "hi": "एक्सप्लोरर टूर (ग्रीन रूट) 4 घंटे, 7-8 किमी का लूप है जो सभी 10 स्टॉप और 60+ प्रजातियों को कवर करता है। "
+      },
+      "_id": "69d0eed8944f6afb6bc0204a",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "image": "https://dev.iwayplus.in/uploads/CkUiI8DNMGnX-1775483223140-Gemini_Generated_Image_c5dkgic5dkgic5dk.png",
+      "duration": 240,
+      "distance": 8000,
+      "key_highlights": [
+        {
+          "en": "Sambar Deer",
+          "hi": "सांभर हिरण",
+          "_id": "69d3ba6f15eaf4c5297740ba"
+        },
+        {
+          "en": "Painted Stork",
+          "hi": "चित्रित सारस",
+          "_id": "69d3ba6f15eaf4c5297740bb"
+        },
+        {
+          "en": "Blackbuck",
+          "hi": "काला हिरण",
+          "_id": "69d3ba6f15eaf4c5297740bc"
+        },
+        {
+          "en": "Lion Tailed Macaque",
+          "hi": "शेर-पूंछ वाला मकाक",
+          "_id": "69d3ba6f15eaf4c5297740bd"
+        },
+        {
+          "en": "Asiatic Black Bear 2",
+          "hi": "एशियाई काला भालू 2",
+          "_id": "69d3ba6f15eaf4c5297740be"
+        },
+        {
+          "en": "Hamadryas Baboon",
+          "hi": "हमाद्रीस बबून",
+          "_id": "69d3ba6f15eaf4c5297740bf"
+        },
+        {
+          "en": "Hog Deer",
+          "hi": "सूअर हिरण / हॉग डियर",
+          "_id": "69d3ba6f15eaf4c5297740c0"
+        },
+        {
+          "en": "Whitebuck",
+          "hi": "सफेद हिरण",
+          "_id": "69d3ba6f15eaf4c5297740c1"
+        },
+        {
+          "en": "Bengal Fox",
+          "hi": "बंगाल लोमड़ी",
+          "_id": "69d3ba6f15eaf4c5297740c2"
+        },
+        {
+          "en": "Gaur",
+          "hi": "गौर",
+          "_id": "69d3ba6f15eaf4c5297740c3"
+        },
+        {
+          "en": "Indian Star Tortoise",
+          "hi": "इंडियन स्टार कछुआ",
+          "_id": "69d3ba6f15eaf4c5297740c4"
+        },
+        {
+          "en": "Spotted Deer",
+          "hi": "धारीदार हिरण",
+          "_id": "69d3ba6f15eaf4c5297740c5"
+        },
+        {
+          "en": "Brow antlered Deer (Sangai)",
+          "hi": "भौंह-मृग हिरण (संगाई)",
+          "_id": "69d3ba6f15eaf4c5297740c6"
+        },
+        {
+          "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+          "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)",
+          "_id": "69d3ba6f15eaf4c5297740c7"
+        },
+        {
+          "en": "Sloth Bear",
+          "hi": "रीछ भालू",
+          "_id": "69d3ba6f15eaf4c5297740c8"
+        },
+        {
+          "en": "Blue and Gold Macaw",
+          "hi": "नीला और सुनहरा एक प्रकार का तोता",
+          "_id": "69d3ba6f15eaf4c5297740c9"
+        },
+        {
+          "en": "Red and Blue Macaw",
+          "hi": "लाल और नीला मकोय",
+          "_id": "69d3ba6f15eaf4c5297740ca"
+        },
+        {
+          "en": "Illiger’s Macaw (Blue-winged Macaw)",
+          "hi": "नीले पंखों वाला मकाऊ",
+          "_id": "69d3ba6f15eaf4c5297740cb"
+        },
+        {
+          "en": "Eclectus Parrot",
+          "hi": "इक्लेक्टस तोता",
+          "_id": "69d3ba6f15eaf4c5297740cc"
+        },
+        {
+          "en": "Bare eyed Cockatoo",
+          "hi": "नंगी आँखों वाला कॉकाटू",
+          "_id": "69d3ba6f15eaf4c5297740cd"
+        },
+        {
+          "en": "African Grey Parrot",
+          "hi": "अफ्रीकी धूसर तोता",
+          "_id": "69d3ba6f15eaf4c5297740ce"
+        },
+        {
+          "en": "Khalij Pheasant 2",
+          "hi": "खलिज तीतर 2",
+          "_id": "69d3ba6f15eaf4c5297740cf"
+        },
+        {
+          "en": "Lady Amherst’s Pheasant",
+          "hi": "विदेशी तीतर",
+          "_id": "69d3ba6f15eaf4c5297740d0"
+        },
+        {
+          "en": "Golden Pheasant",
+          "hi": "सुनहरा तीतर",
+          "_id": "69d3ba6f15eaf4c5297740d1"
+        },
+        {
+          "en": "Silver Pheasant",
+          "hi": "सिल्वर तीतर",
+          "_id": "69d3ba6f15eaf4c5297740d2"
+        },
+        {
+          "en": "Grey Francolin",
+          "hi": "ग्रे फ्रेंकोलिन",
+          "_id": "69d3ba6f15eaf4c5297740d3"
+        },
+        {
+          "en": "Black Partridge",
+          "hi": "काला तीतर",
+          "_id": "69d3ba6f15eaf4c5297740d4"
+        },
+        {
+          "en": "Rose-ringed Parakeet",
+          "hi": "गुलाबी गले वाला तोता",
+          "_id": "69d3ba6f15eaf4c5297740d5"
+        },
+        {
+          "en": "Indian Grey Hornbill",
+          "hi": "इंडियन ग्रे हॉर्नबिल",
+          "_id": "69d3ba6f15eaf4c5297740d6"
+        },
+        {
+          "en": "Red Jungle Fowl 1",
+          "hi": "लाल जंगल मुर्गी 1",
+          "_id": "69d3ba6f15eaf4c5297740d7"
+        },
+        {
+          "en": "Alexandrine Parakeet",
+          "hi": "अलेक्जेंड्रिन पैराकीट",
+          "_id": "69d3ba6f15eaf4c5297740d8"
+        },
+        {
+          "en": "Indian Peafowl",
+          "hi": "भारतीय मोर",
+          "_id": "69d3ba6f15eaf4c5297740d9"
+        },
+        {
+          "en": "White Peacock",
+          "hi": "सफ़ेद मोर",
+          "_id": "69d3ba6f15eaf4c5297740da"
+        },
+        {
+          "en": "Spotted Dove",
+          "hi": "चित्तीदार कबूतर",
+          "_id": "69d3ba6f15eaf4c5297740db"
+        },
+        {
+          "en": "Great Horned Owl",
+          "hi": "बड़े सींग वाला उल्लू",
+          "_id": "69d3ba6f15eaf4c5297740dc"
+        },
+        {
+          "en": "Striped Hyena",
+          "hi": "धारीदार लकड़बग्घा",
+          "_id": "69d3ba6f15eaf4c5297740dd"
+        },
+        {
+          "en": "Black Kite",
+          "hi": "काली पतंग",
+          "_id": "69d3ba6f15eaf4c5297740de"
+        },
+        {
+          "en": "Brahminy Kite",
+          "hi": "ब्राह्मणी पतंग",
+          "_id": "69d3ba6f15eaf4c5297740df"
+        },
+        {
+          "en": "Egyptian Vulture",
+          "hi": "मिस्री गिद्ध",
+          "_id": "69d3ba6f15eaf4c5297740e0"
+        },
+        {
+          "en": "Wild Boar",
+          "hi": "जंगली सूअर",
+          "_id": "69d3ba6f15eaf4c5297740e1"
+        },
+        {
+          "en": "Hippopotamus",
+          "hi": "दरियाई घोड़ा",
+          "_id": "69d3ba6f15eaf4c5297740e2"
+        },
+        {
+          "en": "Sika Deer",
+          "hi": "सिका हिरण",
+          "_id": "69d3ba6f15eaf4c5297740e3"
+        },
+        {
+          "en": "Chinkara ",
+          "hi": "चिंकारा",
+          "_id": "69d3ba6f15eaf4c5297740e4"
+        },
+        {
+          "en": "Indian Peafowl (Leucistic)",
+          "hi": "भारतीय मोर (ल्यूसिस्टिक)",
+          "_id": "69d3ba6f15eaf4c5297740e5"
+        },
+        {
+          "en": "Asiatic Lion 2",
+          "hi": "एशियाई सिंह 2",
+          "_id": "69d3ba6f15eaf4c5297740e6"
+        },
+        {
+          "en": "Asiatic Lion 1",
+          "hi": "एशियाई सिंह 1",
+          "_id": "69d3ba6f15eaf4c5297740e7"
+        },
+        {
+          "en": "Stump tailed Macaque",
+          "hi": "छोटी पूँछ वाला बंदर",
+          "_id": "69d3ba6f15eaf4c5297740e8"
+        },
+        {
+          "en": "Asian Palm Civet",
+          "hi": "कस्तूरी बिल्ली",
+          "_id": "69d3ba6f15eaf4c5297740e9"
+        },
+        {
+          "en": "Aquatic Birds Aviary",
+          "hi": "जलीय पक्षी एवियरी",
+          "_id": "69d3ba6f15eaf4c5297740ea"
+        },
+        {
+          "en": "Rhesus Macaque",
+          "hi": "रीसस बंदर",
+          "_id": "69d3ba6f15eaf4c5297740eb"
+        },
+        {
+          "en": "Indian Elephant",
+          "hi": "भारतीय हाथी",
+          "_id": "69d3ba6f15eaf4c5297740ec"
+        },
+        {
+          "en": "Asiatic Wild Dog (Dhole)",
+          "hi": "एशियाई जंगली कुत्ता (ढोल)",
+          "_id": "69d3ba6f15eaf4c5297740ed"
+        },
+        {
+          "en": "Smooth coated Otter",
+          "hi": "चिकनी खाल वाला ऊदबिलाव",
+          "_id": "69d3ba6f15eaf4c5297740ee"
+        },
+        {
+          "en": "White Tiger",
+          "hi": "सफेद बाघ",
+          "_id": "69d3ba6f15eaf4c5297740ef"
+        },
+        {
+          "en": "Indian Crested Porcupine",
+          "hi": "इंडियन क्रेस्टेड साही",
+          "_id": "69d3ba6f15eaf4c5297740f0"
+        },
+        {
+          "en": "Indian  Jackal",
+          "hi": "भारतीय सियार",
+          "_id": "69d3ba6f15eaf4c5297740f1"
+        },
+        {
+          "en": "Indian Wolf",
+          "hi": "भारतीय भेड़िया",
+          "_id": "69d3ba6f15eaf4c5297740f2"
+        }
+      ],
+      "stops": [
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Water Birds Buggy Point",
+              "hi": "जल पक्षी बग्गी प्वाइंट"
+            },
+            "location_name": {
+              "en": "Water Birds Buggy Point",
+              "hi": "बुग्गी प्वाइंट 2"
+            },
+            "_id": "69c3c794a5d4d801266925fa",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df646e",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sambar Deer",
+                  "hi": "सांभर हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sambar Deer 1",
+                    "hi": "सांबर हिरण 1"
+                  },
+                  "scientific_name": {
+                    "en": "Rusa unicolor",
+                    "hi": "रूसा यूनिकोलर"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, marshlands, and grasslands.",
+                    "hi": "वन, दलदली भूमि और घास के मैदान।"
+                  },
+                  "_id": "69b3e3f46f7a0f1da140c20b"
+                },
+                "locationId": "69d0fe4cf25be44811df6358"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Painted Stork ",
+                  "hi": "चित्रित सारस"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Painted Stork",
+                    "hi": "चित्रित सारस"
+                  },
+                  "scientific_name": {
+                    "en": "Mycteria leucocephala",
+                    "hi": "मिक्टेरिया ल्यूकोसेफाला"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Wetlands, shallow lakes, marshes, and riverbanks.",
+                    "hi": "आर्द्रभूमियाँ, उथली झीलें, दलदल और नदी तट।"
+                  },
+                  "_id": "69a91b933dc9a64a191f4dfd"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Blackbuck",
+                  "hi": "काला हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Blackbuck 1",
+                    "hi": "काला हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Antilope cervicapra",
+                    "hi": "एंटीलोप सर्विकैप्रा"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Grasslands, open plains, scrublands.",
+                    "hi": "घास के मैदान, खुले मैदान, झाड़ियाँ।"
+                  },
+                  "_id": "69a91b963dc9a64a191f4e44"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Lion Tailed Macaque",
+                  "hi": "शेर की पूंछ वाला मकाक"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Lion Tailed Macaque",
+                    "hi": "शेर-पूंछ वाला मकाक"
+                  },
+                  "scientific_name": {
+                    "en": "Macaca silenus",
+                    "hi": "मकाका सिलीनस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Tropical rainforests.",
+                    "hi": "उष्णकटिबंधीय वर्षावन."
+                  },
+                  "_id": "69a91b993dc9a64a191f4e7b"
+                },
+                "locationId": "69d0fe58f25be44811df6446"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Black Bear 2",
+                  "hi": "एशियाई काला भालू 2"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Black Bear 2",
+                    "hi": "एशियाई काला भालू 2"
+                  },
+                  "scientific_name": {
+                    "en": "Ursus thibetanus",
+                    "hi": " उर्सस थिबेटानस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, shrublands, grasslands, and wetlands.",
+                    "hi": "वन, झाड़ियाँ, घास के मैदान और आर्द्रभूमि।"
+                  },
+                  "_id": "69b3e6066f7a0f1da1412c0c"
+                },
+                "locationId": "69d0fe58f25be44811df641e"
+              },
+              {
+                "name": {
+                  "en": "a",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Hamadryas Baboon",
+                  "hi": "हमाद्रीस बबून"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Hamadryas Baboon",
+                    "hi": "हमाद्रीस बबून"
+                  },
+                  "scientific_name": {
+                    "en": "Papio hamadryas",
+                    "hi": "पापियो हमाद्रयस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rocky deserts, savannas, and cliffs.",
+                    "hi": "चट्टानी रेगिस्तान, सवाना और चट्टानें।"
+                  },
+                  "_id": "69a91ba73dc9a64a191f517f"
+                },
+                "locationId": "69d0fe58f25be44811df6448"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:32.695Z",
+            "updatedAt": "2026-04-06T13:27:45.588Z",
+            "__v": 0
+          },
+          "_id": "69d0eed8944f6afb6bc02050"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Sambar Deer Buggy Point",
+              "hi": "बुग्गी पॉइंट 3"
+            },
+            "location_name": {
+              "en": "Sambar Deer Buggy Point",
+              "hi": "बुग्गी पॉइंट 3"
+            },
+            "_id": "69c3c794a5d4d801266925fc",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df6474",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Blackbuck",
+                  "hi": "काला हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Blackbuck 2",
+                    "hi": "काला हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Antilope cervicapra",
+                    "hi": "एंटीलोप सर्विकैप्रा"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, open plains, and scrublands.",
+                    "hi": "घास के मैदान, खुले मैदान और झाड़ियाँ।"
+                  },
+                  "_id": "69b3d0c56f7a0f1da13e7ef0"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Hog Deer",
+                  "hi": "हॉग हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Hog Deer",
+                    "hi": "हॉग हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Axis porcinus",
+                    "hi": "एक्सिस पोर्सिनस "
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tall grasslands and riverine forests.",
+                    "hi": "ऊँचे घास के मैदान और नदी किनारे के जंगल।"
+                  },
+                  "_id": "69a91b983dc9a64a191f4e6c"
+                },
+                "locationId": "69d0fe59f25be44811df66e8"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "White Buck",
+                  "hi": "सफेद हिरन"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "White Buck",
+                    "hi": "सफेद हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Antilope cervicapra ",
+                    "hi": "एंटीलोप सर्विकाप्रा "
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Open grasslands, dry plains, and agricultural fields.",
+                    "hi": "खुले घास के मैदान, सूखे मैदान और कृषि क्षेत्र।"
+                  },
+                  "_id": "69b3ce9d810fae910cbe42b2"
+                },
+                "locationId": "69d0fe59f25be44811df66e6"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Bengal Fox",
+                  "hi": "बंगाल फॉक्स"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Bengal Fox",
+                    "hi": "बंगाल लोमड़ी"
+                  },
+                  "scientific_name": {
+                    "en": "Vulpes bengalensis",
+                    "hi": "वुल्पेस बेंगालेंसिस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Open grasslands, semi-deserts, scrublands, and agricultural fields.",
+                    "hi": "खुले घास के मैदान, अर्ध-रेगिस्तान, झाड़ियाँ और कृषि क्षेत्र।"
+                  },
+                  "_id": "69b3d6436f7a0f1da13fe67c"
+                },
+                "locationId": "69d0fe59f25be44811df66ea"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Gaur",
+                  "hi": "गौर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Gaur 2",
+                    "hi": "गौर 2"
+                  },
+                  "scientific_name": {
+                    "en": "Bos gaurus",
+                    "hi": "बॉस गौरस"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical forests, grasslands, and hilly regions near water sources.",
+                    "hi": "उष्णकटिबंधीय वन, घास के मैदान और जल स्रोतों के निकट पहाड़ी क्षेत्र।"
+                  },
+                  "_id": "69b3e4196f7a0f1da140c37e"
+                },
+                "locationId": "69d0fe4cf25be44811df635f"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian star tortoise",
+                  "hi": "भारतीय सितारा कछुआ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Star Tortoise",
+                    "hi": "इंडियन स्टार कछुआ"
+                  },
+                  "scientific_name": {
+                    "en": "Geochelone elegans",
+                    "hi": "जियोचेलोन एलिगेंस"
+                  },
+                  "category": {
+                    "en": "Reptiles",
+                    "hi": "सरीसृप"
+                  },
+                  "habitat": {
+                    "en": "Dry scrub forests and grasslands",
+                    "hi": "सूखे झाड़ियाँ वाले जंगल और घास के मैदान"
+                  },
+                  "_id": "69d3586315562a62a1de73ab"
+                },
+                "locationId": null
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:32.836Z",
+            "updatedAt": "2026-04-06T13:27:45.608Z",
+            "__v": 0
+          },
+          "_id": "69d0eed8944f6afb6bc02051"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Small Cats Buggy Point",
+              "hi": "बुग्गी प्वाइंट 4"
+            },
+            "location_name": {
+              "en": "Small Cats Buggy Point",
+              "hi": "बुग्गी प्वाइंट 4"
+            },
+            "_id": "69c3c795a5d4d801266925fe",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df6478",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Bengal Fox",
+                  "hi": "बंगाल फॉक्स"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Bengal Fox",
+                    "hi": "बंगाल लोमड़ी"
+                  },
+                  "scientific_name": {
+                    "en": "Vulpes bengalensis",
+                    "hi": "वुल्पेस बेंगालेंसिस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Open grasslands, semi-deserts, scrublands, and agricultural fields.",
+                    "hi": "खुले घास के मैदान, अर्ध-रेगिस्तान, झाड़ियाँ और कृषि क्षेत्र।"
+                  },
+                  "_id": "69b3d6436f7a0f1da13fe67c"
+                },
+                "locationId": "69d0fe59f25be44811df66ea"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Gaur",
+                  "hi": "गौर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Gaur 2",
+                    "hi": "गौर 2"
+                  },
+                  "scientific_name": {
+                    "en": "Bos gaurus",
+                    "hi": "बॉस गौरस"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical forests, grasslands, and hilly regions near water sources.",
+                    "hi": "उष्णकटिबंधीय वन, घास के मैदान और जल स्रोतों के निकट पहाड़ी क्षेत्र।"
+                  },
+                  "_id": "69b3e4196f7a0f1da140c37e"
+                },
+                "locationId": "69d0fe4cf25be44811df635f"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Spotted Deer",
+                  "hi": "चित्तीदार हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Spotted Deer 1",
+                    "hi": "चित्तीदार हिरण 1"
+                  },
+                  "scientific_name": {
+                    "en": "Axis axis",
+                    "hi": "एक्सिस एक्सिस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, grasslands, and riverine landscapes.",
+                    "hi": "जंगल, घास के मैदान और नदी के परिदृश्य।"
+                  },
+                  "_id": "69b3d3976f7a0f1da13eee81"
+                },
+                "locationId": "69d0fe4cf25be44811df6365"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Brow-antlered Deer (Sangai)",
+                  "hi": "भौंह-मृग हिरण (संगाई)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Brow antlered Deer (Sangai) 1",
+                    "hi": "भौंह-मृग हिरण (संगाई)"
+                  },
+                  "scientific_name": {
+                    "en": "Rucervus eldii",
+                    "hi": "रुसेर्वस एल्डी"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, woodlands, shrublands, wetlands, and grasslands.",
+                    "hi": "जंगल, जंगल, झाड़ियाँ, आर्द्रभूमि और घास के मैदान।"
+                  },
+                  "_id": "69a91b9d3dc9a64a191f4ed2"
+                },
+                "locationId": "69d0fe57f25be44811df63eb"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:33.207Z",
+            "updatedAt": "2026-04-06T13:27:45.629Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740f5"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Rhinoceros Buggy Point",
+              "hi": "बुग्गी पॉइंट 5"
+            },
+            "location_name": {
+              "en": "Rhinoceros Buggy Point",
+              "hi": "बुग्गी पॉइंट 5"
+            },
+            "_id": "69c3c795a5d4d80126692600",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df647a",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+                  "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+                    "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)"
+                  },
+                  "scientific_name": {
+                    "en": "Rhinoceros unicornis",
+                    "hi": "राइनोसेरस यूनिकॉर्निस"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, floodplains, and swampy forests.",
+                    "hi": "घास के मैदान, बाढ़ के मैदान और दलदली जंगल।"
+                  },
+                  "_id": "69a91b9d3dc9a64a191f4ec8"
+                },
+                "locationId": "69d0fe4df25be44811df636b"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Black Bear",
+                  "hi": "एशियाई काला भालू"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Black Bear 2",
+                    "hi": "एशियाई काला भालू 2"
+                  },
+                  "scientific_name": {
+                    "en": "Ursus thibetanus",
+                    "hi": " उर्सस थिबेटानस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, shrublands, grasslands, and wetlands.",
+                    "hi": "वन, झाड़ियाँ, घास के मैदान और आर्द्रभूमि।"
+                  },
+                  "_id": "69b3e6066f7a0f1da1412c0c"
+                },
+                "locationId": "69d0fe58f25be44811df641e"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sloth Bear",
+                  "hi": "सुस्त भालू"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sloth Bear",
+                    "hi": "सुस्त भालू"
+                  },
+                  "scientific_name": {
+                    "en": "Melursus ursinus",
+                    "hi": "मेलर्सस उर्सिनस"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dry forests, shrubland, and grasslands.",
+                    "hi": "सूखे जंगल, झाड़ियाँ और घास के मैदान।"
+                  },
+                  "_id": "69a91b993dc9a64a191f4e85"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Brow-antlered Deer (Sangai)",
+                  "hi": "भौंह-मृग हिरण (संगाई)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Brow antlered Deer (Sangai) 1",
+                    "hi": "भौंह-मृग हिरण (संगाई)"
+                  },
+                  "scientific_name": {
+                    "en": "Rucervus eldii",
+                    "hi": "रुसेर्वस एल्डी"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, woodlands, shrublands, wetlands, and grasslands.",
+                    "hi": "जंगल, जंगल, झाड़ियाँ, आर्द्रभूमि और घास के मैदान।"
+                  },
+                  "_id": "69a91b9d3dc9a64a191f4ed2"
+                },
+                "locationId": "69d0fe57f25be44811df63eb"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:33.333Z",
+            "updatedAt": "2026-04-06T13:27:45.646Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740f6"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Birds Buggy Point",
+              "hi": "बुग्गी प्वाइंट 6"
+            },
+            "location_name": {
+              "en": "Birds Buggy Point",
+              "hi": "बुग्गी प्वाइंट 6"
+            },
+            "_id": "69c3c795a5d4d80126692605",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df647e",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Blue and Gold Macaw",
+                  "hi": "नीला और सुनहरा एक प्रकार का तोता"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Blue and Gold Macaw",
+                    "hi": "नीला और सुनहरा एक प्रकार का तोता"
+                  },
+                  "scientific_name": {
+                    "en": "Ara ararauna",
+                    "hi": "आरा अराराउना "
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Tropical rainforests, swamps, woodland edges.",
+                    "hi": "उष्णकटिबंधीय वर्षावन, दलदल, वुडलैंड किनारे।"
+                  },
+                  "_id": "69cb6365c0ed7312b42d5d4d"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Red and Blue Macaw",
+                  "hi": "लाल और नीला एक प्रकार का तोता"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Red and Blue Macaw",
+                    "hi": "लाल और नीला मकोय"
+                  },
+                  "scientific_name": {
+                    "en": "Ara macao",
+                    "hi": "आरा मकाओ"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Tropical rainforests, humid evergreen forests, and woodland edges",
+                    "hi": "उष्णकटिबंधीय वर्षावन, आर्द्र सदाबहार वन, और वुडलैंड किनारे"
+                  },
+                  "_id": "69cb617dc0ed7312b42d46af"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Illiger's Macaw",
+                  "hi": "इलिगर का एक प्रकार का तोता"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Illiger’s Macaw (Blue-winged Macaw)",
+                    "hi": "नीले पंखों वाला मकाऊ"
+                  },
+                  "scientific_name": {
+                    "en": "Primolius maracana",
+                    "hi": "प्राइमोलियस मराकाना"
+                  },
+                  "category": {
+                    "en": "",
+                    "hi": ""
+                  },
+                  "habitat": {
+                    "en": "Forests, woodlands, and palm groves.",
+                    "hi": "यह जंगलों, खुले वनों और ताड़ के पेड़ों वाले इलाकों में रहता है।"
+                  },
+                  "_id": "69a91ba63dc9a64a191f515f"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Eclectus Parrot",
+                  "hi": "इक्लेक्टस तोता"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Eclectus Parrot",
+                    "hi": "इक्लेक्टस तोता"
+                  },
+                  "scientific_name": {
+                    "en": "Eclectus roratus",
+                    "hi": "इक्लेक्टस रोराटस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Rainforests, and plantations.",
+                    "hi": "यह वर्षा वनों और बागानों में रहता है।"
+                  },
+                  "_id": "69a91ba63dc9a64a191f5164"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Bare eyed Cockatoo",
+                    "hi": "नंगी आँखों वाला कॉकाटू"
+                  },
+                  "scientific_name": {
+                    "en": "Cacatua sanguinea",
+                    "hi": "कैकाटुआ सैंगुइनिया"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Woodlands, grasslands, farmlands, and urban areas",
+                    "hi": "वुडलैंड्स, घास के मैदान, खेत और शहरी क्षेत्र"
+                  },
+                  "_id": "69a91ba33dc9a64a191f5119"
+                }
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "African Grey Parrot",
+                  "hi": "अफ़्रीकी ग्रे तोता"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "African Grey Parrot",
+                    "hi": "अफ्रीकी धूसर तोता"
+                  },
+                  "scientific_name": {
+                    "en": "Psittacus erithacus",
+                    "hi": "सिट्टाकस एरिथाकस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Dense rainforests, and savannas.",
+                    "hi": "यह घने वर्षा वनों और सवाना क्षेत्रों में रहता है।"
+                  },
+                  "_id": "69a91ba53dc9a64a191f5146"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "khalij pheasant 2",
+                  "hi": "खलिज तीतर 2"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Khalij Pheasant 2",
+                    "hi": "खलिज तीतर 2"
+                  },
+                  "scientific_name": {
+                    "en": "Lophura leucomelanos",
+                    "hi": "लोफ्यूरा ल्यूकोमेलानोस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": " Oak-pine forests, scrublands and steep hilly slopes.",
+                    "hi": "ओक-देवदार के जंगल, झाड़ियाँ और खड़ी पहाड़ी ढलानें।"
+                  },
+                  "_id": "69cb5774c0ed7312b42d3201"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Lady amherst's pheasant",
+                  "hi": "लेडी एमहर्स्ट का तीतर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Lady Amherst’s Pheasant",
+                    "hi": "लेडी एमहर्स्ट का तीतर"
+                  },
+                  "scientific_name": {
+                    "en": "Chrysolophus amherstiae",
+                    "hi": "क्राइसोलोफस एमहर्स्टिए "
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Forest edges and bamboo thickets.",
+                    "hi": "जंगल के किनारे और बाँस की झाड़ियाँ।"
+                  },
+                  "_id": "69a91ba33dc9a64a191f511e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Golden Pheasant",
+                  "hi": "सुनहरा तीतर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Golden Pheasant",
+                    "hi": "सुनहरा तीतर"
+                  },
+                  "scientific_name": {
+                    "en": "Chrysolophus pictus",
+                    "hi": "क्राइसोलोफस पिक्टस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": " Forests, bamboo thickets, and mountainous woodlands.",
+                    "hi": "जंगल, बाँस के झुरमुट और पहाड़ी जंगल।"
+                  },
+                  "_id": "69a91ba33dc9a64a191f5123"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Silver Pheasant",
+                  "hi": "चाँदी का तीतर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Silver Pheasant 2",
+                    "hi": "चाँदी का तीतर 2"
+                  },
+                  "scientific_name": {
+                    "en": "Lophura nycthemera",
+                    "hi": "लोफुरा निक्थेमेरा"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Mountain forests, and dense undergrowth.",
+                    "hi": "पहाड़ी जंगल, और घनी झाड़ियाँ।"
+                  },
+                  "_id": "69a91ba43dc9a64a191f5137"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Grey Francolin",
+                  "hi": "ग्रे फ्रेंकोलिन"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Grey Francolin",
+                    "hi": "ग्रे फ्रेंकोलिन"
+                  },
+                  "scientific_name": {
+                    "en": "Ortygornis pondicerianus",
+                    "hi": "ऑर्टिगॉर्निस पॉन्डिसेरियानस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, scrublands, and the edges of agricultural fields.",
+                    "hi": "घास के मैदान, झाड़ियाँ और कृषि क्षेत्रों के किनारे।"
+                  },
+                  "_id": "69ca76f7640a910f238217f5"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Black Partried",
+                  "hi": "ब्लैक पार्ट्रीड"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Black Partridge",
+                    "hi": "काला तीतर"
+                  },
+                  "scientific_name": {
+                    "en": "Melanoperdix niger",
+                    "hi": "मेलैनोपर्डिक्स नाइगर"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Dense lowland forests and thick undergrowth.",
+                    "hi": "घने तराई के जंगल और घनी झाड़ियाँ।"
+                  },
+                  "_id": "69ca75b6640a910f2382135c"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Rose Ringed Parakeet",
+                  "hi": "गुलाब चक्राकार तोता"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Rose-ringed Parakeet",
+                    "hi": "गुलाबी गले वाला तोता"
+                  },
+                  "scientific_name": {
+                    "en": "Psittacula krameri",
+                    "hi": "सिट्टाकुला क्रामेरी"
+                  },
+                  "category": {
+                    "en": "",
+                    "hi": ""
+                  },
+                  "habitat": {
+                    "en": "Farmlands, open forests, gardens, and urban areas.",
+                    "hi": "यह खेतों, खुले जंगलों, बगीचों और शहरों के इलाकों में रहता है।"
+                  },
+                  "_id": "69a91b943dc9a64a191f4e16"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Grey Hornbill",
+                  "hi": "इंडियन ग्रे हॉर्नबिल"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Grey Hornbill",
+                    "hi": "इंडियन ग्रे हॉर्नबिल"
+                  },
+                  "scientific_name": {
+                    "en": "Ocyceros birostris",
+                    "hi": "ओसाइसेरोस बाइरोस्ट्रिस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Dry deciduous forests, open woodlands, and urban parks with mature trees.",
+                    "hi": "शुष्क पर्णपाती वन, खुले जंगल और परिपक्व पेड़ों वाले शहरी पार्क।"
+                  },
+                  "_id": "69ca6e8b640a910f2381a931"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Red Jungle Fowl 1",
+                  "hi": "लाल जंगल मुर्गी 1"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Red Jungle Fowl 1",
+                    "hi": "लाल जंगल मुर्गी 1"
+                  },
+                  "scientific_name": {
+                    "en": "Gallus gallus",
+                    "hi": "गैलस गैलस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "चिड़िया"
+                  },
+                  "habitat": {
+                    "en": "Forests, bamboo thickets, and farmlands.",
+                    "hi": "जंगल, बाँस के झुरमुट और खेत।"
+                  },
+                  "_id": "69ca5c228a6a7124768a58c5"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Alexandrine Parakeet",
+                  "hi": "अलेक्जेंड्रिन पैराकीट"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Alexandrine Parakeet 1",
+                    "hi": "अलेक्जेंड्रिन पैराकीट 1"
+                  },
+                  "scientific_name": {
+                    "en": "Psittacula eupatria",
+                    "hi": "सिट्टाकुला यूपैट्रिया"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Forests, plantations, urban parks.",
+                    "hi": "वन, वृक्षारोपण, शहरी पार्क।"
+                  },
+                  "_id": "69ca5a6a8a6a7124768a4bc1"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Peafowl",
+                  "hi": "भारतीय मोर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Peafowl  (Leucistic) 2",
+                    "hi": "भारतीय मोर (ल्यूसिस्टिक) 2"
+                  },
+                  "scientific_name": {
+                    "en": "Pavo cristatus",
+                    "hi": "पावो क्रिस्टेटस"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Forest edges, farmlands, scrublands, and open woodland areas.",
+                    "hi": "जंगल के किनारे, खेत, झाड़ियाँ और खुले वन क्षेत्र।"
+                  },
+                  "_id": "69ca389b878fa621c3c10f1f"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "White Peafowl",
+                  "hi": "सफ़ेद मोर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "White Peafowl",
+                    "hi": "सफ़ेद मोर"
+                  },
+                  "scientific_name": {
+                    "en": "Pavo cristatus ",
+                    "hi": "पावो क्रिस्टेटस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Forests, grasslands, gardens, zoo enclosures, and open countryside",
+                    "hi": "जंगल, घास के मैदान, बगीचे, चिड़ियाघर के बाड़े, और खुले ग्रामीण इलाके"
+                  },
+                  "_id": "69ca4ebc878fa621c3c21cfd"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Dove",
+                  "hi": "कबूतर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Spotted Dove",
+                    "hi": "चित्तीदार कबूतर"
+                  },
+                  "scientific_name": {
+                    "en": "Spilopelia chinensis",
+                    "hi": "स्पिलोपेलिया चाइनेन्सिस "
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Gardens, farms, forests.",
+                    "hi": "बगीचे, खेत, जंगल।"
+                  },
+                  "_id": "69ca5dea8a6a7124768a9310"
+                },
+                "locationId": null
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:33.729Z",
+            "updatedAt": "2026-04-06T13:27:45.663Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740f7"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Raptors Buggy Point",
+              "hi": "बुग्गी प्वाइंट 7"
+            },
+            "location_name": {
+              "en": "Raptors Buggy Point",
+              "hi": "बुग्गी प्वाइंट 7"
+            },
+            "_id": "69c3c795a5d4d80126692607",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df6482",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Great Horned Owl",
+                  "hi": "बड़े सींग वाला उल्लू"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Great Horned Owl",
+                    "hi": "बड़े सींग वाला उल्लू"
+                  },
+                  "scientific_name": {
+                    "en": "Bubo virginianus",
+                    "hi": "बूबो वर्जिनियानस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Forests, grasslands, deserts, and open woodlands.",
+                    "hi": "जंगल, घास के मैदान, रेगिस्तान और खुले जंगल।"
+                  },
+                  "_id": "69ca18f84caec6657d0dd981"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Striped Hyena",
+                  "hi": "धारीदार लकड़बग्घा"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Striped Hyena",
+                    "hi": "धारीदार लकड़बग्घा"
+                  },
+                  "scientific_name": {
+                    "en": "Hyaena hyaena",
+                    "hi": "हायना हायना"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rocky terrain, dry deciduous forests, and semi-arid regions.",
+                    "hi": "चट्टानी भूभाग, शुष्क पर्णपाती वन और अर्ध-शुष्क क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4ea8"
+                },
+                "locationId": "69d0fe58f25be44811df63f7"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Black Kite",
+                  "hi": "काली पतंग"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Black Kite",
+                    "hi": "काली पतंग"
+                  },
+                  "scientific_name": {
+                    "en": "Milvus migrans",
+                    "hi": "मिल्वस माइग्रेन्स"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Urban areas, farmlands, wetlands, riverbanks, and open forests.",
+                    "hi": "शहरी क्षेत्र, खेत, आर्द्रभूमि, नदी तट और खुले जंगल।"
+                  },
+                  "_id": "69ca17c74caec6657d0dd16e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Brahminy Kite",
+                  "hi": "ब्राह्मणी पतंग"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Brahminy Kite 1",
+                    "hi": "ब्राह्मणी पतंग"
+                  },
+                  "scientific_name": {
+                    "en": "Haliastur indus",
+                    "hi": "हेलियास्टुर इंडस"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Coastal regions, wetlands, estuaries, and riverbanks.",
+                    "hi": "तटीय क्षेत्र, आर्द्रभूमियाँ, मुहाना और नदी तट।"
+                  },
+                  "_id": "69ca15424caec6657d0dccaa"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Egyptian Vulture ",
+                  "hi": "मिस्र का गिद्ध"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Egyptian Vulture",
+                    "hi": "मिस्र का गिद्ध"
+                  },
+                  "scientific_name": {
+                    "en": "Neophron percnopterus",
+                    "hi": "नियोफ्रॉन पर्क्नॉप्टेरस"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Semi-arid plains, open countryside, cliffs, and near human settlements.",
+                    "hi": "अर्ध-शुष्क मैदान, खुले ग्रामीण इलाके, चट्टानें और मानव बस्तियों के निकट।"
+                  },
+                  "_id": "69a91b933dc9a64a191f4e02"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Wild Boar",
+                  "hi": "जंगली सूअर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Wild Boar",
+                    "hi": "जंगली सूअर"
+                  },
+                  "scientific_name": {
+                    "en": "Sus scrofa",
+                    "hi": "सस स्क्रोफा"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, wetlands, grasslands, and agricultural areas.",
+                    "hi": "वन, आर्द्रभूमि, घास के मैदान और कृषि क्षेत्र।"
+                  },
+                  "_id": "69a91b9c3dc9a64a191f4ec3"
+                },
+                "locationId": "69d0fe58f25be44811df6426"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:33.851Z",
+            "updatedAt": "2026-04-06T13:27:45.687Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740f8"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Hippopotamus Buggy Point",
+              "hi": "बुग्गी प्वाइंट 8"
+            },
+            "location_name": {
+              "en": "Hippopotamus Buggy Point",
+              "hi": "बुग्गी प्वाइंट 8"
+            },
+            "_id": "69c3c796a5d4d80126692609",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df6488",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Hippopotamus",
+                  "hi": "जलहस्ती"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Hippopotamus",
+                    "hi": "जलहस्ती"
+                  },
+                  "scientific_name": {
+                    "en": "Hippopotamus amphibius",
+                    "hi": "हिप्पोपोटेमस एम्फ़ीबियस "
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rivers, lakes, and freshwater wetlands.",
+                    "hi": "नदियाँ, झीलें और मीठे पानी की आर्द्रभूमियाँ।"
+                  },
+                  "_id": "69a91ba73dc9a64a191f517a"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Sikka Deer",
+                  "hi": "सिक्का हिरण"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Sika Deer",
+                    "hi": "सिका हिरण"
+                  },
+                  "scientific_name": {
+                    "en": "Cervus nippon",
+                    "hi": " सर्वस निप्पोन"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, grasslands, and shrublands.",
+                    "hi": "वन, घास के मैदान और झाड़ियाँ।"
+                  },
+                  "_id": "69a91ba83dc9a64a191f5184"
+                },
+                "locationId": "69d0fe59f25be44811df6778"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Chinkara",
+                  "hi": "चिंकारा"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Chinkara ",
+                    "hi": "चिंकारा"
+                  },
+                  "scientific_name": {
+                    "en": "Gazella bennettii",
+                    "hi": " गज़ेला बेनेट्टी"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": " Arid plains, deserts, and dry scrublands.",
+                    "hi": "शुष्क मैदान, रेगिस्तान और शुष्क झाड़ियाँ।"
+                  },
+                  "_id": "69a91b983dc9a64a191f4e67"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Wild Boar",
+                  "hi": "जंगली सूअर"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Wild Boar",
+                    "hi": "जंगली सूअर"
+                  },
+                  "scientific_name": {
+                    "en": "Sus scrofa",
+                    "hi": "सस स्क्रोफा"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, wetlands, grasslands, and agricultural areas.",
+                    "hi": "वन, आर्द्रभूमि, घास के मैदान और कृषि क्षेत्र।"
+                  },
+                  "_id": "69a91b9c3dc9a64a191f4ec3"
+                },
+                "locationId": "69d0fe58f25be44811df6426"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Peafowl (Leucistic)",
+                  "hi": "भारतीय मोर (ल्यूसिस्टिक)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Peafowl (Leucistic) 1",
+                    "hi": "भारतीय मोर (ल्यूसिस्टिक)"
+                  },
+                  "scientific_name": {
+                    "en": "Pavo cristatus ",
+                    "hi": "पावो क्रिस्टेटस"
+                  },
+                  "category": {
+                    "en": "Birds",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Forest edges, farmlands, scrublands, and open woodland areas.",
+                    "hi": "जंगल के किनारे, खेत, झाड़ियाँ और खुले वन क्षेत्र।"
+                  },
+                  "_id": "69a91b903dc9a64a191f4dc6"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Lion 2",
+                  "hi": "एशियाई सिंह 2"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Lion 2",
+                    "hi": "एशियाई सिंह 2"
+                  },
+                  "scientific_name": {
+                    "en": "Panthera leo persica",
+                    "hi": "पैंथेरा लियो पर्सिका"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dry forests, scrublands, and grasslands.",
+                    "hi": "सूखे जंगल, झाड़ियाँ और घास के मैदान।"
+                  },
+                  "_id": "69a91b9a3dc9a64a191f4e8a"
+                },
+                "locationId": "69d0fe58f25be44811df6424"
+              }
+            ],
+            "createdAt": "2026-03-25T11:31:34.292Z",
+            "updatedAt": "2026-04-06T13:27:45.707Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740f9"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Lion Buggi Point",
+              "hi": "लायन बग्गी पॉइंट"
+            },
+            "location_name": {
+              "en": "Lion Buggi Point",
+              "hi": ""
+            },
+            "_id": "69d0ff599d9d06f1ac035eec",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe59f25be44811df6784",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Lion 1",
+                  "hi": "एशियाई सिंह 1"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Lion 1",
+                    "hi": "एशियाई सिंह 1"
+                  },
+                  "scientific_name": {
+                    "en": "Panthera leo persica",
+                    "hi": "पैंथेरा लियो पर्सिका"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dry deciduous forests, grasslands, and scrub forests.",
+                    "hi": "शुष्क पर्णपाती वन, घास के मैदान और झाड़ियाँ वन।"
+                  },
+                  "_id": "69b3b42f810fae910cbc4a07"
+                },
+                "locationId": "69d0fe4ff25be44811df6387"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Stump Tailed Macaque",
+                  "hi": "स्टंप टेल्ड मकाक"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Stump tailed Macaque",
+                    "hi": "छोटी पूँछ वाला बंदर"
+                  },
+                  "scientific_name": {
+                    "en": "Macaca arctoides",
+                    "hi": "मैकाका आर्क्टोइड्स"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Dense forests and hilly terrain.",
+                    "hi": "घने जंगल और पहाड़ी इलाका."
+                  },
+                  "_id": "69a91b993dc9a64a191f4e80"
+                },
+                "locationId": "69d0fe4ff25be44811df6383"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asian Palm Civet",
+                  "hi": "एशियन पाम सिवेट"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asian Palm Civet",
+                    "hi": "एशियन पाम सिवेट"
+                  },
+                  "scientific_name": {
+                    "en": "Paradoxurus hermaphroditus",
+                    "hi": " पैराडॉक्स्यूरस हरमैफ्रोडाइटस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical forests, agricultural plantations, and urban areas.",
+                    "hi": "उष्णकटिबंधीय वन, कृषि बागान और शहरी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4e9e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Aquatic Birds Aviary",
+                  "hi": "जलीय पक्षी एवियरी"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Aquatic Birds Aviary",
+                    "hi": "जलीय पक्षी एवियरी"
+                  },
+                  "scientific_name": {
+                    "en": "Mixed species aviary (various aquatic bird species)",
+                    "hi": "मिश्रित प्रजाति एवियरी (विभिन्न जलीय पक्षी प्रजातियाँ)"
+                  },
+                  "category": {
+                    "en": "Bird",
+                    "hi": "पक्षी"
+                  },
+                  "habitat": {
+                    "en": "Lakes, ponds, wetlands, marshes, rivers, and coastal areas.",
+                    "hi": "झीलें, तालाब, आर्द्रभूमि, दलदल, नदियाँ और तटीय क्षेत्र।"
+                  },
+                  "_id": "69b3b93a810fae910cbd3af6"
+                },
+                "locationId": "69d0fe59f25be44811df66ec"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Rhesus Macaque",
+                  "hi": "रीसस मकाक"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Rhesus Macaque 1",
+                    "hi": "रीसस बंदर"
+                  },
+                  "scientific_name": {
+                    "en": "Macaca mulatta",
+                    "hi": "मैकाका मुलाटा"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, urban areas, and farmlands.",
+                    "hi": "वन, शहरी क्षेत्र और खेत।"
+                  },
+                  "_id": "69a91b983dc9a64a191f4e71"
+                },
+                "locationId": null
+              }
+            ],
+            "createdAt": "2026-04-04T12:08:57.944Z",
+            "updatedAt": "2026-04-06T13:27:45.791Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740fa"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "Elephant Buggy Point",
+              "hi": ""
+            },
+            "location_name": {
+              "en": "Elephant Buggy Point",
+              "hi": ""
+            },
+            "_id": "69d0ff599d9d06f1ac035ee6",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df648c",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Elephant",
+                  "hi": "भारतीय हाथी"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Elephant",
+                    "hi": "भारतीय हाथी"
+                  },
+                  "scientific_name": {
+                    "en": "Elephas maximus",
+                    "hi": "एलेफस मैक्सिमस"
+                  },
+                  "category": {
+                    "en": "Mammals",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests and grasslands.",
+                    "hi": "यह जंगलों और घास के मैदानों में रहता है।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e5d"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asiatic Wild Dog (Dhole)",
+                  "hi": "एशियाई जंगली कुत्ता (ढोल)"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asiatic Wild Dog (Dhole)",
+                    "hi": "एशियाई जंगली कुत्ता (ढोल)"
+                  },
+                  "scientific_name": {
+                    "en": "Cuon alpinus",
+                    "hi": "क्यून ऐल्पिनस"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical and subtropical forests, grasslands, and mountainous regions.",
+                    "hi": "उष्णकटिबंधीय और उपोष्णकटिबंधीय वन, घास के मैदान और पहाड़ी क्षेत्र।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e58"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Smooth Coated Otter",
+                  "hi": "चिकना लेपित ऊदबिलाव"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Smooth coated Otter",
+                    "hi": "चिकनी खाल वाला ऊदबिलाव"
+                  },
+                  "scientific_name": {
+                    "en": "Lutrogale perspicillata",
+                    "hi": "लुट्रोगेल पर्सपिसिलाटा"
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Rivers, lakes, wetlands, mangroves, and coastal areas.",
+                    "hi": "नदियाँ, झीलें, आर्द्रभूमियाँ, मैंग्रोव और तटीय क्षेत्र।"
+                  },
+                  "_id": "69b3af6e810fae910cbc304a"
+                },
+                "locationId": "69d0fe58f25be44811df6418"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "type": "animal",
+                "animalId": null
+              }
+            ],
+            "createdAt": "2026-04-04T12:08:57.875Z",
+            "updatedAt": "2026-04-06T13:27:45.727Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740fb"
+        },
+        {
+          "stopId": {
+            "stop_name": {
+              "en": "White Tiger Buggy Point",
+              "hi": "व्हाइट टाइगर बग्गी पॉइंट"
+            },
+            "location_name": {
+              "en": "White Tiger Buggy Point",
+              "hi": ""
+            },
+            "_id": "69d0ff599d9d06f1ac035eea",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69d0fe58f25be44811df64a0",
+            "items": [
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "White Tiger",
+                  "hi": "सफेद बाघ"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "White Tiger",
+                    "hi": "सफेद बाघ"
+                  },
+                  "scientific_name": {
+                    "en": "Panthera tigris tigris (Leucistic Morph)",
+                    "hi": "पैंथेरा टाइग्रिस टाइग्रिस (ल्यूसीस्टिक रूप) "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forests, mangroves, and grasslands.",
+                    "hi": "वन, मैंग्रोव और घास के मैदान।"
+                  },
+                  "_id": "69a91b9a3dc9a64a191f4e99"
+                },
+                "locationId": "69d0fe51f25be44811df63ac"
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Crested Porcupine",
+                  "hi": "इंडियन क्रेस्टेड साही"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Crested Porcupine",
+                    "hi": "इंडियन क्रेस्टेड साही"
+                  },
+                  "scientific_name": {
+                    "en": "Hystrix indica",
+                    "hi": "हायस्ट्रिक्स इंडिका "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Grasslands, forests, and rocky hill regions.",
+                    "hi": "घास के मैदान, जंगल और चट्टानी पहाड़ी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4ead"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Asian Palm Civet",
+                  "hi": "एशियन पाम सिवेट"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Asian Palm Civet",
+                    "hi": "एशियन पाम सिवेट"
+                  },
+                  "scientific_name": {
+                    "en": "Paradoxurus hermaphroditus",
+                    "hi": " पैराडॉक्स्यूरस हरमैफ्रोडाइटस "
+                  },
+                  "category": {
+                    "en": "Mammal",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Tropical forests, agricultural plantations, and urban areas.",
+                    "hi": "उष्णकटिबंधीय वन, कृषि बागान और शहरी क्षेत्र।"
+                  },
+                  "_id": "69a91b9b3dc9a64a191f4e9e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian  Jackal",
+                  "hi": "भारतीय सियार"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Jackal",
+                    "hi": "भारतीय सियार"
+                  },
+                  "scientific_name": {
+                    "en": "Canis aureus indicus",
+                    "hi": "Canis aureus indicus"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Forest edges, grasslands, and villages.",
+                    "hi": "जंगल के किनारे, घास के मैदान और गाँव।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e4e"
+                },
+                "locationId": null
+              },
+              {
+                "name": {
+                  "en": "",
+                  "hi": ""
+                },
+                "location_name": {
+                  "en": "Indian Wolf",
+                  "hi": "भारतीय भेड़िया"
+                },
+                "type": "animal",
+                "animalId": {
+                  "common_name": {
+                    "en": "Indian Wolf",
+                    "hi": "भारतीय भेड़िया"
+                  },
+                  "scientific_name": {
+                    "en": "Canis lupus pallipes",
+                    "hi": "कैनिस ल्यूपस पल्लिप्स"
+                  },
+                  "category": {
+                    "en": "Mammal ",
+                    "hi": "स्तनधारी"
+                  },
+                  "habitat": {
+                    "en": "Semi-arid grasslands, and scrublands.",
+                    "hi": "अर्ध-शुष्क घास के मैदान और झाड़ियाँ।"
+                  },
+                  "_id": "69a91b973dc9a64a191f4e53"
+                },
+                "locationId": null
+              }
+            ],
+            "createdAt": "2026-04-04T12:08:57.921Z",
+            "updatedAt": "2026-04-06T13:27:45.764Z",
+            "__v": 0
+          },
+          "_id": "69d3ba6f15eaf4c5297740fc"
+        }
+      ],
+      "no_of_stops": 10,
+      "target_species": [
+        {
+          "en": "Sambar Deer",
+          "hi": "सांभर हिरण",
+          "_id": "69d3ba6f15eaf4c5297740fd"
+        },
+        {
+          "en": "Painted Stork",
+          "hi": "चित्रित सारस",
+          "_id": "69d3ba6f15eaf4c5297740fe"
+        },
+        {
+          "en": "Blackbuck",
+          "hi": "काला हिरण",
+          "_id": "69d3ba6f15eaf4c5297740ff"
+        },
+        {
+          "en": "Lion Tailed Macaque",
+          "hi": "शेर-पूंछ वाला मकाक",
+          "_id": "69d3ba6f15eaf4c529774100"
+        },
+        {
+          "en": "Asiatic Black Bear 2",
+          "hi": "एशियाई काला भालू 2",
+          "_id": "69d3ba6f15eaf4c529774101"
+        },
+        {
+          "en": "Hamadryas Baboon",
+          "hi": "हमाद्रीस बबून",
+          "_id": "69d3ba6f15eaf4c529774102"
+        },
+        {
+          "en": "Hog Deer",
+          "hi": "सूअर हिरण / हॉग डियर",
+          "_id": "69d3ba6f15eaf4c529774103"
+        },
+        {
+          "en": "Whitebuck",
+          "hi": "सफेद हिरण",
+          "_id": "69d3ba6f15eaf4c529774104"
+        },
+        {
+          "en": "Bengal Fox",
+          "hi": "बंगाल लोमड़ी",
+          "_id": "69d3ba6f15eaf4c529774105"
+        },
+        {
+          "en": "Gaur",
+          "hi": "गौर",
+          "_id": "69d3ba6f15eaf4c529774106"
+        },
+        {
+          "en": "Indian Star Tortoise",
+          "hi": "इंडियन स्टार कछुआ",
+          "_id": "69d3ba6f15eaf4c529774107"
+        },
+        {
+          "en": "Spotted Deer",
+          "hi": "धारीदार हिरण",
+          "_id": "69d3ba6f15eaf4c529774108"
+        },
+        {
+          "en": "Brow antlered Deer (Sangai)",
+          "hi": "भौंह-मृग हिरण (संगाई)",
+          "_id": "69d3ba6f15eaf4c529774109"
+        },
+        {
+          "en": "Indian Rhinoceros (Greater One-Horned Rhinoceros)",
+          "hi": "भारतीय गैंडा (एक सींग वाला बड़ा गैंडा)",
+          "_id": "69d3ba6f15eaf4c52977410a"
+        },
+        {
+          "en": "Sloth Bear",
+          "hi": "रीछ भालू",
+          "_id": "69d3ba6f15eaf4c52977410b"
+        },
+        {
+          "en": "Blue and Gold Macaw",
+          "hi": "नीला और सुनहरा एक प्रकार का तोता",
+          "_id": "69d3ba6f15eaf4c52977410c"
+        },
+        {
+          "en": "Red and Blue Macaw",
+          "hi": "लाल और नीला मकोय",
+          "_id": "69d3ba6f15eaf4c52977410d"
+        },
+        {
+          "en": "Illiger’s Macaw (Blue-winged Macaw)",
+          "hi": "नीले पंखों वाला मकाऊ",
+          "_id": "69d3ba6f15eaf4c52977410e"
+        },
+        {
+          "en": "Eclectus Parrot",
+          "hi": "इक्लेक्टस तोता",
+          "_id": "69d3ba6f15eaf4c52977410f"
+        },
+        {
+          "en": "Bare eyed Cockatoo",
+          "hi": "नंगी आँखों वाला कॉकाटू",
+          "_id": "69d3ba6f15eaf4c529774110"
+        },
+        {
+          "en": "African Grey Parrot",
+          "hi": "अफ्रीकी धूसर तोता",
+          "_id": "69d3ba6f15eaf4c529774111"
+        },
+        {
+          "en": "Khalij Pheasant 2",
+          "hi": "खलिज तीतर 2",
+          "_id": "69d3ba6f15eaf4c529774112"
+        },
+        {
+          "en": "Lady Amherst’s Pheasant",
+          "hi": "विदेशी तीतर",
+          "_id": "69d3ba6f15eaf4c529774113"
+        },
+        {
+          "en": "Golden Pheasant",
+          "hi": "सुनहरा तीतर",
+          "_id": "69d3ba6f15eaf4c529774114"
+        },
+        {
+          "en": "Silver Pheasant",
+          "hi": "सिल्वर तीतर",
+          "_id": "69d3ba6f15eaf4c529774115"
+        },
+        {
+          "en": "Grey Francolin",
+          "hi": "ग्रे फ्रेंकोलिन",
+          "_id": "69d3ba6f15eaf4c529774116"
+        },
+        {
+          "en": "Black Partridge",
+          "hi": "काला तीतर",
+          "_id": "69d3ba6f15eaf4c529774117"
+        },
+        {
+          "en": "Rose-ringed Parakeet",
+          "hi": "गुलाबी गले वाला तोता",
+          "_id": "69d3ba6f15eaf4c529774118"
+        },
+        {
+          "en": "Indian Grey Hornbill",
+          "hi": "इंडियन ग्रे हॉर्नबिल",
+          "_id": "69d3ba6f15eaf4c529774119"
+        },
+        {
+          "en": "Red Jungle Fowl 1",
+          "hi": "लाल जंगल मुर्गी 1",
+          "_id": "69d3ba6f15eaf4c52977411a"
+        },
+        {
+          "en": "Alexandrine Parakeet",
+          "hi": "अलेक्जेंड्रिन पैराकीट",
+          "_id": "69d3ba6f15eaf4c52977411b"
+        },
+        {
+          "en": "Indian Peafowl",
+          "hi": "भारतीय मोर",
+          "_id": "69d3ba6f15eaf4c52977411c"
+        },
+        {
+          "en": "White Peacock",
+          "hi": "सफ़ेद मोर",
+          "_id": "69d3ba6f15eaf4c52977411d"
+        },
+        {
+          "en": "Spotted Dove",
+          "hi": "चित्तीदार कबूतर",
+          "_id": "69d3ba6f15eaf4c52977411e"
+        },
+        {
+          "en": "Great Horned Owl",
+          "hi": "बड़े सींग वाला उल्लू",
+          "_id": "69d3ba6f15eaf4c52977411f"
+        },
+        {
+          "en": "Striped Hyena",
+          "hi": "धारीदार लकड़बग्घा",
+          "_id": "69d3ba6f15eaf4c529774120"
+        },
+        {
+          "en": "Black Kite",
+          "hi": "काली पतंग",
+          "_id": "69d3ba6f15eaf4c529774121"
+        },
+        {
+          "en": "Brahminy Kite",
+          "hi": "ब्राह्मणी पतंग",
+          "_id": "69d3ba6f15eaf4c529774122"
+        },
+        {
+          "en": "Egyptian Vulture",
+          "hi": "मिस्री गिद्ध",
+          "_id": "69d3ba6f15eaf4c529774123"
+        },
+        {
+          "en": "Wild Boar",
+          "hi": "जंगली सूअर",
+          "_id": "69d3ba6f15eaf4c529774124"
+        },
+        {
+          "en": "Hippopotamus",
+          "hi": "दरियाई घोड़ा",
+          "_id": "69d3ba6f15eaf4c529774125"
+        },
+        {
+          "en": "Sika Deer",
+          "hi": "सिका हिरण",
+          "_id": "69d3ba6f15eaf4c529774126"
+        },
+        {
+          "en": "Chinkara ",
+          "hi": "चिंकारा",
+          "_id": "69d3ba6f15eaf4c529774127"
+        },
+        {
+          "en": "Indian Peafowl (Leucistic)",
+          "hi": "भारतीय मोर (ल्यूसिस्टिक)",
+          "_id": "69d3ba6f15eaf4c529774128"
+        },
+        {
+          "en": "Asiatic Lion 2",
+          "hi": "एशियाई सिंह 2",
+          "_id": "69d3ba6f15eaf4c529774129"
+        },
+        {
+          "en": "Asiatic Lion 1",
+          "hi": "एशियाई सिंह 1",
+          "_id": "69d3ba6f15eaf4c52977412a"
+        },
+        {
+          "en": "Stump tailed Macaque",
+          "hi": "छोटी पूँछ वाला बंदर",
+          "_id": "69d3ba6f15eaf4c52977412b"
+        },
+        {
+          "en": "Asian Palm Civet",
+          "hi": "कस्तूरी बिल्ली",
+          "_id": "69d3ba6f15eaf4c52977412c"
+        },
+        {
+          "en": "Aquatic Birds Aviary",
+          "hi": "जलीय पक्षी एवियरी",
+          "_id": "69d3ba6f15eaf4c52977412d"
+        },
+        {
+          "en": "Rhesus Macaque",
+          "hi": "रीसस बंदर",
+          "_id": "69d3ba6f15eaf4c52977412e"
+        },
+        {
+          "en": "Indian Elephant",
+          "hi": "भारतीय हाथी",
+          "_id": "69d3ba6f15eaf4c52977412f"
+        },
+        {
+          "en": "Asiatic Wild Dog (Dhole)",
+          "hi": "एशियाई जंगली कुत्ता (ढोल)",
+          "_id": "69d3ba6f15eaf4c529774130"
+        },
+        {
+          "en": "Smooth coated Otter",
+          "hi": "चिकनी खाल वाला ऊदबिलाव",
+          "_id": "69d3ba6f15eaf4c529774131"
+        },
+        {
+          "en": "White Tiger",
+          "hi": "सफेद बाघ",
+          "_id": "69d3ba6f15eaf4c529774132"
+        },
+        {
+          "en": "Indian Crested Porcupine",
+          "hi": "इंडियन क्रेस्टेड साही",
+          "_id": "69d3ba6f15eaf4c529774133"
+        },
+        {
+          "en": "Indian  Jackal",
+          "hi": "भारतीय सियार",
+          "_id": "69d3ba6f15eaf4c529774134"
+        },
+        {
+          "en": "Indian Wolf",
+          "hi": "भारतीय भेड़िया",
+          "_id": "69d3ba6f15eaf4c529774135"
+        }
+      ],
+      "createdAt": "2026-04-04T10:58:32.550Z",
+      "updatedAt": "2026-04-10T04:17:44.579Z",
+      "__v": 0
+    }
+  ]
+}

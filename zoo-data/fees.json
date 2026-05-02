@@ -1,0 +1,457 @@
+{
+  "status": true,
+  "data": [
+    {
+      "_id": "69c39b2cdd5707ef48d06236",
+      "zooId": "69a91b883dc9a64a191f4d6e",
+      "sections": [
+        {
+          "title": {
+            "en": "ENTRANCE FEE (NORMAL)",
+            "hi": "प्रवेश शुल्क (सामान्य)"
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Adults",
+                "hi": "वयस्कों"
+              },
+              "value": {
+                "en": "₹80",
+                "hi": "रु. "
+              },
+              "_id": "69c39b2cdd5707ef48d06238"
+            },
+            {
+              "label": {
+                "en": "Children (0 - 5 Years)",
+                "hi": "बच्चे (0 - 5 वर्ष)"
+              },
+              "value": {
+                "en": "Free",
+                "hi": "मुक्त"
+              },
+              "_id": "69c39c5cdd5707ef48d06240"
+            },
+            {
+              "label": {
+                "en": "Children (5 - 12 Years)",
+                "hi": "बच्चे (5 - 12 वर्ष)"
+              },
+              "value": {
+                "en": "₹40",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06241"
+            },
+            {
+              "label": {
+                "en": "Senior Citizen (60 Years and Above)",
+                "hi": "वरिष्ठ नागरिक (60 वर्ष और अधिक)"
+              },
+              "value": {
+                "en": "₹40",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f259930e"
+            }
+          ],
+          "_id": "69c39b2cdd5707ef48d06237"
+        },
+        {
+          "title": {
+            "en": "ENTRANCE FEE (FOREIGNERS except SAARC countries)",
+            "hi": "प्रवेश शुल्क (सार्क देशों को छोड़कर विदेशी)"
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Adults",
+                "hi": "वयस्कों"
+              },
+              "value": {
+                "en": "₹400",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06243"
+            },
+            {
+              "label": {
+                "en": "Children (Up to 5 Years)",
+                "hi": "बच्चे (5 वर्ष तक)"
+              },
+              "value": {
+                "en": "Free",
+                "hi": "मुक्त"
+              },
+              "_id": "69c39c5cdd5707ef48d06244"
+            },
+            {
+              "label": {
+                "en": "Children (5 - 12 Years)",
+                "hi": "बच्चे (5 - 12 वर्ष)"
+              },
+              "value": {
+                "en": "₹200",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06245"
+            }
+          ],
+          "_id": "69c39c5cdd5707ef48d06242"
+        },
+        {
+          "title": {
+            "en": "ENTRANCE FEE (FOREIGNERS SAARC countries) ",
+            "hi": "प्रवेश शुल्क (विदेशी सार्क देश)"
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Adults",
+                "hi": "वयस्कों"
+              },
+              "value": {
+                "en": "₹200",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06247"
+            },
+            {
+              "label": {
+                "en": "Children (Up to 5 Years)",
+                "hi": "बच्चे (5 वर्ष तक)"
+              },
+              "value": {
+                "en": "Free",
+                "hi": "मुक्त"
+              },
+              "_id": "69c39c5cdd5707ef48d06248"
+            },
+            {
+              "label": {
+                "en": "Children (5 - 12 Years)",
+                "hi": "बच्चे (5 - 12 वर्ष)"
+              },
+              "value": {
+                "en": "₹100",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06249"
+            },
+            {
+              "label": {
+                "en": "",
+                "hi": ""
+              },
+              "value": {
+                "en": "",
+                "hi": ""
+              },
+              "_id": "69c39c5cdd5707ef48d0624a"
+            },
+            {
+              "label": {
+                "en": "",
+                "hi": ""
+              },
+              "value": {
+                "en": "",
+                "hi": ""
+              },
+              "_id": "69c39c5cdd5707ef48d0624b"
+            }
+          ],
+          "_id": "69c39c5cdd5707ef48d06246"
+        },
+        {
+          "title": {
+            "en": "VISITORS ON EDUCATIONAL TOURS FROM SCHOOLS, COLLEGES, UNIVERSITIES AND OTHER EDUCATIONAL INSTITUTIONS ARE PROVIDED CONCESSIONAL ENTRY TICKET AT THE FOLLOWING RATES :",
+            "hi": "स्कूलों, कॉलेजों, विश्वविद्यालयों और अन्य शैक्षणिक संस्थानों से शैक्षिक पर्यटन पर आने वाले आगंतुकों को निम्नलिखित दरों पर रियायती प्रवेश टिकट प्रदान किया जाता है:"
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Student (1st -5 Std.)",
+                "hi": "छात्र (पहली-5वीं कक्षा)"
+              },
+              "value": {
+                "en": "Free",
+                "hi": "मुक्त"
+              },
+              "_id": "69c39c5cdd5707ef48d0624d"
+            },
+            {
+              "label": {
+                "en": "Student (6th -8th Std.)",
+                "hi": "छात्र (छठी-आठवीं कक्षा)"
+              },
+              "value": {
+                "en": "₹20",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d0624e"
+            },
+            {
+              "label": {
+                "en": "Student (9th And Above)",
+                "hi": "छात्र (9वीं और ऊपर)"
+              },
+              "value": {
+                "en": "₹40",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d0624f"
+            },
+            {
+              "label": {
+                "en": "Accompanying Staff",
+                "hi": "साथ देने वाला स्टाफ"
+              },
+              "value": {
+                "en": "₹40",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f259931d"
+            },
+            {
+              "label": {
+                "en": "Privilege Ticket",
+                "hi": "विशेषाधिकार टिकट"
+              },
+              "value": {
+                "en": "₹400",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f259931e"
+            }
+          ],
+          "_id": "69c39c5cdd5707ef48d0624c"
+        },
+        {
+          "title": {
+            "en": "BATTERY OPERATED VEHICLES (IT IS BEING OPERATED BY A PRIVATE AGENCY ON LICENSE). THE AUTHORISED RATES ARE AS BELOW :",
+            "hi": "बैटरी चालित वाहन (इसे लाइसेंस पर एक निजी एजेंसी द्वारा संचालित किया जा रहा है)। "
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Adults",
+                "hi": "वयस्कों"
+              },
+              "value": {
+                "en": "₹85",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06251"
+            },
+            {
+              "label": {
+                "en": "Child (Between 5 -12 years)",
+                "hi": "बच्चा (5-12 वर्ष के बीच)"
+              },
+              "value": {
+                "en": "₹48",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06252"
+            },
+            {
+              "label": {
+                "en": "Child (Below 5 Years)",
+                "hi": "बच्चा (5 वर्ष से कम)"
+              },
+              "value": {
+                "en": "Free",
+                "hi": "मुक्त"
+              },
+              "_id": "69ccdba82a594df3f2599322"
+            },
+            {
+              "label": {
+                "en": "Small 8 to 10Seater (Per Trip)",
+                "hi": "छोटे 8 से 10 सीटर (प्रति यात्रा)"
+              },
+              "value": {
+                "en": "₹484",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f2599323"
+            },
+            {
+              "label": {
+                "en": "14 Seater (Per Trip)",
+                "hi": "14 सीटर (प्रति यात्रा)"
+              },
+              "value": {
+                "en": "₹968",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f2599324"
+            },
+            {
+              "label": {
+                "en": "20 Seater (Per Trip)",
+                "hi": "20 सीटर (प्रति यात्रा)"
+              },
+              "value": {
+                "en": "₹1100",
+                "hi": "रु.1100/- (स्कूल के लिए रु.100/- की छूट)"
+              },
+              "_id": "69ccdba82a594df3f2599325"
+            }
+          ],
+          "_id": "69c39c5cdd5707ef48d06250"
+        },
+        {
+          "title": {
+            "en": "Parking",
+            "hi": "पार्किंग"
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Bus",
+                "hi": "बस"
+              },
+              "value": {
+                "en": "₹240",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06254"
+            },
+            {
+              "label": {
+                "en": "Car, Auto, Van and Taxi",
+                "hi": "कार, ​​ऑटो, वैन और टैक्सी"
+              },
+              "value": {
+                "en": "₹60",
+                "hi": "रु. "
+              },
+              "_id": "69c39c5cdd5707ef48d06255"
+            },
+            {
+              "label": {
+                "en": "Two Wheelers",
+                "hi": "दोपहिया वाहन"
+              },
+              "value": {
+                "en": "₹36",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f2599329"
+            },
+            {
+              "label": {
+                "en": "Cycle",
+                "hi": "चक्र"
+              },
+              "value": {
+                "en": "₹7",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f259932a"
+            }
+          ],
+          "_id": "69c39c5cdd5707ef48d06253"
+        },
+        {
+          "title": {
+            "en": "FILMING CHARGES",
+            "hi": "फिल्मांकन शुल्क"
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Still Camera",
+                "hi": "स्टिल कैमरा"
+              },
+              "value": {
+                "en": "Free",
+                "hi": "मुक्त"
+              },
+              "_id": "69ccdba82a594df3f259932c"
+            },
+            {
+              "label": {
+                "en": "Amateur",
+                "hi": "शौकिया"
+              },
+              "value": {
+                "en": "Free",
+                "hi": "मुक्त"
+              },
+              "_id": "69ccdba82a594df3f259932d"
+            },
+            {
+              "label": {
+                "en": "Documentary",
+                "hi": "वृत्तचित्र"
+              },
+              "value": {
+                "en": "₹2000",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f259932e"
+            },
+            {
+              "label": {
+                "en": "Feature Film",
+                "hi": "फीचर फिल्म"
+              },
+              "value": {
+                "en": "₹50,000",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f259932f"
+            }
+          ],
+          "_id": "69ccdba82a594df3f259932b"
+        },
+        {
+          "title": {
+            "en": "OTHER VISITOR FACILITIES",
+            "hi": "अन्य आगंतुक सुविधाएं"
+          },
+          "isHidden": true,
+          "rows": [
+            {
+              "label": {
+                "en": "Wheel Chairs for physically challenged",
+                "hi": "दिव्यांगों के लिए व्हील चेयर"
+              },
+              "value": {
+                "en": "Free of cost",
+                "hi": "नि:शुल्क"
+              },
+              "_id": "69ccdba82a594df3f2599331"
+            },
+            {
+              "label": {
+                "en": "Cloak room",
+                "hi": "क्लोक रूम"
+              },
+              "value": {
+                "en": "₹5",
+                "hi": "रु. "
+              },
+              "_id": "69ccdba82a594df3f2599332"
+            }
+          ],
+          "_id": "69ccdba82a594df3f2599330"
+        }
+      ],
+      "createdAt": "2026-03-25T08:22:04.678Z",
+      "updatedAt": "2026-04-06T08:39:02.747Z",
+      "__v": 0
+    }
+  ]
+}
