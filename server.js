@@ -718,7 +718,7 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
 }
 
 app.post('/api/shera/chat', async (req, res) => {
-    let { question, deepSearch, language = 'en', stream = false } = req.body;
+    let { question, deepSearch = true, language = 'en', stream = false } = req.body;
 
     deepSearch = deepSearch === true || deepSearch === 'true';
     logResources('Incoming Chat');
