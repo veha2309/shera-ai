@@ -1,0 +1,38 @@
+name: Deploy Shera Backend to VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            # 1. Navigate to the project directory
+            cd /home/${{ secrets.VM_USER }}/shera-backend || exit
+            
+            # 2. Pull the latest changes
+            git pull origin main
+            
+            # 3. Install production dependencies
+            npm install --production
+            
+            # 4. Restart the application using PM2
+            # This will try to restart 'shera-backend', or start it if it's not running
+            pm2 restart shera-backend || pm2 start server.js --name shera-backend
+            
+            # 5. Save the PM2 list to ensure it persists after VM reboots
+            pm2 save
