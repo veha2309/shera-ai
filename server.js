@@ -33,8 +33,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = process.env.CHAT_MODEL || 'gemma4:e2b';
-const EXTRACTION_MODEL = 'gemma4:e2b';
+const CHAT_MODEL = process.env.CHAT_MODEL || 'gemma2:2b';
+const EXTRACTION_MODEL = 'gemma2:2b';
 
 function logResources(label) {
     const mem = process.memoryUsage();

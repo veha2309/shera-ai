@@ -11,7 +11,7 @@ const ollama = new Ollama();
 const DATA_DIR = path.join(__dirname, 'zoo-data');
 const STORE_DIR = path.join(__dirname, 'graph_data');
 const EMBED_MODEL = 'nomic-embed-text';
-const EXTRACTION_MODEL = 'gemma4:e2b';
+const EXTRACTION_MODEL = 'gemma2:2b';
 
 // In-memory cache to avoid re-embedding the same entity multiple times
 const embedCache = new Map();
