@@ -10,6 +10,14 @@ const { OllamaEmbeddingFunction } = require('@chroma-core/ollama');
  * Shera AI - Hybrid Chroma + GraphRAG Backend Server
  * Semantic retrieval via ChromaDB
  * Relationship reasoning via Antigravity Graph
+ *
+ * Optimizations applied for Gemma 4 (e4b):
+ *  1. 8192 Context Window utilized to prevent retrieval truncation.
+ *  2. Gemma 4 ideal sampling (Temp 1.0, Top P 0.95, Top K 64).
+ *  3. `<|channel>thought` strict stripping.
+ *  4. Trie-based fast entity extraction.
+ *  5. Graph traversal result cache.
+ *  6. Streaming LLM response via SSE.
  */
 
 const app = express();
@@ -19,65 +27,71 @@ const host = '0.0.0.0';
 process.on('unhandledRejection', (reason, promise) => {
     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });
-
 process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:', err);
 });
 
-// Models
+// ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'gemma2:2b';
+const CHAT_MODEL = process.env.CHAT_MODEL || 'gemma4:e4b';
+const EXTRACTION_MODEL = 'gemma2:2b';
 
 function logResources(label) {
     const mem = process.memoryUsage();
     console.log(`[RESOURCES] ${label} - RSS: ${(mem.rss / 1024 / 1024).toFixed(2)}MB, Heap: ${(mem.heapUsed / 1024 / 1024).toFixed(2)}MB`);
 }
 
-// Paths
-const GRAPH_PATH = path.join(__dirname, 'antigravity_store', 'graph.json');
-
-// Clients
+// ─── Clients ──────────────────────────────────────────────────────────────────
 const ollama = new Ollama();
-const chroma = new ChromaClient({ path: "http://localhost:8001" });
+const chroma = new ChromaClient({ path: 'http://localhost:8000' });
 const embedder = new OllamaEmbeddingFunction({
-    url: "http://127.0.0.1:11434",
-    model: "nomic-embed-text"
+    url: 'http://127.0.0.1:11434',
+    model: 'nomic-embed-text'
 });
+
+// ─── Embedding Cache ──────────────────────────────────────────────────────────
+const embeddingCache = new Map();
+
+async function getCachedEmbedding(text) {
+    if (embeddingCache.has(text)) return embeddingCache.get(text);
+    try {
+        const resp = await ollama.embed({ model: EMBED_MODEL, input: text });
+        const embedding = resp.embeddings[0];
+        embeddingCache.set(text, embedding);
+        return embedding;
+    } catch (e) {
+        console.error(`Embedding error for "${text}":`, e.message);
+        return null;
+    }
+}
 
 let collection;
 
-// Middleware
+// ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(cors());
 app.use(express.json());
 
-// Graph Store
-// ---------------------------
-// Initialize Graph (DISABLED - Vector Mode)
-// ---------------------------
-// Replace the current empty graph initialization with:
+// ─── Graph Store ──────────────────────────────────────────────────────────────
 function loadAllGraphs() {
-    const storeDir = path.join(__dirname, 'antigravity_store');
+    const storeDir = path.join(__dirname, 'graph_data');
     if (!fs.existsSync(storeDir)) {
-        console.warn('No antigravity_store found. Running in vector-only mode.');
+        console.warn('No graph_data found. Running in vector-only mode.');
         return { nodes: [], edges: [] };
     }
 
     const merged = { nodes: [], edges: [] };
     const nodeIds = new Set();
-
     const graphFiles = fs.readdirSync(storeDir).filter(f => f.endsWith('_graph.json'));
 
     for (const file of graphFiles) {
         try {
             const g = JSON.parse(fs.readFileSync(path.join(storeDir, file), 'utf8'));
-
             for (const node of g.nodes) {
                 if (!nodeIds.has(node.id)) {
                     nodeIds.add(node.id);
                     merged.nodes.push({ ...node, source_graph: file });
                 }
             }
-
             for (const edge of g.edges) {
                 merged.edges.push({ ...edge, source_graph: file });
             }
@@ -92,110 +106,223 @@ function loadAllGraphs() {
 
 let graph = loadAllGraphs();
 
-// Build adjacency map
 const adjacencyMap = {};
 for (const edge of graph.edges) {
+    if (!edge.source || !edge.target) continue;
     if (!adjacencyMap[edge.source]) adjacencyMap[edge.source] = [];
     if (!adjacencyMap[edge.target]) adjacencyMap[edge.target] = [];
     adjacencyMap[edge.source].push(edge);
     adjacencyMap[edge.target].push(edge);
 }
 
+// ─── OPTIMIZATION 2: Graph Traversal Cache ────────────────────────────────────
+const graphTraversalCache = new Map();
+
 function graphTraversal(startNodeId, maxHops = 2) {
+    const cacheKey = `${startNodeId}:${maxHops}`;
+    if (graphTraversalCache.has(cacheKey)) {
+        return graphTraversalCache.get(cacheKey);
+    }
+
     const visited = new Set();
     const results = [];
     const queue = [{ id: startNodeId, hop: 0 }];
 
     while (queue.length > 0) {
         const { id, hop } = queue.shift();
-        if (visited.has(id) || hop > maxHops) continue;
+        if (!id || visited.has(id) || hop > maxHops) continue;
         visited.add(id);
 
-        const node = graph.nodes.find(n => n.id === id);
+        const node = graph.nodes.find(n => n.id && n.id === id);
         if (node) results.push(node);
 
         const edges = adjacencyMap[id] || [];
         for (const edge of edges) {
             const nextId = edge.source === id ? edge.target : edge.source;
-            if (!visited.has(nextId)) {
+            if (nextId && !visited.has(nextId)) {
                 queue.push({ id: nextId, hop: hop + 1 });
             }
         }
     }
 
+    graphTraversalCache.set(cacheKey, results);
     return results;
 }
 
-// ---------------------------
-// Initialize Chroma
-// ---------------------------
+// ─── Chroma Init ──────────────────────────────────────────────────────────────
 async function initChroma() {
     collection = await chroma.getOrCreateCollection({
         name: 'zoo_collection',
         embeddingFunction: embedder
     });
-
-    console.log(`Connected to ChromaDB collection: zoo_collection`);
+    console.log('Connected to ChromaDB collection: zoo_collection');
 }
 
-// ---------------------------
-// Dynamic Zoo Registry
-// ---------------------------
 const zooRegistry = {
     canonicalNames: [],
     lookup: {},
-    metadata: {}
+    metadata: {},
+    sortedCanonical: [],
+    eventNames: new Set()
 };
+
+// ─── Priority Overrides ───────────────────────────────────────────────────────
+const priorityOverrides = {
+    'peacock': 'Indian Peafowl (Leucistic)',
+    'peacocks': 'Indian Peafowl (Leucistic)',
+    'peafowl': 'Indian Peafowl (Leucistic)',
+    'peafowls': 'Indian Peafowl (Leucistic)',
+    'peahen': 'Indian Peafowl (Leucistic)',
+    'peahens': 'Indian Peafowl (Leucistic)',
+    'white peafowl': 'White Peafowl',
+    'white peacock': 'White Peafowl',
+    'lion tailed monkey': 'Lion Tailed Macaque',
+    'lion tailed monkeys': 'Lion Tailed Macaque',
+    'lion tailed macaque': 'Lion Tailed Macaque',
+    'lion tailed macaques': 'Lion Tailed Macaque',
+    'lion tailed moneky': 'Lion Tailed Macaque',
+    'lion': 'Asiatic Lion',
+    'lions': 'Asiatic Lion',
+    'monkey': 'macaque',
+    'tiger': 'White Tiger',
+    'tigers': 'White Tiger',
+    'elephant': 'Indian Elephant',
+    'elephants': 'Indian Elephant',
+    'sher': 'Asiatic Lion',
+    'shera': 'Asiatic Lion',
+    'bagh': 'White Tiger',
+    'hathi': 'Indian Elephant',
+    'एशियाई शेर': 'Asiatic Lion',
+    'शेर': 'Asiatic Lion',
+    'सफेद बाघ': 'White Tiger',
+    'बाघ': 'White Tiger',
+    'हाथी': 'Indian Elephant',
+    'पेन': 'Washrooms',
+    'पानी': 'Drinking Water',
+    'खाना': 'Food & Drinks',
+    'flightless bird': 'Flightless birds',
+    'flightless birds': 'Flightless birds',
+    'Food & Drinks': 'Food & Drinks',
+    'Drinking Water': 'Drinking Water',
+    'Washrooms': 'Washrooms',
+    'Buggy Stops': 'Buggy Stops',
+    'Emergency': 'Emergency'
+};
+
+// ─── OPTIMIZATION 1: Trie Index ───────────────────────────────────────────────
+let trieIndex = new Map();
+
+function buildTrieIndex() {
+    const entries = [];
+    for (const [phrase, name] of Object.entries(zooRegistry.lookup)) {
+        entries.push([phrase.toLowerCase(), name]);
+    }
+    for (const name of zooRegistry.canonicalNames) {
+        const lower = name.toLowerCase();
+        if (!entries.some(e => e[0] === lower)) {
+            entries.push([lower, name]);
+        }
+    }
+    entries.sort((a, b) => b[0].length - a[0].length);
+    trieIndex = new Map(entries);
+    console.log(`[TRIE] Built index with ${trieIndex.size} entries.`);
+}
+
+function fastExtract(query) {
+    const q = query.toLowerCase();
+    const foundMatches = [];
+
+    for (const [phrase, name] of trieIndex) {
+        const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+        if (regex.test(q)) {
+            if (!foundMatches.some(m => m.phrase.includes(phrase))) {
+                foundMatches.push({ phrase, name });
+            }
+        }
+    }
+
+    const uniqueNames = [...new Set(foundMatches.map(m => m.name))];
+    if (uniqueNames.length === 1) {
+        const wordCount = q.split(/\s+/).length;
+        if (wordCount < 6) return uniqueNames[0];
+    }
+    return null;
+}
 
 function loadZooRegistry() {
     const dataDir = path.join(__dirname, 'zoo-data');
     if (!fs.existsSync(dataDir)) {
-        console.error("Zoo data directory missing!");
+        console.error('Zoo data directory missing!');
         return;
     }
 
     const files = fs.readdirSync(dataDir).filter(f => f.endsWith('.json'));
     const names = new Set();
+    const eventNames = new Set();
+    const aliasMap = new Map();
+    const classifications = new Set();
 
     for (const file of files) {
-        if (file.includes('geojson') || file.includes('floorplan')) continue;
+        if (file.includes('geojson') || file.includes('floorplan') || file.includes('facts')) continue;
         try {
             const raw = fs.readFileSync(path.join(dataDir, file), 'utf8');
             const data = JSON.parse(raw);
             const items = Array.isArray(data) ? data : (data.data || [data]);
 
             for (const item of items) {
-                const name = item.common_name?.en || item.render_name?.en || item.name?.en || item.name || item.title?.en || item.title;
-                const classification = item.classification?.en || item.classification || "";
-                const threatStatus = item.threat_status?.en || item.threat_status || "";
+                const rName = item.render_name?.en || item.render_name;
+                const cName = item.common_name?.en || item.common_name;
+                const dName = item.name?.en || item.name;
+                const tName = item.title?.en || item.title;
 
-                if (name && typeof name === 'string' && !/^[0-9a-fA-F]{24}$/.test(name)) {
-                    const cleanName = name.replace(/\s+\d+$/, '').trim();
-                    if (cleanName.length > 2) {
-                        names.add(cleanName);
-                        // Store metadata if not already present or if new one has classification
-                        if (!zooRegistry.metadata[cleanName] || classification || threatStatus) {
-                            zooRegistry.metadata[cleanName] = {
-                                classification,
-                                threatStatus
-                            };
-                        }
+                const primaryNameRaw = rName || cName || dName || tName;
+                if (!primaryNameRaw || typeof primaryNameRaw !== 'string' || /^[0-9a-fA-F]{24}$/.test(primaryNameRaw)) continue;
+
+                const primaryName = primaryNameRaw.replace(/\s+\d+$/, '').trim();
+                if (primaryName.length <= 2) continue;
+
+                names.add(primaryName);
+
+                if (!aliasMap.has(primaryName)) aliasMap.set(primaryName, new Set());
+                [rName, cName, dName, tName].forEach(n => {
+                    if (n && typeof n === 'string' && !/^[0-9a-fA-F]{24}$/.test(n)) {
+                        const clean = n.replace(/\s+\d+$/, '').trim();
+                        if (clean.length > 2) aliasMap.get(primaryName).add(clean);
                     }
+                });
+
+                const classification = item.classification?.en || item.classification || '';
+                if (classification && classification.length > 2) classifications.add(classification);
+                const threatStatus = item.threat_status?.en || item.threat_status || '';
+
+                if (file.includes('calendar') || file.includes('event')) {
+                    eventNames.add(primaryName);
+                }
+                if (!zooRegistry.metadata[primaryName] || classification || threatStatus) {
+                    zooRegistry.metadata[primaryName] = { classification, threatStatus };
                 }
             }
-        } catch (e) { }
+        } catch (e) { /* skip malformed file */ }
     }
 
     zooRegistry.canonicalNames = Array.from(names);
 
-    // Build fuzzy lookup
-    const blacklist = new Set(['national', 'international', 'world', 'india', 'indian', 'park', 'zoo', 'day', 'and', 'the', 'for', 'with', 'birds', 'animals']);
+    const blacklist = new Set([
+        'national', 'international', 'world', 'india', 'indian',
+        'park', 'zoo', 'day', 'and', 'the', 'for', 'with', 'birds', 'animals'
+    ]);
+
+    for (const cls of classifications) {
+        if (cls.length > 3 && !blacklist.has(cls.toLowerCase())) {
+            names.add(cls);
+            zooRegistry.lookup[cls.toLowerCase()] = cls;
+        }
+    }
 
     for (const canonical of zooRegistry.canonicalNames) {
         const lower = canonical.toLowerCase();
         const meta = zooRegistry.metadata[canonical];
 
-        // Ensure name is at least two words if possible for better search accuracy
         let displayName = canonical;
         if (!canonical.includes(' ') && meta?.classification) {
             const firstClassWord = meta.classification.split(/[/\s,]+/)[0];
@@ -204,352 +331,338 @@ function loadZooRegistry() {
             }
         }
 
-        zooRegistry.lookup[lower] = displayName;
+        const aliases = aliasMap.get(canonical) || new Set([canonical]);
+        for (const alias of aliases) {
+            zooRegistry.lookup[alias.toLowerCase()] = displayName;
+        }
 
-        // Map individual words if they are significant and NOT blacklisted
-        const words = lower.split(/[/\s,.-]+/);
-        for (const word of words) {
-            if (word.length > 3 && !blacklist.has(word) && !zooRegistry.lookup[word]) {
-                zooRegistry.lookup[word] = displayName;
+        const isFacilityName = /toilet|water|washroom|food|drink|canteen|kiosk|entry|gate/i.test(canonical);
+        if (isFacilityName) {
+            const words = lower.split(/[/\s,.-]+/);
+            for (const word of words) {
+                if (word.length > 3 && !blacklist.has(word) && !zooRegistry.lookup[word]) {
+                    zooRegistry.lookup[word] = displayName;
+                }
             }
         }
     }
 
-    // Hardcoded priorities for highly ambiguous one-word terms
-    const priorityOverrides = {
-        "lion": "Asiatic Lion",
-        "lions": "Asiatic Lion",
-        "tiger": "White Tiger",
-        "tigers": "White Tiger",
-        "elephant": "Indian Elephant",
-        "elephants": "Indian Elephant",
-        "monkey": "Bonnet Macaque",
-        "monkeys": "Bonnet Macaque",
-        "snake": "Indian Rock Python",
-        "snakes": "Indian Rock Python"
-    };
     Object.assign(zooRegistry.lookup, priorityOverrides);
 
-    console.log(`\n📚 Zoo Registry: Loaded ${zooRegistry.canonicalNames.length} species dynamically.`);
+    zooRegistry.sortedCanonical = [...zooRegistry.canonicalNames]
+        .sort((a, b) => b.length - a.length);
+
+    zooRegistry.eventNames = eventNames;
+
+    console.log(`\n📚 Zoo Registry: Loaded ${zooRegistry.canonicalNames.length} species dynamically (${zooRegistry.eventNames.size} events).`);
 }
 
-// ---------------------------
-// Helper: Optimize Context
-// ---------------------------
-function optimizeContext(paths, maxLines = 30) {
-    return [...new Set(paths)]
-        .slice(0, maxLines)
-        .join('\n');
+function normalizeToRegistryOrSelf(rawSubject) {
+    const words = rawSubject.trim().split(/\s+/);
+    for (let len = words.length; len >= 1; len--) {
+        const candidate = words.slice(0, len).join(' ');
+        const lower = candidate.toLowerCase();
+        if (zooRegistry.lookup[lower]) return zooRegistry.lookup[lower];
+        if (zooRegistry.canonicalNames.some(n => n.toLowerCase() === lower)) {
+            return zooRegistry.canonicalNames.find(n => n.toLowerCase() === lower);
+        }
+    }
+    const sLower = rawSubject.toLowerCase();
+    const fuzzyHit = zooRegistry.canonicalNames.find(n => {
+        const nl = n.toLowerCase();
+        return nl.includes(sLower) || sLower.includes(nl) || (sLower.length > 4 && nl.startsWith(sLower.slice(0, 5)));
+    });
+    if (fuzzyHit) return fuzzyHit;
+
+    return words[0];
 }
 
-// ---------------------------
-// Hybrid Search Engine (Scored Identity Reranking)
-// ---------------------------
-// ---------------------------
-// Helper: Extract Subject & Facilities
-// ---------------------------
+// ─── Context Helper ───────────────────────────────────────────────────────────
+function optimizeContext(docs, maxLines = 5) {
+    return [...new Set(docs)].slice(0, maxLines).join('\n');
+}
+
+// ─── Facility Synonym Map ─────────────────────────────────────────────────────
+const facilitySynonyms = {
+    'Food & Drinks': ['food', 'eat', 'hungry', 'snacks', 'restaurant', 'cafe', 'cafeteria', 'snack', 'khana', 'खाना', 'खानपान', 'भूख', 'कैंटीन', 'canteen'],
+    'Drinking Water': ['water', 'drink', 'drinking water', 'thirsty', 'fountain', 'pani', 'पानी', 'प्यास'],
+    'Washrooms': ['washroom', 'toilet', 'restroom', 'bathroom', 'shauchalay', 'शौचालय', 'टॉयलेट', 'pee', 'poo'],
+    'Buggy Stops': ['buggy', 'shuttle', 'ride', 'cart', 'transport', 'बग्गी'],
+    'First Aid': ['first aid', 'medical', 'medicine', 'doctor', 'clinic', 'hospital', 'दवाई', 'अस्पताल'],
+    'Counters': ['counter', 'ticket', 'info', 'information', 'help', 'टिकट', 'काउंटर']
+};
+
+function detectFacility(text) {
+    const t = text.toLowerCase();
+    for (const [facility, syns] of Object.entries(facilitySynonyms)) {
+        for (const s of syns) {
+            const matched = /^[a-z\s]+$/i.test(s)
+                ? new RegExp(`\\b${s}\\b`, 'i').test(t)
+                : t.includes(s);
+            if (matched) return facility;
+        }
+    }
+    return null;
+}
+
+function finalizeSubject(subject, qLower, extractedSubject = null) {
+    const matchedFacility = detectFacility(qLower) || detectFacility(subject);
+    if (matchedFacility) subject = matchedFacility;
+    return { subject, extractedSubject: extractedSubject || subject, matchedFacility };
+}
+
 async function extractSubject(query) {
-    const qLower = query.toLowerCase();
-    const dayPattern = /\b(national|world|international|global)\b[\w\s]+\bday\b/i;
-    const dayMatch = query.match(dayPattern);
+    const qLower = query.toLowerCase().trim();
+
+    if (['hello', 'hi', 'hey', 'नमस्ते', 'नमस्ते', 'hello shera', 'hi shera'].includes(qLower) || qLower.length < 3) {
+        return finalizeSubject('general', qLower);
+    }
+
+    const dayMatch = query.match(/\b(national|world|international|global)\b[\w\s]+\bday\b/i);
     if (dayMatch) {
-        const eventName = dayMatch[0]
-            .trim()
-            .split(/\s+/)
+        const eventName = dayMatch[0].trim().split(/\s+/)
             .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
             .join(' ');
-        console.log(`[EVENT] Day pattern detected: "${eventName}"`);
-        return { subject: eventName, extractedSubject: eventName, matchedFacility: null };
+        console.log(`[EVENT] Day pattern: "${eventName}"`);
+        return finalizeSubject(eventName, qLower);
     }
 
-    // ---------------------------
-    // High-Priority Conservation Keywords
-    // ---------------------------
-    if (qLower.includes("endangered") || qLower.includes("संकटग्रस्त") || qLower.includes("खतरे में") || qLower.includes("conservation")) {
-        return { subject: "Endangered", extractedSubject: "Endangered", matchedFacility: null };
+    if (qLower.includes('endangered') || qLower.includes('संकटग्रस्त')
+        || qLower.includes('खतरे में') || qLower.includes('conservation')) {
+        return finalizeSubject('Endangered', qLower);
     }
 
-    const extractionResp = await ollama.chat({
-        model: CHAT_MODEL,
-        messages: [{
-            role: 'system',
-            content: `Extract the most specific subject (Animal, Place, Facility, or Event) from the query. 
-            Return ONLY the name in English. BE SPECIFIC.
-            If the query is ONLY a greeting or casual talk, return "general".
-            
-            CRITICAL MAPPINGS:
-            - "Sher", "Shera", "एशियाई शेर", "शेर" -> "Asiatic Lion"
-            - "Bagh", "बाघ", "Tiger" -> "White Tiger"
-            - "Hathi", "हाथी", "Elephant" -> "Indian Elephant"
-            - "Monkey", "Monkeys", "बंदर", "कपि" -> "Bonnet Macaque"
-            
-            Always prefer specific names.
-            No extra text.`
-        }, {
-            role: 'user',
-            content: query
-        }]
-    });
+    const facilityHit = detectFacility(qLower);
+    if (facilityHit) return finalizeSubject(facilityHit, qLower);
 
-    const extractedSubject = extractionResp.message.content.replace(/[^\w\s]/gi, '').trim();
-    let subject = extractedSubject;
+    const lowerQuery = query.toLowerCase();
+    if (lowerQuery.includes('nearby') || lowerQuery.includes('close to me') || lowerQuery.includes('where am i')) {
+        return { subject: 'general', extractedSubject: 'location', matchedFacility: null };
+    }
+    if (lowerQuery.includes('thank') || lowerQuery.includes('bye') || lowerQuery.includes('goodbye')) {
+        return { subject: 'general', extractedSubject: 'greeting', matchedFacility: null };
+    }
 
-    // ---------------------------
-    // Accuracy Shield: Dynamic Registry Lookup
-    // ---------------------------
-    const qWords = qLower.split(/\s+/);
+    const trieHit = fastExtract(query);
+    let isEventQuery = /\b(national|international|world|global)\b[\w\s]+\bday\b/i.test(query);
 
-    // 1. Try longest word match from registry (more specific than LLM sometimes)
-    const sortedWords = qWords.filter(w => w.length > 3).sort((a, b) => b.length - a.length);
-    for (const word of sortedWords) {
-        if (zooRegistry.lookup[word]) {
-            subject = zooRegistry.lookup[word];
-            break;
+    if (trieHit) {
+        if (!zooRegistry.eventNames.has(trieHit) || isEventQuery) {
+            console.log(`[TRIE] Fast match: "${trieHit}"`);
+            return finalizeSubject(trieHit, qLower);
         }
     }
 
-    // 2. Canonicalize whatever we have (Registry or LLM)
+    let subject = 'general';
+    try {
+        const extractionResp = await ollama.chat({
+            model: EXTRACTION_MODEL,
+            messages: [
+                {
+                    role: 'system',
+                    content: `Extract the primary subject (Animal, Place, Facility, or Event) from the query.
+Return ONLY the name in English. BE EXTREMELY BRIEF. DO NOT provide any thinking process or internal monologue.
+
+CRITICAL RULES:
+1. If the user asks for an animal (e.g., "cheetah"), return ONLY the animal name ("Cheetah"). 
+2. DO NOT resolve a simple animal name to an Event.
+3. Only return an Event name if the user specifically mentions a "day", "event", or "celebration".
+4. If it's a facility (food, water, washroom), return the category.
+
+CRITICAL MAPPINGS:
+- "Sher", "Shera", "एशियाई शेर", "शेर" -> "Asiatic Lion"
+- "Bagh", "बाघ", "Tiger" -> "White Tiger"
+- "Hathi", "हाथी", "Elephant" -> "Indian Elephant"
+- "Pani", "पानी" -> "Drinking Water"
+- "Food", "Khana", "खाना" -> "Food & Drinks"
+
+No extra text.`
+                },
+                { role: 'user', content: query }
+            ],
+            options: { num_predict: 64, temperature: 0, num_ctx: 1024 }
+        });
+        const raw = extractionResp.message.content.replace(/[^\w\s]/gi, '').trim();
+        subject = raw ? normalizeToRegistryOrSelf(raw) : 'general';
+    } catch (e) {
+        console.error('[LLM] Extraction error:', e.message);
+    }
+
     const sLower = subject.toLowerCase();
-    if (zooRegistry.lookup[sLower]) {
-        subject = zooRegistry.lookup[sLower];
-    }
+    if (zooRegistry.lookup[sLower]) subject = zooRegistry.lookup[sLower];
 
-    // ---------------------------
-    // Facility Mapping
-    // ---------------------------
-    const facilitySynonyms = {
-        'Food & Drinks': ['food', 'eat', 'hungry', 'restaurant', 'cafe', 'cafeteria', 'snack', 'khana', 'खाना', 'खानपान', 'कैंटीन', 'canteen'],
-        'Drinking Water': ['water', 'drink', 'drinking water', 'thirsty', 'fountain', 'pani', 'पानी', 'प्यास'],
-        'Washrooms': ['washroom', 'toilet', 'restroom', 'bathroom', 'shauchalay', 'शौचालय', 'टॉयलेट'],
-        'Buggy Stops': ['buggy', 'shuttle', 'ride', 'cart', 'transport', 'बग्गी'],
-        'First Aid': ['first aid', 'medical', 'medicine', 'doctor', 'clinic', 'hospital', 'दवाई', 'अस्पताल'],
-        'Counters': ['counter', 'ticket', 'info', 'information', 'help', 'टिकट', 'काउंटर']
-    };
-
-    let matchedFacility = null;
-    for (const [facility, syns] of Object.entries(facilitySynonyms)) {
-        if (syns.some(s => {
-            if (/^[a-z\s]+$/i.test(s)) {
-                const regex = new RegExp(`\\b${s}\\b`, 'i');
-                return regex.test(qLower) || regex.test(sLower);
-            }
-            return qLower.includes(s) || sLower.includes(s);
-        })) {
-            matchedFacility = facility;
-            break;
-        }
-    }
-
-    if (matchedFacility) {
-        subject = matchedFacility;
-    }
-
-    return { subject, extractedSubject, matchedFacility };
+    return finalizeSubject(subject, qLower, subject);
 }
 
-// ---------------------------
-// Hybrid Search Engine (Scored Identity Reranking)
-// ---------------------------
-async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, language = 'en') {
-    console.log(`\n[SEARCH] Query: "${query}" (Lang: ${language})`);
+async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, language = 'en', isEventQuery = false) {
+    console.log(`\n[SEARCH] Query: "${query}" (Lang: ${language}, EventQuery: ${isEventQuery})`);
     console.log(`[ENTITY] Target Subject: "${subject}"`);
 
-    // Use the extracted English subject for the primary vector search
-    // This is much more reliable than the raw query, especially for non-English queries
-    const embedResp = await ollama.embed({
-        model: EMBED_MODEL,
-        input: subject
-    });
+    const queryEmbedding = await getCachedEmbedding(subject);
+    if (!queryEmbedding) {
+        return { context: '', subject: 'general', references: [], topScore: 0 };
+    }
 
-    const queryEmbedding = embedResp.embeddings[0];
-
-    // ---------------------------
-    // Special Case: Endangered/Conservation Queries
-    // ---------------------------
-    if (subject.toLowerCase() === "endangered" || subject.toLowerCase() === "conservation") {
+    if (subject.toLowerCase() === 'endangered' || subject.toLowerCase() === 'conservation') {
         const endangeredList = zooRegistry.canonicalNames.filter(name => {
-            const rawStatus = zooRegistry.metadata[name]?.threatStatus || "";
-            const status = String(rawStatus).toLowerCase();
+            const status = String(zooRegistry.metadata[name]?.threatStatus || '').toLowerCase();
             return status.includes('endangered') || status.includes('vulnerable') || status.includes('threatened');
         });
 
         if (endangeredList.length > 0) {
-            console.log(`[ENTITY] Conservation Query detected. Found ${endangeredList.length} species.`);
-            const listStr = endangeredList.slice(0, 15).join(", ");
-            const customContext = `
-The National Zoological Park, New Delhi is home to many endangered and threatened species.
-Some of the most important endangered/vulnerable animals you can see here are: ${listStr}.
-Visitors are encouraged to learn about their conservation and visit them at their enclosures.
-            `.trim();
-
+            console.log(`[ENTITY] Conservation query. Found ${endangeredList.length} species.`);
+            const listStr = endangeredList.slice(0, 15).join(', ');
             return {
-                context: customContext,
+                context: `The National Zoological Park, New Delhi is home to many endangered and threatened species.\nSome key endangered/vulnerable animals here are: ${listStr}.\nVisitors are encouraged to learn about their conservation.`,
                 sortedContext: endangeredList.slice(0, 5).map(name => ({
-                    metadata: { name },
-                    score: 5000,
-                    doc: `This is the ${name}.`
+                    metadata: { name }, score: 1.0, doc: `This is the ${name}.`
                 })),
-                topScore: 5000
+                topScore: 1.0,
+                subject,
+                references: endangeredList.slice(0, 5)
             };
         }
     }
 
-    // 1. Try Exact ID Match first (Super reliable for known subjects)
     let exactMatch = null;
     try {
         const getRes = await collection.get({ ids: [subject] });
-        if (getRes && getRes.ids && getRes.ids.length > 0) {
-            console.log(`[ENTITY] Exact ID Match Found: "${subject}"`);
-            exactMatch = {
-                doc: getRes.documents[0],
-                metadata: getRes.metadatas[0],
-                score: 10000,
-                originalName: getRes.ids[0]
-            };
+        if (getRes?.ids?.length > 0) {
+            const docName = (getRes.metadatas[0]?.name || '').toLowerCase();
+            const subjectLower = subject.toLowerCase();
+            const subjectWords = subjectLower.split(/\s+/);
+            const docWords = docName.split(/\s+/);
+
+            const overlap = subjectWords.filter(w => docWords.includes(w)).length;
+            const isGenuineMatch = overlap >= Math.ceil(subjectWords.length * 0.8);
+
+            if (isGenuineMatch) {
+                const isEventMatch = getRes.metadatas[0]?.is_event === 'true';
+                console.log(`[ENTITY] Exact ID Match: "${subject}" (IsEvent: ${isEventMatch})`);
+
+                const finalScore = (isEventMatch && !isEventQuery) ? 0.15 : 1.5;
+
+                exactMatch = {
+                    doc: getRes.documents[0],
+                    metadata: getRes.metadatas[0],
+                    score: finalScore,
+                    originalName: getRes.ids[0]
+                };
+            }
         }
-    } catch (e) {
-        // Not found by ID, continue to vector search
-    }
-    // After the exact ID match block, add:
-    // --- Calendar Event Fallback: try core keyword if title variant didn't match ---
-    if (!exactMatch && subject.match(/\b(national|international|world|global)\b/i)) {
-        // Extract core subject (e.g. "National Sloth Day" -> "Sloth")
+    } catch (e) { /* not found by ID */ }
+
+    if (!exactMatch && /\b(national|international|world|global)\b/i.test(subject)) {
         const coreKeyword = subject
             .replace(/\b(national|international|world|global|day|for|to|the|of|and|in|a)\b/gi, '')
             .trim();
 
         if (coreKeyword) {
-            console.log(`[EVENT] Trying core keyword fallback: "${coreKeyword}"`);
-            // Search by event_keyword in metadata via vector search on the core word
-            const coreEmbedResp = await ollama.embed({ model: EMBED_MODEL, input: coreKeyword + " day" });
-            const coreResults = await collection.query({
-                queryEmbeddings: [coreEmbedResp.embeddings[0]],
-                nResults: 10,
-                where: { is_calendar_event: "true" }  // Only search calendar events
+            console.log(`[EVENT] Core keyword fallback: "${coreKeyword}"`);
+            const coreEmbedding = await getCachedEmbedding(coreKeyword + ' day');
+            let coreResults = await collection.query({
+                queryEmbeddings: [coreEmbedding],
+                nResults: 5,
+                where: { is_event: 'true' }
             });
 
+            if (!coreResults.ids?.[0]?.length) {
+                coreResults = await collection.query({
+                    queryEmbeddings: [coreEmbedding],
+                    nResults: 5
+                });
+            }
+
             if (coreResults.ids?.[0]?.length > 0) {
-                // Pick the best event result and treat it as an exact match
                 console.log(`[EVENT] Fallback match: "${coreResults.ids[0][0]}"`);
                 exactMatch = {
                     doc: coreResults.documents[0][0],
                     metadata: coreResults.metadatas[0][0],
-                    score: 8000,
+                    score: 1.2,
                     originalName: coreResults.ids[0][0]
                 };
             }
         }
     }
 
-    const results = await collection.query({
-        queryEmbeddings: [queryEmbedding],
-        nResults: 150
-    });
+    let results = { documents: [[]], metadatas: [[]], distances: [[]] };
+    try {
+        if (!exactMatch || exactMatch.score < 1.4) {
+            results = await collection.query({
+                queryEmbeddings: [queryEmbedding],
+                nResults: 15
+            });
+        }
+    } catch (e) {
+        console.warn('[SEARCH] Vector query failed:', e.message);
+    }
 
     const documents = results.documents?.[0] || [];
     const metadatas = results.metadatas?.[0] || [];
     const distances = results.distances?.[0] || [];
 
-    const scoredContext = [];
-
-    // Add exact match to context if found
-    if (exactMatch) {
-        scoredContext.push(exactMatch);
-    }
+    const scoredContext = exactMatch ? [exactMatch] : [];
 
     for (let i = 0; i < documents.length; i++) {
         const metadata = metadatas[i] || {};
         const distance = distances[i] || 1.0;
-        const docName = (metadata.name || "").toLowerCase();
+        const docName = (metadata.name || '').toLowerCase().replace(/\d+/g, '').trim();
 
-        // Base score: Convert distance (0 to 2+) to score (up to 1000)
-        // 0.0 distance -> 1000 score
-        // 1.0 distance -> 0 score
-        let score = Math.max(0, (1.0 - distance) * 1000);
+        const baseSimilarity = Math.max(0, 1.0 - distance);
 
-        if (i < 3) {
-            console.log(`  - Match [${i}]: "${metadata.name}" | Distance: ${distance.toFixed(4)} | Base Score: ${score.toFixed(2)}`);
-        }
+        let score = baseSimilarity * 0.4;
 
-        if (subject !== "general") {
-            const cleanDocName = docName.replace(/\d+/g, '').trim().toLowerCase();
+        if (subject !== 'general') {
             const subjectLower = subject.toLowerCase();
-            const docWords = cleanDocName.split(/\s+/);
+            const docWords = docName.split(/\s+/);
             const subjectWords = subjectLower.split(/\s+/);
 
-            // 1. Direct String Overlap
-            const directMatch = cleanDocName.includes(subjectLower) || subjectLower.includes(cleanDocName);
-
-            // 2. Word-based Overlap
             const matchedWords = subjectWords.filter(sw => docWords.includes(sw));
             const matchCount = matchedWords.length;
-            const missingCount = subjectWords.filter(sw => !docWords.includes(sw)).length;
+            const missingCount = subjectWords.length - matchCount;
+            const overlapRatio = matchCount / subjectWords.length;
+            const penaltyRatio = missingCount / subjectWords.length;
 
-            if (i < 3) {
-                console.log(`  - Match [${i}] Words: doc=[${docWords}], subject=[${subjectWords}], matched=[${matchedWords}], count=${matchCount}`);
+            score += overlapRatio * 0.5;
+            score -= penaltyRatio * 0.3;
+
+            if (docName === subjectLower) score += 0.3;
+            else if (docName.endsWith(subjectLower)) score += 0.15;
+            else if (docName.startsWith(subjectLower)) score += 0.08;
+
+            if (missingCount === 0 && metadata.scientific_name) score += 0.1;
+
+            if (metadata.is_event === 'true' && !isEventQuery) {
+                score = Math.min(score, 0.1);
             }
 
-            if (directMatch || matchCount > 0) {
-                if (cleanDocName === subjectLower) {
-                    score += 4000; // Perfect exact match
-                } else if (cleanDocName.endsWith(subjectLower)) {
-                    score += 2500; // Strong suffix match (e.g. "Asiatic Lion" for "Lion")
-                } else if (cleanDocName.startsWith(subjectLower)) {
-                    score += 1500; // Strong prefix match
-                } else {
-                    score += (matchCount * 800); // Proportional word match
-                    if (directMatch) score += 500;
-                }
-
-                // Penalize missing subject words heavily (Crucial for distinguishing specific species)
-                score -= (missingCount * 2500);
-
-                // Specificity Bonus: Only if we match ALL words from the subject
-                if (missingCount === 0) {
-                    const subjectWordCount = subjectWords.length;
-                    const wordCount = docWords.length;
-                    const extraWordsCount = wordCount - subjectWordCount;
-
-                    score += (wordCount * 500);
-                    score -= (extraWordsCount * 1000); // Penalty for extra words (prefer exact/shorter matches)
-                    score += (cleanDocName.length * 10);
-                }
-
-                // Penalty for extra noise in doc name not present in subject or query
-                const extraWords = docWords.filter(w => !subjectWords.includes(w) && !query.toLowerCase().includes(w));
-                score -= (extraWords.length * 500); // Heavier penalty for noise
-
-                // Biology Priority: If this is an animal, give it a significant edge
-                if (metadata.full_data && metadata.full_data.includes("scientific_name")) {
-                    score += 2000;
-                }
-            } else {
-                // If NO word overlap, we need a decent semantic match
-                if (distance > 0.75) {
-                    score = 0; // Reject weak semantic-only matches
-                } else if (distance > 0.6) {
-                    score -= 300; // Moderate penalty for semantic match without words
-                }
-            }
+            if (matchCount === 0 && distance > 0.5) score = 0;
         }
 
-        // --- Bilingual Context Support ---
         let docText = documents[i];
-        if (language === 'hi' && metadata.full_data) {
-            try {
-                const fullData = JSON.parse(metadata.full_data);
-                docText = `
-नाम: ${fullData.common_name?.hi || fullData.name?.hi || fullData.title?.hi || fullData.common_name?.en || metadata.name}
-वैज्ञानिक नाम: ${fullData.scientific_name?.hi || fullData.scientific_name?.en || ""}
-श्रेणी: ${fullData.category?.hi || fullData.category?.en || ""}
-आवास: ${fullData.habitat?.hi || fullData.habitat?.en || ""}
-आहार: ${fullData.diet?.hi || fullData.diet?.en || ""}
-स्थान: ${fullData.location?.location_name?.hi || fullData.location_name?.hi || fullData.location?.location_name?.en || ""}
-विवरण: ${fullData.narrative?.hi || fullData.description?.hi || fullData.text?.hi || fullData.narrative?.en || ""}
-कहानियाँ: ${fullData.story_description?.hi || fullData.story_description?.en || ""}
-                `.trim();
-            } catch (e) {
-                console.error("Hindi metadata parse error:", e);
+        if (language === 'hi') {
+            if (metadata.name_hi || metadata.habitat_hi || metadata.narrative_hi) {
+                docText = [
+                    `नाम: ${metadata.name_hi || metadata.name}`,
+                    metadata.habitat_hi ? `आवास: ${metadata.habitat_hi}` : '',
+                    metadata.narrative_hi ? `विवरण: ${metadata.narrative_hi}` : ''
+                ].filter(Boolean).join('\n');
+            } else if (metadata.full_data) {
+                try {
+                    const fd = JSON.parse(metadata.full_data);
+                    docText = [
+                        `नाम: ${fd.common_name?.hi || fd.name?.hi || fd.title?.hi || metadata.name}`,
+                        `वैज्ञानिक नाम: ${fd.scientific_name?.hi || fd.scientific_name?.en || ''}`,
+                        `श्रेणी: ${fd.category?.hi || fd.category?.en || ''}`,
+                        `आवास: ${fd.habitat?.hi || fd.habitat?.en || ''}`,
+                        `आहार: ${fd.diet?.hi || fd.diet?.en || ''}`,
+                        `स्थान: ${fd.location?.location_name?.hi || fd.location?.location_name?.en || ''}`,
+                        `विवरण: ${fd.narrative?.hi || fd.description?.hi || fd.narrative?.en || ''}`,
+                        `कहानियाँ: ${fd.story_description?.hi || fd.story_description?.en || ''}`
+                    ].filter(s => s && !s.endsWith(': ')).join('\n');
+                } catch (e) {
+                    console.error('Hindi metadata parse error:', e.message);
+                }
             }
         }
 
@@ -560,316 +673,468 @@ Visitors are encouraged to learn about their conservation and visit them at thei
         .filter(item => item.score > 0)
         .sort((a, b) => b.score - a.score);
 
-    const resultDocs = sortedContext.slice(0, topK).map(item => item.doc);
+    if (scoredContext.length === 0 && subject !== 'general' && zooRegistry.canonicalNames.includes(subject)) {
+        console.log(`[SEARCH] Fallback: No vector results, but "${subject}" is in registry. Using metadata.`);
+        const meta = zooRegistry.metadata[subject] || {};
+        scoredContext.push({
+            doc: `The ${subject} is one of the species at National Zoological Park, New Delhi. ${meta.classification ? `It is classified as ${meta.classification}.` : ''}`,
+            metadata: { name: subject, ...meta },
+            score: 0.5
+        });
+    }
 
-    // Determine references based on score confidence
     const topScore = sortedContext.length > 0 ? sortedContext[0].score : 0;
-    const refThreshold = Math.max(800, topScore * 0.85); // Increased minimum threshold to 800
+    const refThreshold = Math.max(0.4, topScore * 0.85);
 
-    // Determine the best display name/keyword
-    // If the extracted subject is specific and we have a high-confidence match, 
-    // we prefer the subject as the binding keyword for better UI accuracy.
     let bestMatchName = subject;
-
     if (sortedContext.length > 0) {
-        const topItem = sortedContext[0];
-        const metaName = topItem.originalName.replace(/\s+\d+$/, '').trim();
-
-        // If the subject is "general" or too vague, use the metaName
-        const isVague = ["general", "animals", "birds", "reptiles", "mammals", "fish"].includes(subject.toLowerCase());
-
-        if (isVague || topScore > 5000) {
-            // If it's a very strong match for a specific doc, or subject is vague, use doc name
-            if (!/^[0-9a-fA-F]{24}$/.test(metaName)) {
-                bestMatchName = metaName;
-            }
+        const metaName = sortedContext[0].originalName?.replace(/\s+\d+$/, '').trim();
+        const isVague = ['general', 'animals', 'birds', 'reptiles', 'mammals', 'fish']
+            .includes(subject.toLowerCase());
+        if ((isVague || topScore > 1.2) && metaName && !/^[0-9a-fA-F]{24}$/.test(metaName)) {
+            bestMatchName = metaName;
         }
     }
 
-    // If the top match is very weak, we shouldn't bind to it as a specific animal
-    if (topScore < 250 && !isFacilityMatch) {
-        bestMatchName = "general";
-    }
-
-    if (sortedContext.length > 0) {
-        console.log(`[SEARCH] Top Match: "${sortedContext[0].originalName}" | Score: ${sortedContext[0].score.toFixed(2)}`);
-    }
+    if (topScore < 0.2 && !isFacilityMatch) bestMatchName = 'general';
 
     let references = sortedContext
         .filter(item => item.score >= refThreshold)
-        .map(item => item.originalName.replace(/\s+\d+$/, '').trim());
+        .map(item => item.originalName?.replace(/\s+\d+$/, '').trim())
+        .filter(Boolean);
 
-    // If it's a facility match, we should be very strict about animal references
-    // usually facilities shouldn't show animal cards unless explicitly asked
-    const isFacility = /Washroom|Drinking Water|Buggy Stops|Food & Drinks|First Aid|Counters/.test(bestMatchName);
-    if (isFacility) {
-        references = []; // Suppress animal cards for facility queries
-    }
+    const isFacilityName = /Washroom|Drinking Water|Buggy Stops|Food & Drinks|First Aid|Counters/.test(bestMatchName);
+    if (isFacilityName) references = [];
 
     return {
-        context: optimizeContext(resultDocs.slice(0, topK)),
+        context: optimizeContext(sortedContext.slice(0, topK).map(i => i.doc)),
         subject: bestMatchName,
         extractedSubject: subject,
         references: [...new Set(references)],
-        topScore: topScore,
+        topScore,
         isFacilityMatch: !!isFacilityMatch,
-        sortedContext: sortedContext  // ✅ add this
+        sortedContext
     };
 }
 
-// ---------------------------
-// Main Chat Endpoint
-// ---------------------------
 app.post('/api/shera/chat', async (req, res) => {
-    const { question, deepSearch, language = 'en' } = req.body;
+    let { question, deepSearch, language = 'en', stream = false } = req.body;
 
+    deepSearch = deepSearch === true || deepSearch === 'true';
     logResources('Incoming Chat');
 
     const isHindi = language === 'hi';
-    console.log(`\n--- Incoming: "${question}" (DeepSearch: ${deepSearch}, Lang: ${language}) ---`);
+    const qLower = question.toLowerCase().trim();
+    console.log(`\n--- Incoming: "${question}" (DeepSearch: ${deepSearch}, Lang: ${language}, Stream: ${stream}) ---`);
 
     try {
-        // 1. Resolve entity first
-        let { subject, extractedSubject, matchedFacility } = await extractSubject(question);
+        const { subject, extractedSubject, matchedFacility } = await extractSubject(question);
 
-        // 2. Search for context
         const isFacilityMatch = !!matchedFacility;
-        let { context, references, topScore, sortedContext } = await antigravitySearch(question, subject, isFacilityMatch, deepSearch ? 12 : 5, language);
-        // --- Graph Augmentation ---
-        // Use graph when: event query, low vector score, or relational query
-        const isEventQuery = /\b(national|international|world|global)\b[\w\s]+\bday\b/i.test(question);
-        const isRelationalQuery = /\b(eat|eats|live|lives|endangered|habitat|beat|location)\b/i.test(question);
-        const needsGraph = (isEventQuery || isRelationalQuery || topScore < 500) && graph.nodes.length > 0;
+        let isEventQuery = /\b(national|international|world|global)\b[\w\s]+\bday\b/i.test(question);
 
-        if (needsGraph) {
-            // Find the best matching graph node for the subject
-            const subjectLower = subject.toLowerCase();
-            const matchedNode = graph.nodes.find(n =>
-                n.id.toLowerCase().includes(subjectLower) ||
-                subjectLower.includes(n.id.toLowerCase())
-            );
+        const isGeneralConcept = /^(feline|canine|reptile|bird|animal|mammal|cat|dog|pet|fish)$/i.test(subject);
 
-            if (matchedNode) {
-                const relatedNodes = graphTraversal(matchedNode.id, 2);
-                const graphContext = relatedNodes
-                    .filter(n => n.description)
-                    .map(n => `${n.id} (${n.type}): ${n.description}`)
-                    .join('\n');
-
-                if (graphContext) {
-                    console.log(`[GRAPH] Augmenting context with ${relatedNodes.length} graph nodes`);
-                    context = graphContext + '\n\n' + context; // Graph context takes priority
+        const knownInZoo = isFacilityMatch
+            || isEventQuery
+            || subject === 'general'
+            || subject === 'Endangered'
+            || isGeneralConcept
+            || deepSearch
+            || zooRegistry.canonicalNames.some(name => {
+                const n = name.toLowerCase();
+                const s = subject.toLowerCase();
+                if (n === s || n.includes(s) || s.includes(n)) {
+                    if (zooRegistry.eventNames.has(name) && !isEventQuery) return false;
+                    return true;
                 }
+                if (s.length > 5 && n.length > 5) {
+                    const common = [...s].filter(char => n.includes(char)).length;
+                    if (common / s.length > 0.8) return true;
+                }
+                return false;
+            });
+
+        if (!knownInZoo) {
+            console.log(`[GATE] "${subject}" not in zoo registry — short-circuiting.`);
+            const notFoundPrompt = isHindi
+                ? `आप शेरा हैं। "${subject}" दिल्ली चिड़ियाघर में नहीं है। शेरा के रूप में उत्तर दें। कभी न कहें कि आप AI हैं। हिंदी में उत्तर दें।`
+                : `You are Shera. "${subject}" is NOT at the National Zoological Park, New Delhi. Respond as Shera. NEVER say you are an AI. Respond in English.`;
+
+            if (stream) {
+                res.setHeader('Content-Type', 'text/event-stream');
+                res.setHeader('Cache-Control', 'no-cache');
+                res.setHeader('Connection', 'keep-alive');
+                res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
+
+                const streamResp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
+                    stream: true,
+                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                });
+
+                for await (const chunk of streamResp) {
+                    const token = chunk.message.content;
+                    res.write(`data: ${JSON.stringify({ token })}\n\n`);
+                }
+                res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
+                return res.end();
+            } else {
+                const resp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
+                    stream: false,
+                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                });
+                return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
         }
-        // --- Synthetic Event Context for Calendar Events ---
-        if (isEventQuery && (!context || context.trim().length < 50)) {
-            const eventDate = sortedContext?.[0]?.metadata?.full_data
-                ? (() => {
-                    try {
-                        const fd = JSON.parse(sortedContext[0].metadata.full_data);
-                        return fd.date ? new Date(fd.date).toDateString() : '';
-                    } catch { return ''; }
-                })()
-                : '';
 
-            context = [
-                `Event: ${subject}`,
-                eventDate ? `Date: ${eventDate}` : '',
-                `This is a special observance day recognized at the National Zoological Park, New Delhi.`,
-                `Visitors are encouraged to learn about and celebrate this occasion during their visit.`
-            ].filter(Boolean).join('\n');
+        if (subject === 'general') {
+            const greetings = {
+                'hello': 'Hello there! 👋 Welcome to the National Zoological Park! I am Shera, your guide. How can I help you today? 🦁',
+                'hi': 'Hi! 👋 Welcome! I am Shera. What animal would you like to learn about today? 😊',
+                'hey': 'Hey! 👋 Glad to see you here! I am Shera. Looking for any specific animal or facility? 🦒',
+                'नमस्ते': 'नमस्ते! 👋 दिल्ली चिड़ियाघर में आपका स्वागत है। मैं शेरा हूँ, आपका गाइड। मैं आपकी क्या मदद कर सकता हूँ? 🐯'
+            };
 
-            if (isHindi) {
-                context = [
-                    `कार्यक्रम: ${subject}`,
-                    eventDate ? `तारीख: ${eventDate}` : '',
-                    `यह नेशनल जूलॉजिकल पार्क, नई दिल्ली में मान्यता प्राप्त एक विशेष दिन है।`,
-                    `आगंतुकों को इस अवसर पर जागरूक होने और इसे मनाने के लिए प्रोत्साहित किया जाता है।`
-                ].filter(Boolean).join('\n');
+            if (greetings[qLower]) {
+                console.log(`[GENERAL] Static greeting match: "${qLower}"`);
+                return res.json({ answer: greetings[qLower], keyword: 'general', references: [] });
+            }
+
+            console.log(`[GENERAL] Handling as general chat/greeting via LLM.`);
+            const greetingPrompt = isHindi
+                ? 'आप शेरा हैं, एक मिलनसार गाइड। उपयोगकर्ता का स्वागत करें। कभी न कहें कि आप AI हैं। हिंदी में उत्तर दें।'
+                : 'You are Shera, a friendly zoo guide. Greet the user or respond to their general talk. NEVER say you are an AI. Respond in English.';
+
+            if (stream) {
+                res.setHeader('Content-Type', 'text/event-stream');
+                res.setHeader('Cache-Control', 'no-cache');
+                res.setHeader('Connection', 'keep-alive');
+                res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
+
+                const streamResp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
+                    stream: true,
+                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                });
+
+                for await (const chunk of streamResp) {
+                    const token = chunk.message.content;
+                    res.write(`data: ${JSON.stringify({ token })}\n\n`);
+                }
+                res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
+                return res.end();
+            } else {
+                const resp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
+                    stream: false,
+                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                });
+                return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
         }
-        // 3. Inject facility context if missing but facility matched
-        if (matchedFacility && topScore < 200) {
-            context = `This facility is ${matchedFacility}. It provides essential services for visitors at the National Zoological Park. You can find multiple locations of this facility across the park.`;
-            if (isHindi) {
-                context = `यह सुविधा ${matchedFacility} है। यह नेशनल जूलॉजिकल पार्क में आगंतुकों के लिए आवश्यक सेवाएं प्रदान करती है। आप पार्क में इस सुविधा के कई स्थान पा सकते हैं।`;
-            }
-        }
 
-        // A topScore below 250 after distance-based calculation means no relevant content was found
-        // However, if it's a facility match (via keywords), we trust it.
+        let { context, references, topScore, sortedContext, subject: resolvedSubject } =
+            await antigravitySearch(question, subject, isFacilityMatch, deepSearch ? 5 : 3, language, isEventQuery);
+
+        const finalSubject = resolvedSubject;
+
+        const isRelationalQuery = /\b(eat|eats|live|lives|endangered|habitat|beat|location)\b/i.test(question);
+        const needsGraph = (isEventQuery || isRelationalQuery || topScore < 0.3) && graph.nodes.length > 0;
         let graphAugmented = false;
 
         if (needsGraph) {
-            const subjectLower = subject.toLowerCase();
+            const subjectLower = finalSubject.toLowerCase();
             const matchedNode = graph.nodes.find(n =>
-                n.id.toLowerCase().includes(subjectLower) ||
-                subjectLower.includes(n.id.toLowerCase())
+                n.id && typeof n.id === 'string' &&
+                (n.id.toLowerCase().includes(subjectLower) || subjectLower.includes(n.id.toLowerCase()))
             );
 
             if (matchedNode) {
-                const relatedNodes = graphTraversal(matchedNode.id, 2);
+                const relatedNodes = graphTraversal(matchedNode.id, 2).slice(0, 10);
                 const graphContext = relatedNodes
                     .filter(n => n.description)
                     .map(n => `${n.id} (${n.type}): ${n.description}`)
                     .join('\n');
 
                 if (graphContext) {
-                    console.log(`[GRAPH] Augmenting context with ${relatedNodes.length} graph nodes`);
+                    console.log(`[GRAPH] Augmenting with ${relatedNodes.length} nodes`);
                     context = graphContext + '\n\n' + context;
-                    graphAugmented = true;  // ✅ flag it
+                    graphAugmented = true;
                 }
             }
         }
-        const isNotFound = extractedSubject !== "general"
-            && topScore < 250
-            && !isFacilityMatch
-            && !isEventQuery      // events always have an answer
-            && !graphAugmented;   // graph found context
 
-        const isGeneral = extractedSubject === "general";
+        if (isEventQuery && (!context || context.trim().length < 50)) {
+            let eventDate = '';
+            try {
+                const fd = sortedContext?.[0]?.metadata?.full_data
+                    ? JSON.parse(sortedContext[0].metadata.full_data) : null;
+                eventDate = fd?.date ? new Date(fd.date).toDateString() : '';
+            } catch { /* ignore */ }
 
-        // IMPORTANT: If we found documents (topScore > 250), it's NOT a general greeting anymore
-        // even if the extractor thought it was. This handles category searches better.
-        const effectiveGeneral = isGeneral && topScore < 250;
-
-        if (isNotFound || effectiveGeneral) {
-            context = ""; // Clear context to prevent hallucination from noisy matches
-            references = []; // Clear references to prevent showing unrelated animal cards
+            context = isHindi
+                ? [`कार्यक्रम: ${finalSubject}`, eventDate ? `तारीख: ${eventDate}` : '', 'यह नेशनल जूलॉजिकल पार्क, नई दिल्ली में मान्यता प्राप्त एक विशेष दिन है।', 'आगंतुकों को इस अवसर पर जागरूक होने और इसे मनाने के लिए प्रोत्साहित किया जाता है।'].filter(Boolean).join('\n')
+                : [`Event: ${finalSubject}`, eventDate ? `Date: ${eventDate}` : '', 'This is a special observance day recognized at the National Zoological Park, New Delhi.', 'Visitors are encouraged to learn about and celebrate this occasion during their visit.'].filter(Boolean).join('\n');
         }
 
-        // 2. Build augmented prompt
-        let systemPrompt = "";
+        if (matchedFacility && topScore < 0.2) {
+            context = isHindi
+                ? `यह सुविधा ${matchedFacility} है। यह नेशनल जूलॉजिकल पार्क में आगंतुकों के लिए आवश्यक सेवाएं प्रदान करती है।`
+                : `This facility is ${matchedFacility}. It provides essential services for visitors at the National Zoological Park. Multiple locations exist across the park.`;
+        }
+
+        const isNotFound = extractedSubject !== 'general' && topScore < 0.2 && !isFacilityMatch && !isEventQuery && !graphAugmented;
+        const isGeneral = extractedSubject === 'general';
+        const effectiveGeneral = isGeneral && topScore < 0.2;
+
+        if (isNotFound || effectiveGeneral) {
+            context = '';
+            references = [];
+        }
+
+        let systemPrompt = '';
+        const NO_THOUGHT_INSTRUCTION = "STRICT: Do NOT include any internal monologue, thinking process, or <thought> tags. Respond IMMEDIATELY with the final output.";
 
         if (isNotFound) {
-            systemPrompt = isHindi ? `
-आप शेरा (Shera) हैं।
-महत्वपूर्ण: उपयोगकर्ता ने "${extractedSubject}" के बारे में पूछा है, लेकिन यह दिल्ली चिड़ियाघर (National Zoological Park, New Delhi) में नहीं है।
-आपको केवल यह बताना है कि यह यहाँ नहीं है। कोई अन्य जानकारी या रोचक तथ्य न दें।
-उत्तर केवल हिंदी (Hindi) में दें।
-            ` : `
-You are Shera.
-IMPORTANT: The user asked about "${extractedSubject}", but it is NOT at the National Zoological Park, New Delhi.
-You must ONLY state that it is not currently at this zoo. DO NOT provide any other info or fun facts.
-Respond ONLY in English.
-            `;
+            systemPrompt = isHindi
+                ? `आप शेरा (Shera) हैं, दिल्ली चिड़ियाघर के मित्रवत गाइड।
+${NO_THOUGHT_INSTRUCTION}
+
+नियम:
+1. हमेशा शेरा के रूप में उत्तर दें।
+2. कभी न कहें कि आप AI हैं।
+3. उपयोगकर्ता ने "${extractedSubject}" के बारे में पूछा है, लेकिन यह दिल्ली चिड़ियाघर में नहीं है।
+4. स्पष्ट रूप से बताएं कि यह यहाँ नहीं है। किसी बाड़े, प्रदर्शनी या स्थान का उल्लेख न करें।
+5. उत्तर हिंदी में दें।
+6. अधिकतम 40 शब्द।
+
+प्रारूप (Emojis का उपयोग करें):
+🦁 **विवरण**: [संक्षिप्त स्पष्टीकरण]
+
+📍 **स्थान**: उपलब्ध नहीं है
+
+✨ **रोचक तथ्य**: [विषय के बारे बारे में एक सामान्य रोचक तथ्य]`
+
+                : `You are Shera, the friendly guide of National Zoological Park, New Delhi.
+${NO_THOUGHT_INSTRUCTION}
+
+Rules:
+1. Always stay in character as Shera.
+2. Never mention AI.
+3. The user asked about "${extractedSubject}", but it is NOT at the National Zoological Park, New Delhi.
+4. Politely explain it is not here. 
+5. DO NOT mention any enclosure, exhibit, or location for it. DO NOT say "visit us to see them".
+6. Maximum 40 words. Respond in English.
+
+Format (Use Emojis):
+🦁 **Overview**: [Brief explanation]
+
+📍 **Location**: Not Available
+
+✨ **Fun Fact**: [A general interesting fact about the subject]`;
+
         } else if (isGeneral) {
-            systemPrompt = isHindi ? `
-आप शेरा (Shera) हैं, एक मिलनसार गाइड।
-उपयोगकर्ता का स्वागत करें या उनकी सामान्य बातचीत का उत्तर दें।
-उत्तर केवल हिंदी (Hindi) में दें।
-            ` : `
-You are Shera, a friendly zoo guide.
-Greet the user or respond to their general chat.
-Respond ONLY in English.
-            `;
+
+            systemPrompt = isHindi
+                ? `आप शेरा (Shera) हैं, दिल्ली चिड़ियाघर के गाइड।
+
+नियम:
+1. स्वागतपूर्ण और मित्रवत रहें।
+2. कभी न कहें कि आप AI हैं।
+3. उपयोगकर्ता के सामान्य प्रश्नों या अभिवादन का उत्तर दें।
+4. हिंदी में उत्तर दें।
+5. अधिकतम 40 शब्द।
+
+प्रारूप (Emojis का उपयोग करें):
+🦁 **विवरण**: [अभिवादन/उत्तर]
+
+📍 **स्थान**: नेशनल जूलॉजिकल पार्क, नई दिल्ली
+
+✨ **रोचक तथ्य**: [चिड़ियाघर के बारे में तथ्य]`
+
+                : `You are Shera, the friendly zoo guide at National Zoological Park, New Delhi.
+${NO_THOUGHT_INSTRUCTION}
+
+Rules:
+1. Be friendly and welcoming.
+2. Never mention AI.
+3. Respond to greetings or general conversation naturally.
+4. Respond in English.
+5. Maximum 40 words.
+
+Format (Use Emojis):
+🦁 **Overview**: [Greeting/Response]
+
+📍 **Location**: National Zoological Park, New Delhi
+
+✨ **Fun Fact**: [General zoo fact]`;
+
         } else {
-            systemPrompt = isHindi ? `
-आप शेरा (Shera) हैं, एक "Lion Guide"।
-महत्वपूर्ण: उपयोगकर्ता किसी भी भाषा में पूछे, आपको उत्तर केवल हिंदी (Hindi) में ही देना है।
 
-सीमा: कुल अधिकतम 25 शब्द।
-शैली:
-- इस प्रारूप का उपयोग करें: "**विवरण**: ...", "**स्थान**: ...", "**रोचक तथ्य**: ..."
-- "विवरण", "स्थान", और "रोचक तथ्य" लेबल्स को हमेशा डबल एस्टेरिस्क (**) में रखें।
-- किसी भी प्रतीक (*, -, आदि) का उपयोग न करें।
-- स्थान (स्थान) के बारे में हमेशा हिंदी में ही जानकारी दें।
-- यदि सटीक स्थान उपलब्ध नहीं है, तो कहें: "नीचे दिए गए नेविगेट बटन पर क्लिक करके वहां पहुंचें।" (अंग्रेजी शब्दों का प्रयोग न करें)।
-- कभी भी "N/A", "Location", "Label", या "Data Missing" का उपयोग न करें।
+            systemPrompt = isHindi
+                ? `आप शेरा (Shera) हैं, राष्ट्रीय प्राणी उद्यान, नई दिल्ली के शेर गाइड।
 
-निर्देश:
-- केवल (Context) में दी गई जानकारी का उपयोग करें।
-- जवाब एकदम छोटा, पेशेवर और मददगार होना चाहिए।
-
-संदर्भ (Context):
+संदर्भ:
 ${context}
 
-याद रखें: केवल हिंदी (Hindi) में ही उत्तर देना है।
-            ` : `
-You are Shera, the Lion Guide.
-IMPORTANT: Respond ONLY in English.
+सख्त नियम:
+1. हमेशा शेरा के रूप में उत्तर दें।
+2. कभी न कहें कि आप AI हैं।
+3. उत्तर स्पष्ट, संक्षिप्त और तथ्यात्मक रखें।
+4. अधिकतम 50 शब्द।
+5. यदि स्थान उपलब्ध नहीं है, कहें: "Navigate बटन दबाएँ।"
+6. कभी भी नाम न बदलें। संदर्भ में दिए गए सटीक नाम का ही उपयोग करें (जैसे, यदि "Cafeteria" दिया है, तो उसे "Central Food Court" न कहें)।
 
-Strict Limit: Max 25 words total.
-Style:
-- Use this exact format: "**Overview**: ...", "**Location**: ...", "**Fun Fact**: ..."
-- DO NOT use bullet points, asterisks (*), or dashes (-).
-- For Location, always say: "Click on the bottom 'Navigate' button to find your way there."
-- NEVER output "N/A", "Not available", "Label", or placeholders.
+प्रारूप (Emojis का उपयोग करें):
+🦁 **विवरण**: [संक्षिप्त परिचय]
 
-Instructions:
-- Use ONLY the provided context.
-- Keep the response ultra-short, professional, and helpful.
+📍 **स्थान**: [संदर्भ से सटीक नाम या नेविगेट बटन]
+
+✨ **रोचक तथ्य**: [अनोखी जानकारी]`
+
+                : `You are Shera, the Lion Guide at National Zoological Park, New Delhi.
+${NO_THOUGHT_INSTRUCTION}
 
 Context:
 ${context}
 
-Remember: Respond ONLY in English.
-            `;
+STRICT RULES:
+1. Always stay in character as Shera.
+2. Never mention AI.
+3. Keep answers clear, concise, and factual.
+4. Maximum 50 words.
+5. If exact location is unavailable, say: "Click the Navigate button."
+6. NEVER improvise, formalize, or change names. Use the EXACT names provided in the context (e.g., if it says "Cafeteria", do NOT call it "Central Food Court").
+
+Format (Use Emojis):
+🦁 **Overview**: [Brief bio]
+
+📍 **Location**: [Exact name from context or Navigate button]
+
+✨ **Fun Fact**: [Unique detail]`;
         }
 
-        console.log(`Generating response...`);
+        console.log(`[THINKING] Processing "${finalSubject}" with ${CHAT_MODEL}...`);
+        console.log(`Generating response for: ${finalSubject}...`);
 
-        const chatResponse = await ollama.chat({
-            model: CHAT_MODEL,
-            messages: [
-                { role: 'system', content: systemPrompt },
-                { role: 'user', content: question }
-            ],
-            stream: false
-        });
+        if (stream) {
+            res.setHeader('Content-Type', 'text/event-stream');
+            res.setHeader('Cache-Control', 'no-cache');
+            res.setHeader('Connection', 'keep-alive');
+            res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
-        const answer = chatResponse.message.content;
+            let fullAnswer = '';
+            const streamResp = await ollama.chat({
+                model: CHAT_MODEL,
+                messages: [
+                    {
+                        role: 'user',
+                        content: `${systemPrompt}\n\nUser Question: ${question}\n\nShera's Response:`
+                    }
+                ],
+                stream: true,
+                options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+            });
 
-        logResources('Response Generated');
+            for await (const chunk of streamResp) {
+                const token = chunk.message?.content || '';
+                fullAnswer += token;
+                res.write(`data: ${JSON.stringify({ token })}\n\n`);
+            }
 
-        console.log(`Shera: ${answer}`);
-        console.log(`[UI BINDING] Keyword: "${subject}"`);
+            res.write(`data: ${JSON.stringify({ done: true, keyword: finalSubject, references })}\n\n`);
+            res.end();
 
-        res.json({
-            answer,
-            keyword: subject,
-            references: references
-        });
+            logResources('Stream Complete');
+            console.log(`Shera (streamed): ${fullAnswer}`);
+
+        } else {
+            const chatResponse = await ollama.chat({
+                model: CHAT_MODEL,
+                messages: [
+                    {
+                        role: 'user',
+                        content: `${systemPrompt}\n\nUser Question: ${question}\n\nShera's Response:`
+                    }
+                ],
+                stream: false,
+                options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+            });
+
+            console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
+
+            let answer = chatResponse.message?.content || '';
+            const thought = chatResponse.message?.thinking || '';
+
+            if (thought) {
+                console.log(`\n[MODEL THOUGHT PROCESS]:\n${thought}\n`);
+            }
+
+            // ── Clean Answer: Stripping Gemma 4 specific tags and fallbacks
+            answer = answer.replace(/<\|channel>thought[\s\S]*?<channel\|>/gi, '').trim();
+            answer = answer.replace(/<(thought|reasoning)>[\s\S]*?<\/\1>/gi, '').trim();
+            answer = answer.replace(/^.*?<\/(thought|reasoning)>/si, '').trim();
+
+            answer = answer.replace(/^(\*\*|)?Shera's Response:(\*\*|)?/gi, '').trim();
+            answer = answer.replace(/^(\*\*|)?Response:(\*\*|)?/gi, '').trim();
+            answer = answer.replace(/^(\*\*|)?Final Response:(\*\*|)?/gi, '').trim();
+            answer = answer.replace(/^(\*\*|)?Answer:(\*\*|)?/gi, '').trim();
+            answer = answer.trim();
+
+            if (!answer && thought) {
+                console.warn('[WARN] content was empty but thinking was present. This usually means num_predict is too low.');
+            }
+
+            logResources('Response Generated');
+            console.log(`Shera: ${answer}`);
+            console.log(`[UI BINDING] Keyword: "${finalSubject}"`);
+
+            res.json({ answer, keyword: finalSubject, references });
+        }
 
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({
-            error: 'Internal Server Error',
-            details: error.message
-        });
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Internal Server Error', details: error.message });
+        }
     }
 });
 
-// ---------------------------
-// Health Check
-// ---------------------------
 app.get('/api/health', (req, res) => {
     res.json({
         status: 'Shera is alive',
         timestamp: new Date().toISOString(),
-        language_supported: ['en', 'hi']
+        language_supported: ['en', 'hi'],
+        graph_nodes: graph.nodes.length,
+        graph_edges: graph.edges.length,
+        registry_size: zooRegistry.canonicalNames.length,
+        trie_size: trieIndex.size,
+        embedding_cache: embeddingCache.size
     });
 });
 
-// ---------------------------
-// Start Server
-// ---------------------------
 (async () => {
     try {
         loadZooRegistry();
+        buildTrieIndex();
         await initChroma();
 
         const server = app.listen(port, host, () => {
-            console.log(`\n🦁 Shera AI Backend (Vector Mode) running on http://${host}:${port}`);
-            console.log(`POST /api/shera/chat`);
-            console.log(`GET /api/health`);
+            console.log(`\n🦁 Shera AI Backend running on http://${host}:${port}`);
+            console.log(`POST /api/shera/chat   (add "stream":true for SSE streaming)`);
+            console.log(`GET  /api/health`);
         });
 
         server.on('error', (err) => {
             console.error('Server error:', err);
             if (err.code === 'EADDRINUSE') {
-                console.error(`Port ${port} is already in use. Please kill the existing process.`);
+                console.error(`Port ${port} already in use.`);
             }
         });
 

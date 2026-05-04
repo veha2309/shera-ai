@@ -6,19 +6,16 @@ const { Ollama } = require('ollama');
 
 /**
  * Shera AI - Enhanced Chroma Ingestion Script
- * Hybrid-ready semantic ingestion for:
- * - Species
- * - Conservation
- * - Habitat
- * - Diet
- * - Storytelling
- * - Individual zoo animals
- * - Location-based retrieval
+ * Hybrid-ready semantic ingestion for Zoo Data
+ * 
+ * Optimizations Applied:
+ * 1. Dynamic Text Builder: Prevents embedding dilution by omitting empty fields.
+ * 2. Keep-Alive: Keeps the embedding model hot in memory for faster loop processing.
  */
 
 async function ingest() {
     const chroma = new ChromaClient({
-        path: "http://localhost:8001"
+        path: "http://localhost:8000"
     });
 
     const embedder = new OllamaEmbeddingFunction({
@@ -67,14 +64,13 @@ async function ingest() {
         // Process Files
         // ---------------------------
         for (const file of files) {
-            // Skip map/geometry files that pollute search results with thousands of coordinates
-            if (file.includes('geojson.json') || file.includes('floorplan.json')) {
-                console.log(`Skipping map data file: ${file}`);
+            // Skip map/geometry and redundant facts that pollute search results
+            if (file.includes('geojson') || file.includes('floorplan') || file.includes('facts')) {
+                console.log(`Skipping file: ${file}`);
                 continue;
             }
 
             const filePath = path.join(dataDir, file);
-
             console.log(`\nProcessing: ${file}`);
 
             try {
@@ -91,8 +87,8 @@ async function ingest() {
                         // Core Identity
                         // ---------------------------
                         const name =
-                            animal.common_name?.en ||
                             animal.render_name?.en ||
+                            animal.common_name?.en ||
                             animal.name?.en ||
                             animal.name ||
                             animal.title?.en ||
@@ -144,63 +140,36 @@ async function ingest() {
                         // ---------------------------
                         // Ecology
                         // ---------------------------
-                        const habitat =
-                            (typeof animal.habitat === 'object' ? animal.habitat?.en : animal.habitat) ||
-                            '';
-
-                        const diet =
-                            (typeof animal.diet === 'object' ? animal.diet?.en : animal.diet) ||
-                            '';
-
-                        const distribution =
-                            (typeof animal.distribution === 'object' ? animal.distribution?.en : animal.distribution) ||
-                            '';
-
-                        const activity =
-                            (typeof animal.activity === 'object' ? animal.activity?.en : animal.activity) ||
-                            '';
+                        const habitat = (typeof animal.habitat === 'object' ? animal.habitat?.en : animal.habitat) || '';
+                        const diet = (typeof animal.diet === 'object' ? animal.diet?.en : animal.diet) || '';
+                        const distribution = (typeof animal.distribution === 'object' ? animal.distribution?.en : animal.distribution) || '';
+                        const activity = (typeof animal.activity === 'object' ? animal.activity?.en : animal.activity) || '';
 
                         // ---------------------------
                         // Conservation
                         // ---------------------------
                         const threatStatus =
                             (typeof animal.threat_status === 'object' ? animal.threat_status?.en : animal.threat_status) ||
-                            (typeof animal.conservation?.iucn_status === 'object' ? animal.conservation?.iucn_status?.en : animal.conservation?.iucn_status) ||
-                            '';
+                            (typeof animal.conservation?.iucn_status === 'object' ? animal.conservation?.iucn_status?.en : animal.conservation?.iucn_status) || '';
 
                         const legalProtection =
-                            (typeof animal.conservation?.legal_protection === 'object' ? animal.conservation?.legal_protection?.en : animal.conservation?.legal_protection) ||
-                            '';
+                            (typeof animal.conservation?.legal_protection === 'object' ? animal.conservation?.legal_protection?.en : animal.conservation?.legal_protection) || '';
 
                         const mutationNotes =
-                            (typeof animal.conservation?.notes === 'object' ? animal.conservation?.notes?.en : animal.conservation?.notes) ||
-                            '';
+                            (typeof animal.conservation?.notes === 'object' ? animal.conservation?.notes?.en : animal.conservation?.notes) || '';
 
                         // ---------------------------
                         // Physical + Life
                         // ---------------------------
-                        const lifespan =
-                            (typeof animal.lifespan?.average === 'object' ? animal.lifespan?.average?.en : animal.lifespan?.average) ||
-                            '';
-
-                        const weight =
-                            (typeof animal.physical?.weight === 'object' ? animal.physical?.weight?.en : animal.physical?.weight) ||
-                            '';
-
-                        const length =
-                            (typeof animal.physical?.length === 'object' ? animal.physical?.length?.en : animal.physical?.length) ||
-                            '';
+                        const lifespan = (typeof animal.lifespan?.average === 'object' ? animal.lifespan?.average?.en : animal.lifespan?.average) || '';
+                        const weight = (typeof animal.physical?.weight === 'object' ? animal.physical?.weight?.en : animal.physical?.weight) || '';
+                        const length = (typeof animal.physical?.length === 'object' ? animal.physical?.length?.en : animal.physical?.length) || '';
 
                         // ---------------------------
                         // Personality / Behavioral
                         // ---------------------------
-                        const likes =
-                            (typeof animal.likes === 'object' ? animal.likes?.en : animal.likes) ||
-                            '';
-
-                        const dislikes =
-                            (typeof animal.dislikes === 'object' ? animal.dislikes?.en : animal.dislikes) ||
-                            '';
+                        const likes = (typeof animal.likes === 'object' ? animal.likes?.en : animal.likes) || '';
+                        const dislikes = (typeof animal.dislikes === 'object' ? animal.dislikes?.en : animal.dislikes) || '';
 
                         // ---------------------------
                         // Content / Narrative
@@ -208,107 +177,84 @@ async function ingest() {
                         const narrative =
                             (typeof animal.narrative === 'object' ? animal.narrative?.en : animal.narrative) ||
                             (typeof animal.description === 'object' ? animal.description?.en : animal.description) ||
-                            (typeof animal.text === 'object' ? animal.text?.en : animal.text) ||
-                            '';
+                            (typeof animal.text === 'object' ? animal.text?.en : animal.text) || '';
 
-                        const storyDescription =
-                            (typeof animal.story_description === 'object' ? animal.story_description?.en : animal.story_description) ||
-                            '';
+                        const storyDescription = (typeof animal.story_description === 'object' ? animal.story_description?.en : animal.story_description) || '';
 
                         // ---------------------------
-                        // Fun Facts
+                        // Fun Facts & Personal Info
                         // ---------------------------
                         const funFacts = Array.isArray(animal.fun_facts)
-                            ? animal.fun_facts
-                                .map(f =>
-                                    typeof f === 'object'
-                                        ? f.en || ''
-                                        : f
-                                )
-                                .filter(Boolean)
-                                .join('. ')
+                            ? animal.fun_facts.map(f => typeof f === 'object' ? f.en || '' : f).filter(Boolean).join('. ')
                             : animal.fun_facts || '';
 
-                        // ---------------------------
-                        // Location
-                        // ---------------------------
-                        const locationName =
-                            animal.location?.location_name?.en ||
-                            animal.location_name?.en ||
-                            '';
-
-                        const beatNumber =
-                            animal.location?.beat_number?.en ||
-                            '';
-
-                        // ---------------------------
-                        // Dates & Times (Calendar/Events)
-                        // ---------------------------
-                        const date = animal.date || animal.event_date || '';
-                        const time = animal.time || animal.event_time || '';
-
-                        // ---------------------------
-                        // Individual Animals
-                        // ---------------------------
                         const personalInfo = Array.isArray(animal.personalInfo)
-                            ? animal.personalInfo
-                                .map(p =>
-                                    `${p.name?.en || ''}: ${p.about?.en || ''}`
-                                )
-                                .join('. ')
+                            ? animal.personalInfo.map(p => `${p.name?.en || ''}: ${p.about?.en || ''}`).join('. ')
                             : '';
 
                         // ---------------------------
-                        // Build Rich Embedding Document
+                        // Location & Calendar
                         // ---------------------------
+                        const locationName = animal.location?.location_name?.en || animal.location_name?.en || '';
+                        const beatNumber = animal.location?.beat_number?.en || '';
+                        const date = animal.date || animal.event_date || '';
+                        const time = animal.time || animal.event_time || '';
+
                         const isCalendarEvent = !animal.common_name && !animal.render_name && (animal.title || animal.name);
 
-                        // Extract core keyword from event title (e.g. "International Sloth Day" -> "Sloth")
                         let eventKeyword = '';
                         let eventTitleVariants = '';
                         if (isCalendarEvent) {
-                            const rawTitle = name; // already extracted above
-                            // Strip common prefix/suffix words to get the subject
-                            eventKeyword = rawTitle
-                                .replace(/\b(national|international|world|global|day|for|to|the|of|and|in|a)\b/gi, '')
-                                .trim();
-
-                            // Generate name variants so "national X day" matches "international X day" etc.
-                            const corePart = rawTitle.replace(/\b(national|international|world|global)\b/gi, '').trim();
-                            eventTitleVariants = [
-                                `National ${corePart}`,
-                                `International ${corePart}`,
-                                `World ${corePart}`,
-                                corePart
-                            ].join('. ');
+                            eventKeyword = name.replace(/\b(national|international|world|global|day|for|to|the|of|and|in|a)\b/gi, '').trim();
+                            const corePart = name.replace(/\b(national|international|world|global)\b/gi, '').trim();
+                            eventTitleVariants = [`National ${corePart}`, `International ${corePart}`, `World ${corePart}`, corePart].join('. ');
                         }
-                        const descriptiveText = `
-                                Animal Name: ${name}
-                                ${isCalendarEvent ? `Event Title Variants: ${eventTitleVariants}` : ''}
-                                ${isCalendarEvent ? `Core Subject: ${eventKeyword}` : ''}
-                                Scientific Name: ${scientificName}
-                                Category: ${category}
-                                Classification: ${classification}
-                                Habitat: ${habitat}
-                                Distribution: ${distribution}
-                                Diet: ${diet}
-                                Activity Pattern: ${activity}
-                                Date/Time: ${date} ${time}
-                                Lifespan: ${lifespan}
-                                Weight: ${weight}
-                                Length: ${length}
-                                Threat Status: ${threatStatus}
-                                Legal Protection: ${legalProtection}
-                                Genetic Traits: ${mutationNotes}
-                                Likes: ${likes}
-                                Dislikes: ${dislikes}
-                                Location: ${locationName}
-                                Beat Number: ${beatNumber}
-                                Description/Narrative: ${narrative}
-                                Story Description: ${storyDescription}
-                                Fun Facts: ${funFacts}
-                                Individual Animal Info: ${personalInfo}
-                                `.trim();
+
+                        // ── Enrichment: Add common synonyms to help vector search
+                        const synonyms = [];
+                        const lowerName = name.toLowerCase();
+                        if (lowerName.includes('peafowl')) synonyms.push('peacock', 'peahen');
+                        if (lowerName.includes('tiger')) synonyms.push('sher', 'bagh');
+                        if (lowerName.includes('lion')) synonyms.push('babbar sher');
+                        if (lowerName.includes('rhinoceros')) synonyms.push('rhino');
+                        if (lowerName.includes('elephant')) synonyms.push('hathi');
+
+                        // ---------------------------
+                        // Dynamic Prompt Builder (Accuracy Upgrade)
+                        // ---------------------------
+                        const details = [];
+                        details.push(`Animal/Subject Name: ${name}`);
+                        
+                        if (synonyms.length > 0) details.push(`Synonyms: ${synonyms.join(', ')}`);
+                        if (isCalendarEvent) {
+                            if (eventTitleVariants) details.push(`Event Title Variants: ${eventTitleVariants}`);
+                            if (eventKeyword) details.push(`Core Subject: ${eventKeyword}`);
+                        }
+                        
+                        if (scientificName) details.push(`Scientific Name: ${scientificName}`);
+                        if (category) details.push(`Category: ${category}`);
+                        if (classification) details.push(`Classification: ${classification}`);
+                        if (habitat) details.push(`Habitat: ${habitat}`);
+                        if (distribution) details.push(`Distribution: ${distribution}`);
+                        if (diet) details.push(`Diet: ${diet}`);
+                        if (activity) details.push(`Activity Pattern: ${activity}`);
+                        if (date || time) details.push(`Date/Time: ${date} ${time}`.trim());
+                        if (lifespan) details.push(`Lifespan: ${lifespan}`);
+                        if (weight) details.push(`Weight: ${weight}`);
+                        if (length) details.push(`Length: ${length}`);
+                        if (threatStatus) details.push(`Threat Status: ${threatStatus}`);
+                        if (legalProtection) details.push(`Legal Protection: ${legalProtection}`);
+                        if (mutationNotes) details.push(`Genetic Traits/Notes: ${mutationNotes}`);
+                        if (likes) details.push(`Likes: ${likes}`);
+                        if (dislikes) details.push(`Dislikes: ${dislikes}`);
+                        if (locationName) details.push(`Location: ${locationName}`);
+                        if (beatNumber) details.push(`Beat Number: ${beatNumber}`);
+                        if (narrative) details.push(`Description/Narrative: ${narrative}`);
+                        if (storyDescription) details.push(`Story Description: ${storyDescription}`);
+                        if (funFacts) details.push(`Fun Facts: ${funFacts}`);
+                        if (personalInfo) details.push(`Individual Animal Info: ${personalInfo}`);
+
+                        const descriptiveText = details.join('\n').trim();
 
                         console.log(`- Embedding: ${cleanName}`);
 
@@ -317,7 +263,8 @@ async function ingest() {
                         // ---------------------------
                         const embedResponse = await ollama.embed({
                             model: embedModel,
-                            input: descriptiveText
+                            input: descriptiveText,
+                            keep_alive: '1h' // <-- Speed Upgrade: Keeps model loaded in RAM
                         });
 
                         const embedding = embedResponse.embeddings[0];
@@ -345,24 +292,22 @@ async function ingest() {
                                 lifespan,
                                 weight,
                                 length,
+                                is_event: isCalendarEvent ? 'true' : 'false',
                                 file_source: file,
-                                full_data: JSON.stringify(animal)
+                                // Note: Depending on file size, storing the full raw JSON in metadata can bloat your DB.
+                                full_data: JSON.stringify(animal) 
                             }]
                         });
 
                         console.log(`  [OK] Stored: ${name}`);
 
                     } catch (animalErr) {
-                        console.error(
-                            `  [ERR] Animal processing failed: ${animalErr.message}`
-                        );
+                        console.error(`  [ERR] Animal processing failed: ${animalErr.message}`);
                     }
                 }
 
             } catch (fileErr) {
-                console.error(
-                    `[ERR] Failed file ${file}: ${fileErr.message}`
-                );
+                console.error(`[ERR] Failed file ${file}: ${fileErr.message}`);
             }
         }
 
