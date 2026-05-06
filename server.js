@@ -835,7 +835,7 @@ app.post('/api/shera/chat', async (req, res) => {
         }
 
         let { context, references, topScore, sortedContext, subject: resolvedSubject } =
-            await antigravitySearch(question, subject, isFacilityMatch, deepSearch ? 5 : 3, language, isEventQuery);
+            await antigravitySearch(question, subject, isFacilityMatch, 1, language, isEventQuery);
 
         const finalSubject = resolvedSubject;
 
@@ -851,7 +851,7 @@ app.post('/api/shera/chat', async (req, res) => {
             );
 
             if (matchedNode) {
-                const relatedNodes = graphTraversal(matchedNode.id, 2).slice(0, 10);
+                const relatedNodes = graphTraversal(matchedNode.id, 1).slice(0, 3);
                 const graphContext = relatedNodes
                     .filter(n => n.description)
                     .map(n => `${n.id} (${n.type}): ${n.description}`)
