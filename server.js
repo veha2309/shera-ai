@@ -29,8 +29,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'gemini-1.5-flash';
-const EXTRACTION_MODEL = 'gemini-1.5-flash';
+const CHAT_MODEL = 'gemini-pro';
+const EXTRACTION_MODEL = 'gemini-pro';
 
 function logResources(label) {
     const mem = process.memoryUsage();
@@ -48,7 +48,7 @@ const embedder = new OllamaEmbeddingFunction({
 // ─── Gemini Client ──────────────────────────────────────────────────────────
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const geminiModel = genAI.getGenerativeModel({ 
-    model: "gemini-1.5-flash-latest",
+    model: "gemini-pro",
     generationConfig: {
         maxOutputTokens: 100,
         temperature: 0.7,
