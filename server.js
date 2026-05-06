@@ -5,16 +5,15 @@ const path = require('path');
 const { Ollama } = require('ollama');
 const { ChromaClient } = require('chromadb');
 const { OllamaEmbeddingFunction } = require('@chroma-core/ollama');
+require('dotenv').config();
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 /**
  * Shera AI - Hybrid Chroma + GraphRAG Backend Server
  * 
- * ULTRA-LIGHTWEIGHT CONFIGURATION:
- * Optimizations applied for Qwen 2 (0.5b):
- *  1. Tiny 350MB footprint for ultra-low latency on weak VMs.
- *  2. Extreme sampling speed (Temp 0.7, Top P 0.8).
- *  3. LLM-Bypass Extraction: Skips LLM for short/simple subject queries.
- *  4. Graph traversal result cache.
+ * GEMINI INFRASTRUCTURE:
+ * Migrated to Gemini 1.5 Flash for high-speed, high-quality responses
+ * on resource-constrained VM environments.
  */
 
 const app = express();
@@ -30,8 +29,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'qwen2:0.5b'; // Ultra-light model (350MB)
-const EXTRACTION_MODEL = 'qwen2:0.5b';
+const CHAT_MODEL = 'gemini-1.5-flash';
+const EXTRACTION_MODEL = 'gemini-1.5-flash';
 
 function logResources(label) {
     const mem = process.memoryUsage();
@@ -44,6 +43,16 @@ const chroma = new ChromaClient({ host: 'localhost', port: 8000 });
 const embedder = new OllamaEmbeddingFunction({
     url: 'http://127.0.0.1:11434',
     model: 'nomic-embed-text'
+});
+
+// ─── Gemini Client ──────────────────────────────────────────────────────────
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const geminiModel = genAI.getGenerativeModel({ 
+    model: "gemini-1.5-flash",
+    generationConfig: {
+        maxOutputTokens: 150,
+        temperature: 0.7,
+    }
 });
 
 // ─── Embedding Cache ──────────────────────────────────────────────────────────
@@ -195,43 +204,25 @@ const priorityOverrides = {
     'lion tailed monkeys': 'Lion Tailed Macaque',
     'lion tailed macaque': 'Lion Tailed Macaque',
     'lion tailed macaques': 'Lion Tailed Macaque',
-    'lion tailed moneky': 'Lion Tailed Macaque',
     'lion': 'Asiatic Lion',
     'lions': 'Asiatic Lion',
-    'monkey': 'macaque',
     'tiger': 'White Tiger',
     'tigers': 'White Tiger',
     'elephant': 'Indian Elephant',
     'elephants': 'Indian Elephant',
-    'sher': 'Asiatic Lion',
-    'shera': 'Asiatic Lion',
-    'bagh': 'White Tiger',
-    'hathi': 'Indian Elephant',
-    'एशियाई शेर': 'Asiatic Lion',
-    'शेर': 'Asiatic Lion',
-    'सफेद बाघ': 'White Tiger',
-    'बाघ': 'White Tiger',
-    'हाथी': 'Indian Elephant',
-    'पेन': 'Washrooms',
-    'पानी': 'Drinking Water',
-    'खाना': 'Food & Drinks',
-    'flightless bird': 'Flightless birds',
-    'flightless birds': 'Flightless birds',
-    'snake': 'Common Rat Snake',
     'snakes': 'Reptile House',
+    'snake': 'Common Rat Snake',
     'reptile': 'Reptile House',
     'reptiles': 'Reptile House',
-    'cobra': 'Spectacled Cobra',
-    'python': 'Indian Rock Python',
     'deer': 'Spotted Deer',
+    'monkey': 'Rhesus Macaque',
     'monkeys': 'Rhesus Macaque',
     'birds': 'Indian Peafowl (Leucistic)',
     'bear': 'Sloth Bear',
-    'Food & Drinks': 'Food & Drinks',
-    'Drinking Water': 'Drinking Water',
-    'Washrooms': 'Washrooms',
-    'Buggy Stops': 'Buggy Stops',
-    'Emergency': 'Emergency'
+    'bears': 'Sloth Bear',
+    'पेन': 'Washrooms',
+    'पानी': 'Drinking Water',
+    'खाना': 'Food & Drinks'
 };
 
 // ─── OPTIMIZATION 1: Trie Index ───────────────────────────────────────────────
@@ -439,7 +430,7 @@ function finalizeSubject(subject, qLower, extractedSubject = null) {
 async function extractSubject(query) {
     const qLower = query.toLowerCase().trim();
 
-    if (['hello', 'hi', 'hey', 'नमस्ते', 'नमस्ते', 'hello shera', 'hi shera'].includes(qLower) || qLower.length < 3) {
+    if (['hello', 'hi', 'hey', 'नमस्ते', 'hello shera', 'hi shera'].includes(qLower) || qLower.length < 3) {
         return finalizeSubject('general', qLower);
     }
 
@@ -487,24 +478,17 @@ async function extractSubject(query) {
 
     let subject = 'general';
     try {
-        const extractionResp = await ollama.chat({
-            model: EXTRACTION_MODEL,
-            messages: [
-                {
-                    role: 'system',
-                    content: `Extract the primary subject (Animal, Place, Facility, or Event) from the query.
+        const prompt = `Extract the primary subject (Animal, Place, Facility, or Event) from the query.
 Return ONLY the name in English. BE EXTREMELY BRIEF.
-Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian Elephant", "Pani"->"Drinking Water".`
-                },
-                { role: 'user', content: query }
-            ],
-            keep_alive: '1h',
-            options: { num_predict: 24, temperature: 0, num_ctx: 1024 }
-        });
-        const raw = extractionResp.message.content.replace(/[^\w\s]/gi, '').trim();
+Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian Elephant", "Pani"->"Drinking Water".
+
+Query: ${query}`;
+
+        const result = await geminiModel.generateContent(prompt);
+        const raw = result.response.text().replace(/[^\w\s]/gi, '').trim();
         subject = raw ? normalizeToRegistryOrSelf(raw) : 'general';
     } catch (e) {
-        console.error('[LLM] Extraction error:', e.message);
+        console.error('[Gemini] Extraction error:', e.message);
     }
 
     const sLower = subject.toLowerCase();
@@ -799,29 +783,17 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.setHeader('Connection', 'keep-alive');
                 res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
-                const streamResp = await ollama.chat({
-                    model: CHAT_MODEL,
-                    messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
-                    stream: true,
-                    keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
-                });
-
-                for await (const chunk of streamResp) {
-                    const token = chunk.message.content;
+                const result = await geminiModel.generateContentStream([notFoundPrompt, question]);
+                for await (const chunk of result.stream) {
+                    const token = chunk.text();
                     res.write(`data: ${JSON.stringify({ token })}\n\n`);
                 }
                 res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
                 return res.end();
             } else {
-                const resp = await ollama.chat({
-                    model: CHAT_MODEL,
-                    messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
-                    stream: false,
-                    keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
-                });
-                return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
+                const result = await geminiModel.generateContent([notFoundPrompt, question]);
+                const answer = result.response.text();
+                return res.json({ answer, keyword: 'general', references: [] });
             }
         }
 
@@ -849,29 +821,17 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.setHeader('Connection', 'keep-alive');
                 res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
-                const streamResp = await ollama.chat({
-                    model: CHAT_MODEL,
-                    messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
-                    stream: true,
-                    keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 2048 }
-                });
-
-                for await (const chunk of streamResp) {
-                    const token = chunk.message.content;
+                const result = await geminiModel.generateContentStream([greetingPrompt, question]);
+                for await (const chunk of result.stream) {
+                    const token = chunk.text();
                     res.write(`data: ${JSON.stringify({ token })}\n\n`);
                 }
                 res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
                 return res.end();
             } else {
-                const resp = await ollama.chat({
-                    model: CHAT_MODEL,
-                    messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
-                    stream: false,
-                    keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 1024 }
-                });
-                return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
+                const result = await geminiModel.generateContent([greetingPrompt, question]);
+                const answer = result.response.text();
+                return res.json({ answer, keyword: 'general', references: [] });
             }
         }
 
@@ -1004,7 +964,7 @@ STRICT RULES:
 4. NEVER improvise or change names. Use EXACT names from context.`;
         }
 
-        console.log(`[THINKING] Processing "${finalSubject}" with ${CHAT_MODEL}...`);
+        console.log(`[THINKING] Processing "${finalSubject}" with Gemini...`);
         console.log(`Generating response for: ${finalSubject}...`);
 
         if (stream) {
@@ -1014,21 +974,9 @@ STRICT RULES:
             res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
             let fullAnswer = '';
-            const streamResp = await ollama.chat({
-                model: CHAT_MODEL,
-                messages: [
-                    {
-                        role: 'user',
-                        content: `${systemPrompt}\n\nUser Question: ${question}\n\nShera's Response:`
-                    }
-                ],
-                stream: true,
-                keep_alive: '1h',
-                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
-            });
-
-            for await (const chunk of streamResp) {
-                const token = chunk.message?.content || '';
+            const result = await geminiModel.generateContentStream([systemPrompt, `User Question: ${question}\n\nShera's Response:`]);
+            for await (const chunk of result.stream) {
+                const token = chunk.text();
                 fullAnswer += token;
                 res.write(`data: ${JSON.stringify({ token })}\n\n`);
             }
@@ -1040,42 +988,15 @@ STRICT RULES:
             console.log(`Shera (streamed): ${fullAnswer}`);
 
         } else {
-            const chatResponse = await ollama.chat({
-                model: CHAT_MODEL,
-                messages: [
-                    {
-                        role: 'user',
-                        content: `${systemPrompt}\n\nUser Question: ${question}\n\nShera's Response:`
-                    }
-                ],
-                stream: false,
-                keep_alive: '1h',
-                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
-            });
+            const result = await geminiModel.generateContent([systemPrompt, `User Question: ${question}\n\nShera's Response:`]);
+            let answer = result.response.text();
 
-            console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
-
-            let answer = chatResponse.message?.content || '';
-            const thought = chatResponse.message?.thinking || '';
-
-            if (thought) {
-                console.log(`\n[MODEL THOUGHT PROCESS]:\n${thought}\n`);
-            }
-
-            // ── Clean Answer: Stripping Gemma 4 specific tags and fallbacks
-            answer = answer.replace(/<\|channel>thought[\s\S]*?<channel\|>/gi, '').trim();
-            answer = answer.replace(/<(thought|reasoning)>[\s\S]*?<\/\1>/gi, '').trim();
-            answer = answer.replace(/^.*?<\/(thought|reasoning)>/si, '').trim();
-
+            // ── Clean Answer
             answer = answer.replace(/^(\*\*|)?Shera's Response:(\*\*|)?/gi, '').trim();
             answer = answer.replace(/^(\*\*|)?Response:(\*\*|)?/gi, '').trim();
             answer = answer.replace(/^(\*\*|)?Final Response:(\*\*|)?/gi, '').trim();
             answer = answer.replace(/^(\*\*|)?Answer:(\*\*|)?/gi, '').trim();
             answer = answer.trim();
-
-            if (!answer && thought) {
-                console.warn('[WARN] content was empty but thinking was present. This usually means num_predict is too low.');
-            }
 
             logResources('Response Generated');
             console.log(`Shera: ${answer}`);
