@@ -199,6 +199,16 @@ const priorityOverrides = {
     'खाना': 'Food & Drinks',
     'flightless bird': 'Flightless birds',
     'flightless birds': 'Flightless birds',
+    'snake': 'Common Rat Snake',
+    'snakes': 'Reptile House',
+    'reptile': 'Reptile House',
+    'reptiles': 'Reptile House',
+    'cobra': 'Spectacled Cobra',
+    'python': 'Indian Rock Python',
+    'deer': 'Spotted Deer',
+    'monkeys': 'Rhesus Macaque',
+    'birds': 'Indian Peafowl (Leucistic)',
+    'bear': 'Sloth Bear',
     'Food & Drinks': 'Food & Drinks',
     'Drinking Water': 'Drinking Water',
     'Washrooms': 'Washrooms',
@@ -766,7 +776,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
+                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -781,7 +791,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
+                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -816,7 +826,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 512 }
+                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 2048 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -831,7 +841,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 512 }
+                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 2048 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -986,7 +996,7 @@ STRICT RULES:
                 ],
                 stream: true,
                 keep_alive: '1h',
-                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
+                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
             });
 
             for await (const chunk of streamResp) {
@@ -1012,7 +1022,7 @@ STRICT RULES:
                 ],
                 stream: false,
                 keep_alive: '1h',
-                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
+                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
