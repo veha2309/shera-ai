@@ -49,6 +49,24 @@ const embedder = new OllamaEmbeddingFunction({
 // ─── Embedding Cache ──────────────────────────────────────────────────────────
 const embeddingCache = new Map();
 
+// ─── LLM Response Cache ───────────────────────────────────────────────────────
+const responseCache = new Map();
+const RESPONSE_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+function getCachedResponse(key) {
+    const entry = responseCache.get(key);
+    if (!entry) return null;
+    if (Date.now() - entry.ts > RESPONSE_CACHE_TTL) {
+        responseCache.delete(key);
+        return null;
+    }
+    return entry.data;
+}
+
+function setCachedResponse(key, data) {
+    responseCache.set(key, { data, ts: Date.now() });
+}
+
 async function getCachedEmbedding(text) {
     if (embeddingCache.has(text)) return embeddingCache.get(text);
     try {
@@ -462,7 +480,7 @@ async function extractSubject(query) {
 
     // FAST FALLBACK: If query is short, don't waste LLM time on extraction
     const words = qLower.split(/\s+/);
-    if (words.length <= 2 && qLower.length < 15) {
+    if (words.length <= 5 || qLower.length < 30) {
         console.log(`[EXTRACTION] Skipping LLM for short query: "${qLower}"`);
         return finalizeSubject(normalizeToRegistryOrSelf(qLower), qLower, qLower);
     }
@@ -481,7 +499,7 @@ Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian 
                 { role: 'user', content: query }
             ],
             keep_alive: '1h',
-            options: { num_predict: 24, temperature: 0, num_ctx: 512 }
+            options: { num_predict: 24, temperature: 0, num_ctx: 1024 }
         });
         const raw = extractionResp.message.content.replace(/[^\w\s]/gi, '').trim();
         subject = raw ? normalizeToRegistryOrSelf(raw) : 'general';
@@ -732,6 +750,16 @@ app.post('/api/shera/chat', async (req, res) => {
     console.log(`\n--- Incoming: "${question}" (DeepSearch: ${deepSearch}, Lang: ${language}, Stream: ${stream}) ---`);
 
     try {
+        // ─── Response Cache Check ───────────────────────────────────────────────────
+        const cacheKey = `${language}:${qLower}`;
+        if (!stream) {
+            const cached = getCachedResponse(cacheKey);
+            if (cached) {
+                console.log(`[CACHE] HIT for "${qLower}"`);
+                return res.json(cached);
+            }
+        }
+
         const { subject, extractedSubject, matchedFacility } = await extractSubject(question);
 
         const isFacilityMatch = !!matchedFacility;
@@ -776,7 +804,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -791,7 +819,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -841,7 +869,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 2048 }
+                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 1024 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -1022,7 +1050,7 @@ STRICT RULES:
                 ],
                 stream: false,
                 keep_alive: '1h',
-                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
@@ -1053,7 +1081,9 @@ STRICT RULES:
             console.log(`Shera: ${answer}`);
             console.log(`[UI BINDING] Keyword: "${finalSubject}"`);
 
-            res.json({ answer, keyword: finalSubject, references });
+            const responsePayload = { answer, keyword: finalSubject, references };
+            setCachedResponse(`${language}:${qLower}`, responsePayload);
+            res.json(responsePayload);
         }
 
     } catch (error) {
