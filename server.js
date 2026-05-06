@@ -11,13 +11,12 @@ const { OllamaEmbeddingFunction } = require('@chroma-core/ollama');
  * Semantic retrieval via ChromaDB
  * Relationship reasoning via Antigravity Graph
  *
- * Optimizations applied for Gemma 4 (e4b):
- *  1. 8192 Context Window utilized to prevent retrieval truncation.
- *  2. Gemma 4 ideal sampling (Temp 1.0, Top P 0.95, Top K 64).
- *  3. `<|channel>thought` strict stripping.
- *  4. Trie-based fast entity extraction.
- *  5. Graph traversal result cache.
- *  6. Streaming LLM response via SSE.
+ * Optimizations applied for Gemma 2 (2b):
+ *  1. Lightweight 1.6GB footprint for low-latency server response.
+ *  2. Optimized sampling (Temp 0.7, Top P 0.9) for stable guide persona.
+ *  3. Trie-based fast entity extraction for instant matching.
+ *  4. Graph traversal result cache.
+ *  5. Streaming LLM response via SSE.
  */
 
 const app = express();
@@ -33,7 +32,7 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = process.env.CHAT_MODEL || 'gemma2:2b';
+const CHAT_MODEL = 'gemma2:2b'; // Fixed to lightweight model
 const EXTRACTION_MODEL = 'gemma2:2b';
 
 function logResources(label) {
@@ -771,7 +770,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
-                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                    options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -785,7 +784,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
-                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                    options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -1039,7 +1038,7 @@ Format (Use Emojis):
                     }
                 ],
                 stream: true,
-                options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
             });
 
             for await (const chunk of streamResp) {
@@ -1064,7 +1063,7 @@ Format (Use Emojis):
                     }
                 ],
                 stream: false,
-                options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
