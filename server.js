@@ -47,13 +47,14 @@ const embedder = new OllamaEmbeddingFunction({
 
 // ─── Gemini Client ──────────────────────────────────────────────────────────
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const geminiModel = genAI.getGenerativeModel({ 
+const geminiModel = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
-    apiVersion:'v1',
     generationConfig: {
         maxOutputTokens: 100,
         temperature: 0.7,
     }
+}, {
+    apiVersion: 'v1',
 });
 
 // ─── Embedding Cache ──────────────────────────────────────────────────────────
