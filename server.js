@@ -47,15 +47,38 @@ const embedder = new OllamaEmbeddingFunction({
 
 // ─── Gemini Client ──────────────────────────────────────────────────────────
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const geminiModel = genAI.getGenerativeModel({ 
-    model: "gemini-2.5-flash-lite",
-    generationConfig: {
-        maxOutputTokens: 100,
-        temperature: 0.7,
+
+const FALLBACK_MODELS = [
+    'gemini-2.5-flash',
+    'gemini-2.5-flash-lite',
+    'gemini-2.5-pro',
+    'gemini-2.0-flash',
+    'gemini-2.0-flash-001',
+    'gemini-2.0-flash-lite',
+    'gemini-2.0-flash-lite-001'
+];
+
+async function generateWithFallback(promptParts, isStream = false) {
+    for (const modelName of FALLBACK_MODELS) {
+        try {
+            const model = genAI.getGenerativeModel({ 
+                model: modelName,
+                generationConfig: { maxOutputTokens: 100, temperature: 0.7 }
+            }, { apiVersion: 'v1' });
+
+            if (isStream) {
+                return await model.generateContentStream(promptParts);
+            } else {
+                return await model.generateContent(promptParts);
+            }
+        } catch (error) {
+            console.warn(`[GEMINI FALLBACK] ${modelName} failed: ${error.message}. Trying next...`);
+            if (modelName === FALLBACK_MODELS[FALLBACK_MODELS.length - 1]) {
+                throw error;
+            }
+        }
     }
-}, {
-    apiVersion: 'v1',
-});
+}
 
 // ─── Embedding Cache ──────────────────────────────────────────────────────────
 const embeddingCache = new Map();
@@ -486,7 +509,7 @@ Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian 
 
 Query: ${query}`;
 
-        const result = await geminiModel.generateContent(prompt);
+        const result = await generateWithFallback(prompt, false);
         const raw = result.response.text().replace(/[^\w\s]/gi, '').trim();
         subject = raw ? normalizeToRegistryOrSelf(raw) : 'general';
     } catch (e) {
@@ -785,7 +808,7 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.setHeader('Connection', 'keep-alive');
                 res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
-                const result = await geminiModel.generateContentStream([notFoundPrompt, question]);
+                const result = await generateWithFallback([notFoundPrompt, question], true);
                 for await (const chunk of result.stream) {
                     const token = chunk.text();
                     res.write(`data: ${JSON.stringify({ token })}\n\n`);
@@ -793,7 +816,7 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
                 return res.end();
             } else {
-                const result = await geminiModel.generateContent([notFoundPrompt, question]);
+                const result = await generateWithFallback([notFoundPrompt, question], false);
                 const answer = result.response.text();
                 return res.json({ answer, keyword: 'general', references: [] });
             }
@@ -823,7 +846,7 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.setHeader('Connection', 'keep-alive');
                 res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
-                const result = await geminiModel.generateContentStream([greetingPrompt, question]);
+                const result = await generateWithFallback([greetingPrompt, question], true);
                 for await (const chunk of result.stream) {
                     const token = chunk.text();
                     res.write(`data: ${JSON.stringify({ token })}\n\n`);
@@ -831,7 +854,7 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
                 return res.end();
             } else {
-                const result = await geminiModel.generateContent([greetingPrompt, question]);
+                const result = await generateWithFallback([greetingPrompt, question], false);
                 const answer = result.response.text();
                 return res.json({ answer, keyword: 'general', references: [] });
             }
@@ -976,7 +999,7 @@ STRICT RULES:
             res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
             let fullAnswer = '';
-            const result = await geminiModel.generateContentStream([systemPrompt, `User Question: ${question}\n\nShera's Response:`]);
+            const result = await generateWithFallback([systemPrompt, `User Question: ${question}\n\nShera's Response:`], true);
             for await (const chunk of result.stream) {
                 const token = chunk.text();
                 fullAnswer += token;
@@ -990,7 +1013,7 @@ STRICT RULES:
             console.log(`Shera (streamed): ${fullAnswer}`);
 
         } else {
-            const result = await geminiModel.generateContent([systemPrompt, `User Question: ${question}\n\nShera's Response:`]);
+            const result = await generateWithFallback([systemPrompt, `User Question: ${question}\n\nShera's Response:`], false);
             let answer = result.response.text();
 
             // ── Clean Answer
