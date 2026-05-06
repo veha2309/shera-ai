@@ -8,15 +8,13 @@ const { OllamaEmbeddingFunction } = require('@chroma-core/ollama');
 
 /**
  * Shera AI - Hybrid Chroma + GraphRAG Backend Server
- * Semantic retrieval via ChromaDB
- * Relationship reasoning via Antigravity Graph
- *
- * Optimizations applied for Gemma 2 (2b):
- *  1. Lightweight 1.6GB footprint for low-latency server response.
- *  2. Optimized sampling (Temp 0.7, Top P 0.9) for stable guide persona.
- *  3. Trie-based fast entity extraction for instant matching.
+ * 
+ * ULTRA-LIGHTWEIGHT CONFIGURATION:
+ * Optimizations applied for Qwen 2 (0.5b):
+ *  1. Tiny 350MB footprint for ultra-low latency on weak VMs.
+ *  2. Extreme sampling speed (Temp 0.7, Top P 0.8).
+ *  3. LLM-Bypass Extraction: Skips LLM for short/simple subject queries.
  *  4. Graph traversal result cache.
- *  5. Streaming LLM response via SSE.
  */
 
 const app = express();
@@ -32,8 +30,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'gemma2:2b'; // Fixed to lightweight model
-const EXTRACTION_MODEL = 'gemma2:2b';
+const CHAT_MODEL = 'qwen2:0.5b'; // Ultra-light model (350MB)
+const EXTRACTION_MODEL = 'qwen2:0.5b';
 
 function logResources(label) {
     const mem = process.memoryUsage();
@@ -452,6 +450,13 @@ async function extractSubject(query) {
         }
     }
 
+    // FAST FALLBACK: If query is short, don't waste LLM time on extraction
+    const words = qLower.split(/\s+/);
+    if (words.length <= 2 && qLower.length < 15) {
+        console.log(`[EXTRACTION] Skipping LLM for short query: "${qLower}"`);
+        return finalizeSubject(normalizeToRegistryOrSelf(qLower), qLower, qLower);
+    }
+
     let subject = 'general';
     try {
         const extractionResp = await ollama.chat({
@@ -460,26 +465,12 @@ async function extractSubject(query) {
                 {
                     role: 'system',
                     content: `Extract the primary subject (Animal, Place, Facility, or Event) from the query.
-Return ONLY the name in English. BE EXTREMELY BRIEF. DO NOT provide any thinking process or internal monologue.
-
-CRITICAL RULES:
-1. If the user asks for an animal (e.g., "cheetah"), return ONLY the animal name ("Cheetah"). 
-2. DO NOT resolve a simple animal name to an Event.
-3. Only return an Event name if the user specifically mentions a "day", "event", or "celebration".
-4. If it's a facility (food, water, washroom), return the category.
-
-CRITICAL MAPPINGS:
-- "Sher", "Shera", "एशियाई शेर", "शेर" -> "Asiatic Lion"
-- "Bagh", "बाघ", "Tiger" -> "White Tiger"
-- "Hathi", "हाथी", "Elephant" -> "Indian Elephant"
-- "Pani", "पानी" -> "Drinking Water"
-- "Food", "Khana", "खाना" -> "Food & Drinks"
-
-No extra text.`
+Return ONLY the name in English. BE EXTREMELY BRIEF.
+Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian Elephant", "Pani"->"Drinking Water".`
                 },
                 { role: 'user', content: query }
             ],
-            options: { num_predict: 64, temperature: 0, num_ctx: 1024 }
+            options: { num_predict: 24, temperature: 0, num_ctx: 512 }
         });
         const raw = extractionResp.message.content.replace(/[^\w\s]/gi, '').trim();
         subject = raw ? normalizeToRegistryOrSelf(raw) : 'general';
@@ -770,7 +761,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
-                    options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
+                    options: { num_predict: 200, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -784,7 +775,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
-                    options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
+                    options: { num_predict: 200, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -1038,7 +1029,7 @@ Format (Use Emojis):
                     }
                 ],
                 stream: true,
-                options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
+                options: { num_predict: 300, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
             });
 
             for await (const chunk of streamResp) {
@@ -1063,7 +1054,7 @@ Format (Use Emojis):
                     }
                 ],
                 stream: false,
-                options: { num_predict: 512, temperature: 0.7, top_p: 0.9, num_ctx: 4096 }
+                options: { num_predict: 300, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
