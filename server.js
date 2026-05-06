@@ -40,7 +40,7 @@ function logResources(label) {
 
 // ─── Clients ──────────────────────────────────────────────────────────────────
 const ollama = new Ollama();
-const chroma = new ChromaClient({ path: 'http://localhost:8000' });
+const chroma = new ChromaClient({ host: 'localhost', port: 8000 });
 const embedder = new OllamaEmbeddingFunction({
     url: 'http://127.0.0.1:11434',
     model: 'nomic-embed-text'
@@ -52,7 +52,7 @@ const embeddingCache = new Map();
 async function getCachedEmbedding(text) {
     if (embeddingCache.has(text)) return embeddingCache.get(text);
     try {
-        const resp = await ollama.embed({ model: EMBED_MODEL, input: text });
+        const resp = await ollama.embed({ model: EMBED_MODEL, input: text, keep_alive: '1h' });
         const embedding = resp.embeddings[0];
         embeddingCache.set(text, embedding);
         return embedding;
@@ -470,6 +470,7 @@ Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian 
                 },
                 { role: 'user', content: query }
             ],
+            keep_alive: '1h',
             options: { num_predict: 24, temperature: 0, num_ctx: 512 }
         });
         const raw = extractionResp.message.content.replace(/[^\w\s]/gi, '').trim();
@@ -761,6 +762,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
+                    keep_alive: '1h',
                     options: { num_predict: 200, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
                 });
 
@@ -775,6 +777,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
+                    keep_alive: '1h',
                     options: { num_predict: 200, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
@@ -809,6 +812,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: true,
+                    keep_alive: '1h',
                     options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
                 });
 
@@ -823,6 +827,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     model: CHAT_MODEL,
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: false,
+                    keep_alive: '1h',
                     options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
@@ -1029,6 +1034,7 @@ Format (Use Emojis):
                     }
                 ],
                 stream: true,
+                keep_alive: '1h',
                 options: { num_predict: 300, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
             });
 
@@ -1054,6 +1060,7 @@ Format (Use Emojis):
                     }
                 ],
                 stream: false,
+                keep_alive: '1h',
                 options: { num_predict: 300, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
             });
 
