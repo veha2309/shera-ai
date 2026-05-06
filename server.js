@@ -657,7 +657,8 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
             }
         }
 
-        scoredContext.push({ doc: docText, score, originalName: metadata.name, metadata });
+        const displayName = metadata.render_name || metadata.common_name || metadata.name;
+        scoredContext.push({ doc: docText, score, originalName: displayName, metadata });
     }
 
     const sortedContext = scoredContext
@@ -679,7 +680,9 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
 
     let bestMatchName = subject;
     if (sortedContext.length > 0) {
-        const metaName = sortedContext[0].originalName?.replace(/\s+\d+$/, '').trim();
+        const topMeta = sortedContext[0].metadata || {};
+        const metaName = (topMeta.render_name || topMeta.common_name || topMeta.name || '')
+            .replace(/\s+\d+$/, '').trim();
         const isVague = ['general', 'animals', 'birds', 'reptiles', 'mammals', 'fish']
             .includes(subject.toLowerCase());
         if ((isVague || topScore > 1.2) && metaName && !/^[0-9a-fA-F]{24}$/.test(metaName)) {
@@ -763,7 +766,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 200, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -778,7 +781,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 200, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                    options: { num_predict: 60, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -813,7 +816,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 512 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -828,7 +831,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 1024, temperature: 1.0, top_p: 0.95, top_k: 64, num_ctx: 8192 }
+                    options: { num_predict: 60, temperature: 0.9, top_p: 0.9, num_ctx: 512 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -983,7 +986,7 @@ STRICT RULES:
                 ],
                 stream: true,
                 keep_alive: '1h',
-                options: { num_predict: 300, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
             });
 
             for await (const chunk of streamResp) {
@@ -1009,7 +1012,7 @@ STRICT RULES:
                 ],
                 stream: false,
                 keep_alive: '1h',
-                options: { num_predict: 300, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
