@@ -987,17 +987,17 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
     return result;
 }
 
-function sendStaticResponse(res, answer, keyword, stream) {
+function sendStaticResponse(res, answer, keyword, stream, references = []) {
     if (stream) {
         res.setHeader('Content-Type', 'text/event-stream');
         res.setHeader('Cache-Control', 'no-cache');
         res.setHeader('Connection', 'keep-alive');
         res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
         res.write(`data: ${JSON.stringify({ token: answer })}\n\n`);
-        res.write(`data: ${JSON.stringify({ done: true, keyword, references: [] })}\n\n`);
+        res.write(`data: ${JSON.stringify({ done: true, keyword, references })}\n\n`);
         return res.end();
     } else {
-        return res.json({ answer, keyword, references: [] });
+        return res.json({ answer, keyword, references });
     }
 }
 
@@ -1091,7 +1091,7 @@ app.post('/api/shera/chat', async (req, res) => {
         const cached = getCachedResponse(cacheKey);
         if (cached) {
             console.log(`[CACHE] HIT for "${qLower}"`);
-            return sendStaticResponse(res, cached.answer, cached.keyword, stream);
+            return sendStaticResponse(res, cached.answer, cached.keyword, stream, cached.references);
         }
 
         let { subject, extractedSubject, matchedFacility } = await extractSubject(question);
