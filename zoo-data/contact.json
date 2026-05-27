@@ -1,0 +1,68 @@
+{
+  "status": true,
+  "data": {
+    "title": {
+      "en": "Contact Us",
+      "hi": "हमसे संपर्क करें"
+    },
+    "_id": "69fdbebd21bda38adf77d355",
+    "zooId": "69a6b49dc88f63d77dfc7919",
+    "__v": 0,
+    "contactMethods": [
+      {
+        "label": {
+          "en": "Address",
+          "hi": "पता"
+        },
+        "value": {
+          "en": "National Zoological Park Mathura Road, New Delhi - 110003",
+          "hi": "राष्ट्रीय प्राणी उद्यान मथुरा रोड, नई दिल्ली - 110003"
+        },
+        "icon": "location",
+        "actionUrl": "",
+        "_id": "69fdbebd920860adc6362a5c"
+      },
+      {
+        "label": {
+          "en": "Call Us",
+          "hi": "हमें कॉल करें"
+        },
+        "value": {
+          "en": "+91-9310638076",
+          "hi": "+91-9310638076"
+        },
+        "icon": "phone",
+        "actionUrl": "tel:+919310638076",
+        "_id": "69fdbebd920860adc6362a5d"
+      },
+      {
+        "label": {
+          "en": "Email Support",
+          "hi": "ई - मेल समर्थन"
+        },
+        "value": {
+          "en": "info-nzp@gov.in",
+          "hi": "info-nzp@gov.in"
+        },
+        "icon": "email",
+        "actionUrl": "mailto:info-nzp@gov.in",
+        "_id": "69fdbebd920860adc6362a5e"
+      },
+      {
+        "label": {
+          "en": "Get Directions",
+          "hi": "दिशा - निर्देश प्राप्त करें"
+        },
+        "value": {
+          "en": "Open in Maps",
+          "hi": "मानचित्र में खोलें"
+        },
+        "icon": "directions",
+        "actionUrl": "https://maps.app.goo.gl/MRUMnjRSzZBcLN5r9",
+        "_id": "69fdbebd920860adc6362a5f"
+      }
+    ],
+    "createdAt": "2026-05-08T10:45:17.665Z",
+    "updatedAt": "2026-05-08T11:42:14.138Z"
+  }
+}

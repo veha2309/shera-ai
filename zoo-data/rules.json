@@ -1,0 +1,221 @@
+{
+  "status": true,
+  "data": [
+    {
+      "_id": "69fdbf8f920860adc6363c84",
+      "zooId": "69a6b49dc88f63d77dfc7919",
+      "rules": [
+        {
+          "title": {
+            "en": "Materials Not Permitted",
+            "hi": "सामग्री की अनुमति नहीं है"
+          },
+          "description": {
+            "en": "",
+            "hi": ""
+          },
+          "points": [
+            {
+              "title": {
+                "en": "Eatables except milk for infants",
+                "hi": "शिशुओं के लिए दूध को छोड़कर अन्य खाद्य पदार्थ"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": "food",
+              "_id": "69fdbf8f920860adc6363c86"
+            },
+            {
+              "title": {
+                "en": "All types of tobacco and alcoholic products",
+                "hi": "सभी प्रकार के तम्बाकू और मादक उत्पाद"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": "no smoking",
+              "_id": "69fdbf8f920860adc6363c87"
+            },
+            {
+              "title": {
+                "en": "Matchbox or lighter & inflammable materials",
+                "hi": "माचिस या लाइटर और ज्वलनशील पदार्थ"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": "flame",
+              "_id": "69fdbf8f920860adc6363c88"
+            },
+            {
+              "title": {
+                "en": "Polythene bags, packets & heavy luggage",
+                "hi": "पॉलिथीन बैग, पैकेट और भारी सामान"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": "bag",
+              "_id": "69fdbf8f920860adc6363c89"
+            },
+            {
+              "title": {
+                "en": "Musical or sound-producing instruments",
+                "hi": "संगीत या ध्वनि उत्पन्न करने वाले यंत्र"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": "music",
+              "_id": "69fdbf8f920860adc6363c8a"
+            },
+            {
+              "title": {
+                "en": "Firearms, pets, blades, knives, scissors, and sharp objects",
+                "hi": "आग्नेयास्त्र, पालतू जानवर, ब्लेड, चाकू, कैंची और तेज वस्तुएं"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": "scissors",
+              "_id": "69fdbf8f920860adc6363c8b"
+            }
+          ],
+          "_id": "69fdda856e901406e098ff2c"
+        },
+        {
+          "title": {
+            "en": "Ticket & Booking Rules",
+            "hi": "टिकट एवं बुकिंग नियम"
+          },
+          "description": {
+            "en": "",
+            "hi": ""
+          },
+          "points": [
+            {
+              "title": {
+                "en": "Rescheduling",
+                "hi": "शेड्यूलिंग"
+              },
+              "description": {
+                "en": "Allowed up to one day before visit. Strictly prohibited on the day of entry.",
+                "hi": "यात्रा से एक दिन पहले तक की अनुमति है। "
+              },
+              "icon": "calendar",
+              "_id": "69fdd0e26e901406e097a9e4"
+            },
+            {
+              "title": {
+                "en": "Payment Issues",
+                "hi": "भुगतान संबंधी मुद्दे"
+              },
+              "description": {
+                "en": "If payment deducted but ticket not issued, contact support within your booked slot.",
+                "hi": "यदि भुगतान काट लिया गया है लेकिन टिकट जारी नहीं किया गया है, तो अपने बुक किए गए स्लॉट में सहायता से संपर्क करें।"
+              },
+              "icon": "payment",
+              "_id": "69fdd0e26e901406e097a9e5"
+            },
+            {
+              "title": {
+                "en": "Refund Policy",
+                "hi": "भुगतान वापसी की नीति"
+              },
+              "description": {
+                "en": "Tickets are non-refundable under any circumstances.",
+                "hi": "किसी भी परिस्थिति में टिकट वापसी योग्य नहीं हैं।"
+              },
+              "icon": "receipt",
+              "_id": "69fdd0e26e901406e097a9e6"
+            }
+          ],
+          "_id": "69fdd6376e901406e09849a1"
+        },
+        {
+          "title": {
+            "en": "Visitor Terms & Conditions",
+            "hi": "आगंतुक नियम एवं शर्तें"
+          },
+          "description": {
+            "en": "",
+            "hi": ""
+          },
+          "points": [
+            {
+              "title": {
+                "en": "All visitors are under CCTV surveillance for safety and security.",
+                "hi": "सुरक्षा और सुरक्षा के लिए सभी आगंतुक सीसीटीवी निगरानी में हैं।"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": ".",
+              "_id": "69fdd1656e901406e097aca4"
+            },
+            {
+              "title": {
+                "en": "Each ticket allows one-time entry only.",
+                "hi": "प्रत्येक टिकट केवल एक बार प्रवेश की अनुमति देता है।"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": ".",
+              "_id": "69fdd1656e901406e097aca5"
+            },
+            {
+              "title": {
+                "en": "Carry valid ID for any concession or exemption claimed.",
+                "hi": "किसी भी रियायत या छूट का दावा करने के लिए वैध आईडी साथ रखें।"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": ".",
+              "_id": "69fdd1656e901406e097aca6"
+            },
+            {
+              "title": {
+                "en": "Zoo reserves the absolute right of entry.",
+                "hi": "चिड़ियाघर प्रवेश का पूर्ण अधिकार सुरक्षित रखता है।"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": ".",
+              "_id": "69fdd1656e901406e097aca7"
+            },
+            {
+              "title": {
+                "en": "Violations may result in heavy fines or immediate removal from premises.",
+                "hi": "उल्लंघन के परिणामस्वरूप भारी जुर्माना या परिसर से तत्काल निष्कासन हो सकता है।"
+              },
+              "description": {
+                "en": "",
+                "hi": ""
+              },
+              "icon": ".",
+              "_id": "69fdd1656e901406e097aca8"
+            }
+          ],
+          "_id": "69fdd1656e901406e097aca3"
+        }
+      ],
+      "createdAt": "2026-05-08T10:48:47.054Z",
+      "updatedAt": "2026-05-08T12:43:49.115Z",
+      "__v": 4
+    }
+  ]
+}

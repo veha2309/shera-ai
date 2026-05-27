@@ -5,15 +5,16 @@ const path = require('path');
 const { Ollama } = require('ollama');
 const { ChromaClient } = require('chromadb');
 const { OllamaEmbeddingFunction } = require('@chroma-core/ollama');
-require('dotenv').config();
-const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 /**
  * Shera AI - Hybrid Chroma + GraphRAG Backend Server
  * 
- * GEMINI INFRASTRUCTURE:
- * Migrated to Gemini 1.5 Flash for high-speed, high-quality responses
- * on resource-constrained VM environments.
+ * ULTRA-LIGHTWEIGHT CONFIGURATION:
+ * Optimizations applied for Qwen 2 (0.5b):
+ *  1. Tiny 350MB footprint for ultra-low latency on weak VMs.
+ *  2. Extreme sampling speed (Temp 0.7, Top P 0.8).
+ *  3. LLM-Bypass Extraction: Skips LLM for short/simple subject queries.
+ *  4. Graph traversal result cache.
  */
 
 const app = express();
@@ -29,8 +30,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'gemini-1.5-flash';
-const EXTRACTION_MODEL = 'gemini-1.5-flash';
+const CHAT_MODEL = 'llama3.2:1b';
+const EXTRACTION_MODEL = 'llama3.2:1b';
 
 function logResources(label) {
     const mem = process.memoryUsage();
@@ -44,41 +45,6 @@ const embedder = new OllamaEmbeddingFunction({
     url: 'http://127.0.0.1:11434',
     model: 'nomic-embed-text'
 });
-
-// ─── Gemini Client ──────────────────────────────────────────────────────────
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
-const FALLBACK_MODELS = [
-    'gemini-2.5-flash',
-    'gemini-2.5-flash-lite',
-    'gemini-2.5-pro',
-    'gemini-2.0-flash',
-    'gemini-2.0-flash-001',
-    'gemini-2.0-flash-lite',
-    'gemini-2.0-flash-lite-001'
-];
-
-async function generateWithFallback(promptParts, isStream = false) {
-    for (const modelName of FALLBACK_MODELS) {
-        try {
-            const model = genAI.getGenerativeModel({ 
-                model: modelName,
-                generationConfig: { maxOutputTokens: 100, temperature: 0.7 }
-            }, { apiVersion: 'v1' });
-
-            if (isStream) {
-                return await model.generateContentStream(promptParts);
-            } else {
-                return await model.generateContent(promptParts);
-            }
-        } catch (error) {
-            console.warn(`[GEMINI FALLBACK] ${modelName} failed: ${error.message}. Trying next...`);
-            if (modelName === FALLBACK_MODELS[FALLBACK_MODELS.length - 1]) {
-                throw error;
-            }
-        }
-    }
-}
 
 // ─── Embedding Cache ──────────────────────────────────────────────────────────
 const embeddingCache = new Map();
@@ -229,37 +195,88 @@ const priorityOverrides = {
     'lion tailed monkeys': 'Lion Tailed Macaque',
     'lion tailed macaque': 'Lion Tailed Macaque',
     'lion tailed macaques': 'Lion Tailed Macaque',
+    'lion tailed moneky': 'Lion Tailed Macaque',
+    'lion macaque': 'Lion Tailed Macaque',
+    'lion macaques': 'Lion Tailed Macaque',
+    'lion monkey': 'Lion Tailed Macaque',
+    'lion monkeys': 'Lion Tailed Macaque',
+    'lion bandar': 'Lion Tailed Macaque',
+    'lion bandaro': 'Lion Tailed Macaque',
+    'lion bandaron': 'Lion Tailed Macaque',
+    'sher bandar': 'Lion Tailed Macaque',
+    'shera bandar': 'Lion Tailed Macaque',
     'lion': 'Asiatic Lion',
     'lions': 'Asiatic Lion',
+    'monkey': 'macaque',
+    'monkeys': 'Rhesus Macaque',
+    'bandar': 'macaque',
+    'bandaro': 'macaque',
+    'bandaron': 'macaque',
+    'बंदर': 'macaque',
+    'बन्दर': 'macaque',
+    'बंदरों': 'macaque',
     'tiger': 'White Tiger',
     'tigers': 'White Tiger',
     'elephant': 'Indian Elephant',
     'elephants': 'Indian Elephant',
-    'snakes': 'Reptile House',
-    'snake': 'Common Rat Snake',
-    'reptile': 'Reptile House',
-    'reptiles': 'Reptile House',
-    'deer': 'Spotted Deer',
-    'monkey': 'Rhesus Macaque',
-    'monkeys': 'Rhesus Macaque',
-    'birds': 'Indian Peafowl (Leucistic)',
-    'bear': 'Sloth Bear',
-    'bears': 'Sloth Bear',
+    'sher': 'Asiatic Lion',
+    'shera': 'Asiatic Lion',
+    'bagh': 'White Tiger',
+    'hathi': 'Indian Elephant',
+    'bhalu': 'Sloth Bear',
+    'भालू': 'Sloth Bear',
+    'saap': 'Common Rat Snake',
+    'saanp': 'Common Rat Snake',
+    'सांप': 'Common Rat Snake',
+    'साँप': 'Common Rat Snake',
+    'magarmach': 'Marsh Crocodile',
+    'मगरमच्छ': 'Marsh Crocodile',
+    'एशियाई शेर': 'Asiatic Lion',
+    'शेर': 'Asiatic Lion',
+    'सफेद बाघ': 'White Tiger',
+    'बाघ': 'White Tiger',
+    'हाथी': 'Indian Elephant',
     'पेन': 'Washrooms',
     'पानी': 'Drinking Water',
-    'खाना': 'Food & Drinks'
+    'खाना': 'Food & Drinks',
+    'flightless bird': 'Flightless birds',
+    'flightless birds': 'Flightless birds',
+    'snake': 'Common Rat Snake',
+    'snakes': 'Reptile House',
+    'reptile': 'Reptile House',
+    'reptiles': 'Reptile House',
+    'cobra': 'Spectacled Cobra',
+    'python': 'Indian Rock Python',
+    'deer': 'Spotted Deer',
+    'bear': 'Sloth Bear',
+    'bears': 'Sloth Bear',
+    'Food & Drinks': 'Food & Drinks',
+    'Drinking Water': 'Drinking Water',
+    'Washrooms': 'Washrooms',
+    'Buggy Stops': 'Buggy Stops',
+    'Emergency': 'Emergency'
 };
 
 // ─── OPTIMIZATION 1: Trie Index ───────────────────────────────────────────────
 let trieIndex = new Map();
 
+// Generic category words that should NEVER be used as trie lookup keys.
+// These are too broad and cause false single-match fast-extractions.
+const TRIE_BLACKLIST = new Set([
+    'bird', 'birds', 'animal', 'animals', 'reptile', 'reptiles',
+    'mammal', 'mammals', 'fish', 'insect', 'insects', 'plant', 'plants',
+    'cat', 'cats', 'dog', 'dogs', 'pet', 'pets',
+]);
+
 function buildTrieIndex() {
     const entries = [];
     for (const [phrase, name] of Object.entries(zooRegistry.lookup)) {
+        if (TRIE_BLACKLIST.has(phrase.toLowerCase())) continue; // skip generic words
         entries.push([phrase.toLowerCase(), name]);
     }
     for (const name of zooRegistry.canonicalNames) {
         const lower = name.toLowerCase();
+        if (TRIE_BLACKLIST.has(lower)) continue;
         if (!entries.some(e => e[0] === lower)) {
             entries.push([lower, name]);
         }
@@ -285,7 +302,7 @@ function fastExtract(query) {
     const uniqueNames = [...new Set(foundMatches.map(m => m.name))];
     if (uniqueNames.length === 1) {
         const wordCount = q.split(/\s+/).length;
-        if (wordCount < 6) return uniqueNames[0];
+        if (wordCount <= 7) return uniqueNames[0]; // raised from < 6 to handle 6-7 word queries
     }
     return null;
 }
@@ -334,13 +351,31 @@ function loadZooRegistry() {
 
                 const classification = item.classification?.en || item.classification || '';
                 if (classification && classification.length > 2) classifications.add(classification);
-                const threatStatus = item.threat_status?.en || item.threat_status || '';
+
+                let threatStatus = '';
+                if (item.threat_status) {
+                    if (typeof item.threat_status === 'string') {
+                        threatStatus = item.threat_status;
+                    } else if (item.threat_status.en) {
+                        threatStatus = item.threat_status.en;
+                    }
+                }
+                if (!threatStatus && item.conservation?.iucn_status) {
+                    if (typeof item.conservation.iucn_status === 'string') {
+                        threatStatus = item.conservation.iucn_status;
+                    } else if (item.conservation.iucn_status.en) {
+                        threatStatus = item.conservation.iucn_status.en;
+                    }
+                }
+                threatStatus = threatStatus.trim();
+
+                const activity = item.activity?.en || (typeof item.activity === 'string' ? item.activity : '') || '';
 
                 if (file.includes('calendar') || file.includes('event')) {
                     eventNames.add(primaryName);
                 }
-                if (!zooRegistry.metadata[primaryName] || classification || threatStatus) {
-                    zooRegistry.metadata[primaryName] = { classification, threatStatus };
+                if (!zooRegistry.metadata[primaryName] || classification || threatStatus || activity) {
+                    zooRegistry.metadata[primaryName] = { classification, threatStatus, activity };
                 }
             }
         } catch (e) { /* skip malformed file */ }
@@ -398,8 +433,29 @@ function loadZooRegistry() {
     console.log(`\n📚 Zoo Registry: Loaded ${zooRegistry.canonicalNames.length} species dynamically (${zooRegistry.eventNames.size} events).`);
 }
 
+function levenshtein(a, b) {
+    const matrix = [];
+    for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1, // substitution
+                    matrix[i][j - 1] + 1,     // insertion
+                    matrix[i - 1][j] + 1      // deletion
+                );
+            }
+        }
+    }
+    return matrix[b.length][a.length];
+}
+
 function normalizeToRegistryOrSelf(rawSubject) {
     const words = rawSubject.trim().split(/\s+/);
+    // 1. Direct candidate matching
     for (let len = words.length; len >= 1; len--) {
         const candidate = words.slice(0, len).join(' ');
         const lower = candidate.toLowerCase();
@@ -408,12 +464,36 @@ function normalizeToRegistryOrSelf(rawSubject) {
             return zooRegistry.canonicalNames.find(n => n.toLowerCase() === lower);
         }
     }
-    const sLower = rawSubject.toLowerCase();
-    const fuzzyHit = zooRegistry.canonicalNames.find(n => {
-        const nl = n.toLowerCase();
-        return nl.includes(sLower) || sLower.includes(nl) || (sLower.length > 4 && nl.startsWith(sLower.slice(0, 5)));
-    });
-    if (fuzzyHit) return fuzzyHit;
+
+    // 2. Exact word-level matching for any word in the query
+    for (const queryWord of words) {
+        const qwLower = queryWord.toLowerCase();
+        if (qwLower.length < 3) continue;
+        if (zooRegistry.lookup[qwLower]) return zooRegistry.lookup[qwLower];
+        const exactWordHit = zooRegistry.canonicalNames.find(n => {
+            const nl = n.toLowerCase();
+            return nl.split(/[^a-z0-9]+/).includes(qwLower);
+        });
+        if (exactWordHit) return exactWordHit;
+    }
+
+    // 3. Fuzzy word-level matching
+    for (const queryWord of words) {
+        const qwLower = queryWord.toLowerCase();
+        if (qwLower.length < 3) continue;
+        const fuzzyWordHit = zooRegistry.canonicalNames.find(n => {
+            const nl = n.toLowerCase();
+            const canonicalWords = nl.split(/[^a-z0-9]+/);
+            for (const cw of canonicalWords) {
+                if (cw.length < 3) continue;
+                const dist = levenshtein(qwLower, cw);
+                const maxDist = cw.length >= 6 ? 2 : 1;
+                if (dist <= maxDist) return true;
+            }
+            return false;
+        });
+        if (fuzzyWordHit) return fuzzyWordHit;
+    }
 
     return words[0];
 }
@@ -425,29 +505,62 @@ function optimizeContext(docs, maxLines = 5) {
 
 // ─── Facility Synonym Map ─────────────────────────────────────────────────────
 const facilitySynonyms = {
-    'Food & Drinks': ['food', 'eat', 'hungry', 'snacks', 'restaurant', 'cafe', 'cafeteria', 'snack', 'khana', 'खाना', 'खानपान', 'भूख', 'कैंटीन', 'canteen'],
-    'Drinking Water': ['water', 'drink', 'drinking water', 'thirsty', 'fountain', 'pani', 'पानी', 'प्यास'],
-    'Washrooms': ['washroom', 'toilet', 'restroom', 'bathroom', 'shauchalay', 'शौचालय', 'टॉयलेट', 'pee', 'poo'],
-    'Buggy Stops': ['buggy', 'shuttle', 'ride', 'cart', 'transport', 'बग्गी'],
-    'First Aid': ['first aid', 'medical', 'medicine', 'doctor', 'clinic', 'hospital', 'दवाई', 'अस्पताल'],
-    'Counters': ['counter', 'ticket', 'info', 'information', 'help', 'टिकट', 'काउंटर']
+    'Food & Drinks': ['food', 'eat', 'hungry', 'snacks', 'restaurant', 'cafe', 'cafeteria', 'snack', 'khana', 'khaana', 'खाना', 'खानपान', 'भूख', 'bhook', 'bhuk', 'कैंटीन', 'canteen', 'kanteen'],
+    'Drinking Water': ['water', 'drink', 'drinking water', 'thirsty', 'thristy', 'thirsti', 'thirsy', 'thurst', 'fountain', 'pani', 'paani', 'पानी', 'प्यास', 'pyaas', 'pyasa', 'pyaasa', 'pyase', 'pyaase', 'water bottle', 'water filter'],
+    'Washrooms': ['washroom', 'wash room', 'toilet', 'restroom', 'bathroom', 'shauchalay', 'shochalay', 'शौचालय', 'टॉयलेट', 'pee', 'poo', 'mutralay'],
+    'Buggy Stops': ['buggy', 'shuttle', 'ride', 'cart', 'transport', 'बग्गी', 'gadi', 'gaadi', 'shuttle car', 'rickshaw', 'rikshaw'],
+    'First Aid': ['first aid', 'medical', 'medicine', 'doctor', 'clinic', 'hospital', 'दवाई', 'अस्पताल', 'dawai', 'dawae', 'chot', 'injur'],
+    'Counters': ['counter', 'ticket', 'info', 'information', 'help', 'टिकट', 'काउंटर', 'booking', 'paise'],
+    'Exit Gate': ['exit', 'exit gate', 'way out', 'leave the zoo', 'going out', 'निकास', 'निकास द्वार', 'बाहर', 'बाहर निकलें', 'बाहर जाएं', 'nikas', 'bahar'],
+    'Main Entrance': ['entrance', 'entry', 'enter', 'main entrance', 'main gate', 'front gate', 'प्रवेश', 'प्रवेश द्वार', 'दरवाज़ा', 'द्वार', 'मुख्य द्वार', 'pravesh', 'entry gate']
 };
 
+// Returns first matching facility (for single-match use)
 function detectFacility(text) {
+    const facilities = detectFacilities(text);
+    return facilities.length > 0 ? facilities[0] : null;
+}
+
+// Returns ALL matching facilities in the text (for multi-match use)
+function detectFacilities(text) {
     const t = text.toLowerCase();
+    const matched = new Set();
+
+    // 1. Direct / exact match
     for (const [facility, syns] of Object.entries(facilitySynonyms)) {
         for (const s of syns) {
-            const matched = /^[a-z\s]+$/i.test(s)
+            const hit = /^[a-z\s]+$/i.test(s)
                 ? new RegExp(`\\b${s}\\b`, 'i').test(t)
                 : t.includes(s);
-            if (matched) return facility;
+            if (hit) { matched.add(facility); break; }
         }
     }
-    return null;
+
+    // 2. Levenshtein typo-tolerant word checking
+    const words = t.split(/[^a-zA-Z]+/);
+    for (const word of words) {
+        if (word.length < 4) continue;
+        for (const [facility, syns] of Object.entries(facilitySynonyms)) {
+            if (matched.has(facility)) continue; // already matched
+            for (const s of syns) {
+                if (!/^[a-zA-Z]+$/.test(s) || s.length < 4) continue;
+                const dist = levenshtein(word, s);
+                const maxAllowedDist = s.length >= 6 ? 2 : 1;
+                if (dist <= maxAllowedDist) {
+                    console.log(`[FUZZY FACILITY] Matched query word "${word}" to synonym "${s}" (dist: ${dist}) for "${facility}"`);
+                    matched.add(facility);
+                    break;
+                }
+            }
+        }
+    }
+
+    return Array.from(matched);
 }
 
 function finalizeSubject(subject, qLower, extractedSubject = null) {
-    const matchedFacility = detectFacility(qLower) || detectFacility(subject);
+    const matchedFacilities = detectFacilities(qLower);
+    const matchedFacility = matchedFacilities.length > 0 ? matchedFacilities.join(', ') : null;
     if (matchedFacility) subject = matchedFacility;
     return { subject, extractedSubject: extractedSubject || subject, matchedFacility };
 }
@@ -473,8 +586,8 @@ async function extractSubject(query) {
         return finalizeSubject('Endangered', qLower);
     }
 
-    const facilityHit = detectFacility(qLower);
-    if (facilityHit) return finalizeSubject(facilityHit, qLower);
+    const facilityHits = detectFacilities(qLower);
+    if (facilityHits.length > 0) return finalizeSubject(facilityHits.join(', '), qLower);
 
     const lowerQuery = query.toLowerCase();
     if (lowerQuery.includes('nearby') || lowerQuery.includes('close to me') || lowerQuery.includes('where am i')) {
@@ -494,32 +607,94 @@ async function extractSubject(query) {
         }
     }
 
-    // FAST FALLBACK: If query is short, don't waste LLM time on extraction
+    // FAST FALLBACK: If query is very short (≤4 words), skip LLM extraction
+    // NOTE: facility/gate checks already ran above, so this only catches truly short unknown queries
     const words = qLower.split(/\s+/);
-    if (words.length <= 5 || qLower.length < 30) {
+    if (words.length <= 4) {
         console.log(`[EXTRACTION] Skipping LLM for short query: "${qLower}"`);
         return finalizeSubject(normalizeToRegistryOrSelf(qLower), qLower, qLower);
     }
 
     let subject = 'general';
     try {
-        const prompt = `Extract the primary subject (Animal, Place, Facility, or Event) from the query.
+        const extractionResp = await ollama.chat({
+            model: EXTRACTION_MODEL,
+            messages: [
+                {
+                    role: 'system',
+                    content: `Extract the primary subject (Animal, Place, Facility, or Event) from the query.
 Return ONLY the name in English. BE EXTREMELY BRIEF.
-Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian Elephant", "Pani"->"Drinking Water".
-
-Query: ${query}`;
-
-        const result = await generateWithFallback(prompt, false);
-        const raw = result.response.text().replace(/[^\w\s]/gi, '').trim();
+Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian Elephant", "Pani"->"Drinking Water".`
+                },
+                { role: 'user', content: query }
+            ],
+            keep_alive: '1h',
+            options: { num_predict: 32, temperature: 0, num_ctx: 1024 }
+        });
+        // Strip gemma4 <think>...</think> blocks and clean up
+        let rawContent = extractionResp.message.content || '';
+        rawContent = rawContent.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+        rawContent = rawContent.replace(/<\|channel\|>thought[\s\S]*?<channel\|>/gi, '').trim();
+        rawContent = rawContent.replace(/<(thought|reasoning)>[\s\S]*?<\/\1>/gi, '').trim();
+        // Keep only the first line (gemma4 sometimes adds explanations after)
+        rawContent = rawContent.split('\n')[0].trim();
+        const raw = rawContent.replace(/[^\w\s\(\)\-\.&]/gi, '').trim();
+        console.log(`[EXTRACTION] LLM raw: "${rawContent}" → normalized: "${raw}"`);
         subject = raw ? normalizeToRegistryOrSelf(raw) : 'general';
     } catch (e) {
-        console.error('[Gemini] Extraction error:', e.message);
+        console.error('[LLM] Extraction error:', e.message);
     }
 
     const sLower = subject.toLowerCase();
     if (zooRegistry.lookup[sLower]) subject = zooRegistry.lookup[sLower];
 
     return finalizeSubject(subject, qLower, subject);
+}
+
+function isAnimalActive(activityStr, currentHour) {
+    const act = (activityStr || '').toLowerCase();
+
+    // Default to Diurnal (active during day: 6 AM to 8 PM) if not specified
+    if (!act) {
+        return currentHour >= 6 && currentHour < 20;
+    }
+
+    if (act.includes('nocturnal')) {
+        return currentHour >= 18 || currentHour < 6; // Active from 6 PM to 6 AM
+    }
+
+    if (act.includes('diurnal')) {
+        return currentHour >= 6 && currentHour < 18; // Active from 6 AM to 6 PM
+    }
+
+    // Crepuscular / specific times (e.g. morning, evening, night)
+    let activeTimes = [];
+    if (act.includes('morning') || act.includes('dawn')) {
+        activeTimes.push({ start: 5, end: 11 });
+    }
+    if (act.includes('evening') || act.includes('dusk')) {
+        activeTimes.push({ start: 16, end: 20 });
+    }
+    if (act.includes('night') || act.includes('nocturnal')) {
+        activeTimes.push({ start: 20, end: 6 });
+    }
+    if (act.includes('day')) {
+        activeTimes.push({ start: 6, end: 18 });
+    }
+
+    if (activeTimes.length > 0) {
+        return activeTimes.some(({ start, end }) => {
+            if (start < end) {
+                return currentHour >= start && currentHour < end;
+            } else {
+                // cross midnight
+                return currentHour >= start || currentHour < end;
+            }
+        });
+    }
+
+    // Default fallback
+    return currentHour >= 6 && currentHour < 20;
 }
 
 async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, language = 'en', isEventQuery = false) {
@@ -534,14 +709,14 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
     if (subject.toLowerCase() === 'endangered' || subject.toLowerCase() === 'conservation') {
         const endangeredList = zooRegistry.canonicalNames.filter(name => {
             const status = String(zooRegistry.metadata[name]?.threatStatus || '').toLowerCase();
-            return status.includes('endangered') || status.includes('vulnerable') || status.includes('threatened');
+            return status.includes('endangered') || status.includes('threatened');
         });
 
         if (endangeredList.length > 0) {
             console.log(`[ENTITY] Conservation query. Found ${endangeredList.length} species.`);
             const listStr = endangeredList.slice(0, 15).join(', ');
             return {
-                context: `The National Zoological Park, New Delhi is home to many endangered and threatened species.\nSome key endangered/vulnerable animals here are: ${listStr}.\nVisitors are encouraged to learn about their conservation.`,
+                context: `The National Zoological Park, New Delhi is home to many endangered and threatened species.\nSome key endangered animals here are: ${listStr}.\nVisitors are encouraged to learn about their conservation.`,
                 sortedContext: endangeredList.slice(0, 5).map(name => ({
                     metadata: { name }, score: 1.0, doc: `This is the ${name}.`
                 })),
@@ -554,7 +729,16 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
 
     let exactMatch = null;
     try {
-        const getRes = await collection.get({ ids: [subject] });
+        const idsToTry = [subject];
+        const meta = zooRegistry.metadata[subject];
+        if (meta?.classification) {
+            const firstClassWord = meta.classification.split(/[/\s,]+/)[0];
+            if (firstClassWord && firstClassWord.length > 2 && !subject.includes(' ')) {
+                idsToTry.push(`${subject} ${firstClassWord}`);
+            }
+        }
+
+        const getRes = await collection.get({ ids: idsToTry });
         if (getRes?.ids?.length > 0) {
             const docName = (getRes.metadatas[0]?.name || '').toLowerCase();
             const subjectLower = subject.toLowerCase();
@@ -566,7 +750,7 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
 
             if (isGenuineMatch) {
                 const isEventMatch = getRes.metadatas[0]?.is_event === 'true';
-                console.log(`[ENTITY] Exact ID Match: "${subject}" (IsEvent: ${isEventMatch})`);
+                console.log(`[ENTITY] Exact ID Match: "${getRes.ids[0]}" (IsEvent: ${isEventMatch})`);
 
                 const finalScore = (isEventMatch && !isEventQuery) ? 0.15 : 1.5;
 
@@ -638,9 +822,9 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
 
         const baseSimilarity = Math.max(0, 1.0 - distance);
 
-        let score = baseSimilarity * 0.4;
+        let score = (subject === query) ? baseSimilarity : (baseSimilarity * 0.4);
 
-        if (subject !== 'general') {
+        if (subject !== 'general' && subject !== query) {
             const subjectLower = subject.toLowerCase();
             const docWords = docName.split(/\s+/);
             const subjectWords = subjectLower.split(/\s+/);
@@ -698,18 +882,20 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
         scoredContext.push({ doc: docText, score, originalName: displayName, metadata });
     }
 
-    const sortedContext = scoredContext
+    let sortedContext = scoredContext
         .filter(item => item.score > 0)
         .sort((a, b) => b.score - a.score);
 
-    if (scoredContext.length === 0 && subject !== 'general' && zooRegistry.canonicalNames.includes(subject)) {
+    if (sortedContext.length === 0 && subject !== 'general' && zooRegistry.canonicalNames.includes(subject)) {
         console.log(`[SEARCH] Fallback: No vector results, but "${subject}" is in registry. Using metadata.`);
         const meta = zooRegistry.metadata[subject] || {};
-        scoredContext.push({
+        const fallbackItem = {
             doc: `The ${subject} is one of the species at National Zoological Park, New Delhi. ${meta.classification ? `It is classified as ${meta.classification}.` : ''}`,
             metadata: { name: subject, ...meta },
             score: 0.5
-        });
+        };
+        scoredContext.push(fallbackItem);
+        sortedContext.push(fallbackItem);
     }
 
     const topScore = sortedContext.length > 0 ? sortedContext[0].score : 0;
@@ -748,6 +934,20 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
     };
 }
 
+function sendStaticResponse(res, answer, keyword, stream) {
+    if (stream) {
+        res.setHeader('Content-Type', 'text/event-stream');
+        res.setHeader('Cache-Control', 'no-cache');
+        res.setHeader('Connection', 'keep-alive');
+        res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
+        res.write(`data: ${JSON.stringify({ token: answer })}\n\n`);
+        res.write(`data: ${JSON.stringify({ done: true, keyword, references: [] })}\n\n`);
+        return res.end();
+    } else {
+        return res.json({ answer, keyword, references: [] });
+    }
+}
+
 app.post('/api/shera/chat', async (req, res) => {
     let { question, deepSearch = true, language = 'en', stream = false } = req.body;
 
@@ -769,7 +969,65 @@ app.post('/api/shera/chat', async (req, res) => {
             }
         }
 
-        const { subject, extractedSubject, matchedFacility } = await extractSubject(question);
+        let { subject, extractedSubject, matchedFacility } = await extractSubject(question);
+
+        if (subject === 'general') {
+            const isGreeting = /^(hello|hi|hey|नमस्ते|tata|bye|goodbye|thank|thanks)$/i.test(qLower);
+            const isLocationQuery = extractedSubject === 'location'
+                || qLower.includes('nearby')
+                || qLower.includes('close to me')
+                || qLower.includes('where am i')
+                || qLower.includes('आसपास')
+                || qLower.includes('नज़दीक')
+                || qLower.includes('पास');
+
+            const isActivityQuery = qLower.includes('active now')
+                || qLower.includes('currently active')
+                || qLower.includes('active right now')
+                || (qLower.includes('active') && qLower.includes('animal'))
+                || qLower.includes('सक्रिय');
+
+            if (isActivityQuery) {
+                subject = 'Activity';
+                extractedSubject = 'Activity';
+            } else if (!isGreeting && !isLocationQuery) {
+                console.log(`[GENERAL] Factual check for unrecognized query: "${question}"`);
+                const testSearch = await antigravitySearch(question, question, false, 1, language, false);
+                if (testSearch.topScore >= 0.4) {
+                    console.log(`[GENERAL] High similarity match found (${testSearch.topScore.toFixed(2)}). Promoting to factual search for "${testSearch.subject}".`);
+                    subject = testSearch.subject;
+                    extractedSubject = testSearch.subject;
+                }
+            }
+        }
+
+        const subjectParts = subject.split(', ');
+        const hasExit = subjectParts.includes('Exit Gate');
+        const hasEntry = subjectParts.includes('Main Entrance');
+
+        if (hasExit || hasEntry) {
+            let answer, keyword;
+            if (hasExit && hasEntry) {
+                console.log(`[FACILITY] Direct static gate response: "Exit Gate, Main Entrance"`);
+                keyword = 'Exit Gate, Main Entrance';
+                answer = isHindi
+                    ? "चिड़ियाघर का मुख्य प्रवेश द्वार (Main Entrance) और निकास द्वार (Exit Gate) एक-दूसरे के पास ही स्थित हैं। मैंने आपकी सुविधा के लिए दोनों को मानचित्र पर चिह्नित कर दिया है! 🧭"
+                    : "The Main Entrance and Exit Gate are located right next to each other. I've highlighted both on the map for you! 🧭";
+            } else if (hasExit) {
+                console.log(`[FACILITY] Direct static gate response: "Exit Gate"`);
+                keyword = 'Exit Gate';
+                answer = isHindi
+                    ? "चिड़ियाघर का निकास द्वार (Exit Gate) मुख्य प्रवेश द्वार के पास ही स्थित है। मैंने आपकी सुविधा के लिए इसे मानचित्र पर चिह्नित कर दिया है!"
+                    : "The Exit Gate is located right next to the Main Entrance. I have highlighted it on the map for you! 🧭";
+            } else {
+                console.log(`[FACILITY] Direct static gate response: "Main Entrance"`);
+                keyword = 'Main Entrance';
+                answer = isHindi
+                    ? "चिड़ियाघर का मुख्य प्रवेश द्वार (Main Entrance) यहाँ स्थित है। मैंने आपकी सुविधा के लिए इसे मानचित्र पर चिह्नित कर दिया है!"
+                    : "The Main Entrance is located here. I have highlighted it on the map for you! 🧭";
+            }
+            return sendStaticResponse(res, answer, keyword, stream);
+        }
 
         const isFacilityMatch = !!matchedFacility;
         let isEventQuery = /\b(national|international|world|global)\b[\w\s]+\bday\b/i.test(question);
@@ -808,17 +1066,29 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.setHeader('Connection', 'keep-alive');
                 res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
-                const result = await generateWithFallback([notFoundPrompt, question], true);
-                for await (const chunk of result.stream) {
-                    const token = chunk.text();
+                const streamResp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
+                    stream: true,
+                    keep_alive: '1h',
+                    options: { num_predict: 350, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
+                });
+
+                for await (const chunk of streamResp) {
+                    const token = chunk.message.content;
                     res.write(`data: ${JSON.stringify({ token })}\n\n`);
                 }
                 res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
                 return res.end();
             } else {
-                const result = await generateWithFallback([notFoundPrompt, question], false);
-                const answer = result.response.text();
-                return res.json({ answer, keyword: 'general', references: [] });
+                const resp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
+                    stream: false,
+                    keep_alive: '1h',
+                    options: { num_predict: 350, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
+                });
+                return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
         }
 
@@ -835,10 +1105,26 @@ app.post('/api/shera/chat', async (req, res) => {
                 return res.json({ answer: greetings[qLower], keyword: 'general', references: [] });
             }
 
+            const isLocationQuery = extractedSubject === 'location'
+                || qLower.includes('nearby')
+                || qLower.includes('close to me')
+                || qLower.includes('where am i')
+                || qLower.includes('आसपास')
+                || qLower.includes('नज़दीक')
+                || qLower.includes('पास');
+
+            if (isLocationQuery) {
+                console.log(`[GENERAL] Static location match: "${qLower}"`);
+                const msg = isHindi
+                    ? "आपके आस-पास के जानवरों और सुविधाओं को ढूंढ रहा हूँ... 🗺️"
+                    : "Finding nearby animals and facilities for you... 🗺️";
+                return sendStaticResponse(res, msg, 'general', stream);
+            }
+
             console.log(`[GENERAL] Handling as general chat/greeting via LLM.`);
             const greetingPrompt = isHindi
-                ? 'आप शेरा हैं, एक मिलनसार गाइड। उपयोगकर्ता का स्वागत करें। कभी न कहें कि आप AI हैं। हिंदी में उत्तर दें। सख्त: 20 शब्दों से कम में उत्तर दें।'
-                : 'You are Shera, a friendly zoo guide. Greet the user or respond to their general talk. NEVER say you are an AI. Respond in English. STRICT: Do not exceed 20 words.';
+                ? 'आप शेरा हैं, एक मिलनसार चिड़ियाघर गाइड। उपयोगकर्ता का स्वागत करें या उनकी सामान्य बातचीत का उत्तर दें। कभी न कहें कि आप AI हैं। हिंदी में उत्तर दें। उत्तर में प्यारे और प्रासंगिक इमोजीस (जैसे 🦁, 👋, ✨) का प्रयोग करें। उत्तर को प्राकृतिक और संक्षिप्त रखें (लगभग 20-30 शब्द)।'
+                : 'You are Shera, a friendly zoo guide. Greet the user or respond to their general talk. NEVER say you are an AI. Respond in English. Warmly include friendly emojis (e.g. 🦁, 👋, ✨). Keep it natural and concise (around 20-30 words).';
 
             if (stream) {
                 res.setHeader('Content-Type', 'text/event-stream');
@@ -846,24 +1132,82 @@ app.post('/api/shera/chat', async (req, res) => {
                 res.setHeader('Connection', 'keep-alive');
                 res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
-                const result = await generateWithFallback([greetingPrompt, question], true);
-                for await (const chunk of result.stream) {
-                    const token = chunk.text();
+                const streamResp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
+                    stream: true,
+                    keep_alive: '1h',
+                    options: { num_predict: 350, temperature: 0.9, top_p: 0.9, num_ctx: 2048 }
+                });
+
+                for await (const chunk of streamResp) {
+                    const token = chunk.message.content;
                     res.write(`data: ${JSON.stringify({ token })}\n\n`);
                 }
                 res.write(`data: ${JSON.stringify({ done: true, keyword: 'general', references: [] })}\n\n`);
                 return res.end();
             } else {
-                const result = await generateWithFallback([greetingPrompt, question], false);
-                const answer = result.response.text();
-                return res.json({ answer, keyword: 'general', references: [] });
+                const resp = await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
+                    stream: false,
+                    keep_alive: '1h',
+                    options: { num_predict: 350, temperature: 0.9, top_p: 0.9, num_ctx: 1024 }
+                });
+                return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
         }
 
-        let { context, references, topScore, sortedContext, subject: resolvedSubject } =
-            await antigravitySearch(question, subject, isFacilityMatch, 1, language, isEventQuery);
+        let context = '';
+        let references = [];
+        let topScore = 0;
+        let sortedContext = [];
+        let finalSubject = subject;
 
-        const finalSubject = resolvedSubject;
+        const isActivityQuery = qLower.includes('active now')
+            || qLower.includes('currently active')
+            || qLower.includes('active right now')
+            || (qLower.includes('active') && qLower.includes('animal'))
+            || qLower.includes('सक्रिय');
+
+        if (isActivityQuery) {
+            const dateIST = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+            const currentHour = dateIST.getHours();
+            console.log(`[ACTIVITY] Dynamic activity query processed at IST hour: ${currentHour}`);
+
+            const activeAnimals = zooRegistry.canonicalNames.filter(name => {
+                if (zooRegistry.eventNames.has(name)) return false;
+                const meta = zooRegistry.metadata[name] || {};
+                return isAnimalActive(meta.activity, currentHour);
+            });
+
+            if (activeAnimals.length > 0) {
+                const listStr = activeAnimals.slice(0, 10).join(', ') + ', etc.';
+                const timeDesc = currentHour >= 12
+                    ? `${currentHour === 12 ? 12 : currentHour - 12} PM`
+                    : `${currentHour} AM`;
+
+                context = isHindi
+                    ? `चिड़ियाघर में अभी भारतीय समयानुसार लगभग ${timeDesc} बज रहे हैं। इस समय दिल्ली चिड़ियाघर में सक्रिय और देखने योग्य मुख्य जानवर निम्नलिखित हैं: ${activeAnimals.slice(0, 10).join(', ')} आदि।`
+                    : `The current local time at the zoo is around ${timeDesc}. The key animals that are currently active and likely to be seen right now are: ${listStr}.`;
+
+                sortedContext = activeAnimals.slice(0, 5).map(name => ({
+                    metadata: { name }, score: 1.0, doc: `This is the ${name}.`
+                }));
+                topScore = 1.0;
+                finalSubject = 'Activity';
+                references = activeAnimals.slice(0, 5);
+            }
+        }
+
+        if (!context) {
+            const searchResult = await antigravitySearch(question, subject, isFacilityMatch, 1, language, isEventQuery);
+            context = searchResult.context;
+            references = searchResult.references;
+            topScore = searchResult.topScore;
+            sortedContext = searchResult.sortedContext;
+            finalSubject = searchResult.subject;
+        }
 
         const isRelationalQuery = /\b(eat|eats|live|lives|endangered|habitat|beat|location)\b/i.test(question);
         const needsGraph = (isEventQuery || isRelationalQuery || topScore < 0.3) && graph.nodes.length > 0;
@@ -920,52 +1264,55 @@ app.post('/api/shera/chat', async (req, res) => {
         }
 
         let systemPrompt = '';
-        const NO_THOUGHT_INSTRUCTION = "STRICT: Do NOT include any internal monologue or thinking process. Respond IMMEDIATELY with the final output.";
+        const NO_THOUGHT_INSTRUCTION_EN = "STRICT: Do NOT include any internal monologue or thinking process. Respond IMMEDIATELY with the final output in English.";
+        const NO_THOUGHT_INSTRUCTION_HI = "सख्त निर्देश: कोई भी आंतरिक सोच या विचार प्रक्रिया (thinking process) शामिल न करें। सीधे केवल अंतिम उत्तर ही हिंदी में लिखें।";
 
         if (isNotFound) {
             systemPrompt = isHindi
                 ? `आप शेरा (Shera) हैं, दिल्ली चिड़ियाघर के मित्रवत गाइड।
-${NO_THOUGHT_INSTRUCTION}
+${NO_THOUGHT_INSTRUCTION_HI}
 
 नियम:
 1. हमेशा शेरा के रूप में उत्तर दें, और कभी न कहें कि आप AI हैं।
 2. उपयोगकर्ता ने "${extractedSubject}" के बारे में पूछा है, लेकिन यह दिल्ली चिड़ियाघर में नहीं है।
-3. स्पष्ट रूप से बताएं कि यह यहाँ नहीं है।
-4. अपना उत्तर अधिकतम 20 शब्दों में दें। कोई बुलेट या शीर्षक नहीं।`
+3. स्पष्ट और मित्रवत रूप से बताएं कि यह यहाँ नहीं है।
+4. अपने उत्तर में संबंधित इमोजीस (जैसे 🦁, 🗺️) शामिल करें।
+5. उत्तर छोटा और सरल रखें (लगभग 20-30 शब्द)। कोई बुलेट या शीर्षक नहीं।`
 
                 : `You are Shera, the friendly guide of National Zoological Park, New Delhi.
-${NO_THOUGHT_INSTRUCTION}
+${NO_THOUGHT_INSTRUCTION_EN}
 
 Rules:
 1. Always stay in character as Shera and never mention AI.
 2. The user asked about "${extractedSubject}", but it is NOT at the National Zoological Park, New Delhi.
-3. Politely explain it is not here.
-4. STRICT: Do not exceed 20 words. No bullet points or headings.`;
+3. Politely and warmly explain it is not here.
+4. Use relevant and friendly emojis in your response (e.g. 🦁, 🗺️).
+5. Keep your response concise but natural (around 20-30 words). No bullet points or headings.`;
 
         } else if (isGeneral) {
 
             systemPrompt = isHindi
                 ? `आप शेरा (Shera) हैं, दिल्ली चिड़ियाघर के गाइड।
-${NO_THOUGHT_INSTRUCTION}
+${NO_THOUGHT_INSTRUCTION_HI}
 
 नियम:
-1. स्वागतपूर्ण और मित्रवत रहें। कभी न कहें कि आप AI हैं।
-2. उपयोगकर्ता के प्रश्नों का उत्तर अधिकतम 20 शब्दों में दें।
-3. कोई बुलेट या शीर्षक नहीं।`
+1. स्वागतपूर्ण, मित्रवत और खुशमिजाज रहें। कभी न कहें कि आप AI हैं।
+2. अपने उत्तर में प्यारे और प्रासंगिक इमोजीस (जैसे 🦁, 👋, ✨) शामिल करें।
+3. उत्तर लगभग 20-30 शब्दों का रखें। कोई बुलेट या शीर्षक नहीं।`
 
                 : `You are Shera, the friendly zoo guide at National Zoological Park, New Delhi.
-${NO_THOUGHT_INSTRUCTION}
+${NO_THOUGHT_INSTRUCTION_EN}
 
 Rules:
-1. Be friendly and welcoming. Never mention AI.
-2. Respond to the user naturally.
-3. STRICT: Do not exceed 20 words. No bullet points or headings.`;
+1. Be friendly, welcoming, and cheerful. Never mention AI.
+2. Respond to the user naturally and include friendly emojis (e.g. 🦁, 👋, ✨).
+3. Keep it warm and concise (around 20-30 words). No bullet points or headings.`;
 
         } else {
 
             systemPrompt = isHindi
                 ? `आप शेरा (Shera) हैं, राष्ट्रीय प्राणी उद्यान, नई दिल्ली के शेर गाइड।
-${NO_THOUGHT_INSTRUCTION}
+${NO_THOUGHT_INSTRUCTION_HI}
 
 संदर्भ:
 ${context}
@@ -973,11 +1320,12 @@ ${context}
 सख्त नियम:
 1. हमेशा शेरा के रूप में उत्तर दें। कभी न कहें कि आप AI हैं।
 2. उत्तर स्पष्ट, संक्षिप्त और तथ्यात्मक रखें।
-3. अधिकतम 20 शब्दों में अपना उत्तर दें। कोई बुलेट या शीर्षक नहीं।
-4. कभी भी नाम न बदलें। संदर्भ में दिए गए सटीक नाम का ही उपयोग करें।`
+3. अपने उत्तर में हमेशा जानवरों या स्थान से जुड़े उपयुक्त इमोजीस (जैसे 🦁, 🐅, 🌳) का प्रयोग करें।
+4. उत्तर को प्राकृतिक और मित्रवत रखें (लगभग 30-40 शब्द)। कोई बुलेट या शीर्षक नहीं।
+5. कभी भी नाम न बदलें। संदर्भ में दिए गए सटीक नाम का ही उपयोग करें।`
 
                 : `You are Shera, the Lion Guide at National Zoological Park, New Delhi.
-${NO_THOUGHT_INSTRUCTION}
+${NO_THOUGHT_INSTRUCTION_EN}
 
 Context:
 ${context}
@@ -985,12 +1333,18 @@ ${context}
 STRICT RULES:
 1. Always stay in character as Shera. Never mention AI.
 2. Keep answers clear, concise, and factual.
-3. STRICT: Do not exceed 20 words. No bullet points, headings, or emojis.
-4. NEVER improvise or change names. Use EXACT names from context.`;
+3. Warmly include relevant emojis in your response (e.g. 🦁, 🐅, 🌳).
+4. Keep the response natural and friendly (around 30-40 words). No bullet points or headings.
+5. NEVER improvise or change names. Use EXACT names from context.`;
         }
 
-        console.log(`[THINKING] Processing "${finalSubject}" with Gemini...`);
+        console.log(`[THINKING] Processing "${finalSubject}" with ${CHAT_MODEL}...`);
         console.log(`Generating response for: ${finalSubject}...`);
+
+        let userMessageContent = question;
+        if (finalSubject && finalSubject !== 'general' && finalSubject.toLowerCase() !== question.toLowerCase()) {
+            userMessageContent = `About "${finalSubject}": ${question}`;
+        }
 
         if (stream) {
             res.setHeader('Content-Type', 'text/event-stream');
@@ -999,9 +1353,19 @@ STRICT RULES:
             res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
             let fullAnswer = '';
-            const result = await generateWithFallback([systemPrompt, `User Question: ${question}\n\nShera's Response:`], true);
-            for await (const chunk of result.stream) {
-                const token = chunk.text();
+            const streamResp = await ollama.chat({
+                model: CHAT_MODEL,
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: userMessageContent }
+                ],
+                stream: true,
+                keep_alive: '1h',
+                options: { num_predict: 650, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+            });
+
+            for await (const chunk of streamResp) {
+                const token = chunk.message?.content || '';
                 fullAnswer += token;
                 res.write(`data: ${JSON.stringify({ token })}\n\n`);
             }
@@ -1013,15 +1377,48 @@ STRICT RULES:
             console.log(`Shera (streamed): ${fullAnswer}`);
 
         } else {
-            const result = await generateWithFallback([systemPrompt, `User Question: ${question}\n\nShera's Response:`], false);
-            let answer = result.response.text();
+            const chatResponse = await ollama.chat({
+                model: CHAT_MODEL,
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: userMessageContent }
+                ],
+                stream: false,
+                keep_alive: '1h',
+                options: { num_predict: 650, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
+            });
 
-            // ── Clean Answer
+            console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
+
+            let answer = chatResponse.message?.content || '';
+            const thought = chatResponse.message?.thinking || '';
+
+            if (thought) {
+                console.log(`\n[MODEL THOUGHT PROCESS]:\n${thought}\n`);
+            }
+
+            // ── Clean Answer: Stripping Gemma 4 specific tags and fallbacks
+            answer = answer.replace(/<\|channel>thought[\s\S]*?<channel\|>/gi, '').trim();
+            answer = answer.replace(/<(thought|reasoning)>[\s\S]*?<\/\1>/gi, '').trim();
+            answer = answer.replace(/^.*?<\/(thought|reasoning)>/si, '').trim();
+
             answer = answer.replace(/^(\*\*|)?Shera's Response:(\*\*|)?/gi, '').trim();
             answer = answer.replace(/^(\*\*|)?Response:(\*\*|)?/gi, '').trim();
             answer = answer.replace(/^(\*\*|)?Final Response:(\*\*|)?/gi, '').trim();
             answer = answer.replace(/^(\*\*|)?Answer:(\*\*|)?/gi, '').trim();
             answer = answer.trim();
+
+            if (!answer && thought) {
+                console.warn('[WARN] content was empty but thinking was present. This usually means num_predict is too low.');
+                // Fallback to extract a draft from thought process if present
+                const draftMatch = thought.match(/Draft:\*?\s*([^\n\r]+)/i) || thought.match(/\*Draft:\*\s*([^\n\r]+)/i);
+                if (draftMatch && draftMatch[1]) {
+                    answer = draftMatch[1].trim();
+                    // Strip off English translation helpers (e.g. "(Asiatic lions...)")
+                    answer = answer.replace(/\s*\([^)]+\)\.?/g, '').trim();
+                    console.log(`[FALLBACK] Extracted draft from thought: "${answer}"`);
+                }
+            }
 
             logResources('Response Generated');
             console.log(`Shera: ${answer}`);

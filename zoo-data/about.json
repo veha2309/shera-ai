@@ -1,0 +1,93 @@
+{
+  "status": true,
+  "data": {
+    "title": {
+      "en": "About Zoo",
+      "hi": "चिड़ियाघर के बारे में"
+    },
+    "_id": "69fdb95f21bda38adf77bd7b",
+    "zooId": "69a6b49dc88f63d77dfc7919",
+    "__v": 0,
+    "content": [
+      {
+        "text": {
+          "en": "The Delhi zoo was established decades after was built. Although the idea to have a zoo in the national capital was proposed in 1951, the park was inaugurated in November 1959.",
+          "hi": "दिल्ली चिड़ियाघर का निर्माण उसके दशकों बाद हुआ। हालांकि राष्ट्रीय राजधानी में चिड़ियाघर बनाने का विचार 1951 में प्रस्तावित किया गया था, लेकिन पार्क का उद्घाटन नवंबर 1959 में हुआ।"
+        },
+        "type": "text",
+        "image": "",
+        "_id": "69fdcd166e901406e096f8f2"
+      },
+      {
+        "text": {
+          "en": "",
+          "hi": ""
+        },
+        "type": "image",
+        "image": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/seqtlpxdFnAW-1778244283072-About_Zoo.webp",
+        "_id": "69fdcd166e901406e096f8f3"
+      },
+      {
+        "text": {
+          "en": "In 1952, the Indian Board for Wildlife created a committee to look into creating a zoo for Delhi. The government of India was to develop the zoo and then turn it over to Delhi as a working enterprise. In 1953 the committee approved the location of the zoo, and in October 1955 it assigned N. D. Bachkheti of the Indian Forest Service to oversee the creation of the zoo.",
+          "hi": "1952 में, भारतीय वन्यजीव बोर्ड ने दिल्ली के लिए एक चिड़ियाघर बनाने की संभावना पर विचार करने के लिए एक समिति का गठन किया। भारत सरकार को चिड़ियाघर विकसित करना था और फिर इसे एक कार्यरत उद्यम के रूप में दिल्ली को सौंपना था। 1953 में समिति ने चिड़ियाघर के स्थान को मंजूरी दे दी, और अक्टूबर 1955 में उसने भारतीय वन सेवा के एन. डी. बचखेती को चिड़ियाघर के निर्माण की देखरेख का जिम्मा सौंपा।"
+        },
+        "type": "text",
+        "image": "",
+        "_id": "69fdcd166e901406e096f8f4"
+      }
+    ],
+    "createdAt": "2026-05-08T10:22:23.596Z",
+    "keyFacts": [
+      {
+        "label": {
+          "en": "LOCATION",
+          "hi": "जगह"
+        },
+        "value": {
+          "en": "New Delhi, India",
+          "hi": "नई दिल्ली, भारत"
+        },
+        "icon": "location",
+        "_id": "69fdcd166e901406e096f8f5"
+      },
+      {
+        "label": {
+          "en": "ESTABLISHED",
+          "hi": "स्थापित"
+        },
+        "value": {
+          "en": "1959",
+          "hi": "1959"
+        },
+        "icon": "calendar",
+        "_id": "69fdcd166e901406e096f8f6"
+      },
+      {
+        "label": {
+          "en": "AREA",
+          "hi": "क्षेत्र"
+        },
+        "value": {
+          "en": "176 acres",
+          "hi": "176 एकड़"
+        },
+        "icon": "area",
+        "_id": "69fdcd166e901406e096f8f7"
+      },
+      {
+        "label": {
+          "en": "ANIMALS",
+          "hi": "जानवर"
+        },
+        "value": {
+          "en": "1,300+",
+          "hi": "1,300+"
+        },
+        "icon": "animal",
+        "_id": "69fdcd166e901406e096f8f8"
+      }
+    ],
+    "updatedAt": "2026-05-14T14:17:10.681Z"
+  }
+}
