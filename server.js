@@ -457,22 +457,35 @@ function levenshtein(a, b) {
     return matrix[b.length][a.length];
 }
 
+// Stop-words that should NEVER be used as animal/entity lookup seeds.
+// These are common English query filler words that could fuzzy-match real animal names.
+const QUERY_STOP_WORDS = new Set([
+    'find', 'where', 'show', 'tell', 'what', 'which', 'how', 'when', 'does',
+    'can', 'could', 'would', 'should', 'will', 'have', 'has', 'had', 'the',
+    'and', 'for', 'are', 'from', 'that', 'with', 'this', 'they', 'been',
+    'their', 'about', 'some', 'more', 'there', 'than', 'into', 'these',
+    'like', 'look', 'give', 'list', 'many', 'know', 'want', 'need', 'also',
+    'birds', 'animals', 'species', 'animal', 'bird', 'places', 'place'
+]);
+
 function normalizeToRegistryOrSelf(rawSubject) {
     const words = rawSubject.trim().split(/\s+/);
-    // 1. Direct candidate matching
+    // 1. Direct candidate matching (longest phrase first)
     for (let len = words.length; len >= 1; len--) {
         const candidate = words.slice(0, len).join(' ');
         const lower = candidate.toLowerCase();
+        if (QUERY_STOP_WORDS.has(lower)) continue;
         if (zooRegistry.lookup[lower]) return zooRegistry.lookup[lower];
         if (zooRegistry.canonicalNames.some(n => n.toLowerCase() === lower)) {
             return zooRegistry.canonicalNames.find(n => n.toLowerCase() === lower);
         }
     }
 
-    // 2. Exact word-level matching for any word in the query
+    // 2. Exact word-level matching — skip stop-words
     for (const queryWord of words) {
         const qwLower = queryWord.toLowerCase();
         if (qwLower.length < 3) continue;
+        if (QUERY_STOP_WORDS.has(qwLower)) continue; // ← key guard
         if (zooRegistry.lookup[qwLower]) return zooRegistry.lookup[qwLower];
         const exactWordHit = zooRegistry.canonicalNames.find(n => {
             const nl = n.toLowerCase();
@@ -481,17 +494,18 @@ function normalizeToRegistryOrSelf(rawSubject) {
         if (exactWordHit) return exactWordHit;
     }
 
-    // 3. Fuzzy word-level matching
+    // 3. Fuzzy word-level matching — only for non-stop-words of length >= 5
     for (const queryWord of words) {
         const qwLower = queryWord.toLowerCase();
-        if (qwLower.length < 3) continue;
+        if (qwLower.length < 5) continue;           // stricter minimum length
+        if (QUERY_STOP_WORDS.has(qwLower)) continue; // ← key guard
         const fuzzyWordHit = zooRegistry.canonicalNames.find(n => {
             const nl = n.toLowerCase();
             const canonicalWords = nl.split(/[^a-z0-9]+/);
             for (const cw of canonicalWords) {
-                if (cw.length < 3) continue;
+                if (cw.length < 4) continue;
                 const dist = levenshtein(qwLower, cw);
-                const maxDist = cw.length >= 6 ? 2 : 1;
+                const maxDist = cw.length >= 7 ? 2 : 1; // tighter threshold
                 if (dist <= maxDist) return true;
             }
             return false;
@@ -563,7 +577,19 @@ function detectFacilities(text) {
 }
 
 function finalizeSubject(subject, qLower, extractedSubject = null) {
-    const matchedFacilities = detectFacilities(qLower);
+    const BIO_CATEGORY_WORDS = [
+        'reptile', 'reptiles', 'mammal', 'mammals', 'amphibian', 'amphibians',
+        'bird', 'birds', 'insect', 'insects', 'species', 'animal', 'animals',
+        'predator', 'herbivore', 'carnivore', 'omnivore', 'vertebrate',
+        'invertebrate', 'classification', 'taxonomy', 'habitat', 'ecosystem'
+    ];
+    const hasBioContext = BIO_CATEGORY_WORDS.some(w => qLower.includes(w));
+    const onlyAmbiguousFacilityWords = hasBioContext &&
+        !qLower.includes('where') && !qLower.includes('find') &&
+        !qLower.includes('need') && !qLower.includes('want') &&
+        !qLower.includes('thirsty') && !qLower.includes('hungry');
+
+    const matchedFacilities = onlyAmbiguousFacilityWords ? [] : detectFacilities(qLower);
     const matchedFacility = matchedFacilities.length > 0 ? matchedFacilities.join(', ') : null;
     if (matchedFacility) subject = matchedFacility;
     return { subject, extractedSubject: extractedSubject || subject, matchedFacility };
@@ -606,7 +632,25 @@ async function extractSubject(query) {
         return finalizeSubject('Endangered', qLower);
     }
 
-    const facilityHits = detectFacilities(qLower);
+    // Bio-context guard: single ambiguous words like "water", "food", "eat"
+    // should NOT trigger facility detection when the query is clearly a
+    // biological/comparative question (e.g. "are reptiles water mammals?").
+    const BIO_CATEGORY_WORDS = [
+        'reptile', 'reptiles', 'mammal', 'mammals', 'amphibian', 'amphibians',
+        'bird', 'birds', 'insect', 'insects', 'species', 'animal', 'animals',
+        'predator', 'herbivore', 'carnivore', 'omnivore', 'vertebrate',
+        'invertebrate', 'classification', 'taxonomy', 'habitat', 'ecosystem'
+    ];
+    // Facility words that are genuinely ambiguous in a biological context
+    const AMBIGUOUS_FACILITY_WORDS = ['water', 'food', 'eat', 'drink', 'eating'];
+    const hasBioContext = BIO_CATEGORY_WORDS.some(w => qLower.includes(w));
+    const onlyAmbiguousFacilityWords = hasBioContext &&
+        !qLower.includes('where') && !qLower.includes('find') &&
+        !qLower.includes('need') && !qLower.includes('want') &&
+        !qLower.includes('thirsty') && !qLower.includes('hungry');
+    // Only skip facility detection if bio context is present AND the query
+    // doesn't contain any strong facility-intent signals
+    const facilityHits = onlyAmbiguousFacilityWords ? [] : detectFacilities(qLower);
     if (facilityHits.length > 0) return finalizeSubject(facilityHits.join(', '), qLower);
 
     const lowerQuery = query.toLowerCase();
@@ -1590,7 +1634,16 @@ STRICT RULES:
             console.log(`[UI BINDING] Keyword: "${finalSubject}"`);
 
             const responsePayload = { answer, keyword: finalSubject, references };
-            setCachedResponse(`${language}:${qLower}`, responsePayload);
+            // Only cache confident, specific answers to avoid poisoning the cache
+            // with wrong-subject responses. Conditions:
+            //   - topScore >= 0.35 means ChromaDB found a genuine match
+            //   - finalSubject != 'general' means we actually resolved an entity
+            if (topScore >= 0.35 && finalSubject && finalSubject !== 'general') {
+                setCachedResponse(`${language}:${qLower}`, responsePayload);
+                console.log(`[CACHE] Stored response for "${qLower}" (score: ${topScore.toFixed(2)}, subject: ${finalSubject})`);
+            } else {
+                console.log(`[CACHE] Skipped caching low-confidence response (score: ${topScore.toFixed(2)}, subject: ${finalSubject})`);
+            }
             res.json(responsePayload);
         }
 
