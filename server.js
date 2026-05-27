@@ -120,6 +120,8 @@ function loadAllGraphs() {
 }
 
 let graph = loadAllGraphs();
+const nodeMap = {};
+for (const node of graph.nodes) if (node.id) nodeMap[node.id] = node;
 
 const adjacencyMap = {};
 for (const edge of graph.edges) {
@@ -148,7 +150,7 @@ function graphTraversal(startNodeId, maxHops = 2) {
         if (!id || visited.has(id) || hop > maxHops) continue;
         visited.add(id);
 
-        const node = graph.nodes.find(n => n.id && n.id === id);
+        const node = nodeMap[id];
         if (node) results.push(node);
 
         const edges = adjacencyMap[id] || [];
@@ -282,7 +284,10 @@ function buildTrieIndex() {
         }
     }
     entries.sort((a, b) => b[0].length - a[0].length);
-    trieIndex = new Map(entries);
+    trieIndex = new Map(entries.map(([phrase, name]) => [
+        phrase,
+        { name, regex: new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i') }
+    ]));
     console.log(`[TRIE] Built index with ${trieIndex.size} entries.`);
 }
 
@@ -290,8 +295,7 @@ function fastExtract(query) {
     const q = query.toLowerCase();
     const foundMatches = [];
 
-    for (const [phrase, name] of trieIndex) {
-        const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    for (const [phrase, { name, regex }] of trieIndex) {
         if (regex.test(q)) {
             if (!foundMatches.some(m => m.phrase.includes(phrase))) {
                 foundMatches.push({ phrase, name });
@@ -818,7 +822,7 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
         if (!exactMatch || exactMatch.score < 1.4) {
             results = await collection.query({
                 queryEmbeddings: [queryEmbedding],
-                nResults: 15
+                nResults: 6
             });
         }
     } catch (e) {
@@ -1154,7 +1158,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 350, temperature: 0.9, top_p: 0.9, num_ctx: 2048 }
+                    options: { num_predict: 350, temperature: 0.9, top_p: 0.9, num_ctx:  512 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -1378,7 +1382,7 @@ STRICT RULES:
                 ],
                 stream: true,
                 keep_alive: '1h',
-                options: { num_predict: 650, temperature: 0.7, top_p: 0.8, num_ctx: 2048 }
+                options: { num_predict: 100, temperature: 0.7, top_p: 0.8, num_ctx:  512 }
             });
 
             for await (const chunk of streamResp) {
@@ -1402,7 +1406,7 @@ STRICT RULES:
                 ],
                 stream: false,
                 keep_alive: '1h',
-                options: { num_predict: 650, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
+                options: { num_predict: 100, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
