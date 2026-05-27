@@ -249,6 +249,8 @@ const priorityOverrides = {
     'snakes': 'Reptile House',
     'reptile': 'Reptile House',
     'reptiles': 'Reptile House',
+    'सरीसृप': 'Reptile House',
+    'सरीसृपों': 'Reptile House',
     'cobra': 'Spectacled Cobra',
     'python': 'Indian Rock Python',
     'deer': 'Spotted Deer',
@@ -334,6 +336,15 @@ function loadZooRegistry() {
             const items = Array.isArray(data) ? data : (data.data || [data]);
 
             for (const item of items) {
+                const getMultilingualNames = (field) => {
+                    if (!field) return [];
+                    if (typeof field === 'string') return [field];
+                    if (typeof field === 'object') {
+                        return Object.values(field).filter(v => typeof v === 'string');
+                    }
+                    return [];
+                };
+
                 const rName = item.render_name?.en || item.render_name;
                 const cName = item.common_name?.en || item.common_name;
                 const dName = item.name?.en || item.name;
@@ -348,10 +359,18 @@ function loadZooRegistry() {
                 names.add(primaryName);
 
                 if (!aliasMap.has(primaryName)) aliasMap.set(primaryName, new Set());
-                [rName, cName, dName, tName].forEach(n => {
-                    if (n && typeof n === 'string' && !/^[0-9a-fA-F]{24}$/.test(n)) {
+
+                const allPossibleNames = [
+                    ...getMultilingualNames(item.render_name),
+                    ...getMultilingualNames(item.common_name),
+                    ...getMultilingualNames(item.name),
+                    ...getMultilingualNames(item.title)
+                ];
+
+                allPossibleNames.forEach(n => {
+                    if (n && !/^[0-9a-fA-F]{24}$/.test(n)) {
                         const clean = n.replace(/\s+\d+$/, '').trim();
-                        if (clean.length > 2) aliasMap.get(primaryName).add(clean);
+                        if (clean.length > 1) aliasMap.get(primaryName).add(clean);
                     }
                 });
 
@@ -467,7 +486,12 @@ const QUERY_STOP_WORDS = new Set([
     'and', 'for', 'are', 'from', 'that', 'with', 'this', 'they', 'been',
     'their', 'about', 'some', 'more', 'there', 'than', 'into', 'these',
     'like', 'look', 'give', 'list', 'many', 'know', 'want', 'need', 'also',
-    'birds', 'animals', 'species', 'animal', 'bird', 'places', 'place'
+    'birds', 'animals', 'species', 'animal', 'bird', 'places', 'place',
+    'मुझे', 'दिखाओ', 'कहाँ', 'कहा', 'किधर', 'है', 'हैं', 'था', 'थे', 'का',
+    'की', 'के', 'को', 'में', 'से', 'पर', 'और', 'या', 'कैसे', 'कब', 'क्या',
+    'कौन', 'वहाँ', 'वहां', 'यहाँ', 'यहां', 'पास', 'नज़दीक', 'आसपास', 'दिखाएं',
+    'दिखाइए', 'बताओ', 'बताएं', 'बताइए', 'खोजो', 'खोजें', 'मिलेंगे', 'मिलेगा',
+    'मिलेगी', 'मिलते', 'मिलती', 'पक्षी', 'पक्षियों', 'पशु', 'जानवर', 'जानवरों', 'जीव'
 ]);
 
 function normalizeToRegistryOrSelf(rawSubject) {
