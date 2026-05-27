@@ -581,6 +581,22 @@ async function extractSubject(query) {
         return finalizeSubject(eventName, qLower);
     }
 
+    // Bare "{topic} day" pattern — resolve to matching event in registry
+    const bareDayMatch = qLower.match(/\b([a-z][a-z\s]{1,30})\s+day\b/);
+    if (bareDayMatch) {
+        const dayTopic = bareDayMatch[1].trim();
+        const topicWords = dayTopic.split(/\s+/);
+        const eventHit = [...zooRegistry.eventNames].find(name => {
+            const nl = name.toLowerCase();
+            // Match if any meaningful topic word appears in the event name
+            return topicWords.some(w => w.length > 3 && nl.includes(w));
+        });
+        if (eventHit) {
+            console.log(`[EVENT] Bare day match: "${dayTopic}" → "${eventHit}"`);
+            return { subject: eventHit, extractedSubject: eventHit, matchedFacility: null, isEventOverride: true };
+        }
+    }
+
     if (qLower.includes('endangered') || qLower.includes('संकटग्रस्त')
         || qLower.includes('खतरे में') || qLower.includes('conservation')) {
         return finalizeSubject('Endangered', qLower);
@@ -1030,7 +1046,8 @@ app.post('/api/shera/chat', async (req, res) => {
         }
 
         const isFacilityMatch = !!matchedFacility;
-        let isEventQuery = /\b(national|international|world|global)\b[\w\s]+\bday\b/i.test(question);
+        let isEventQuery = /\b(national|international|world|global)\b[\w\s]+\bday\b/i.test(question)
+            || zooRegistry.eventNames.has(subject);
 
         const isGeneralConcept = /^(feline|canine|reptile|bird|animal|mammal|cat|dog|pet|fish)$/i.test(subject);
 
