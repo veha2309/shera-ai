@@ -649,7 +649,7 @@ Mappings: "Sher/Shera"->"Asiatic Lion", "Bagh"->"White Tiger", "Hathi"->"Indian 
                 { role: 'user', content: query }
             ],
             keep_alive: '1h',
-            options: { num_predict: 32, temperature: 0, num_ctx: 1024 }
+            options: { num_predict: 32, temperature: 0, num_ctx: 256 }
         });
         // Strip gemma4 <think>...</think> blocks and clean up
         let rawContent = extractionResp.message.content || '';
@@ -968,6 +968,41 @@ function sendStaticResponse(res, answer, keyword, stream) {
     }
 }
 
+// ─── Static Response Shortcuts (LLM-bypass for ultra-common queries) ─────────
+// These exact phrases never need LLM — respond instantly with zero inference cost.
+const STATIC_RESPONSES = {
+    en: {
+        'where is the lion': { answer: '🦁 The Asiatic Lions are located in Enclosure 1, near the Main Entrance. Follow the signs — you can\'t miss them! 🗺️', keyword: 'Asiatic Lion' },
+        'where is the tiger': { answer: '🐅 The White Tigers are in Enclosure 3, a short walk from the Main Entrance. Look for the big cat signs! 🗺️', keyword: 'White Tiger' },
+        'where is the elephant': { answer: '🐘 The Indian Elephants are near the northern section of the zoo. Follow the elephant signs from the Main Entrance! 🗺️', keyword: 'Indian Elephant' },
+        'show me reptiles': { answer: '🐍 Head to the Reptile House to see cobras, pythons, crocodiles, and more! It\'s clearly marked on the zoo map. 🗺️', keyword: 'Reptile House' },
+        'show reptiles': { answer: '🐍 The Reptile House is home to fascinating snakes, lizards, and crocodiles. Follow the signs! 🦎', keyword: 'Reptile House' },
+        'where are the reptiles': { answer: '🐍 Reptiles are at the Reptile House — look for the signs near the central path! 🗺️', keyword: 'Reptile House' },
+        'what animals are here': { answer: '🦁 The zoo is home to lions, tigers, elephants, peacocks, deer, reptiles, and many more! What would you like to visit first? 🐅', keyword: 'general' },
+        'what can i see here': { answer: '🌟 You can see Asiatic Lions, White Tigers, Indian Elephants, Reptiles, Peacocks, and much more here! 🦁 What interests you?', keyword: 'general' },
+        'where is food': { answer: '🍽️ Food & Drinks stalls are available at multiple spots in the zoo. Look for the canteen signs near the main path! 😊', keyword: 'Food & Drinks' },
+        'i am hungry': { answer: '🍽️ Don\'t worry! Head to the Food & Drinks stalls near the main path for snacks and refreshments. 😊', keyword: 'Food & Drinks' },
+        'where is washroom': { answer: '🚻 Washrooms are available at multiple locations throughout the zoo. Look for the WC signs! 🗺️', keyword: 'Washrooms' },
+        'where is toilet': { answer: '🚻 Toilets are at several spots in the zoo. Follow the WC signs near the main paths! 🗺️', keyword: 'Washrooms' },
+        'where is water': { answer: '💧 Drinking water points are available throughout the zoo. Look for the water fountain signs! 😊', keyword: 'Drinking Water' },
+        'i am thirsty': { answer: '💧 Drinking water points are available throughout the zoo — follow the water fountain signs! 😊', keyword: 'Drinking Water' },
+        'where is exit': { answer: '🚪 The Exit Gate is right next to the Main Entrance. I\'ve marked it on the map for you! 🗺️', keyword: 'Exit Gate' },
+        'how to exit': { answer: '🚪 Head back towards the Main Entrance — the Exit Gate is right there! 🗺️', keyword: 'Exit Gate' },
+        'where is entry': { answer: '🎟️ The Main Entrance is at the front of the zoo. Check the map for the exact location! 🗺️', keyword: 'Main Entrance' },
+        'where is ticket counter': { answer: '🎟️ Ticket counters are at the Main Entrance. Head to the front gate! 😊', keyword: 'Counters' },
+        'where is buggy': { answer: '🚗 Buggy stops are at several points around the zoo. Look for the buggy/shuttle signs! 🗺️', keyword: 'Buggy Stops' },
+    },
+    hi: {
+        'शेर कहाँ है': { answer: '🦁 एशियाई शेर एनक्लोजर 1 में हैं, मुख्य प्रवेश द्वार के पास। संकेतों का पालन करें! 🗺️', keyword: 'Asiatic Lion' },
+        'बाघ कहाँ है': { answer: '🐅 सफेद बाघ एनक्लोजर 3 में हैं। मुख्य द्वार से बाईं ओर चलें! 🗺️', keyword: 'White Tiger' },
+        'हाथी कहाँ है': { answer: '🐘 भारतीय हाथी उत्तरी क्षेत्र में हैं। हाथी के संकेतों का पालन करें! 🗺️', keyword: 'Indian Elephant' },
+        'खाना कहाँ है': { answer: '🍽️ खाने-पीने के स्टॉल मुख्य पथ के पास कई जगह उपलब्ध हैं! 😊', keyword: 'Food & Drinks' },
+        'पानी कहाँ है': { answer: '💧 पीने के पानी के स्थान पूरे चिड़ियाघर में उपलब्ध हैं। वॉटर फाउंटेन के संकेत देखें! 😊', keyword: 'Drinking Water' },
+        'शौचालय कहाँ है': { answer: '🚻 शौचालय पूरे चिड़ियाघर में कई जगह हैं। WC के संकेत देखें! 🗺️', keyword: 'Washrooms' },
+        'निकास कहाँ है': { answer: '🚪 निकास द्वार मुख्य प्रवेश द्वार के पास ही है! 🗺️', keyword: 'Exit Gate' },
+    }
+};
+
 app.post('/api/shera/chat', async (req, res) => {
     let { question, deepSearch = true, language = 'en', stream = false } = req.body;
 
@@ -977,6 +1012,14 @@ app.post('/api/shera/chat', async (req, res) => {
     const isHindi = language === 'hi';
     const qLower = question.toLowerCase().trim();
     console.log(`\n--- Incoming: "${question}" (DeepSearch: ${deepSearch}, Lang: ${language}, Stream: ${stream}) ---`);
+
+    // ─── Static Shortcut Check (before anything else) ──────────────────────────
+    const staticMap = STATIC_RESPONSES[isHindi ? 'hi' : 'en'] || STATIC_RESPONSES.en;
+    if (staticMap[qLower]) {
+        const hit = staticMap[qLower];
+        console.log(`[STATIC] Instant match for "${qLower}"`);
+        return sendStaticResponse(res, hit.answer, hit.keyword, stream);
+    }
 
     try {
         // ─── Response Cache Check ───────────────────────────────────────────────────
@@ -990,6 +1033,12 @@ app.post('/api/shera/chat', async (req, res) => {
         }
 
         let { subject, extractedSubject, matchedFacility } = await extractSubject(question);
+
+        // Prefetch the embedding in parallel with subject resolution — saves ~100-200ms
+        // on cache misses by starting the embed call before we need it in antigravitySearch
+        if (subject !== 'general') {
+            getCachedEmbedding(subject).catch(() => {}); // fire and forget, result already cached when needed
+        }
 
         if (subject === 'general') {
             const isGreeting = /^(hello|hi|hey|नमस्ते|tata|bye|goodbye|thank|thanks)$/i.test(qLower);
@@ -1092,7 +1141,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 350, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
+                    options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -1107,7 +1156,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 350, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
+                    options: { num_predict: 80, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -1158,7 +1207,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 350, temperature: 0.9, top_p: 0.9, num_ctx:  512 }
+                    options: { num_predict: 80, temperature: 0.9, top_p: 0.9, num_ctx: 512 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -1173,7 +1222,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 350, temperature: 0.9, top_p: 0.9, num_ctx: 1024 }
+                    options: { num_predict: 80, temperature: 0.9, top_p: 0.9, num_ctx: 512 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -1184,6 +1233,12 @@ app.post('/api/shera/chat', async (req, res) => {
         let topScore = 0;
         let sortedContext = [];
         let finalSubject = subject;
+
+        // Pre-trim helper: keeps context tight to avoid bloating prompt_eval_count
+        function trimContext(raw, maxChars = 400) {
+            if (!raw) return '';
+            return raw.length > maxChars ? raw.slice(0, maxChars).replace(/\s+\S*$/, '…') : raw;
+        }
 
         const isActivityQuery = qLower.includes('active now')
             || qLower.includes('currently active')
@@ -1331,12 +1386,13 @@ Rules:
 
         } else {
 
+            const trimmedContext = trimContext(context, 400);
             systemPrompt = isHindi
                 ? `आप शेरा (Shera) हैं, राष्ट्रीय प्राणी उद्यान, नई दिल्ली के शेर गाइड।
 ${NO_THOUGHT_INSTRUCTION_HI}
 
 संदर्भ:
-${context}
+${trimmedContext}
 
 सख्त नियम:
 1. हमेशा शेरा के रूप में उत्तर दें। कभी न कहें कि आप AI हैं।
@@ -1349,7 +1405,7 @@ ${context}
 ${NO_THOUGHT_INSTRUCTION_EN}
 
 Context:
-${context}
+${trimmedContext}
 
 STRICT RULES:
 1. Always stay in character as Shera. Never mention AI.
@@ -1406,7 +1462,7 @@ STRICT RULES:
                 ],
                 stream: false,
                 keep_alive: '1h',
-                options: { num_predict: 100, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
+                options: { num_predict: 100, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
