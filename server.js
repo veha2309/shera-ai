@@ -30,8 +30,10 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'llama3.2:1b';
-const EXTRACTION_MODEL = 'llama3.2:1b';
+// const CHAT_MODEL = 'llama3.2:1b';
+// const EXTRACTION_MODEL = 'llama3.2:1b';
+const CHAT_MODEL = 'qwen2:0.5b';
+const EXTRACTION_MODEL = 'qwen2:0.5b';
 
 function logResources(label) {
     const mem = process.memoryUsage();
