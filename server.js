@@ -494,18 +494,18 @@ function normalizeToRegistryOrSelf(rawSubject) {
         if (exactWordHit) return exactWordHit;
     }
 
-    // 3. Fuzzy word-level matching — only for non-stop-words of length >= 5
+    // 3. Fuzzy word-level matching — only for non-stop-words of length >= 3
     for (const queryWord of words) {
         const qwLower = queryWord.toLowerCase();
-        if (qwLower.length < 5) continue;           // stricter minimum length
+        if (qwLower.length < 3) continue;
         if (QUERY_STOP_WORDS.has(qwLower)) continue; // ← key guard
         const fuzzyWordHit = zooRegistry.canonicalNames.find(n => {
             const nl = n.toLowerCase();
             const canonicalWords = nl.split(/[^a-z0-9]+/);
             for (const cw of canonicalWords) {
-                if (cw.length < 4) continue;
+                if (cw.length < 3) continue;
                 const dist = levenshtein(qwLower, cw);
-                const maxDist = cw.length >= 7 ? 2 : 1; // tighter threshold
+                const maxDist = cw.length >= 6 ? 2 : 1;
                 if (dist <= maxDist) return true;
             }
             return false;
