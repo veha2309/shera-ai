@@ -535,6 +535,11 @@ const facilitySynonyms = {
     'Main Entrance': ['entrance', 'entry', 'enter', 'main entrance', 'main gate', 'front gate', 'प्रवेश', 'प्रवेश द्वार', 'दरवाज़ा', 'द्वार', 'मुख्य द्वार', 'pravesh', 'entry gate']
 };
 
+const FACILITY_FUZZY_BLACKLIST = new Set([
+    'book', 'show', 'find', 'free', 'have', 'some', 'more', 'here', 'take',
+    'tour', 'gate', 'exit', 'main', 'help', 'info', 'need', 'want', 'good', 'ride'
+]);
+
 // Returns first matching facility (for single-match use)
 function detectFacility(text) {
     const facilities = detectFacilities(text);
@@ -560,6 +565,7 @@ function detectFacilities(text) {
     const words = t.split(/[^a-zA-Z]+/);
     for (const word of words) {
         if (word.length < 4) continue;
+        if (FACILITY_FUZZY_BLACKLIST.has(word)) continue; // ← skip fuzzy matching for common words
         for (const [facility, syns] of Object.entries(facilitySynonyms)) {
             if (matched.has(facility)) continue; // already matched
             for (const s of syns) {
