@@ -260,7 +260,11 @@ const priorityOverrides = {
     'Drinking Water': 'Drinking Water',
     'Washrooms': 'Washrooms',
     'Buggy Stops': 'Buggy Stops',
-    'Emergency': 'Emergency'
+    'Emergency': 'Emergency',
+    'पक्षी': 'Aquatic Birds Aviary',
+    'पक्षियों': 'Aquatic Birds Aviary',
+    'चिड़िया': 'Aquatic Birds Aviary',
+    'चिड़ियाँ': 'Aquatic Birds Aviary'
 };
 
 // ─── OPTIMIZATION 1: Trie Index ───────────────────────────────────────────────
@@ -491,7 +495,7 @@ const QUERY_STOP_WORDS = new Set([
     'की', 'के', 'को', 'में', 'से', 'पर', 'और', 'या', 'कैसे', 'कब', 'क्या',
     'कौन', 'वहाँ', 'वहां', 'यहाँ', 'यहां', 'पास', 'नज़दीक', 'आसपास', 'दिखाएं',
     'दिखाइए', 'बताओ', 'बताएं', 'बताइए', 'खोजो', 'खोजें', 'मिलेंगे', 'मिलेगा',
-    'मिलेगी', 'मिलते', 'मिलती', 'पक्षी', 'पक्षियों', 'पशु', 'जानवर', 'जानवरों', 'जीव'
+    'मिलेगी', 'मिलते', 'मिलती', 'पशु', 'जानवर', 'जानवरों', 'जीव'
 ]);
 
 function normalizeToRegistryOrSelf(rawSubject) {
@@ -539,7 +543,9 @@ function normalizeToRegistryOrSelf(rawSubject) {
         if (fuzzyWordHit) return fuzzyWordHit;
     }
 
-    return words[0];
+    // Fallback: return first word that is not a stop-word, or rawSubject if all are stop-words
+    const meaningfulWords = words.filter(w => !QUERY_STOP_WORDS.has(w.toLowerCase()) && w.length > 1);
+    return meaningfulWords.length > 0 ? meaningfulWords[0] : rawSubject;
 }
 
 // ─── Context Helper ───────────────────────────────────────────────────────────
@@ -1552,18 +1558,19 @@ Rules:
 
             const trimmedContext = trimContext(context, 400);
             systemPrompt = isHindi
-                ? `आप शेरा (Shera) हैं, राष्ट्रीय प्राणी उद्यान, नई दिल्ली के शेर गाइड।
-${NO_THOUGHT_INSTRUCTION_HI}
+                ? `You are Shera, the friendly lion guide at the National Zoological Park, New Delhi.
+${NO_THOUGHT_INSTRUCTION_EN}
 
-संदर्भ:
+Context (use this ONLY):
 ${trimmedContext}
 
-सख्त नियम:
-1. हमेशा शेरा के रूप में उत्तर दें। कभी न कहें कि आप AI हैं।
-2. उत्तर स्पष्ट, संक्षिप्त और तथ्यात्मक रखें।
-3. अपने उत्तर में हमेशा जानवरों या स्थान से जुड़े उपयुक्त इमोजीस (जैसे 🦁, 🐅, 🌳) का प्रयोग करें।
-4. उत्तर को प्राकृतिक और मित्रवत रखें (लगभग 30-40 शब्द)। कोई बुलेट या शीर्षक नहीं।
-5. कभी भी नाम न बदलें। संदर्भ में दिए गए सटीक नाम का ही उपयोग करें।`
+STRICT RULES:
+1. You MUST respond entirely in Hindi (Devanagari script). Do NOT use any Roman/English characters for Hindi words.
+2. Animal names (like Bengal Tiger, Asiatic Lion) may be kept in English.
+3. Stay in character as Shera. Never say you are an AI.
+4. Keep it factual, friendly, and concise (30-40 words). Add 1-2 relevant emojis (🦁, 🐅, 🌳).
+5. No bullet points, no headings. One flowing paragraph only.
+6. NEVER invent or change animal names. Only use what is in the context.`
 
                 : `You are Shera, the Lion Guide at National Zoological Park, New Delhi.
 ${NO_THOUGHT_INSTRUCTION_EN}
@@ -1602,7 +1609,7 @@ STRICT RULES:
                 ],
                 stream: true,
                 keep_alive: '1h',
-                options: { num_predict: 100, temperature: 0.7, top_p: 0.8, num_ctx:  512 }
+                options: { num_predict: 250, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
             });
 
             for await (const chunk of streamResp) {
@@ -1626,7 +1633,7 @@ STRICT RULES:
                 ],
                 stream: false,
                 keep_alive: '1h',
-                options: { num_predict: 100, temperature: 0.7, top_p: 0.8, num_ctx: 512 }
+                options: { num_predict: 250, temperature: 0.7, top_p: 0.8, num_ctx: 1024 }
             });
 
             console.log('[DEBUG] Raw Ollama Response:', JSON.stringify(chatResponse, null, 2));
