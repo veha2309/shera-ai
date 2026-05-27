@@ -51,7 +51,7 @@ const embeddingCache = new Map();
 
 // ─── LLM Response Cache ───────────────────────────────────────────────────────
 const responseCache = new Map();
-const RESPONSE_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+const RESPONSE_CACHE_TTL = 60 * 60 * 1000; // 60 minutes (increased from 10)
 
 function getCachedResponse(key) {
     const entry = responseCache.get(key);
@@ -627,11 +627,11 @@ async function extractSubject(query) {
         }
     }
 
-    // FAST FALLBACK: If query is very short (≤4 words), skip LLM extraction
+    // FAST FALLBACK: If query is very short (≤6 words), skip LLM extraction
     // NOTE: facility/gate checks already ran above, so this only catches truly short unknown queries
     const words = qLower.split(/\s+/);
-    if (words.length <= 4) {
-        console.log(`[EXTRACTION] Skipping LLM for short query: "${qLower}"`);
+    if (words.length <= 6) {
+        console.log(`[EXTRACTION] Skipping LLM for short query (${words.length} words): "${qLower}"`);
         return finalizeSubject(normalizeToRegistryOrSelf(qLower), qLower, qLower);
     }
 
@@ -717,9 +717,38 @@ function isAnimalActive(activityStr, currentHour) {
     return currentHour >= 6 && currentHour < 20;
 }
 
+// ─── ChromaDB Query Result Cache (for subject searches, not user questions) ────
+// Caches the context/references retrieved for a given subject, not full responses.
+// This is separate from responseCache because different user questions on same subject 
+// might need different context.
+const chromaSearchCache = new Map();
+const CHROMA_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+
+function getCachedChrmaSearch(cacheKey) {
+    const entry = chromaSearchCache.get(cacheKey);
+    if (!entry) return null;
+    if (Date.now() - entry.ts > CHROMA_CACHE_TTL) {
+        chromaSearchCache.delete(cacheKey);
+        return null;
+    }
+    return entry.data;
+}
+
+function setCachedChromaSearch(cacheKey, data) {
+    chromaSearchCache.set(cacheKey, { data, ts: Date.now() });
+}
+
 async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, language = 'en', isEventQuery = false) {
     console.log(`\n[SEARCH] Query: "${query}" (Lang: ${language}, EventQuery: ${isEventQuery})`);
     console.log(`[ENTITY] Target Subject: "${subject}"`);
+
+    // Quick cache check for subject-based searches
+    const chromaCacheKey = `${subject}:${language}`;
+    const cachedChromaResult = getCachedChrmaSearch(chromaCacheKey);
+    if (cachedChromaResult) {
+        console.log(`[CHROMA-CACHE] HIT for "${subject}"`);
+        return cachedChromaResult;
+    }
 
     const queryEmbedding = await getCachedEmbedding(subject);
     if (!queryEmbedding) {
@@ -943,7 +972,7 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
     const isFacilityName = /Washroom|Drinking Water|Buggy Stops|Food & Drinks|First Aid|Counters/.test(bestMatchName);
     if (isFacilityName) references = [];
 
-    return {
+    const result = {
         context: optimizeContext(sortedContext.slice(0, topK).map(i => i.doc)),
         subject: bestMatchName,
         extractedSubject: subject,
@@ -952,6 +981,10 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
         isFacilityMatch: !!isFacilityMatch,
         sortedContext
     };
+    
+    // Cache the search result for future queries about the same subject
+    setCachedChromaSearch(`${subject}:${language}`, result);
+    return result;
 }
 
 function sendStaticResponse(res, answer, keyword, stream) {
@@ -970,6 +1003,7 @@ function sendStaticResponse(res, answer, keyword, stream) {
 
 // ─── Static Response Shortcuts (LLM-bypass for ultra-common queries) ─────────
 // These exact phrases never need LLM — respond instantly with zero inference cost.
+// Expanding this map is THE most impactful optimization — every phrase here saves 3-5 seconds.
 const STATIC_RESPONSES = {
     en: {
         'where is the lion': { answer: '🦁 The Asiatic Lions are located in Enclosure 1, near the Main Entrance. Follow the signs — you can\'t miss them! 🗺️', keyword: 'Asiatic Lion' },
@@ -991,6 +1025,21 @@ const STATIC_RESPONSES = {
         'where is entry': { answer: '🎟️ The Main Entrance is at the front of the zoo. Check the map for the exact location! 🗺️', keyword: 'Main Entrance' },
         'where is ticket counter': { answer: '🎟️ Ticket counters are at the Main Entrance. Head to the front gate! 😊', keyword: 'Counters' },
         'where is buggy': { answer: '🚗 Buggy stops are at several points around the zoo. Look for the buggy/shuttle signs! 🗺️', keyword: 'Buggy Stops' },
+        // Additional high-frequency variations
+        'lion habitat': { answer: '🦁 Asiatic Lions live in dry forests and grasslands. Here at the zoo, they\'re in Enclosure 1! 🌳', keyword: 'Asiatic Lion' },
+        'tiger habitat': { answer: '🐅 White Tigers prefer cool, forested areas. Our tigers are in Enclosure 3, beautifully designed! 🌳', keyword: 'White Tiger' },
+        'elephant habitat': { answer: '🐘 Indian Elephants live in the northern section with plenty of space to roam. 🌳', keyword: 'Indian Elephant' },
+        'peacock location': { answer: '🦚 Peacocks roam freely throughout the zoo! You\'ll spot them near the main pathways. 🗺️', keyword: 'Indian Peafowl (Leucistic)' },
+        'where are snakes': { answer: '🐍 All snakes are safely housed in the Reptile House. 🦎', keyword: 'Reptile House' },
+        'where are crocodiles': { answer: '🐊 Crocodiles are in the Reptile House section. Amazing creatures! 🦎', keyword: 'Reptile House' },
+        'first aid': { answer: '🏥 First Aid services are available at the First Aid counter near the Counters. Ask staff for help! 😊', keyword: 'First Aid' },
+        'medical help': { answer: '🏥 Medical assistance is available at the First Aid counter. Staff can help you! 😊', keyword: 'First Aid' },
+        'i need help': { answer: '👋 I\'m here to help! Are you looking for an animal, facility, or something else? 😊', keyword: 'general' },
+        'thank you': { answer: '😊 You\'re welcome! Enjoy your time at the zoo! 🦁', keyword: 'general' },
+        'thanks': { answer: '😊 Happy to help! Enjoy exploring! 🦁', keyword: 'general' },
+        'bye': { answer: '👋 Goodbye! Thanks for visiting the National Zoological Park! 🦁', keyword: 'general' },
+        'goodbye': { answer: '👋 Goodbye! Hope you had a great time! 🦁', keyword: 'general' },
+        'see you': { answer: '👋 See you again! Enjoy the zoo! 🦁', keyword: 'general' },
     },
     hi: {
         'शेर कहाँ है': { answer: '🦁 एशियाई शेर एनक्लोजर 1 में हैं, मुख्य प्रवेश द्वार के पास। संकेतों का पालन करें! 🗺️', keyword: 'Asiatic Lion' },
@@ -1000,8 +1049,15 @@ const STATIC_RESPONSES = {
         'पानी कहाँ है': { answer: '💧 पीने के पानी के स्थान पूरे चिड़ियाघर में उपलब्ध हैं। वॉटर फाउंटेन के संकेत देखें! 😊', keyword: 'Drinking Water' },
         'शौचालय कहाँ है': { answer: '🚻 शौचालय पूरे चिड़ियाघर में कई जगह हैं। WC के संकेत देखें! 🗺️', keyword: 'Washrooms' },
         'निकास कहाँ है': { answer: '🚪 निकास द्वार मुख्य प्रवेश द्वार के पास ही है! 🗺️', keyword: 'Exit Gate' },
+        'सांप कहाँ हैं': { answer: '🐍 सभी सांप सरीसृप घर में सुरक्षित रूप से रखे गए हैं! 🦎', keyword: 'Reptile House' },
+        'मगरमच्छ कहाँ है': { answer: '🐊 मगरमच्छ सरीसृप घर में हैं। शानदार जानवर! 🦎', keyword: 'Reptile House' },
+        'धन्यवाद': { answer: '😊 आपका स्वागत है! चिड़ियाघर का आनंद लें! 🦁', keyword: 'general' },
+        'अलविदा': { answer: '👋 अलविदा! राष्ट्रीय प्राणी उद्यान आने के लिए धन्यवाद! 🦁', keyword: 'general' },
+        'भूख लगी है': { answer: '🍽️ चिंता न करें! खाने-पीने के स्टॉल के पास जाएं। 😊', keyword: 'Food & Drinks' },
+        'प्यास लगी है': { answer: '💧 पानी की बोतलें पूरे चिड़ियाघर में मिल जाएंगी! 😊', keyword: 'Drinking Water' },
     }
 };
+
 
 app.post('/api/shera/chat', async (req, res) => {
     let { question, deepSearch = true, language = 'en', stream = false } = req.body;
@@ -1021,15 +1077,21 @@ app.post('/api/shera/chat', async (req, res) => {
         return sendStaticResponse(res, hit.answer, hit.keyword, stream);
     }
 
+    // Fuzzy match: allow minor variations (remove punctuation, extra spaces)
+    const qNormalized = qLower.replace(/[?!.,]/g, '').trim();
+    if (staticMap[qNormalized] && qNormalized !== qLower) {
+        const hit = staticMap[qNormalized];
+        console.log(`[STATIC-FUZZY] Fuzzy match for "${qLower}" → "${qNormalized}"`);
+        return sendStaticResponse(res, hit.answer, hit.keyword, stream);
+    }
+
     try {
-        // ─── Response Cache Check ───────────────────────────────────────────────────
+        // ─── Response Cache Check (now applies to both stream and non-stream) ─────
         const cacheKey = `${language}:${qLower}`;
-        if (!stream) {
-            const cached = getCachedResponse(cacheKey);
-            if (cached) {
-                console.log(`[CACHE] HIT for "${qLower}"`);
-                return res.json(cached);
-            }
+        const cached = getCachedResponse(cacheKey);
+        if (cached) {
+            console.log(`[CACHE] HIT for "${qLower}"`);
+            return sendStaticResponse(res, cached.answer, cached.keyword, stream);
         }
 
         let { subject, extractedSubject, matchedFacility } = await extractSubject(question);
@@ -1038,6 +1100,32 @@ app.post('/api/shera/chat', async (req, res) => {
         // on cache misses by starting the embed call before we need it in antigravitySearch
         if (subject !== 'general') {
             getCachedEmbedding(subject).catch(() => {}); // fire and forget, result already cached when needed
+        }
+
+        // OPTIMIZATION: If it's a facility match, skip all database lookups and respond with template
+        if (matchedFacility && !question.toLowerCase().includes('tell me') && !question.toLowerCase().includes('information')) {
+            console.log(`[FAST-PATH] Facility shortcut for "${matchedFacility}"`);
+            const facilityResponses = {
+                'Food & Drinks': isHindi 
+                    ? '🍽️ खाने-पीने के स्टॉल पूरे चिड़ियाघर में उपलब्ध हैं! 😊'
+                    : '🍽️ Food & Drinks stalls are available throughout the zoo! 😊',
+                'Washrooms': isHindi 
+                    ? '🚻 शौचालय कई जगहों पर उपलब्ध हैं। WC के संकेत देखें! 🗺️'
+                    : '🚻 Washrooms available at multiple locations. Look for signs! 🗺️',
+                'Drinking Water': isHindi 
+                    ? '💧 पानी के फव्वारे पूरे चिड़ियाघर में हैं! 😊'
+                    : '💧 Drinking water fountains throughout the zoo! 😊',
+                'Buggy Stops': isHindi 
+                    ? '🚗 बग्गी स्टॉप विभिन्न स्थानों पर हैं! 🗺️'
+                    : '🚗 Buggy stops at various locations! 🗺️',
+                'First Aid': isHindi 
+                    ? '🏥 प्रथम चिकित्सा सेवा उपलब्ध है। कर्मचारियों से सहायता लें! 😊'
+                    : '🏥 First Aid services available. Ask staff for help! 😊',
+            };
+            if (facilityResponses[matchedFacility]) {
+                console.log(`[FACILITY-SHORTCUT] Instant response for "${matchedFacility}"`);
+                return res.json({ answer: facilityResponses[matchedFacility], keyword: matchedFacility, references: [] });
+            }
         }
 
         if (subject === 'general') {
