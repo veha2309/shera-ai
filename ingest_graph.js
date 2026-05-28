@@ -1,19 +1,17 @@
 const fs = require('fs');
 const path = require('path');
-const { Ollama } = require('ollama');
 
 /**
  * Antigravity GraphRAG Multi-Source Ingestion Script
- * Optimized for speed, local LLM execution, and comprehensive zoo data structure support.
+ * Optimized for speed, local execution, and comprehensive zoo data structure support.
  */
 
-const ollama = new Ollama();
 const DATA_DIR = path.join(__dirname, 'zoo-data');
 const STORE_DIR = path.join(__dirname, 'graph_data');
-const EMBED_MODEL = 'nomic-embed-text';
 
-// In-memory cache to avoid re-embedding the same entity multiple times
-const embedCache = new Map();
+// Global animal ID registry to resolve cross-references and reduce inconsistencies
+const animalNodeIds = new Set();
+const animalBaseNames = new Map();
 
 // Limits to prevent oversized ingestion on low-resource environments
 const ITEM_LIMITS = {
@@ -22,7 +20,7 @@ const ITEM_LIMITS = {
 };
 
 /**
- * Simple Async Pool for concurrency control
+ * Simple Async Pool for concurrency control (kept for structure, though runs instantly now)
  */
 async function asyncPool(limit, array, fn) {
     const ret = [];
@@ -49,6 +47,25 @@ function getSourceType(filename) {
     if (filename.includes('about') || filename.includes('contact')) return 'INFO';
     if (filename.includes('news') || filename.includes('facts')) return 'NEWS';
     return 'GENERAL';
+}
+
+function findActualAnimalNodeId(refName) {
+    if (!refName || typeof refName !== 'string') return null;
+    const cleanRef = refName.trim();
+    if (animalNodeIds.has(cleanRef)) return cleanRef;
+
+    const lowerRef = cleanRef.toLowerCase();
+    if (animalBaseNames.has(lowerRef)) {
+        return animalBaseNames.get(lowerRef)[0];
+    }
+
+    // Substring or fallback search
+    for (const [base, ids] of animalBaseNames.entries()) {
+        if (lowerRef.includes(base) || base.includes(lowerRef)) {
+            return ids[0];
+        }
+    }
+    return null;
 }
 
 function flattenFile(file, items) {
@@ -238,17 +255,17 @@ function extractProgrammatically(item, type, file) {
     const entities = [];
     const relationships = [];
 
-    const name = item.properties?.name || item.common_name?.en || item.render_name?.en || item.name?.en || item.title?.en || item.title || item.name || item.label || item.day || 'Item';
+    const name = (item.properties?.name || item.common_name?.en || item.render_name?.en || item.name?.en || item.title?.en || item.title || item.name || item.label || item.day || 'Item').toString().trim();
     
     if (file === 'animals.json') {
-        const animalName = item.render_name?.en || item.common_name?.en || name;
-        const scientificName = item.scientific_name?.en || '';
-        const category = item.category?.en || '';
-        const diet = item.diet?.en || '';
-        const habitat = item.habitat?.en || '';
-        const conservation = item.conservation_status?.en || '';
-        const lifespan = item.lifespan?.en || '';
-        const desc = item.physical_description?.en || item.about_animal?.en || scientificName;
+        const animalName = (item.render_name?.en || item.common_name?.en || name).toString().trim();
+        const scientificName = (item.scientific_name?.en || '').toString().trim();
+        const category = (item.category?.en || '').toString().trim();
+        const diet = (item.diet?.en || '').toString().trim();
+        const habitat = (item.habitat?.en || '').toString().trim();
+        const conservation = (item.conservation_status?.en || '').toString().trim();
+        const lifespan = (item.lifespan?.en || '').toString().trim();
+        const desc = (item.physical_description?.en || item.about_animal?.en || scientificName).toString().trim();
 
         entities.push({
             id: animalName,
@@ -277,23 +294,23 @@ function extractProgrammatically(item, type, file) {
             relationships.push({ source: animalName, target: lifespan, type: 'LIVES_FOR' });
         }
     } else if (file === 'rules.json') {
-        const title = item.title || name;
-        const desc = item.description || 'Zoo rule/policy';
+        const title = (item.title || name).toString().trim();
+        const desc = (item.description || 'Zoo rule/policy').toString().trim();
         entities.push({
             id: `Rule: ${title}`,
             type: 'Rule',
             description: `${title}. Category: ${item.category || ''}. Description: ${desc}`
         });
     } else if (file === 'fees.json') {
-        const title = item.title?.en || item.title || name;
-        const rate = item.rate || item.value || '';
+        const title = (item.title?.en || item.title || name).toString().trim();
+        const rate = (item.rate || item.value || '').toString().trim();
         entities.push({
             id: `Fee: ${title}`,
             type: 'Price',
             description: `Fee/charge for ${title}. Price details: ${rate}`
         });
     } else if (file === 'tour.json') {
-        const stopName = item.name?.en || item.name || name;
+        const stopName = (item.name?.en || item.name || name).toString().trim();
         entities.push({
             id: `Tour Stop: ${stopName}`,
             type: 'Stop',
@@ -301,13 +318,13 @@ function extractProgrammatically(item, type, file) {
         });
         if (item.animals_present && Array.isArray(item.animals_present)) {
             for (const animal of item.animals_present) {
-                relationships.push({ source: `Tour Stop: ${stopName}`, target: animal, type: 'CONTAINS_ANIMAL' });
+                relationships.push({ source: `Tour Stop: ${stopName}`, target: animal.toString().trim(), type: 'CONTAINS_ANIMAL' });
             }
         }
     } else if (file === 'zootime.json') {
         if (item.type === 'zoo_timing') {
             entities.push({
-                id: `Timing: ${item.day}`,
+                id: `Timing: ${item.day.toString().trim()}`,
                 type: 'Timing',
                 description: `Zoo opening hours for ${item.day}: Open ${item.openTime}, Close ${item.closeTime}. Status: ${item.isOpen ? 'Open' : 'Closed'}`
             });
@@ -329,44 +346,44 @@ function extractProgrammatically(item, type, file) {
             entities.push({
                 id: `About Zoo Block`,
                 type: 'History',
-                description: item.text
+                description: item.text.toString().trim()
             });
         } else if (item.type === 'key_fact') {
             entities.push({
-                id: `Key Fact: ${item.label}`,
+                id: `Key Fact: ${item.label.toString().trim()}`,
                 type: 'Fact',
                 description: `${item.label}: ${item.value}`
             });
         }
     } else if (file === 'contact.json') {
         entities.push({
-            id: `Contact: ${item.label}`,
+            id: `Contact: ${item.label.toString().trim()}`,
             type: 'ContactMethod',
             description: `${item.label}: ${item.value}. Action: ${item.actionUrl || ''}`
         });
     } else if (file === 'calendar.json') {
-        const title = item.title || name;
+        const title = (item.title || name).toString().trim();
         entities.push({
             id: `Calendar Event: ${title}`,
             type: 'Event',
             description: `${title}. Date: ${item.date || ''}. Details: ${item.body || ''}`
         });
     } else if (file === 'events.json') {
-        const title = item.name || name;
+        const title = (item.name || name).toString().trim();
         entities.push({
             id: `Event: ${title}`,
             type: 'Event',
             description: `${title}. Location: ${item.location_name || ''}. Duration: ${item.from_datetime || ''} to ${item.to_datetime || ''}. Details: ${item.description || ''}`
         });
     } else if (file === 'news.json') {
-        const title = item.title || name;
+        const title = (item.title || name).toString().trim();
         entities.push({
             id: `News: ${title}`,
             type: 'Fact',
             description: `${title}. Details: ${item.text || ''}`
         });
     } else if (file === 'facts.json') {
-        const title = item.title || name;
+        const title = (item.title || name).toString().trim();
         entities.push({
             id: `Fact: ${title}`,
             type: 'Fact',
@@ -374,7 +391,7 @@ function extractProgrammatically(item, type, file) {
         });
     } else if (file === 'geojson.json') {
         const props = item.properties || {};
-        const featName = props.name || name;
+        const featName = (props.name || name).toString().trim();
         entities.push({
             id: `Facility: ${featName}`,
             type: 'Facility',
@@ -417,21 +434,18 @@ async function buildCrossGraphEdges() {
 
             if (!coreSubject) continue;
 
-            for (const [bioFilename, bioGraph] of Object.entries(allGraphs)) {
-                if (bioGraph.metadata?.type !== 'BIOLOGY') continue;
-
-                for (const bioNode of bioGraph.nodes) {
-                    const bioLower = bioNode.id.toLowerCase();
-                    if (bioLower.includes(coreSubject) || coreSubject.includes(bioLower)) {
-                        graph.edges.push({
-                            source: node.id,
-                            target: bioNode.id,
-                            type: 'RELATED_TO_ANIMAL',
-                            cross_graph: bioFilename
-                        });
-                        edgesAdded++;
-                        console.log(`  [CROSS] "${node.id}" -> RELATED_TO_ANIMAL -> "${bioNode.id}"`);
-                    }
+            const resolvedTarget = findActualAnimalNodeId(coreSubject);
+            if (resolvedTarget) {
+                const edgeExists = graph.edges.some(e => e.source === node.id && e.target === resolvedTarget);
+                if (!edgeExists) {
+                    graph.edges.push({
+                        source: node.id,
+                        target: resolvedTarget,
+                        type: 'RELATED_TO_ANIMAL',
+                        cross_graph: 'animals_graph.json'
+                    });
+                    edgesAdded++;
+                    console.log(`  [CROSS] "${node.id}" -> RELATED_TO_ANIMAL -> "${resolvedTarget}"`);
                 }
             }
         }
@@ -449,31 +463,26 @@ async function processItem(item, graph, type, file) {
     for (const entity of extraction.entities || []) {
         const exists = graph.nodes.find(n => n.id === entity.id);
         if (!exists) {
-            const cacheKey = `${entity.id}:${entity.description || entity.type}`;
-            let embedding;
-
-            if (embedCache.has(cacheKey)) {
-                embedding = embedCache.get(cacheKey);
-            } else {
-                try {
-                    const embedResp = await ollama.embed({
-                        model: EMBED_MODEL,
-                        input: cacheKey,
-                        keep_alive: '1h'
-                    });
-                    embedding = embedResp.embeddings[0];
-                    embedCache.set(cacheKey, embedding);
-                } catch (e) {
-                    console.error(`      [ERR] Embedding failed for ${entity.id}: ${e.message}`);
-                    continue;
+            graph.nodes.push(entity);
+            if (entity.type === 'Animal') {
+                const trimmedId = entity.id.trim();
+                animalNodeIds.add(trimmedId);
+                const base = trimmedId.toLowerCase().replace(/\s+\d+$/, '').trim();
+                if (!animalBaseNames.has(base)) {
+                    animalBaseNames.set(base, []);
                 }
+                animalBaseNames.get(base).push(trimmedId);
             }
-
-            graph.nodes.push({ ...entity, embedding });
         }
     }
 
     for (const rel of extraction.relationships || []) {
+        if (rel.type === 'CONTAINS_ANIMAL' || rel.type === 'RELATED_TO_ANIMAL') {
+            const resolvedTarget = findActualAnimalNodeId(rel.target);
+            if (resolvedTarget) {
+                rel.target = resolvedTarget;
+            }
+        }
         graph.edges.push(rel);
     }
 }
@@ -486,6 +495,13 @@ async function main() {
     }
 
     const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
+
+    // Process animals.json first to build the animal ID registry
+    files.sort((a, b) => {
+        if (a === 'animals.json') return -1;
+        if (b === 'animals.json') return 1;
+        return 0;
+    });
 
     for (const file of files) {
         const filePath = path.join(DATA_DIR, file);
@@ -523,12 +539,11 @@ async function main() {
                 itemsToProcess = itemsToProcess.slice(0, limit);
             }
 
-            const CONCURRENCY = 5;
-            console.log(`  [POOL] Processing ${itemsToProcess.length} items with concurrency ${CONCURRENCY}...`);
+            const CONCURRENCY = 10;
+            console.log(`  [POOL] Processing ${itemsToProcess.length} items...`);
 
             await asyncPool(CONCURRENCY, itemsToProcess, async (item) => {
                 const name = item.properties?.name || item.common_name?.en || item.render_name?.en || item.name?.en || item.title?.en || item.title || item.name || item.label || item.day || 'Item';
-                console.log(`    - Processing: ${name.toString().substring(0, 30)}`);
                 await processItem(item, graph, type, file);
             });
 
