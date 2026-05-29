@@ -805,7 +805,10 @@ const QUERY_STOP_WORDS = new Set([
     'and', 'for', 'are', 'from', 'that', 'with', 'this', 'they', 'been',
     'their', 'about', 'some', 'more', 'there', 'than', 'into', 'these',
     'like', 'look', 'give', 'list', 'many', 'know', 'want', 'need', 'also',
-    'birds', 'animals', 'species', 'animal', 'bird', 'places', 'place',
+    // NOTE: 'bird', 'birds', 'animal', 'animals' intentionally removed — they are valid
+    // subject seeds for fuzzy matching (e.g. "brids" typo must reach Levenshtein check).
+    // They are caught by GENERIC_SUBJECT_WORDS at the routing layer instead.
+    'species', 'places', 'place',
     'shera', // bot's own name — must never be treated as an animal subject
     'मुझे', 'दिखाओ', 'कहाँ', 'कहा', 'किधर', 'है', 'हैं', 'था', 'थे', 'का',
     'की', 'के', 'को', 'में', 'से', 'पर', 'और', 'या', 'कैसे', 'कब', 'क्या',
@@ -822,6 +825,10 @@ const QUERY_STOP_WORDS = new Set([
     'aaspaas', 'batao', 'bataye', 'khojo', 'milenge', 'milega', 'pashu', 'jeev',
     'kon', 'konsa', 'konsi', 'kisi', 'koi', 'unko', 'isko', 'usko', 'iske', 'uske'
 ]);
+
+// Generic subject words: valid zoo subjects but too broad to resolve to a single animal.
+// Used only at the routing layer to decide "deep search" vs "general".
+const GENERIC_SUBJECT_WORDS = new Set(['bird', 'birds', 'animal', 'animals']);
 
 function normalizeToRegistryOrSelf(rawSubject) {
     const cleanSubject = rawSubject.replace(/[?!.,;()'"]/g, '').trim();
@@ -856,10 +863,10 @@ function normalizeToRegistryOrSelf(rawSubject) {
             const nl = n.toLowerCase();
             const canonicalWords = nl.split(/[^a-z0-9]+/);
             for (const cw of canonicalWords) {
-                if (cw.length < 5) continue; // FIX: Tightened from 4 to 5
-                const maxDist = cw.length >= 7 ? 2 : 1; // FIX: Tightened from 6 to 7
+                if (cw.length < 4) continue; // Allow 4-char words like 'bird', 'bear', 'deer'
+                const maxDist = cw.length >= 7 ? 2 : 1;
                 const lengthDiff = Math.abs(qwLower.length - cw.length);
-                if (lengthDiff > maxDist) continue; // FIX: Prevent matching words of vastly different lengths
+                if (lengthDiff > maxDist) continue;
                 if (levenshtein(qwLower, cw) <= maxDist) return true;
             }
             return false;
@@ -1063,23 +1070,71 @@ function finalizeSubject(subject, qLower, extractedSubject = null) {
     return { subject, extractedSubject: extractedSubject || subject, matchedFacility };
 }
 async function llmExtractSubject(query) {
+    // FIX: Pre-screen query words directly against lookup keys using fuzzy Levenshtein
+    // before spending CPU on an LLM call. Catches typos like "brids" → "birds" → lookup hit.
+    const preWords = query.toLowerCase().replace(/[?!.,;()'"]/g, '').split(/\s+/);
+    for (const pw of preWords) {
+        if (pw.length < 4) continue;
+        if (QUERY_STOP_WORDS.has(pw)) continue;
+        // Direct lookup hit (exact typo in lookup keys)
+        if (zooRegistry.lookup[pw]) {
+            console.log(`[EXTRACTOR-FUZZY-PRE] Exact lookup hit: "${pw}" → "${zooRegistry.lookup[pw]}"`);
+            return zooRegistry.lookup[pw];
+        }
+        // Fuzzy scan lookup keys
+        const lookupKeys = Object.keys(zooRegistry.lookup);
+        for (const key of lookupKeys) {
+            if (key.length < 4) continue;
+            const maxDist = key.length >= 7 ? 2 : 1;
+            if (Math.abs(pw.length - key.length) > maxDist) continue;
+            if (levenshtein(pw, key) <= maxDist) {
+                const resolved = zooRegistry.lookup[key];
+                console.log(`[EXTRACTOR-FUZZY-PRE] Fuzzy key match: "${pw}" ≈ "${key}" → "${resolved}"`);
+                return resolved;
+            }
+        }
+        // Fuzzy scan canonical names word-by-word
+        for (const canonical of zooRegistry.canonicalNames) {
+            const cWords = canonical.toLowerCase().split(/[^a-z0-9]+/);
+            for (const cw of cWords) {
+                if (cw.length < 4) continue;
+                const maxDist = cw.length >= 7 ? 2 : 1;
+                if (Math.abs(pw.length - cw.length) > maxDist) continue;
+                if (levenshtein(pw, cw) <= maxDist) {
+                    console.log(`[EXTRACTOR-FUZZY-PRE] Fuzzy canonical match: "${pw}" ≈ "${cw}" in "${canonical}"`);
+                    return canonical;
+                }
+            }
+        }
+    }
+
     try {
-        const prompt = `Extract the main animal, facility, or subject from this query. Return ONLY the subject name. If none, return 'general'. Query: "${query}"`;
+        const prompt = `You are a subject extractor. Given a user query about a zoo, output ONLY the animal or facility name mentioned. If there is none, output: general\n\nQuery: "${query}"\nSubject:`;
         const resp = await ollama.chat({
             model: EXTRACTION_MODEL,
             messages: [{ role: 'user', content: prompt }],
             keep_alive: '1h',
-            options: { num_predict: 10, temperature: 0.1, top_k: 10 }
+            options: { num_predict: 8, temperature: 0.0, top_k: 5 }
         });
 
         let ext = (resp.message?.content || '').trim().toLowerCase();
-        ext = ext.replace(/[^a-z0-9\s]/g, ''); // sanitize punctuation
+        ext = ext.replace(/[^a-z0-9\s]/g, '').trim();
+        // Discard multi-sentence responses (model panicked and over-generated)
+        ext = ext.split(/[.!?\n]/)[0].trim();
 
         if (ext && ext !== 'general') {
-            // Check if the LLM hallucinated or found a real registry item
             if (zooRegistry.lookup[ext]) return zooRegistry.lookup[ext];
             const exactHit = zooRegistry.canonicalNames.find(n => n.toLowerCase() === ext);
             if (exactHit) return exactHit;
+            // Also run fuzzy on the LLM's output in case it corrected the spelling
+            const fuzzyHit = zooRegistry.canonicalNames.find(n => {
+                const cws = n.toLowerCase().split(/[^a-z0-9]+/);
+                return cws.some(cw => {
+                    if (cw.length < 4 || Math.abs(ext.length - cw.length) > 1) return false;
+                    return levenshtein(ext, cw) <= 1;
+                });
+            });
+            if (fuzzyHit) return fuzzyHit;
         }
         return null;
     } catch (e) {
