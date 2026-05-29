@@ -31,7 +31,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'gemma2:2b';          // Main answer model (quality)
+// const CHAT_MODEL = 'gemma2:2b';          // Main answer model (quality)
+const CHAT_MODEL = 'llama3.2:1b';          // Main answer model (quality)
 const EXTRACTION_MODEL = 'qwen2:0.5b';   // Subject extractor (speed — 352MB vs 1.6GB)
 
 // ─── OPTIMIZED Hindi Term Glossary ────────────────────────────────────────────
@@ -1818,7 +1819,7 @@ app.post('/api/shera/chat', async (req, res) => {
                 extractedSubject = 'Activity';
             } else if (!isGreetingOrCasual && !isLocationQuery) {
                 const testSearch = await antigravitySearch(question, question, false, 1, language, false);
-                
+
                 // FIX: Increased threshold from 0.35 to 0.65 to prevent weak vector matches from overriding general queries
                 if (testSearch.topScore >= 0.65) {
                     console.log(`[GENERAL] High similarity match found (${testSearch.topScore.toFixed(2)}). Promoting to factual search for "${testSearch.subject}".`);
@@ -2198,7 +2199,7 @@ app.post('/api/shera/chat', async (req, res) => {
 
                 if (!existsInZoo && coreClean.length > 2) {
                     const capCore = coreClean.split(/\s+/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-                    
+
                     const hindiTranslation = {
                         'red panda': 'लाल पांडा',
                         'giraffe': 'जिराफ़',
