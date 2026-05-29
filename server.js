@@ -880,15 +880,15 @@ function normalizeToRegistryOrSelf(rawSubject) {
         if (QUERY_STOP_WORDS.has(lower)) continue;
         if (zooRegistry.lookup[lower]) {
             const resolved = zooRegistry.lookup[lower];
-            if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(lower) && !EVENT_INDICATOR_REGEX.test(rawSubject)) {
-                // skip event match on generic category word without event indicator
+            if (zooRegistry.eventNames.has(resolved) && !EVENT_INDICATOR_REGEX.test(rawSubject)) {
+                // skip event match without event indicator
             } else {
                 return resolved;
             }
         }
         if (zooRegistry.canonicalNames.some(n => n.toLowerCase() === lower)) {
             const hit = zooRegistry.canonicalNames.find(n => n.toLowerCase() === lower);
-            if (zooRegistry.eventNames.has(hit) && GENERIC_CATEGORY_WORDS.has(lower) && !EVENT_INDICATOR_REGEX.test(rawSubject)) {
+            if (zooRegistry.eventNames.has(hit) && !EVENT_INDICATOR_REGEX.test(rawSubject)) {
                 // skip
             } else {
                 return hit;
@@ -902,14 +902,14 @@ function normalizeToRegistryOrSelf(rawSubject) {
         if (QUERY_STOP_WORDS.has(qwLower)) continue;
         if (zooRegistry.lookup[qwLower]) {
             const resolved = zooRegistry.lookup[qwLower];
-            if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(qwLower) && !EVENT_INDICATOR_REGEX.test(rawSubject)) {
+            if (zooRegistry.eventNames.has(resolved) && !EVENT_INDICATOR_REGEX.test(rawSubject)) {
                 // skip
             } else {
                 return resolved;
             }
         }
         const exactWordHit = zooRegistry.canonicalNames.find(n => {
-            if (zooRegistry.eventNames.has(n) && GENERIC_CATEGORY_WORDS.has(qwLower) && !EVENT_INDICATOR_REGEX.test(rawSubject)) return false;
+            if (zooRegistry.eventNames.has(n) && !EVENT_INDICATOR_REGEX.test(rawSubject)) return false;
             const nl = n.toLowerCase();
             return nl.split(/[^a-z0-9]+/).includes(qwLower);
         });
@@ -921,7 +921,7 @@ function normalizeToRegistryOrSelf(rawSubject) {
         if (qwLower.length < 3) continue;
         if (QUERY_STOP_WORDS.has(qwLower)) continue;
         const fuzzyWordHit = zooRegistry.canonicalNames.find(n => {
-            if (zooRegistry.eventNames.has(n) && GENERIC_CATEGORY_WORDS.has(qwLower) && !EVENT_INDICATOR_REGEX.test(rawSubject)) return false;
+            if (zooRegistry.eventNames.has(n) && !EVENT_INDICATOR_REGEX.test(rawSubject)) return false;
             const nl = n.toLowerCase();
             const canonicalWords = nl.split(/[^a-z0-9]+/);
             for (const cw of canonicalWords) {
@@ -1221,21 +1221,38 @@ async function llmExtractSubject(query) {
         ext = ext.split(/[.!?\n]/)[0].trim();
 
         if (ext && ext !== 'general') {
-            if (zooRegistry.lookup[ext]) return zooRegistry.lookup[ext];
-            const exactHit = zooRegistry.canonicalNames.find(n => n.toLowerCase() === ext);
-            if (exactHit) return exactHit;
+            let candidate = null;
+            if (zooRegistry.lookup[ext]) {
+                candidate = zooRegistry.lookup[ext];
+            } else {
+                const exactHit = zooRegistry.canonicalNames.find(n => n.toLowerCase() === ext);
+                if (exactHit) {
+                    candidate = exactHit;
+                } else {
+                    // Run fuzzy on the LLM's output in case it corrected the spelling slightly
+                    const fuzzyHit = zooRegistry.canonicalNames.find(n => {
+                        const cws = n.toLowerCase().split(/[^a-z0-9]+/);
+                        return cws.some(cw => {
+                            if (cw.length < 4 || Math.abs(ext.length - cw.length) > 1) return false;
+                            return levenshtein(ext, cw) <= 1;
+                        });
+                    });
+                    if (fuzzyHit) {
+                        console.log(`[EXTRACTOR-LLM] Fuzzy corrected LLM output "${ext}" to "${fuzzyHit}"`);
+                        candidate = fuzzyHit;
+                    }
+                }
+            }
 
-            // Run fuzzy on the LLM's output in case it corrected the spelling slightly
-            const fuzzyHit = zooRegistry.canonicalNames.find(n => {
-                const cws = n.toLowerCase().split(/[^a-z0-9]+/);
-                return cws.some(cw => {
-                    if (cw.length < 4 || Math.abs(ext.length - cw.length) > 1) return false;
-                    return levenshtein(ext, cw) <= 1;
-                });
-            });
-            if (fuzzyHit) {
-                console.log(`[EXTRACTOR-LLM] Fuzzy corrected LLM output "${ext}" to "${fuzzyHit}"`);
-                return fuzzyHit;
+            if (candidate) {
+                // Event guard: if candidate is an event, only match if the query has event keywords
+                const isCandidateEvent = zooRegistry.eventNames.has(candidate);
+                const hasEventKeywords = EVENT_INDICATOR_REGEX.test(query);
+                if (isCandidateEvent && !hasEventKeywords) {
+                    console.log(`[EXTRACTOR-LLM] Rejected event candidate "${candidate}" for query "${query}" (no event keywords)`);
+                } else {
+                    return candidate;
+                }
             }
         }
     } catch (e) {
@@ -1464,21 +1481,21 @@ async function extractSubject(query) {
         if (qw.length < 3 || QUERY_STOP_WORDS.has(qw) || ADJECTIVE_BLACKLIST.has(qw)) continue;
         if (zooRegistry.lookup[qw]) {
             const resolved = zooRegistry.lookup[qw];
-            if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(qw) && !EVENT_INDICATOR_REGEX.test(qLower)) {
-                // skip event match on generic category word without event indicator
+            if (zooRegistry.eventNames.has(resolved) && !EVENT_INDICATOR_REGEX.test(qLower)) {
+                // skip event match without event indicator
             } else {
                 extracted.add(resolved);
                 continue;
             }
         }
         const exactWordHit = zooRegistry.canonicalNames.find(n => {
-            if (zooRegistry.eventNames.has(n) && GENERIC_CATEGORY_WORDS.has(qw) && !EVENT_INDICATOR_REGEX.test(qLower)) return false;
+            if (zooRegistry.eventNames.has(n) && !EVENT_INDICATOR_REGEX.test(qLower)) return false;
             return n.toLowerCase().split(/[^a-z0-9]+/).includes(qw);
         });
         if (exactWordHit) { extracted.add(exactWordHit); continue; }
 
         const fuzzyWordHit = zooRegistry.canonicalNames.find(n => {
-            if (zooRegistry.eventNames.has(n) && GENERIC_CATEGORY_WORDS.has(qw) && !EVENT_INDICATOR_REGEX.test(qLower)) return false;
+            if (zooRegistry.eventNames.has(n) && !EVENT_INDICATOR_REGEX.test(qLower)) return false;
             const canonicalWords = n.toLowerCase().split(/[^a-z0-9]+/);
             for (const cw of canonicalWords) {
                 if (cw.length < 5) continue; // FIX: Tightened from 4 to 5
@@ -1977,6 +1994,176 @@ const STATIC_RESPONSES = {
     }
 };
 
+const HINGLISH_TO_HINDI = {
+    'mujhe': 'मुझे',
+    'sher': 'शेर',
+    'dekhna': 'देखना',
+    'h': 'है',
+    'hai': 'है',
+    'kahan': 'कहाँ',
+    'kaha': 'कहाँ',
+    'kidhar': 'किधर',
+    'hathi': 'हाथी',
+    'bhalu': 'भालू',
+    'bandar': 'बंदर',
+    'mor': 'मोर',
+    'khana': 'खाना',
+    'paani': 'पानी',
+    'pani': 'पानी',
+    'kya': 'क्या',
+    'kaise': 'कैसे',
+    'kab': 'कब',
+    'khula': 'खुला',
+    'band': 'बंद',
+    'ticket': 'टिकट',
+    'tikit': 'टिकट',
+    'ghumna': 'घूमना',
+    'ghumi': 'घूमना',
+    'chalo': 'चलो',
+    'chalna': 'चलना',
+    'shaili': 'शैली',
+    'batao': 'बताओ',
+    'bata': 'बताओ',
+    'dikhao': 'दिखाओ',
+    'dikhaye': 'दिखाओ',
+    'tha': 'था',
+    'he': 'है',
+    'se': 'से',
+    'ko': 'को',
+    'ke': 'के',
+    'ki': 'की',
+    'ka': 'का',
+    'me': 'में',
+    'par': 'पर',
+    'ek': 'एक',
+    'do': 'दो',
+    'teen': 'तीन',
+    'chaar': 'चार',
+    'paanch': 'पाँच',
+    'chah': 'छह',
+    'saat': 'सात',
+    'aath': 'आठ',
+    'nau': 'नौ',
+    'das': 'दस',
+    'kitna': 'कितना',
+    'kitne': 'कितने',
+    'kitni': 'कितनी',
+    'kuch': 'कुछ',
+    'bhi': 'भी',
+    'aur': 'और',
+    'ya': 'या',
+    'nahi': 'नहीं',
+    'na': 'ना',
+    'mat': 'मत',
+    'karna': 'करना',
+    'kar': 'कर',
+    'karta': 'करता',
+    'karte': 'करते',
+    'chahiye': 'चाहिए',
+    'hota': 'होता',
+    'hote': 'होते',
+    'hoti': 'होती',
+    'gaya': 'गया',
+    'gaye': 'गये',
+    'gayi': 'गयी',
+    'hum': 'हम',
+    'aap': 'आप',
+    'tum': 'तुम',
+    'main': 'मैं',
+    'mera': 'मेरा',
+    'meri': 'मेरी',
+    'mere': 'मेरे',
+    'apna': 'अपना',
+    'apni': 'अपनी',
+    'apne': 'अपने',
+    'ab': 'अब',
+    'tab': 'तब',
+    'jab': 'जब',
+    'sakte': 'सकते',
+    'sakta': 'सकता',
+    'sakti': 'सकती',
+    'sakenge': 'सकेंगे',
+    'baagh': 'बाघ',
+    'bagh': 'बाघ',
+    'cheetah': 'चीता',
+    'chita': 'चीता',
+    'safed': 'सफ़ेद',
+    'genda': 'गैंडा',
+    'mgar': 'मगरमच्छ',
+    'magar': 'मगरमच्छ',
+    'magarmach': 'मगरमच्छ',
+    'saap': 'साँप',
+    'saanp': 'साँप',
+    'sap': 'साँप',
+    'panchi': 'चिड़िया',
+    'chidiya': 'चिड़िया',
+    'prajati': 'प्रजाति',
+    'prajatiyan': 'प्रजातियाँ',
+    'vazan': 'वजन',
+    'wazan': 'वजन',
+    'umra': 'उम्र',
+    'umr': 'उम्र',
+    'khoj': 'ढूंढ',
+    'dhoondh': 'ढूंढ',
+    'milta': 'मिलता',
+    'milega': 'मिलेगा',
+    'chalega': 'चलेगा',
+    'chalta': 'चलता',
+    'peena': 'पीना',
+    'pine': 'पीने',
+    'khilauna': 'खिलौना',
+    'baccha': 'बच्चा',
+    'bacha': 'बच्चा',
+    'bacche': 'बच्चे',
+    'bache': 'बच्चे',
+    'shuru': 'शुरू',
+    'ant': 'अंत',
+    'dwar': 'द्वार',
+    'pravesh': 'प्रवेश',
+    'nikas': 'निकास',
+    'toilet': 'शौचालय',
+    'washroom': 'वॉशरूम'
+};
+
+function transliterateHinglish(text) {
+    if (!text) return text;
+    return text.replace(/[a-zA-Z]+/g, (match) => {
+        const lower = match.toLowerCase();
+        return HINGLISH_TO_HINDI[lower] || match;
+    });
+}
+
+function isSpecificTimingQuestion(query) {
+    if (!query || typeof query !== 'string') return false;
+    const q = query.toLowerCase();
+    
+    // Days of the week in English, Hindi, and common Hinglish spellings
+    const days = [
+        'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday',
+        'somwar', 'somvaar', 'somvar', 'mangalwar', 'mangalvaar', 'mangalvar',
+        'budhwar', 'budhvaar', 'budhvar', 'guruwar', 'guruvaar', 'guruvar', 'veerwar', 'veervaar', 'brihaspativar',
+        'shukrawar', 'shukrawaar', 'shukravar', 'shukrvar', 'shanivar', 'shanivaar',
+        'ravivar', 'ravivaar', 'itwar', 'etwar',
+        'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार', 'रविवार', 'इतवार'
+    ];
+    
+    const hasDay = days.some(day => q.includes(day));
+    if (hasDay) return true;
+    
+    // Terms indicating a check for today, tomorrow, holidays, or specific open/closed status
+    const specificTerms = [
+        'today', 'tomorrow', 'aaj', 'kal', 'आज', 'कल',
+        'holiday', 'chutti', 'छुट्टी', 'vacation', 'festival',
+        'open today', 'closed today', 'open now', 'closed now',
+        'is it open', 'is it closed', 'open on', 'closed on'
+    ];
+    
+    const hasSpecificTerm = specificTerms.some(term => q.includes(term));
+    if (hasSpecificTerm) return true;
+    
+    return false;
+}
+
 app.post('/api/shera/chat', async (req, res) => {
     let { question, deepSearch = true, language = 'en', stream = false } = req.body;
 
@@ -1984,6 +2171,9 @@ app.post('/api/shera/chat', async (req, res) => {
     logResources('Incoming Chat');
 
     const isHindi = language === 'hi';
+    if (isHindi && question) {
+        question = transliterateHinglish(question);
+    }
     const qLower = question.toLowerCase().trim();
 
     // Helper to replace raw names (with numbers/suffixes) with user-friendly render names
@@ -2156,7 +2346,11 @@ app.post('/api/shera/chat', async (req, res) => {
                         p.trim() === 'Timings & Hours' || p.trim() === 'Feeding Animals' || facilityResponses[p.trim()] !== undefined
                     );
 
-                if (!hasAnimalSubject) {
+                const isSpecificTiming = matchedFacility.includes('Timings & Hours') && isSpecificTimingQuestion(question);
+
+                if (isSpecificTiming) {
+                    console.log(`[FACILITY] Specific timing question detected. Bypassing shortcut to let LLM answer.`);
+                } else if (!hasAnimalSubject) {
                     // Pure facility query — instant return
                     console.log(`[FACILITY-SHORT CUT] Instant response for "${matchedFacility}"`);
                     return res.json({ answer: facilityAnswer, keyword: matchedFacility, references: [] });
@@ -2591,12 +2785,10 @@ app.post('/api/shera/chat', async (req, res) => {
                         const relevantFacts = top5Docs.map(d => d.text).join('\n\n');
 
                         // 4. Strict Boundary Instruction
-                        const strictContext = "CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park. You MUST answer the user's question using ONLY the facts below. \n" +
-                            "- NEVER give global, world, or general trivia numbers. ONLY talk about this specific zoo.\n" +
-                            "- If the exact specific number for the category asked (e.g., birds, reptiles) is NOT explicitly written below, say: 'I don't have the exact number for that category, but we have [total number] species in total at the zoo.'\n" +
-                            "- DO NOT GUESS OR MAKE UP NUMBERS.\n\n" +
-                            relevantFacts;
-
+                        const strictContextBase = isHindi
+                            ? `CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park, New Delhi. Answer ONLY in Hindi. Use ONLY the facts below.\n- NEVER give global trivia numbers.\n- DO NOT GUESS OR MAKE UP NUMBERS.${ isRestrictedAction ? "\n- The user is asking something inappropriate. Refuse politely. Start your response with [REFUSE]." : "" }`
+                            : `CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park. Answer the user's question using ONLY the facts below.\n- NEVER give global trivia numbers. ONLY talk about this specific zoo.\n- If the exact number is NOT explicitly in the facts below, say: 'I don't have the exact count for that.'\n- DO NOT GUESS OR MAKE UP NUMBERS.${ isRestrictedAction ? "\n- The user is asking something inappropriate. Refuse politely. Start your response with [REFUSE]." : "" }`;
+                        const strictContext = strictContextBase + '\n\n' + relevantFacts;
                         searchResult = {
                             context: strictContext,
                             subject: 'general',
@@ -2648,6 +2840,11 @@ app.post('/api/shera/chat', async (req, res) => {
                         .slice(0, 2);
                     references = merged;
                 }
+            }
+
+            if (isFacilityMatch && matchedFacility) {
+                const facilitiesList = matchedFacility.split(',').map(f => f.trim());
+                references = [...new Set([...references, ...facilitiesList])].slice(0, 2);
             }
         }
 
@@ -2868,7 +3065,7 @@ Rules:
 2. NEVER mention any other zoo, wildlife sanctuary, national park, or external location. You represent ONLY National Zoological Park, New Delhi.
 3. Maintain a playful, enthusiastic, and friendly tone.
 4. Include exactly one relevant emoji at the very end of your response.
-5. If the user asks about harming, eating, riding, or doing anything inappropriate to the animals, politely but firmly refuse, and you MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don't do that here..."). Remind them that animals are to be protected and respected, while maintaining your playful persona.
+${isRestrictedAction ? '5. The user is attempting something harmful or inappropriate to the animals. Politely but firmly refuse. You MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don\'t do that here..."). Remind them animals must be protected.' : ''}
  
 Now answer the user concisely in 1 sentence. No links or bullet points.`;
 
@@ -2890,7 +3087,7 @@ ${NO_THOUGHT_INSTRUCTION_EN}
 Rules:
 1. Maintain a playful, enthusiastic, and friendly tone. Do NOT invent, hallucinate, or guess any specific statistics, counts, or animal population numbers under any circumstance.
 2. Include exactly one relevant emoji at the very end of your response.
-3. If the user asks about harming, eating, riding, or doing anything inappropriate to the animals, politely but firmly refuse, and you MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don't do that here..."). Remind them that animals are to be protected and respected, while maintaining your playful persona.
+${isRestrictedAction ? '3. The user is attempting something harmful or inappropriate to the animals. Politely but firmly refuse. You MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don\'t do that here..."). Remind them animals must be protected.' : ''}
  
 Now answer the user concisely in 1-2 sentences. No links or bullet points.`;
 
@@ -2910,8 +3107,8 @@ Context: ${trimmedContext}
 3. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `स्पष्ट रूप से बताएं कि हमारे पास ${mismatchedInfo.missing} नहीं है।` : `स्पष्ट रूप से बताएं कि हमारे पास ${mismatchedInfo.missing} नहीं है, लेकिन हमारे पास ${mismatchedInfo.available} हैं।`) : (isContextThin ? `यदि यह जानवर हमारे चिड़ियाघर में नहीं है, तो स्वाभाविक रूप से बताएं कि यह अभी हमारे पास नहीं है।` : '')}
 4. बहुत ही चुलबुला (playful), उत्साही और दोस्ताना अंदाज़ रखें।
 5. अंत में केवल एक प्रासंगिक इमोजी लगाएं।
-6. यदि उपयोगकर्ता जानवरों को नुकसान पहुंचाने, खाने, सवारी करने या उनके साथ कुछ भी अनुचित करने के बारे में पूछता है, तो विनम्रता लेकिन दृढ़ता से मना करें, और अपने उत्तर की शुरुआत में "[REFUSE]" टैग जरूर लगाएं (जैसे "[REFUSE] अरे नहीं! हम ऐसा नहीं करते...")। उन्हें याद दिलाएं कि जानवरों की रक्षा और सम्मान किया जाना चाहिए।
-7. जानवरों को हमेशा उनके अनुकूल रेंडर नामों (render names) से ही संबोधित करें (जैसे "Asiatic Lion 1" या "Asiatic Lion 2" के बजाय "Asiatic Lion" या "एशियाई शेर" का उपयोग करें)। जानवरों के नामों में कभी भी कोई संख्या या सांख्यिकीय प्रत्यय शामिल न करें।
+${isRestrictedAction ? '6. उपयोगकर्ता कुछ अनुचित करना चाहता है। विनम्रता से लेकिन दृढ़ता से मना करें। अपने उत्तर की शुरुआत में "[REFUSE]" टैग जरूर लगाएं। जानवरों की रक्षा की याद दिलाएं।' : ''}
+6. जानवरों को हमेशा उनके अनुकूल रेंडर नामों (render names) से ही संबोधित करें (जैसे "Asiatic Lion 1" या "Asiatic Lion 2" के बजाय "Asiatic Lion" या "एशियाई शेर" का उपयोग करें)। जानवरों के नामों में कभी भी कोई संख्या या सांख्यिकीय प्रत्यय शामिल न करें।
  
 सख्त नियम: केवल 1 या 2 वाक्यों में ही उत्तर दें। कोई कहानी या अतिरिक्त वाक्य न लिखें।`
                 : `You are Shera, the friendly and playful guide at National Zoological Park, New Delhi.
@@ -2925,8 +3122,8 @@ Rules:
 3. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `Explicitly state that we do NOT have ${mismatchedInfo.missing}s at our zoo.` : `Explicitly state that we do NOT have ${mismatchedInfo.missing}s, but mention we do have ${mismatchedInfo.available} at our zoo.`) : (isContextThin ? `If this animal is not part of our zoo, naturally mention that it is not currently at our zoo.` : '')}
 4. Maintain a playful, enthusiastic, and friendly tone.
 5. Include exactly one relevant emoji at the very end of your response.
-6. If the user asks about harming, eating, riding, or doing anything inappropriate to the animals, politely but firmly refuse, and you MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don't do that here..."). Remind them that animals are to be protected and respected, while maintaining your playful persona.
-7. Always refer to the animals by their friendly render names (e.g., use "Asiatic Lion" instead of "Asiatic Lion 1" or "Asiatic Lion 2"). Never include any numbers or numeric suffixes in animal names.
+${isRestrictedAction ? '6. The user is attempting something harmful or inappropriate to the animals. Politely but firmly refuse. You MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don\'t do that here..."). Remind them animals must be protected.' : ''}
+6. Always refer to the animals by their friendly render names (e.g., use "Asiatic Lion" instead of "Asiatic Lion 1" or "Asiatic Lion 2"). Never include any numbers or numeric suffixes in animal names.
  
 STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or extra sentences.`;
         }
@@ -3084,10 +3281,11 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                 const englishRatio = englishWordCount / Math.max(totalWordCount, 1);
                 if (englishRatio > 0.25) {
                     console.warn(`[HINDI-LEAK] ${Math.round(englishRatio * 100)}% English words detected in Hindi response. Retrying...`);
+                    const hindiRetryPrompt = `आप शेरा हैं, दिल्ली चिड़ियाघर के मित्रवत हिंदी गाइड। केवल हिंदी में उत्तर दें। सख्त नियम: कोई भी आंतरिक सोच या विचार प्रक्रिया शामिल न करें। 1-2 वाक्यों में सीधे उत्तर दें। अंत में एक इमोजी लगाएं।`;
                     const retryResp = await ollama.chat({
                         model: CHAT_MODEL,
                         messages: [
-                            { role: 'system', content: systemPrompt },
+                            { role: 'system', content: hindiRetryPrompt },
                             { role: 'user', content: applyHindiGlossary(question) }
                         ],
                         stream: false,
