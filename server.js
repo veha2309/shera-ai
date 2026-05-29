@@ -1154,6 +1154,50 @@ async function extractSubject(query) {
     // 2. Explicit Facility Check (Ensures facility intents are never hijacked by animal names)
     const facilityHits = detectFacilitiesExact(qLower);
     if (facilityHits.length > 0) {
+        // Don't short-circuit: also check if the query mentions an animal.
+        // Run fast-path scans (trie + holistic) but skip LLM to keep it zero-cost.
+        const trieHit = fastExtract(qLower);
+        if (trieHit) {
+            // Both a facility AND an animal found — surface both.
+            const result = finalizeSubject(trieHit, qLower);
+            result.matchedFacility = facilityHits.join(', ');
+            return result;
+        }
+        // Run holistic scorer (pure JS, no LLM cost)
+        const cleanQL = qLower.replace(/[?!.,;()'"]/g, '').trim();
+        const holisticWords = cleanQL.split(/\s+/).filter(w => w.length > 0);
+        let bestEntity = null, highestScore = 0;
+        for (const canonical of zooRegistry.canonicalNames) {
+            const cLower = canonical.toLowerCase();
+            if (zooRegistry.eventNames.has(canonical)) continue;
+            const cWords = cLower.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !QUERY_STOP_WORDS.has(w));
+            if (cWords.length === 0) continue;
+            let matchedTokens = 0;
+            for (const cw of cWords) {
+                let best = 0;
+                for (const qw of holisticWords) {
+                    if (QUERY_STOP_WORDS.has(qw)) continue;
+                    if (qw === cw) best = 1.0;
+                    else if (qw.length >= 4 && cw.length >= 4 && (qw.includes(cw) || cw.includes(qw))) best = Math.max(best, 0.7);
+                    else if (qw.length >= 5 && cw.length >= 5) {
+                        const d = levenshtein(qw, cw);
+                        if (d <= (cw.length >= 6 ? 2 : 1)) best = Math.max(best, 1.0 - d * 0.2);
+                    }
+                }
+                if (best > 0) matchedTokens += best;
+            }
+            const score = matchedTokens * 10 + (matchedTokens / cWords.length) * 5;
+            if (score > highestScore) { highestScore = score; bestEntity = canonical; }
+        }
+        if (highestScore >= 13 && bestEntity) {
+            let animalSubject = bestEntity;
+            if (zooRegistry.lookup[animalSubject.toLowerCase()]) animalSubject = zooRegistry.lookup[animalSubject.toLowerCase()];
+            console.log(`[FACILITY+ANIMAL] Detected animal "${animalSubject}" alongside facility "${facilityHits.join(', ')}"`);
+            const result = finalizeSubject(animalSubject, qLower);
+            result.matchedFacility = facilityHits.join(', ');
+            return result;
+        }
+        // No animal found — pure facility query, return as before
         return finalizeSubject(facilityHits.join(', '), qLower);
     }
 
@@ -1827,28 +1871,41 @@ app.post('/api/shera/chat', async (req, res) => {
                     : '🚫 Feeding animals is strictly prohibited at the zoo. It can harm their health. Please enjoy watching them instead! 😊',
             };
 
+            // Build the instant facility answer (always zero-latency)
+            let facilityAnswer = null;
             if (matchedFacility === 'Timings & Hours') {
                 const dynamicTimings = await getDynamicZooTimings(language);
-                if (dynamicTimings) {
-                    console.log(`[FACILITY-SHORT CUT] Dynamic timings response`);
-                    return res.json({ answer: dynamicTimings, keyword: matchedFacility, references: [] });
+                if (dynamicTimings) facilityAnswer = dynamicTimings;
+            }
+            if (!facilityAnswer) {
+                if (facilityResponses[matchedFacility]) {
+                    facilityAnswer = facilityResponses[matchedFacility];
+                } else if (matchedFacility.includes(',')) {
+                    const parts = matchedFacility.split(',').map(p => p.trim());
+                    const combinedAnswers = parts.map(p => facilityResponses[p]).filter(Boolean);
+                    if (combinedAnswers.length > 0) facilityAnswer = combinedAnswers.join(' \n');
                 }
             }
 
-            if (facilityResponses[matchedFacility]) {
+            // If there is ALSO an animal subject in the query, do NOT short-circuit.
+            // Instead, store the facility answer and let the animal search continue below.
+            // The animal LLM response will be prepended with the facility answer.
+            const hasAnimalSubject = subject && subject !== 'general'
+                && !subject.split(',').every(p => facilityResponses[p.trim()] !== undefined
+                    || p.trim() === 'Timings & Hours' || p.trim() === 'Feeding Animals');
+
+            if (facilityAnswer && !hasAnimalSubject) {
+                // Pure facility query — instant return, no LLM needed
                 console.log(`[FACILITY-SHORT CUT] Instant response for "${matchedFacility}"`);
-                return res.json({ answer: facilityResponses[matchedFacility], keyword: matchedFacility, references: [] });
+                return res.json({ answer: facilityAnswer, keyword: matchedFacility, references: [] });
             }
 
-            if (matchedFacility.includes(',')) {
-                const parts = matchedFacility.split(',').map(p => p.trim());
-                const combinedAnswers = parts
-                    .map(p => facilityResponses[p])
-                    .filter(Boolean);
-                if (combinedAnswers.length > 0) {
-                    console.log(`[FACILITY-SHORT CUT] Combined response for multiple facilities: "${matchedFacility}"`);
-                    return res.json({ answer: combinedAnswers.join(' \n'), keyword: matchedFacility, references: [] });
-                }
+            if (facilityAnswer && hasAnimalSubject) {
+                // Mixed query (facility + animal): prepend facility answer to the request context
+                // so the LLM response that follows covers the animal part.
+                console.log(`[FACILITY+ANIMAL] Prepending facility answer for "${matchedFacility}", continuing animal search for "${subject}"`);
+                res.locals.prependAnswer = facilityAnswer;
+                // Fall through to animal search below
             }
         }
 
@@ -2460,7 +2517,14 @@ Now answer the user concisely in 1-2 sentences. No links or bullet points.`;
             res.setHeader('Connection', 'keep-alive');
             res.write(`data: ${JSON.stringify({ token: '', status: 'thinking' })}\n\n`);
 
+            // If a facility answer was also detected, stream it first as an instant token
             let fullAnswer = '';
+            if (res.locals.prependAnswer) {
+                const facilityToken = res.locals.prependAnswer + '\n\n';
+                fullAnswer += facilityToken;
+                res.write(`data: ${JSON.stringify({ token: facilityToken })}\n\n`);
+            }
+
             const streamResp = await ollama.chat({
                 model: CHAT_MODEL,
                 messages: [
@@ -2564,6 +2628,11 @@ Now answer the user concisely in 1-2 sentences. No links or bullet points.`;
             logResources('Response Generated');
             console.log(`Shera: ${answer}`);
             console.log(`[UI BINDING] Keyword: "${finalSubject}"`);
+
+            // If a facility answer was detected alongside this animal query, prepend it
+            if (res.locals.prependAnswer) {
+                answer = res.locals.prependAnswer + '\n\n' + answer;
+            }
 
             const responsePayload = { answer, keyword: finalSubject, references };
 
