@@ -31,8 +31,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-const CHAT_MODEL = 'gemma2:2b';          // Main answer model (quality)
-// const CHAT_MODEL = 'llama3.2:1b';          // Main answer model (quality)
+// const CHAT_MODEL = 'gemma2:2b';          // Main answer model (quality)
+const CHAT_MODEL = 'llama3.2:1b';          // Main answer model (quality)
 const EXTRACTION_MODEL = 'qwen2:0.5b';   // Subject extractor (speed — 352MB vs 1.6GB)
 
 // ─── OPTIMIZED Hindi Term Glossary ────────────────────────────────────────────
