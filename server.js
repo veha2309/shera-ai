@@ -203,6 +203,11 @@ const graphTraversalCache = new LRUCache({
     max: 200,
     ttl: 1000 * 60 * 60, // 1 hour
 });
+
+const RESPONSE_CACHE_TTL = 1000 * 60 * 60; // 1 hour
+const CHROMA_CACHE_TTL = 1000 * 60 * 30;   // 30 minutes
+const MAX_EMBEDDING_CACHE_SIZE = 1000;
+
 // SWEEPER: Runs every 10 minutes to purge dead memory and enforce limits
 setInterval(() => {
     const now = Date.now();
