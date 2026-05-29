@@ -1,54 +1,95 @@
 {
   "nodes": [
     {
-      "id": "Timing: Monday",
-      "type": "Timing",
-      "description": "Zoo opening hours for Monday: Open 08:30 AM, Close 05:30 PM. Status: Open"
-    },
-    {
-      "id": "Timing: Tuesday",
-      "type": "Timing",
-      "description": "Zoo opening hours for Tuesday: Open 08:30 AM, Close 05:30 PM. Status: Open"
-    },
-    {
-      "id": "Timing: Wednesday",
-      "type": "Timing",
-      "description": "Zoo opening hours for Wednesday: Open 08:30 AM, Close 05:30 PM. Status: Open"
-    },
-    {
-      "id": "Timing: Thursday",
-      "type": "Timing",
-      "description": "Zoo opening hours for Thursday: Open 08:30 AM, Close 05:30 PM. Status: Open"
-    },
-    {
-      "id": "Timing: Friday",
-      "type": "Timing",
-      "description": "Zoo opening hours for Friday: Open 08:30 AM, Close 05:30 PM. Status: Open"
-    },
-    {
-      "id": "Timing: Saturday",
-      "type": "Timing",
-      "description": "Zoo opening hours for Saturday: Open 08:30 AM, Close 05:30 PM. Status: Open"
-    },
-    {
-      "id": "Timing: Sunday",
-      "type": "Timing",
-      "description": "Zoo opening hours for Sunday: Open 08:30 AM, Close 05:30 PM. Status: Open"
-    },
-    {
-      "id": "Ticket Booking URL",
-      "type": "Service",
-      "description": "Official ticket booking page: https://nzpnewdelhi.gov.in/tickets/new?ln=en"
-    },
-    {
-      "id": "Zoo Social Media",
-      "type": "SocialMedia",
-      "description": "Official social media links: Youtube: https://www.youtube.com/channel/UCC9zbRZR9f5CD9SdJfXbSzg, Facebook: https://www.facebook.com/people/Delhi-Zoo/100067485382447/#, Instagram: https://www.instagram.com/delhizoo, Twitter: https://x.com/nzpdelhi?lang=en"
+      "id": "NZP Sathi",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: socialLinks: {\"youtube\":\"https://www.youtube.com/channel/UCC9zbRZR9f5CD9SdJfXbSzg\",\"facebook\":\"https://www.facebook.com/people/Delhi-Zoo/100067485382447/#\",\"instagram\":\"https://www.instagram.com/delhizoo\",\"twitter\":\"https://x.com/nzpdelhi?lang=en\"} | ticket: {\"bookingUrl\":\"https://nzpnewdelhi.gov.in/tickets/new?ln=en\",\"image\":null} | _id: 69a6b49dc88f63d77dfc7919 | name: NZP Sathi | address: Mathura Rd, near Purana Qila, Pragati Maidan, New Delhi, Delhi 110003 | logo: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/I8TyU0aAWt2p-1775716601901-logonzp.webp | venueName: NationalZoologicalPark | ownerId: 693172158f62f2493ab6aefc | contributorIds: [\"69b133f91eb79f923d335578\",\"697c80a51fdb552412a98ab1\",\"69ef30decf115cb1ae71b772\",\"69fdb6c5e128631d81e3d74a\",\"67723268f24c851e500d6b6b\",\"6a0bf0cb8f7bcc5d0682f59e\"] | __v: 0 | timings: [{\"day\":\"Monday\",\"openTime\":\"08:30 AM\",\"closeTime\":\"05:30 PM\",\"isOpen\":true,\"_id\":\"69c687b0afd25071ecbf7981\"},{\"day\":\"Tuesday\",\"openTime\":\"08:30 AM\",\"closeTime\":\"05:30 PM\",\"isOpen\":true,\"_id\":\"69c687b0afd25071ecbf7982\"},{\"day\":\"Wednesday\",\"openTime\":\"08:30 AM\",\"closeTime\":\"05:30 PM\",\"isOpen\":true,\"_id\":\"69c687b0afd25071ecbf7983\"},{\"day\":\"Thursday\",\"openTime\":\"08:30 AM\",\"closeTime\":\"05:30 PM\",\"isOpen\":true,\"_id\":\"69c687b0afd25071ecbf7984\"},{\"day\":\"Friday\",\"openTime\":\"08:30 AM\",\"closeTime\":\"05:30 PM\",\"isOpen\":true,\"_id\":\"69c687b0afd25071ecbf7985\"},{\"day\":\"Saturday\",\"openTime\":\"08:30 AM\",\"closeTime\":\"05:30 PM\",\"isOpen\":true,\"_id\":\"69c687b0afd25071ecbf7986\"},{\"day\":\"Sunday\",\"openTime\":\"08:30 AM\",\"closeTime\":\"05:30 PM\",\"isOpen\":true,\"_id\":\"69c687b0afd25071ecbf7987\"}] | website: https://nzpnewdelhi.gov.in/?ln=en | zooInfo: []",
+      "properties": {
+        "socialLinks": {
+          "youtube": "https://www.youtube.com/channel/UCC9zbRZR9f5CD9SdJfXbSzg",
+          "facebook": "https://www.facebook.com/people/Delhi-Zoo/100067485382447/#",
+          "instagram": "https://www.instagram.com/delhizoo",
+          "twitter": "https://x.com/nzpdelhi?lang=en"
+        },
+        "ticket": {
+          "bookingUrl": "https://nzpnewdelhi.gov.in/tickets/new?ln=en",
+          "image": null
+        },
+        "_id": "69a6b49dc88f63d77dfc7919",
+        "name": "NZP Sathi",
+        "address": "Mathura Rd, near Purana Qila, Pragati Maidan, New Delhi, Delhi 110003",
+        "logo": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/I8TyU0aAWt2p-1775716601901-logonzp.webp",
+        "venueName": "NationalZoologicalPark",
+        "ownerId": "693172158f62f2493ab6aefc",
+        "contributorIds": [
+          "69b133f91eb79f923d335578",
+          "697c80a51fdb552412a98ab1",
+          "69ef30decf115cb1ae71b772",
+          "69fdb6c5e128631d81e3d74a",
+          "67723268f24c851e500d6b6b",
+          "6a0bf0cb8f7bcc5d0682f59e"
+        ],
+        "__v": 0,
+        "shortName": "",
+        "timings": [
+          {
+            "day": "Monday",
+            "openTime": "08:30 AM",
+            "closeTime": "05:30 PM",
+            "isOpen": true,
+            "_id": "69c687b0afd25071ecbf7981"
+          },
+          {
+            "day": "Tuesday",
+            "openTime": "08:30 AM",
+            "closeTime": "05:30 PM",
+            "isOpen": true,
+            "_id": "69c687b0afd25071ecbf7982"
+          },
+          {
+            "day": "Wednesday",
+            "openTime": "08:30 AM",
+            "closeTime": "05:30 PM",
+            "isOpen": true,
+            "_id": "69c687b0afd25071ecbf7983"
+          },
+          {
+            "day": "Thursday",
+            "openTime": "08:30 AM",
+            "closeTime": "05:30 PM",
+            "isOpen": true,
+            "_id": "69c687b0afd25071ecbf7984"
+          },
+          {
+            "day": "Friday",
+            "openTime": "08:30 AM",
+            "closeTime": "05:30 PM",
+            "isOpen": true,
+            "_id": "69c687b0afd25071ecbf7985"
+          },
+          {
+            "day": "Saturday",
+            "openTime": "08:30 AM",
+            "closeTime": "05:30 PM",
+            "isOpen": true,
+            "_id": "69c687b0afd25071ecbf7986"
+          },
+          {
+            "day": "Sunday",
+            "openTime": "08:30 AM",
+            "closeTime": "05:30 PM",
+            "isOpen": true,
+            "_id": "69c687b0afd25071ecbf7987"
+          }
+        ],
+        "website": "https://nzpnewdelhi.gov.in/?ln=en",
+        "zooInfo": []
+      }
     }
   ],
   "edges": [],
   "metadata": {
-    "created_at": "2026-05-28T12:49:43.933Z",
+    "created_at": "2026-05-29T09:25:12.416Z",
     "source_file": "zootime.json",
     "type": "ADMIN"
   }

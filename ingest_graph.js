@@ -2,26 +2,16 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Antigravity GraphRAG Multi-Source Ingestion Script
- * Optimized for speed, local execution, and comprehensive zoo data structure support.
+ * Antigravity GraphRAG Multi-Source Ingestion Script - OPTIMIZED FOR GraphRAG
+ * Ensures 100% data retention, no nulls, and dense semantic descriptions.
  */
 
 const DATA_DIR = path.join(__dirname, 'zoo-data');
 const STORE_DIR = path.join(__dirname, 'graph_data');
-
-// Global animal ID registry to resolve cross-references and reduce inconsistencies
 const animalNodeIds = new Set();
 const animalBaseNames = new Map();
+const ITEM_LIMITS = {};
 
-// Limits to prevent oversized ingestion on low-resource environments
-const ITEM_LIMITS = {
-    'geojson.json': 50,
-    'facts.json': 100,
-};
-
-/**
- * Simple Async Pool for concurrency control (kept for structure, though runs instantly now)
- */
 async function asyncPool(limit, array, fn) {
     const ret = [];
     const executing = [];
@@ -31,13 +21,49 @@ async function asyncPool(limit, array, fn) {
         if (limit <= array.length) {
             const e = p.then(() => executing.splice(executing.indexOf(e), 1));
             executing.push(e);
-            if (executing.length >= limit) {
-                await Promise.race(executing);
-            }
+            if (executing.length >= limit) await Promise.race(executing);
         }
     }
     return Promise.all(ret);
 }
+
+// Helper: Safely extract nested .en strings from ANY object structure
+function getVal(obj) {
+    if (obj === null || obj === undefined) return '';
+    if (typeof obj === 'string') return obj.trim();
+    if (obj.en) return String(obj.en).trim();
+    if (obj.value && obj.value.en) return String(obj.value.en).trim();
+    return String(obj).trim(); // Fallback
+}
+
+// Helper: Split comma/and separated strings into discrete nodes
+function splitList(str) {
+    if (!str) return [];
+    return str.split(/[,;]|\band\b|\bor\b/)
+        .map(s => s.trim().replace(/\.$/, ''))
+        .filter(s => s.length > 2);
+}
+
+const MANUAL_NAME_MAP = {
+    "lion": "Asiatic Lion", "tiger": "White Tiger", "elephant": "Indian Elephant",
+    "monkey": "Bonnet Macaque", "rhino": "Indian Rhinoceros", "rhinoceros": "Indian Rhinoceros"
+};
+
+function standardizeName(name, classification = '') {
+    if (!name) return 'Unknown Animal';
+    let baseName = name.replace(/\s+\d+$/, '').trim();
+    if (!baseName.includes(' ')) {
+        const lower = baseName.toLowerCase();
+        if (MANUAL_NAME_MAP[lower]) return MANUAL_NAME_MAP[lower];
+        if (classification) {
+            const first = classification.split(/[/\s,]+/)[0];
+            if (first && first.length > 2) return `${baseName} ${first}`;
+        }
+    }
+    return baseName;
+}
+
+const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 function getSourceType(filename) {
     if (filename.includes('animal')) return 'BIOLOGY';
@@ -53,201 +79,39 @@ function findActualAnimalNodeId(refName) {
     if (!refName || typeof refName !== 'string') return null;
     const cleanRef = refName.trim();
     if (animalNodeIds.has(cleanRef)) return cleanRef;
-
     const lowerRef = cleanRef.toLowerCase();
-    if (animalBaseNames.has(lowerRef)) {
-        return animalBaseNames.get(lowerRef)[0];
-    }
-
-    // Substring or fallback search
-    for (const [base, ids] of animalBaseNames.entries()) {
-        if (lowerRef.includes(base) || base.includes(lowerRef)) {
-            return ids[0];
-        }
-    }
+    if (animalBaseNames.has(lowerRef)) return animalBaseNames.get(lowerRef)[0];
     return null;
 }
 
 function flattenFile(file, items) {
+    // Keep flatten logic similar, but utilize safe getVal
     if (file === 'about.json') {
         const out = [];
         for (const item of items) {
-            if (item.content && Array.isArray(item.content)) {
-                for (const block of item.content) {
-                    if (block.type === 'text' && block.text?.en?.trim()) {
-                        out.push({
-                            type: 'about_block',
-                            text: block.text.en,
-                            parent: 'About Zoo'
-                        });
-                    }
-                }
-            }
-            if (item.keyFacts && Array.isArray(item.keyFacts)) {
-                for (const fact of item.keyFacts) {
-                    out.push({
-                        type: 'key_fact',
-                        label: fact.label?.en,
-                        value: fact.value?.en,
-                        icon: fact.icon,
-                        parent: 'About Zoo Key Facts'
-                    });
-                }
-            }
+            if (item.content) item.content.forEach(b => {
+                if (b.type === 'text' && b.text?.en) out.push({ type: 'about_block', text: b.text.en, parent: 'About Zoo', original: b });
+            });
+            if (item.keyFacts) item.keyFacts.forEach(f => {
+                out.push({ type: 'key_fact', label: getVal(f.label), value: getVal(f.value), parent: 'About Zoo Key Facts', original: f });
+            });
         }
         return out.length ? out : items;
     }
-
-    if (file === 'contact.json') {
-        const out = [];
-        for (const item of items) {
-            if (item.contactMethods && Array.isArray(item.contactMethods)) {
-                for (const method of item.contactMethods) {
-                    out.push({
-                        type: 'contact_method',
-                        label: method.label?.en,
-                        value: method.value?.en,
-                        actionUrl: method.actionUrl,
-                        parent: 'Contact Information'
-                    });
-                }
-            }
-        }
-        return out.length ? out : items;
-    }
-
-    if (file === 'fees.json') {
-        const out = [];
-        for (const item of items) {
-            if (item.sections && Array.isArray(item.sections)) {
-                for (const section of item.sections) {
-                    out.push({
-                        ...section,
-                        parent_context: 'Zoo Fees & Charges'
-                    });
-                }
-            }
-        }
-        return out.length ? out : items;
-    }
-
-    if (file === 'rules.json') {
-        const out = [];
-        for (const item of items) {
-            if (item.rules && Array.isArray(item.rules)) {
-                for (const rule of item.rules) {
-                    if (rule.points && Array.isArray(rule.points)) {
-                        for (const point of rule.points) {
-                            out.push({
-                                type: 'rule_point',
-                                category: rule.title?.en,
-                                title: point.title?.en,
-                                description: point.description?.en,
-                                icon: point.icon,
-                                parent_context: 'Zoo Rules'
-                            });
-                        }
-                    } else {
-                        out.push({
-                            ...rule,
-                            parent_context: 'Zoo Rules'
-                        });
-                    }
-                }
-            }
-        }
-        return out.length ? out : items;
-    }
-
     if (file === 'tour.json') {
         const out = [];
         for (const tour of items) {
-            if (tour.stops && Array.isArray(tour.stops)) {
-                for (const stop of tour.stops) {
-                    const stopData = { ...stop.stopId };
-                    if (stopData.items && Array.isArray(stopData.items)) {
-                        stopData.animals_present = stopData.items
-                            .map(i => i.animalId?.common_name?.en || i.location_name?.en)
-                            .filter(Boolean);
-                        delete stopData.items; 
-                    }
-                    out.push({
-                        ...stopData,
-                        parent_tour: tour.name?.en,
-                        tour_description: tour.description?.en
-                    });
+            if (tour.stops) tour.stops.forEach(stop => {
+                const stopData = { ...stop.stopId };
+                if (stopData.items) {
+                    stopData.animals_present = stopData.items.map(i => getVal(i.animalId?.common_name) || getVal(i.location_name)).filter(Boolean);
+                    delete stopData.items;
                 }
-            }
+                out.push({ ...stopData, parent_tour: getVal(tour.name), tour_description: getVal(tour.description), original: stop });
+            });
         }
         return out.length ? out : items;
     }
-
-    if (file === 'zootime.json') {
-        const out = [];
-        for (const item of items) {
-            if (item.timings && Array.isArray(item.timings)) {
-                for (const timing of item.timings) {
-                    out.push({
-                        type: 'zoo_timing',
-                        day: timing.day,
-                        openTime: timing.openTime,
-                        closeTime: timing.closeTime,
-                        isOpen: timing.isOpen
-                    });
-                }
-            }
-            if (item.ticket) {
-                out.push({
-                    type: 'ticket_info',
-                    bookingUrl: item.ticket.bookingUrl
-                });
-            }
-            if (item.socialLinks) {
-                out.push({
-                    type: 'social_links',
-                    ...item.socialLinks
-                });
-            }
-        }
-        return out.length ? out : items;
-    }
-
-    if (file === 'calendar.json') {
-        return items.map(ev => ({
-            type: 'calendar_event',
-            title: ev.title?.en || ev.title,
-            body: ev.body?.en || ev.body,
-            date: ev.date
-        }));
-    }
-
-    if (file === 'events.json') {
-        return items.map(ev => ({
-            type: 'event',
-            name: ev.name?.en || ev.name,
-            description: ev.description?.en || ev.description,
-            from_datetime: ev.from_datetime,
-            to_datetime: ev.to_datetime,
-            location_name: ev.location_name?.en
-        }));
-    }
-
-    if (file === 'news.json') {
-        return items.map(n => ({
-            type: 'news_item',
-            title: n.title?.en || n.title,
-            text: n.text?.en || n.text
-        }));
-    }
-
-    if (file === 'facts.json') {
-        return items.map(f => ({
-            type: 'fact',
-            title: f.title?.en || f.title,
-            text: f.text?.en || f.text
-        }));
-    }
-
     return items;
 }
 
@@ -255,153 +119,131 @@ function extractProgrammatically(item, type, file) {
     const entities = [];
     const relationships = [];
 
-    const name = (item.properties?.name || item.common_name?.en || item.render_name?.en || item.name?.en || item.title?.en || item.title || item.name || item.label || item.day || 'Item').toString().trim();
-    
-    if (file === 'animals.json') {
-        const animalName = (item.render_name?.en || item.common_name?.en || name).toString().trim();
-        const scientificName = (item.scientific_name?.en || '').toString().trim();
-        const category = (item.category?.en || '').toString().trim();
-        const diet = (item.diet?.en || '').toString().trim();
-        const habitat = (item.habitat?.en || '').toString().trim();
-        const conservation = (item.conservation_status?.en || '').toString().trim();
-        const lifespan = (item.lifespan?.en || '').toString().trim();
-        const desc = (item.physical_description?.en || item.about_animal?.en || scientificName).toString().trim();
+    const rawNameString = (item.properties?.name || getVal(item.common_name) || getVal(item.render_name) || getVal(item.name) || getVal(item.title) || item.title || item.name || item.label || item.day || 'Item').toString().trim();
 
+    if (file === 'animals.json') {
+        const classification = getVal(item.classification);
+        const animalName = standardizeName(rawNameString, classification);
+        const scientificName = getVal(item.scientific_name);
+        const category = getVal(item.category);
+        const habitatStr = getVal(item.habitat);
+        const dietStr = getVal(item.diet);
+        const weight = getVal(item.physical?.weight);
+        const length = getVal(item.physical?.length);
+        const distributionStr = getVal(item.distribution);
+
+        // Deep nested property lookups
+        const conservation = getVal(item.conservation?.iucn_status) || getVal(item.conservation_status);
+        const lifespan = getVal(item.lifespan?.average) || getVal(item.lifespan);
+        const locationName = getVal(item.location?.location_name);
+        const likes = getVal(item.likes);
+        const dislikes = getVal(item.dislikes);
+
+        // Massive Narrative fallback to ensure text is rich for GraphRAG
+        const narrative = getVal(item.story_description) || getVal(item.narrative) || getVal(item.physical_description) || getVal(item.about_animal) || scientificName;
+
+        // Extract Fun facts seamlessly
+        let funFacts = "";
+        if (item.fun_facts && Array.isArray(item.fun_facts)) {
+            funFacts = item.fun_facts.map(f => getVal(f)).join(" ");
+        }
+
+        // 1. Core Animal Node - Semantically Rich for GraphRAG Embedding
+        let fullDesc = `${animalName} (${scientificName}) is classified under ${category}. `;
+        if (narrative) fullDesc += `Description: ${narrative}. `;
+        if (distributionStr) fullDesc += `Found in: ${distributionStr}. `;
+        if (likes) fullDesc += `Likes: ${likes}. `;
+        if (dislikes) fullDesc += `Dislikes: ${dislikes}. `;
+        if (funFacts) fullDesc += `Fun facts: ${funFacts} `;
+        if (weight) fullDesc += `Weight: ${weight}. `;
+        if (length) fullDesc += `Length: ${length}. `;
         entities.push({
             id: animalName,
             type: 'Animal',
-            description: `${animalName} (${scientificName}) is a ${category}. ${desc}`
+            description: fullDesc.trim(),
+            properties: item // PRESERVES 100% OF ORIGINAL DATA
         });
 
-        if (habitat) {
-            entities.push({ id: habitat, type: 'Habitat', description: `Habitat of animals: ${habitat}` });
-            relationships.push({ source: animalName, target: habitat, type: 'LIVES_IN' });
-        }
-        if (diet) {
-            entities.push({ id: diet, type: 'Diet', description: `Diet: ${diet}` });
-            relationships.push({ source: animalName, target: diet, type: 'EATS' });
-        }
+        // 2. Extracted Sub-Nodes (Habitats, Diets, Regions, Categories)
+        if (habitatStr) splitList(habitatStr).forEach(h => {
+            const capH = h.charAt(0).toUpperCase() + h.slice(1);
+            entities.push({ id: capH, type: 'Habitat', description: `Habitat type: ${capH}`, properties: { name: capH } });
+            relationships.push({ source: animalName, target: capH, type: 'LIVES_IN' });
+        });
+
+        if (dietStr) splitList(dietStr).forEach(d => {
+            const capD = d.charAt(0).toUpperCase() + d.slice(1);
+            entities.push({ id: capD, type: 'DietItem', description: `Diet item: ${capD}`, properties: { name: capD } });
+            relationships.push({ source: animalName, target: capD, type: 'EATS' });
+        });
+
+        if (distributionStr) splitList(distributionStr).forEach(r => {
+            const capR = r.charAt(0).toUpperCase() + r.slice(1);
+            entities.push({ id: capR, type: 'Region', description: `Geographical Region: ${capR}`, properties: { name: capR } });
+            relationships.push({ source: animalName, target: capR, type: 'FOUND_IN' });
+        });
+
         if (category) {
-            entities.push({ id: category, type: 'Classification', description: `Animal class: ${category}` });
+            entities.push({ id: category, type: 'Classification', description: `Animal taxonomic class: ${category}`, properties: { name: category } });
             relationships.push({ source: animalName, target: category, type: 'IS_A' });
         }
+
         if (conservation) {
-            entities.push({ id: conservation, type: 'Conservation', description: `Conservation status: ${conservation}` });
-            relationships.push({ source: animalName, target: conservation, type: 'STATUS_IS' });
+            entities.push({ id: conservation, type: 'ConservationStatus', description: `Conservation status: ${conservation}`, properties: { name: conservation } });
+            relationships.push({ source: animalName, target: conservation, type: 'HAS_STATUS' });
         }
+
         if (lifespan) {
-            entities.push({ id: lifespan, type: 'Lifespan', description: `Lifespan of ${animalName}: ${lifespan}` });
-            relationships.push({ source: animalName, target: lifespan, type: 'LIVES_FOR' });
+            entities.push({ id: lifespan, type: 'Lifespan', description: `Average lifespan: ${lifespan}`, properties: { name: lifespan } });
+            relationships.push({ source: animalName, target: lifespan, type: 'HAS_LIFESPAN' });
         }
-    } else if (file === 'rules.json') {
-        const title = (item.title || name).toString().trim();
-        const desc = (item.description || 'Zoo rule/policy').toString().trim();
-        entities.push({
-            id: `Rule: ${title}`,
-            type: 'Rule',
-            description: `${title}. Category: ${item.category || ''}. Description: ${desc}`
-        });
-    } else if (file === 'fees.json') {
-        const title = (item.title?.en || item.title || name).toString().trim();
-        const rate = (item.rate || item.value || '').toString().trim();
-        entities.push({
-            id: `Fee: ${title}`,
-            type: 'Price',
-            description: `Fee/charge for ${title}. Price details: ${rate}`
-        });
+
+        if (locationName) {
+            entities.push({ id: locationName, type: 'ZooLocation', description: `Zoo Enclosure/Location: ${locationName}`, properties: { name: locationName } });
+            relationships.push({ source: animalName, target: locationName, type: 'HOUSED_AT' });
+        }
+
+        // 3. Extract Individual Animal Instances (e.g., specific names like "Siddhi")
+        if (item.personalInfo && Array.isArray(item.personalInfo)) {
+            item.personalInfo.forEach(person => {
+                const pName = getVal(person.name);
+                if (pName) {
+                    const dob = person.dob ? person.dob.split('T')[0] : 'Unknown';
+                    const pDesc = `${pName} is a specific ${animalName} living at the zoo. Gender: ${person.gender || 'Unknown'}. Date of birth: ${dob}.`;
+                    entities.push({
+                        id: `${pName} (${animalName})`,
+                        type: 'AnimalInstance',
+                        description: pDesc,
+                        properties: person
+                    });
+                    relationships.push({ source: `${pName} (${animalName})`, target: animalName, type: 'INSTANCE_OF' });
+                    if (locationName) relationships.push({ source: `${pName} (${animalName})`, target: locationName, type: 'LOCATED_AT' });
+                }
+            });
+        }
+
     } else if (file === 'tour.json') {
-        const stopName = (item.name?.en || item.name || name).toString().trim();
+        const stopName = getVal(item.name) || rawNameString;
         entities.push({
-            id: `Tour Stop: ${stopName}`,
-            type: 'Stop',
-            description: `Stop in tour. Parent tour: ${item.parent_tour || ''}. Description: ${item.tour_description || ''}`
+            id: `Tour Stop: ${stopName}`, type: 'Stop',
+            description: `Stop in tour. Parent tour: ${item.parent_tour || ''}. Description: ${item.tour_description || ''}`,
+            properties: item
         });
         if (item.animals_present && Array.isArray(item.animals_present)) {
-            for (const animal of item.animals_present) {
-                relationships.push({ source: `Tour Stop: ${stopName}`, target: animal.toString().trim(), type: 'CONTAINS_ANIMAL' });
-            }
+            item.animals_present.forEach(animal => relationships.push({ source: `Tour Stop: ${stopName}`, target: animal.toString().trim(), type: 'CONTAINS_ANIMAL' }));
         }
-    } else if (file === 'zootime.json') {
-        if (item.type === 'zoo_timing') {
-            entities.push({
-                id: `Timing: ${item.day.toString().trim()}`,
-                type: 'Timing',
-                description: `Zoo opening hours for ${item.day}: Open ${item.openTime}, Close ${item.closeTime}. Status: ${item.isOpen ? 'Open' : 'Closed'}`
-            });
-        } else if (item.type === 'ticket_info') {
-            entities.push({
-                id: `Ticket Booking URL`,
-                type: 'Service',
-                description: `Official ticket booking page: ${item.bookingUrl}`
-            });
-        } else if (item.type === 'social_links') {
-            entities.push({
-                id: `Zoo Social Media`,
-                type: 'SocialMedia',
-                description: `Official social media links: Youtube: ${item.youtube}, Facebook: ${item.facebook}, Instagram: ${item.instagram}, Twitter: ${item.twitter}`
-            });
-        }
-    } else if (file === 'about.json') {
-        if (item.type === 'about_block') {
-            entities.push({
-                id: `About Zoo Block`,
-                type: 'History',
-                description: item.text.toString().trim()
-            });
-        } else if (item.type === 'key_fact') {
-            entities.push({
-                id: `Key Fact: ${item.label.toString().trim()}`,
-                type: 'Fact',
-                description: `${item.label}: ${item.value}`
-            });
-        }
-    } else if (file === 'contact.json') {
-        entities.push({
-            id: `Contact: ${item.label.toString().trim()}`,
-            type: 'ContactMethod',
-            description: `${item.label}: ${item.value}. Action: ${item.actionUrl || ''}`
-        });
-    } else if (file === 'calendar.json') {
-        const title = (item.title || name).toString().trim();
-        entities.push({
-            id: `Calendar Event: ${title}`,
-            type: 'Event',
-            description: `${title}. Date: ${item.date || ''}. Details: ${item.body || ''}`
-        });
-    } else if (file === 'events.json') {
-        const title = (item.name || name).toString().trim();
-        entities.push({
-            id: `Event: ${title}`,
-            type: 'Event',
-            description: `${title}. Location: ${item.location_name || ''}. Duration: ${item.from_datetime || ''} to ${item.to_datetime || ''}. Details: ${item.description || ''}`
-        });
-    } else if (file === 'news.json') {
-        const title = (item.title || name).toString().trim();
-        entities.push({
-            id: `News: ${title}`,
-            type: 'Fact',
-            description: `${title}. Details: ${item.text || ''}`
-        });
-    } else if (file === 'facts.json') {
-        const title = (item.title || name).toString().trim();
-        entities.push({
-            id: `Fact: ${title}`,
-            type: 'Fact',
-            description: `${title}. Details: ${item.text || ''}`
-        });
-    } else if (file === 'geojson.json') {
-        const props = item.properties || {};
-        const featName = (props.name || name).toString().trim();
-        entities.push({
-            id: `Facility: ${featName}`,
-            type: 'Facility',
-            description: `Zoo facility or landmark. Name: ${featName}, Type: ${props.type || ''}, Floor: ${props.floor || 0}`
-        });
     } else {
+        // ULTIMATE FALLBACK: For ANY other file, stringify all readable fields into the GraphRAG description so zero data is lost.
+        let safeProps = Object.entries(item)
+            .filter(([k, v]) => k !== 'media' && k !== 'icon' && k !== 'sound' && v != null && v !== '')
+            .map(([k, v]) => `${k}: ${typeof v === 'object' ? JSON.stringify(v) : v}`)
+            .join(' | ');
+
         entities.push({
-            id: name,
+            id: rawNameString,
             type: 'Entity',
-            description: JSON.stringify(item)
+            description: `Data Node. Extracted information: ${safeProps}`,
+            properties: item
         });
     }
 
@@ -409,157 +251,89 @@ function extractProgrammatically(item, type, file) {
 }
 
 async function buildCrossGraphEdges() {
-    console.log('\n--- Building Cross-Graph Edges ---');
-
     const storeFiles = fs.readdirSync(STORE_DIR).filter(f => f.endsWith('_graph.json'));
-
     const allGraphs = {};
     for (const f of storeFiles) {
-        try {
-            allGraphs[f] = JSON.parse(fs.readFileSync(path.join(STORE_DIR, f), 'utf8'));
-        } catch (e) {
-            console.error(`Failed to load ${f}:`, e.message);
-        }
+        try { allGraphs[f] = JSON.parse(fs.readFileSync(path.join(STORE_DIR, f), 'utf8')); }
+        catch (e) { }
     }
+    const sortedAnimalBases = Array.from(animalBaseNames.keys()).sort((a, b) => b.length - a.length);
 
     for (const [filename, graph] of Object.entries(allGraphs)) {
-        if (graph.metadata?.type !== 'SCHEDULE') continue;
-
+        if (graph.metadata?.type === 'BIOLOGY') continue;
         let edgesAdded = 0;
         for (const node of graph.nodes) {
-            const coreSubject = node.id
-                .replace(/\b(national|international|world|global|day|for|to|the|of|and|in|a)\b/gi, '')
-                .trim()
-                .toLowerCase();
-
-            if (!coreSubject) continue;
-
-            const resolvedTarget = findActualAnimalNodeId(coreSubject);
-            if (resolvedTarget) {
-                const edgeExists = graph.edges.some(e => e.source === node.id && e.target === resolvedTarget);
-                if (!edgeExists) {
-                    graph.edges.push({
-                        source: node.id,
-                        target: resolvedTarget,
-                        type: 'RELATED_TO_ANIMAL',
-                        cross_graph: 'animals_graph.json'
-                    });
-                    edgesAdded++;
-                    console.log(`  [CROSS] "${node.id}" -> RELATED_TO_ANIMAL -> "${resolvedTarget}"`);
+            const searchString = `${node.id} ${node.description || ''}`.toLowerCase();
+            const matchedTargets = new Set();
+            for (const base of sortedAnimalBases) {
+                if (base.length < 3) continue;
+                if (new RegExp(`\\b${escapeRegex(base)}\\b`, 'i').test(searchString)) {
+                    const resolvedTarget = animalBaseNames.get(base)[0];
+                    if (resolvedTarget && !matchedTargets.has(resolvedTarget)) {
+                        matchedTargets.add(resolvedTarget);
+                        if (!graph.edges.some(e => e.source === node.id && e.target === resolvedTarget)) {
+                            const relType = graph.metadata?.type === 'GEOGRAPHY' ? 'HOUSED_IN' : (graph.metadata?.type === 'SCHEDULE' ? 'FEATURES_ANIMAL' : 'MENTIONS_ANIMAL');
+                            graph.edges.push({ source: node.id, target: resolvedTarget, type: relType, cross_graph: 'animals_graph.json' });
+                            edgesAdded++;
+                        }
+                    }
                 }
             }
         }
-
-        if (edgesAdded > 0) {
-            fs.writeFileSync(path.join(STORE_DIR, filename), JSON.stringify(graph, null, 2));
-            console.log(`  [SAVED] ${filename} with ${edgesAdded} new cross-edges`);
-        }
+        if (edgesAdded > 0) fs.writeFileSync(path.join(STORE_DIR, filename), JSON.stringify(graph, null, 2));
     }
 }
 
 async function processItem(item, graph, type, file) {
     const extraction = extractProgrammatically(item, type, file);
-
     for (const entity of extraction.entities || []) {
-        const exists = graph.nodes.find(n => n.id === entity.id);
-        if (!exists) {
+        if (!graph.nodes.find(n => n.id === entity.id)) {
             graph.nodes.push(entity);
             if (entity.type === 'Animal') {
                 const trimmedId = entity.id.trim();
                 animalNodeIds.add(trimmedId);
                 const base = trimmedId.toLowerCase().replace(/\s+\d+$/, '').trim();
-                if (!animalBaseNames.has(base)) {
-                    animalBaseNames.set(base, []);
-                }
+                if (!animalBaseNames.has(base)) animalBaseNames.set(base, []);
                 animalBaseNames.get(base).push(trimmedId);
             }
         }
     }
-
     for (const rel of extraction.relationships || []) {
-        if (rel.type === 'CONTAINS_ANIMAL' || rel.type === 'RELATED_TO_ANIMAL') {
+        if (['CONTAINS_ANIMAL', 'RELATED_TO_ANIMAL'].includes(rel.type)) {
             const resolvedTarget = findActualAnimalNodeId(rel.target);
-            if (resolvedTarget) {
-                rel.target = resolvedTarget;
-            }
+            if (resolvedTarget) rel.target = resolvedTarget;
         }
         graph.edges.push(rel);
     }
 }
 
 async function main() {
-    console.log('--- Antigravity GraphRAG: Multi-Source Ingestion Started ---');
-
-    if (!fs.existsSync(STORE_DIR)) {
-        fs.mkdirSync(STORE_DIR, { recursive: true });
-    }
+    console.log('--- GraphRAG Optimized Ingestion Started ---');
+    if (!fs.existsSync(STORE_DIR)) fs.mkdirSync(STORE_DIR, { recursive: true });
 
     const files = fs.readdirSync(DATA_DIR).filter(f => f.endsWith('.json'));
-
-    // Process animals.json first to build the animal ID registry
-    files.sort((a, b) => {
-        if (a === 'animals.json') return -1;
-        if (b === 'animals.json') return 1;
-        return 0;
-    });
+    files.sort((a, b) => a === 'animals.json' ? -1 : (b === 'animals.json' ? 1 : 0));
 
     for (const file of files) {
         const filePath = path.join(DATA_DIR, file);
         const graphName = file.replace('.json', '_graph.json');
         const type = getSourceType(file);
 
-        console.log(`\n>>> Processing Source: ${file} -> ${graphName}`);
-
-        const graph = {
-            nodes: [],
-            edges: [],
-            metadata: {
-                created_at: new Date().toISOString(),
-                source_file: file,
-                type
-            }
-        };
-
+        const graph = { nodes: [], edges: [], metadata: { created_at: new Date().toISOString(), source_file: file, type } };
         try {
-            const content = fs.readFileSync(filePath, 'utf8');
-            const jsonData = JSON.parse(content);
-            
-            // Robust parsing of array vs object structure
-            const items = Array.isArray(jsonData) 
-                ? jsonData 
-                : (jsonData.data 
-                    ? (Array.isArray(jsonData.data) ? jsonData.data : [jsonData.data]) 
-                    : [jsonData]);
+            const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            const items = Array.isArray(jsonData) ? jsonData : (jsonData.data ? (Array.isArray(jsonData.data) ? jsonData.data : [jsonData.data]) : [jsonData]);
+            const itemsToProcess = flattenFile(file, items);
 
-            let itemsToProcess = flattenFile(file, items);
-
-            const limit = ITEM_LIMITS[file];
-            if (limit && itemsToProcess.length > limit) {
-                console.log(`  [LIMIT] Capping at ${limit} of ${itemsToProcess.length} items`);
-                itemsToProcess = itemsToProcess.slice(0, limit);
-            }
-
-            const CONCURRENCY = 10;
-            console.log(`  [POOL] Processing ${itemsToProcess.length} items...`);
-
-            await asyncPool(CONCURRENCY, itemsToProcess, async (item) => {
-                const name = item.properties?.name || item.common_name?.en || item.render_name?.en || item.name?.en || item.title?.en || item.title || item.name || item.label || item.day || 'Item';
-                await processItem(item, graph, type, file);
-            });
-
-            const graphPath = path.join(STORE_DIR, graphName);
-            fs.writeFileSync(graphPath, JSON.stringify(graph, null, 2));
+            await asyncPool(10, itemsToProcess, async (item) => await processItem(item, graph, type, file));
+            fs.writeFileSync(path.join(STORE_DIR, graphName), JSON.stringify(graph, null, 2));
             console.log(`[OK] Saved ${graphName} (${graph.nodes.length} nodes, ${graph.edges.length} edges)`);
-
         } catch (err) {
             console.error(`[ERR] Failed to process ${file}:`, err.message);
         }
     }
-
-    console.log('\n--- Building cross-graph edges ---');
     await buildCrossGraphEdges();
-
-    console.log('\n--- Multi-Source Ingestion Completed ---');
+    console.log('\\n--- Ingestion Completed ---');
 }
 
 main();
