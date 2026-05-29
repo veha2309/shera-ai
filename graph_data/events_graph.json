@@ -1,24 +1,108 @@
 {
   "nodes": [
     {
-      "id": "Event: INTERNSHIP PROGRAMS",
-      "type": "Event",
-      "description": "INTERNSHIP PROGRAMS. Location: Director's Office. Duration: 2026-04-06T15:30:00.000Z to 2026-04-06T22:20:00.000Z. Details: Students working in the fields of Wildlife, Environment, Education, Biodiversity, Conservation and related areas are welcomed for doing their Internship at the Zoo. Hundreds of students have participated in various internship programs in National Zoological Park in the last couple of years.\n\n"
+      "id": "INTERNSHIP PROGRAMS",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: name: {\"en\":\"INTERNSHIP PROGRAMS\",\"hi\":\"इंटर्नशिप कार्यक्रम\"} | description: {\"en\":\"Students working in the fields of Wildlife, Environment, Education, Biodiversity, Conservation and related areas are welcomed for doing their Internship at the Zoo. Hundreds of students have participated in various internship programs in National Zoological Park in the last couple of years.\\n\\n\",\"hi\":\"वन्यजीव, पर्यावरण, शिक्षा, जैव विविधता, संरक्षण और संबंधित क्षेत्रों में काम करने वाले छात्रों का चिड़ियाघर में इंटर्नशिप करने के लिए स्वागत किया जाता है। \"} | category: {\"en\":\"\",\"hi\":\"\"} | location_name: {\"en\":\"Director's Office\",\"hi\":\"निदेशक का कार्यालय\"} | _id: 69d7a97872b2a5850f39559e | zooId: 69a6b49dc88f63d77dfc7919 | location_id: 69d0fe58f25be44811df64d2 | picture: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/JV8FmCi8VRbp-1775744086827-PGs5YkhTB2H2-Thu Mar 26 2026 11_48_21 GMT+0000 (Coordinated Universal Time)-vol-2.webp | from_datetime: 2026-04-06T15:30:00.000Z | to_datetime: 2026-04-06T22:20:00.000Z | createdAt: 2026-04-09T13:28:24.015Z | updatedAt: 2026-05-19T08:24:26.601Z | __v: 0",
+      "properties": {
+        "name": {
+          "en": "INTERNSHIP PROGRAMS",
+          "hi": "इंटर्नशिप कार्यक्रम"
+        },
+        "description": {
+          "en": "Students working in the fields of Wildlife, Environment, Education, Biodiversity, Conservation and related areas are welcomed for doing their Internship at the Zoo. Hundreds of students have participated in various internship programs in National Zoological Park in the last couple of years.\n\n",
+          "hi": "वन्यजीव, पर्यावरण, शिक्षा, जैव विविधता, संरक्षण और संबंधित क्षेत्रों में काम करने वाले छात्रों का चिड़ियाघर में इंटर्नशिप करने के लिए स्वागत किया जाता है। "
+        },
+        "category": {
+          "en": "",
+          "hi": ""
+        },
+        "location_name": {
+          "en": "Director's Office",
+          "hi": "निदेशक का कार्यालय"
+        },
+        "_id": "69d7a97872b2a5850f39559e",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "location_id": "69d0fe58f25be44811df64d2",
+        "picture": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/JV8FmCi8VRbp-1775744086827-PGs5YkhTB2H2-Thu Mar 26 2026 11_48_21 GMT+0000 (Coordinated Universal Time)-vol-2.webp",
+        "from_datetime": "2026-04-06T15:30:00.000Z",
+        "to_datetime": "2026-04-06T22:20:00.000Z",
+        "createdAt": "2026-04-09T13:28:24.015Z",
+        "updatedAt": "2026-05-19T08:24:26.601Z",
+        "__v": 0,
+        "url": ""
+      }
     },
     {
-      "id": "Event: VOLUNTEERSHIP PROGRAMS",
-      "type": "Event",
-      "description": "VOLUNTEERSHIP PROGRAMS. Location: Education Centre. Duration: 2026-04-08T15:30:00.000Z to 2026-04-08T19:30:00.000Z. Details: Anyone interested in working for the cause of animals, may apply for the Volunteership Programme of the National Zoological Park by writing in via mail. They will be exposed to in-situ conservation methods, taking care of animals in captivity, and other administrative or peripheral activities that are involved in the upkeep and smooth functioning of a zoo.\n\n"
+      "id": "VOLUNTEERSHIP PROGRAMS",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: name: {\"en\":\"VOLUNTEERSHIP PROGRAMS\",\"hi\":\"स्वयंसेवी कार्यक्रम\"} | description: {\"en\":\"Anyone interested in working for the cause of animals, may apply for the Volunteership Programme of the National Zoological Park by writing in via mail. They will be exposed to in-situ conservation methods, taking care of animals in captivity, and other administrative or peripheral activities that are involved in the upkeep and smooth functioning of a zoo.\\n\\n\",\"hi\":\"जानवरों के हितों के लिए काम करने में रुचि रखने वाला कोई भी व्यक्ति मेल के माध्यम से लिखकर राष्ट्रीय प्राणी उद्यान के स्वयंसेवी कार्यक्रम के लिए आवेदन कर सकता है। \"} | category: {\"en\":\"\",\"hi\":\"\"} | location_name: {\"en\":\"Education Centre\",\"hi\":\"शिक्षा केंद्र\"} | _id: 69d7a9d972b2a5850f395f25 | zooId: 69a6b49dc88f63d77dfc7919 | location_id: 69d782860813953da3eb6eb1 | picture: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/CSn7o3z0gPSP-1775744125735-F5o5tiTajrFQ-Thu Mar 26 2026 11_50_01 GMT+0000 (Coordinated Universal Time)-vol-1.webp | from_datetime: 2026-04-08T15:30:00.000Z | to_datetime: 2026-04-08T19:30:00.000Z | createdAt: 2026-04-09T13:30:01.635Z | updatedAt: 2026-05-19T08:23:32.637Z | __v: 0",
+      "properties": {
+        "name": {
+          "en": "VOLUNTEERSHIP PROGRAMS",
+          "hi": "स्वयंसेवी कार्यक्रम"
+        },
+        "description": {
+          "en": "Anyone interested in working for the cause of animals, may apply for the Volunteership Programme of the National Zoological Park by writing in via mail. They will be exposed to in-situ conservation methods, taking care of animals in captivity, and other administrative or peripheral activities that are involved in the upkeep and smooth functioning of a zoo.\n\n",
+          "hi": "जानवरों के हितों के लिए काम करने में रुचि रखने वाला कोई भी व्यक्ति मेल के माध्यम से लिखकर राष्ट्रीय प्राणी उद्यान के स्वयंसेवी कार्यक्रम के लिए आवेदन कर सकता है। "
+        },
+        "category": {
+          "en": "",
+          "hi": ""
+        },
+        "location_name": {
+          "en": "Education Centre",
+          "hi": "शिक्षा केंद्र"
+        },
+        "_id": "69d7a9d972b2a5850f395f25",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "location_id": "69d782860813953da3eb6eb1",
+        "picture": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/CSn7o3z0gPSP-1775744125735-F5o5tiTajrFQ-Thu Mar 26 2026 11_50_01 GMT+0000 (Coordinated Universal Time)-vol-1.webp",
+        "from_datetime": "2026-04-08T15:30:00.000Z",
+        "to_datetime": "2026-04-08T19:30:00.000Z",
+        "createdAt": "2026-04-09T13:30:01.635Z",
+        "updatedAt": "2026-05-19T08:23:32.637Z",
+        "__v": 0,
+        "url": ""
+      }
     },
     {
-      "id": "Event: SUMMER VACATION PROGRAM",
-      "type": "Event",
-      "description": "SUMMER VACATION PROGRAM. Location: Education Centre. Duration: 2026-05-21T10:00:00.000Z to 2026-06-06T17:00:00.000Z. Details: Summer Vacation Programme 2026\nVenue: Education centre, National Zoological Park, New Delhi\nTime: 08:30 AM to 11:30 AM\nSlot A : 21st May 2026 to 28th May 2026\nSlot B: 30th May 2026 to 4th June 2026\nParticipants (for both slots): Junior category (Class 6 to Class 8) and Senior category (Class 9 to Class 12)\n\nEligible students are invited to register for participation in the programme. Submission of this form does not guarantee selection, which will be subjected to availability of seats and confirmation by the National Zoological Park, New Delhi."
+      "id": "SUMMER VACATION PROGRAM",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: name: {\"en\":\"SUMMER VACATION PROGRAM\",\"hi\":\"ग्रीष्मकालीन अवकाश कार्यक्रम\"} | description: {\"en\":\"Summer Vacation Programme 2026\\nVenue: Education centre, National Zoological Park, New Delhi\\nTime: 08:30 AM to 11:30 AM\\nSlot A : 21st May 2026 to 28th May 2026\\nSlot B: 30th May 2026 to 4th June 2026\\nParticipants (for both slots): Junior category (Class 6 to Class 8) and Senior category (Class 9 to Class 12)\\n\\nEligible students are invited to register for participation in the programme. Submission of this form does not guarantee selection, which will be subjected to availability of seats and confirmation by the National Zoological Park, New Delhi.\",\"hi\":\"ग्रीष्मकालीन अवकाश कार्यक्रम 2026\\n\\nस्थान: शिक्षा केंद्र, राष्ट्रीय प्राणी उद्यान, नई दिल्ली\\nसमय: प्रातः 08:30 बजे से 11:30 बजे तक\\n\\nस्लॉट A: 21 मई 2026 से 28 मई 2026 तक\\nस्लॉट B: 30 मई 2026 से 4 जून 2026 तक\\n\\nप्रतिभागी (दोनों स्लॉट हेतु):\\nजूनियर श्रेणी (कक्षा 6 से कक्षा 8) एवं\\nसीनियर श्रेणी (कक्षा 9 से कक्षा 12)\\n\\nयोग्य विद्यार्थियों को कार्यक्रम में भाग लेने हेतु पंजीकरण करने के लिए आमंत्रित किया जाता है। इस फॉर्म का जमा किया जाना चयन की गारंटी नहीं देता है। चयन सीटों की उपलब्धता एवं राष्ट्रीय प्राणी उद्यान, नई दिल्ली की पुष्टि के अधीन होगा।\"} | category: {\"en\":\"Summer Vacation Programme\",\"hi\":\"ग्रीष्मकालीन अवकाश कार्यक्रम\"} | location_name: {\"en\":\"Education Centre\",\"hi\":\"शिक्षा केंद्र\"} | _id: 69fb191d817cdbb0ef7ff57b | zooId: 69a6b49dc88f63d77dfc7919 | location_id: 69d782860813953da3eb6eb1 | picture: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/KheQhjWKTjMX-1779178891761-ChatGPT Image May 19, 2026, 01_49_20 PM.webp | from_datetime: 2026-05-21T10:00:00.000Z | to_datetime: 2026-06-06T17:00:00.000Z | createdAt: 2026-05-06T10:34:05.443Z | updatedAt: 2026-05-19T08:22:46.101Z | __v: 0 | url: https://docs.google.com/forms/d/e/1FAIpQLSdWAuQAdP1jW6fj0GOor7Ig7uAjOm-xUVCkMmRMdisuApKpLw/viewform",
+      "properties": {
+        "name": {
+          "en": "SUMMER VACATION PROGRAM",
+          "hi": "ग्रीष्मकालीन अवकाश कार्यक्रम"
+        },
+        "description": {
+          "en": "Summer Vacation Programme 2026\nVenue: Education centre, National Zoological Park, New Delhi\nTime: 08:30 AM to 11:30 AM\nSlot A : 21st May 2026 to 28th May 2026\nSlot B: 30th May 2026 to 4th June 2026\nParticipants (for both slots): Junior category (Class 6 to Class 8) and Senior category (Class 9 to Class 12)\n\nEligible students are invited to register for participation in the programme. Submission of this form does not guarantee selection, which will be subjected to availability of seats and confirmation by the National Zoological Park, New Delhi.",
+          "hi": "ग्रीष्मकालीन अवकाश कार्यक्रम 2026\n\nस्थान: शिक्षा केंद्र, राष्ट्रीय प्राणी उद्यान, नई दिल्ली\nसमय: प्रातः 08:30 बजे से 11:30 बजे तक\n\nस्लॉट A: 21 मई 2026 से 28 मई 2026 तक\nस्लॉट B: 30 मई 2026 से 4 जून 2026 तक\n\nप्रतिभागी (दोनों स्लॉट हेतु):\nजूनियर श्रेणी (कक्षा 6 से कक्षा 8) एवं\nसीनियर श्रेणी (कक्षा 9 से कक्षा 12)\n\nयोग्य विद्यार्थियों को कार्यक्रम में भाग लेने हेतु पंजीकरण करने के लिए आमंत्रित किया जाता है। इस फॉर्म का जमा किया जाना चयन की गारंटी नहीं देता है। चयन सीटों की उपलब्धता एवं राष्ट्रीय प्राणी उद्यान, नई दिल्ली की पुष्टि के अधीन होगा।"
+        },
+        "category": {
+          "en": "Summer Vacation Programme",
+          "hi": "ग्रीष्मकालीन अवकाश कार्यक्रम"
+        },
+        "location_name": {
+          "en": "Education Centre",
+          "hi": "शिक्षा केंद्र"
+        },
+        "_id": "69fb191d817cdbb0ef7ff57b",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "location_id": "69d782860813953da3eb6eb1",
+        "picture": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/KheQhjWKTjMX-1779178891761-ChatGPT Image May 19, 2026, 01_49_20 PM.webp",
+        "from_datetime": "2026-05-21T10:00:00.000Z",
+        "to_datetime": "2026-06-06T17:00:00.000Z",
+        "createdAt": "2026-05-06T10:34:05.443Z",
+        "updatedAt": "2026-05-19T08:22:46.101Z",
+        "__v": 0,
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdWAuQAdP1jW6fj0GOor7Ig7uAjOm-xUVCkMmRMdisuApKpLw/viewform"
+      }
     }
   ],
   "edges": [],
   "metadata": {
-    "created_at": "2026-05-28T12:49:43.888Z",
+    "created_at": "2026-05-29T09:25:12.336Z",
     "source_file": "events.json",
     "type": "SCHEDULE"
   }

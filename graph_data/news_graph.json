@@ -1,14 +1,26 @@
 {
   "nodes": [
     {
-      "id": "News: Item",
-      "type": "Fact",
-      "description": "Item. Details: Summer Vacation Programme   \nEligible students are invited to register for participation in the programme Submission of this form does not guarantee selection, which will be subjected to availability of seats and confirmation by the National Zoological Park, New Delhi"
+      "id": "Item",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: text: {\"en\":\"Summer Vacation Programme   \\nEligible students are invited to register for participation in the programme Submission of this form does not guarantee selection, which will be subjected to availability of seats and confirmation by the National Zoological Park, New Delhi\",\"hi\":\"ग्रीष्मकालीन अवकाश कार्यक्रम \\nपात्र छात्रों को कार्यक्रम में भाग लेने के लिए पंजीकरण करने के लिए आमंत्रित किया जाता है। इस फॉर्म को जमा करना चयन की गारंटी नहीं देता है, जो सीटों की उपलब्धता और राष्ट्रीय प्राणी उद्यान, नई दिल्ली द्वारा पुष्टि के अधीन होगा।\"} | _id: 69fb17ee817cdbb0ef7fa13b | zooId: 69a6b49dc88f63d77dfc7919 | url: https://docs.google.com/forms/d/e/1FAIpQLSdWAuQAdP1jW6fj0GOor7Ig7uAjOm-xUVCkMmRMdisuApKpLw/viewform?usp=dialog | createdAt: 2026-05-06T10:29:02.688Z | updatedAt: 2026-05-06T10:29:02.688Z | __v: 0",
+      "properties": {
+        "text": {
+          "en": "Summer Vacation Programme   \nEligible students are invited to register for participation in the programme Submission of this form does not guarantee selection, which will be subjected to availability of seats and confirmation by the National Zoological Park, New Delhi",
+          "hi": "ग्रीष्मकालीन अवकाश कार्यक्रम \nपात्र छात्रों को कार्यक्रम में भाग लेने के लिए पंजीकरण करने के लिए आमंत्रित किया जाता है। इस फॉर्म को जमा करना चयन की गारंटी नहीं देता है, जो सीटों की उपलब्धता और राष्ट्रीय प्राणी उद्यान, नई दिल्ली द्वारा पुष्टि के अधीन होगा।"
+        },
+        "_id": "69fb17ee817cdbb0ef7fa13b",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSdWAuQAdP1jW6fj0GOor7Ig7uAjOm-xUVCkMmRMdisuApKpLw/viewform?usp=dialog",
+        "createdAt": "2026-05-06T10:29:02.688Z",
+        "updatedAt": "2026-05-06T10:29:02.688Z",
+        "__v": 0
+      }
     }
   ],
   "edges": [],
   "metadata": {
-    "created_at": "2026-05-28T12:49:43.928Z",
+    "created_at": "2026-05-29T09:25:12.412Z",
     "source_file": "news.json",
     "type": "NEWS"
   }

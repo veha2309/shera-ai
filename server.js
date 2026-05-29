@@ -31,8 +31,8 @@ process.on('uncaughtException', (err) => {
 
 // ─── Models ───────────────────────────────────────────────────────────────────
 const EMBED_MODEL = 'nomic-embed-text';
-// const CHAT_MODEL = 'gemma2:2b';          // Main answer model (quality)
-const CHAT_MODEL = 'llama3.2:1b';          // Main answer model (quality)
+const CHAT_MODEL = 'gemma2:2b';          // Main answer model (quality)
+// const CHAT_MODEL = 'llama3.2:1b';          // Main answer model (quality)
 const EXTRACTION_MODEL = 'qwen2:0.5b';   // Subject extractor (speed — 352MB vs 1.6GB)
 
 // ─── OPTIMIZED Hindi Term Glossary ────────────────────────────────────────────
@@ -395,7 +395,8 @@ const zooRegistry = {
     metadata: {},
     sortedCanonical: [],
     eventNames: new Set(),
-    rawNames: new Set()
+    rawNames: new Set(),
+    rawToRender: {}
 };
 let venueTimings = [];
 
@@ -677,7 +678,34 @@ function loadZooRegistry() {
                 if (primaryName.length <= 2) continue;
 
                 names.add(primaryName);
-                zooRegistry.rawNames.add(primaryNameRaw);
+                // Add raw names in all languages and map them to their render names
+                const rawNamesList = [
+                    primaryNameRaw,
+                    item.common_name?.hi,
+                    item.render_name?.hi,
+                    item.name?.hi,
+                    item.title?.hi
+                ].filter(n => n && typeof n === 'string' && n.length > 2);
+
+                rawNamesList.forEach(raw => {
+                    zooRegistry.rawNames.add(raw);
+                    
+                    const renderEn = (item.render_name && typeof item.render_name === 'object' ? item.render_name.en : item.render_name) || primaryName;
+                    const renderHi = (item.render_name && typeof item.render_name === 'object' ? item.render_name.hi : null) || item.common_name?.hi || item.name?.hi || item.title?.hi || primaryName;
+                    
+                    zooRegistry.rawToRender[raw] = {
+                        en: renderEn,
+                        hi: renderHi
+                    };
+                    
+                    const cleanedRaw = raw.replace(/\s+\d+$/, '').trim();
+                    if (!zooRegistry.rawToRender[cleanedRaw]) {
+                        zooRegistry.rawToRender[cleanedRaw] = {
+                            en: renderEn,
+                            hi: renderHi
+                        };
+                    }
+                });
 
                 if (!aliasMap.has(primaryName)) aliasMap.set(primaryName, new Set());
 
@@ -916,6 +944,64 @@ function optimizeContext(docs, maxLines = 5) {
     return [...new Set(docs)].slice(0, maxLines).join('\n');
 }
 
+
+// English Traits
+const TRAIT_WORDS = /\b(big|bigger|large|larger|size|small|smaller|heavy|weight|weigh|tall|height|long|length|old|age|lifespan|live|lives|fast|speed|fact|facts|eat|eats|diet|food|sleep|active|species|group|color|housed|born|likes|dislikes|pregnancy|gestation|leg|legs|eye|eyes|tooth|teeth|tail|tails|wing|wings|skin|fur|horn|horns|neck|claw|claws|run|swim|fly|sound|voice|feature|features|look|looks|physical|anatomy|incubation|clutch|cubs|cub|baby|babies)\b/i;
+
+// English Question Words
+const QUESTION_WORDS = /\b(how|what|where|why|when|who|tell|give|share|does|do|is|are)\b/i;
+
+// Hindi/Hinglish Traits
+const HINDI_TRAIT_WORDS = /बड़ा|bada|bade|chota|chote|size|वजन|प्रजातियाँ|समूह|prajatiyan|samuh|wazan|vajan|लंबा|lambai|ऊंचाई|unchai|old|age|उम्र|umr|lifespan|life|jeevan|fast|tez|speed|raf-tar|fact|facts|khana|diet|sleep|sona|active|rang|color|housed|born|paida|pregnancy|gestation|पैर|pair|टांग|tang|टांगे|tange|आंख|aankh|आंखें|aankhen|दांत|daant|पूंछ|poonch|पंख|pankh|त्वचा|twacha|fur|सींग|seeng|गर्दन|gardan|नाखून|nakhoon|दौड़|daud|तैर|tair|उड़|ud|आवाज|aawaz|रूप|roop|बच्चा|bacha|बच्चे|bache/i;
+
+// Hindi/Hinglish Question Words
+const HINDI_QUESTION_WORDS = /क्या|kya|kaun|who|kahan|where|kyon|why|kab|when|kaise|how|kitna|kitni|kitne|does|do|is|are/i;
+
+const FUZZY_TRAITS = [
+    'weight', 'height', 'length', 'lifespan', 'speed', 'diet',
+    'color', 'active', 'pregnancy', 'gestation', 'like', 'likes'
+];
+
+function shouldSuppressCard(query) {
+    if (!query || typeof query !== 'string') return false;
+    const q = query.toLowerCase();
+
+    // 1. Check exact regexes first (Fastest)
+    let hasTrait = TRAIT_WORDS.test(q) || HINDI_TRAIT_WORDS.test(q);
+
+    // 2. If no exact match, run a fuzzy scan for typos (e.g., "likr" -> "like")
+    if (!hasTrait) {
+        const queryWords = q.replace(/[?!.,;()]/g, '').split(/\s+/);
+        for (const qw of queryWords) {
+            if (qw.length < 4) continue; // Skip tiny words to prevent aggressive false positives
+
+            for (const trait of FUZZY_TRAITS) {
+                // Only compare words of similar length
+                if (Math.abs(qw.length - trait.length) > 1) continue;
+
+                // Allow 1 character typo
+                if (levenshtein(qw, trait) <= 1) {
+                    console.log(`[UI CONTROL] Fuzzy trait matched: "${qw}" ≈ "${trait}"`);
+                    hasTrait = true;
+                    break;
+                }
+            }
+            if (hasTrait) break;
+        }
+    }
+
+    const isQuestion = QUESTION_WORDS.test(q) || HINDI_QUESTION_WORDS.test(q);
+    const wordCount = q.split(/\s+/).length;
+
+    // 3. Relaxed Gate: Is it phrased as a question, OR is it at least 2 words?
+    // "likes of lions" = 3 words. "lion weight" = 2 words. 
+    if (hasTrait && (isQuestion || wordCount >= 2)) {
+        return true;
+    }
+
+    return false;
+}
+
 function isCasualChatQuery(query) {
     if (!query || typeof query !== 'string') return false;
     const q = query.toLowerCase().replace(/[?!.,]/g, '').trim();
@@ -1116,53 +1202,9 @@ function finalizeSubject(subject, qLower, extractedSubject = null) {
     return { subject, extractedSubject: extractedSubject || subject, matchedFacility };
 }
 async function llmExtractSubject(query) {
-    // FIX: Pre-screen query words directly against lookup keys using fuzzy Levenshtein
-    // before spending CPU on an LLM call. Catches typos like "brids" → "birds" → lookup hit.
-    const preWords = query.toLowerCase().replace(/[?!.,;()'"]/g, '').split(/\s+/);
-    for (const pw of preWords) {
-        if (pw.length < 4) continue;
-        if (QUERY_STOP_WORDS.has(pw)) continue;
-        // Direct lookup hit (exact typo in lookup keys)
-        if (zooRegistry.lookup[pw]) {
-            const resolved = zooRegistry.lookup[pw];
-            if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) {
-                // skip
-            } else {
-                console.log(`[EXTRACTOR-FUZZY-PRE] Exact lookup hit: "${pw}" → "${resolved}"`);
-                return resolved;
-            }
-        }
-        // Fuzzy scan lookup keys
-        const lookupKeys = Object.keys(zooRegistry.lookup);
-        for (const key of lookupKeys) {
-            if (key.length < 4) continue;
-            const maxDist = key.length >= 7 ? 2 : 1;
-            if (Math.abs(pw.length - key.length) > maxDist) continue;
-            if (levenshtein(pw, key) <= maxDist) {
-                const resolved = zooRegistry.lookup[key];
-                if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) {
-                    continue;
-                }
-                console.log(`[EXTRACTOR-FUZZY-PRE] Fuzzy key match: "${pw}" ≈ "${key}" → "${resolved}"`);
-                return resolved;
-            }
-        }
-        // Fuzzy scan canonical names word-by-word
-        for (const canonical of zooRegistry.canonicalNames) {
-            if (zooRegistry.eventNames.has(canonical) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) continue;
-            const cWords = canonical.toLowerCase().split(/[^a-z0-9]+/);
-            for (const cw of cWords) {
-                if (cw.length < 4) continue;
-                const maxDist = cw.length >= 7 ? 2 : 1;
-                if (Math.abs(pw.length - cw.length) > maxDist) continue;
-                if (levenshtein(pw, cw) <= maxDist) {
-                    console.log(`[EXTRACTOR-FUZZY-PRE] Fuzzy canonical match: "${pw}" ≈ "${cw}" in "${canonical}"`);
-                    return canonical;
-                }
-            }
-        }
-    }
+    const qLower = query.toLowerCase().trim();
 
+    // 1. FIRST PASS: Let the LLM process riddles and descriptions
     try {
         const prompt = `You are a subject extractor. Given a user query about a zoo, output ONLY the animal or facility name mentioned. If there is none, output: general\n\nQuery: "${query}"\nSubject:`;
         const resp = await ollama.chat({
@@ -1174,6 +1216,7 @@ async function llmExtractSubject(query) {
 
         let ext = (resp.message?.content || '').trim().toLowerCase();
         ext = ext.replace(/[^a-z0-9\s]/g, '').trim();
+
         // Discard multi-sentence responses (model panicked and over-generated)
         ext = ext.split(/[.!?\n]/)[0].trim();
 
@@ -1181,7 +1224,8 @@ async function llmExtractSubject(query) {
             if (zooRegistry.lookup[ext]) return zooRegistry.lookup[ext];
             const exactHit = zooRegistry.canonicalNames.find(n => n.toLowerCase() === ext);
             if (exactHit) return exactHit;
-            // Also run fuzzy on the LLM's output in case it corrected the spelling
+
+            // Run fuzzy on the LLM's output in case it corrected the spelling slightly
             const fuzzyHit = zooRegistry.canonicalNames.find(n => {
                 const cws = n.toLowerCase().split(/[^a-z0-9]+/);
                 return cws.some(cw => {
@@ -1189,15 +1233,77 @@ async function llmExtractSubject(query) {
                     return levenshtein(ext, cw) <= 1;
                 });
             });
-            if (fuzzyHit) return fuzzyHit;
+            if (fuzzyHit) {
+                console.log(`[EXTRACTOR-LLM] Fuzzy corrected LLM output "${ext}" to "${fuzzyHit}"`);
+                return fuzzyHit;
+            }
         }
-        return null;
     } catch (e) {
         console.warn(`[EXTRACTOR] LLM extraction failed: ${e.message}`);
-        return null;
     }
-}
 
+    // 2. FALLBACK PASS: Fuzzy Levenshtein scan for exact typos
+    // This only runs if the LLM couldn't figure it out.
+    const fallbackWords = qLower.replace(/[?!.,;()'"]/g, '').split(/\s+/);
+
+    // STRICT GUARD: Prevent descriptive adjectives/body parts from matching animal names
+    const DESCRIPTIVE_BLACKLIST = new Set([
+        'ears', 'nose', 'trunk', 'tail', 'legs', 'eyes', 'head', 'neck',
+        'color', 'colour', 'skin', 'fur', 'big', 'small', 'tall', 'heavy'
+    ]);
+
+    for (const pw of fallbackWords) {
+        if (pw.length < 4) continue;
+        if (QUERY_STOP_WORDS.has(pw)) continue;
+        if (DESCRIPTIVE_BLACKLIST.has(pw)) continue;
+
+        // Direct lookup hit (exact typo in lookup keys)
+        if (zooRegistry.lookup[pw]) {
+            const resolved = zooRegistry.lookup[pw];
+            if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) {
+                continue;
+            }
+            console.log(`[EXTRACTOR-FUZZY-FALLBACK] Exact lookup hit: "${pw}" → "${resolved}"`);
+            return resolved;
+        }
+
+        // Fuzzy scan lookup keys
+        const lookupKeys = Object.keys(zooRegistry.lookup);
+        for (const key of lookupKeys) {
+            if (key.length < 4) continue;
+            const maxDist = key.length >= 7 ? 2 : 1;
+            if (Math.abs(pw.length - key.length) > maxDist) continue;
+
+            if (levenshtein(pw, key) <= maxDist) {
+                const resolved = zooRegistry.lookup[key];
+                if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) {
+                    continue;
+                }
+                console.log(`[EXTRACTOR-FUZZY-FALLBACK] Fuzzy key match: "${pw}" ≈ "${key}" → "${resolved}"`);
+                return resolved;
+            }
+        }
+
+        // Fuzzy scan canonical names word-by-word
+        for (const canonical of zooRegistry.canonicalNames) {
+            if (zooRegistry.eventNames.has(canonical) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) continue;
+            const cWords = canonical.toLowerCase().split(/[^a-z0-9]+/);
+
+            for (const cw of cWords) {
+                if (cw.length < 4) continue;
+                const maxDist = cw.length >= 7 ? 2 : 1;
+                if (Math.abs(pw.length - cw.length) > maxDist) continue;
+
+                if (levenshtein(pw, cw) <= maxDist) {
+                    console.log(`[EXTRACTOR-FUZZY-FALLBACK] Fuzzy canonical match: "${pw}" ≈ "${cw}" in "${canonical}"`);
+                    return canonical;
+                }
+            }
+        }
+    }
+
+    return null;
+}
 async function extractSubject(query) {
     const qLower = query.toLowerCase().trim();
 
@@ -1542,6 +1648,11 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
         console.log(`[CHROMA-CACHE] HIT for "${subject}"`);
         return cachedChromaResult;
     }
+    let vectorSubject = subject;
+    if (subject.includes(',')) {
+        console.log(`[SEARCH] Multi-entity detected ("${subject}"). Switching vector search to raw query for better semantic blending.`);
+        vectorSubject = query;
+    }
 
     const queryEmbedding = await getCachedEmbedding(subject);
     if (!queryEmbedding) {
@@ -1874,6 +1985,38 @@ app.post('/api/shera/chat', async (req, res) => {
 
     const isHindi = language === 'hi';
     const qLower = question.toLowerCase().trim();
+
+    // Helper to replace raw names (with numbers/suffixes) with user-friendly render names
+    function replaceRawNamesWithRenderNames(text, isHindi) {
+        if (!text) return text;
+        let cleanedText = text;
+        
+        // Sort rawNames by length descending to prevent substring mismatch issues
+        const rawNamesSorted = Array.from(zooRegistry.rawNames)
+            .sort((a, b) => b.length - a.length);
+            
+        for (const rawName of rawNamesSorted) {
+            const mapping = zooRegistry.rawToRender[rawName];
+            if (mapping) {
+                const renderName = isHindi ? (mapping.hi || mapping.en) : mapping.en;
+                if (renderName && renderName !== rawName) {
+                    const escaped = rawName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                    cleanedText = cleanedText.replace(new RegExp(`\\b${escaped}\\b`, 'gi'), renderName);
+                    cleanedText = cleanedText.replace(new RegExp(escaped, 'g'), renderName);
+                }
+            }
+        }
+        return cleanedText;
+    }
+
+    const originalJson = res.json;
+    res.json = function (body) {
+        if (body && typeof body.answer === 'string') {
+            body.answer = replaceRawNamesWithRenderNames(body.answer, isHindi);
+        }
+        return originalJson.call(this, body);
+    };
+
     console.log(`\n--- Incoming: "${question}" (DeepSearch: ${deepSearch}, Lang: ${language}, Stream: ${stream}) ---`);
 
     const staticMap = STATIC_RESPONSES[isHindi ? 'hi' : 'en'] || STATIC_RESPONSES.en;
@@ -1900,11 +2043,14 @@ app.post('/api/shera/chat', async (req, res) => {
             || qLower.includes('कुल')
             || /\b(kitne|kitna|total|count|number)\b/.test(qLower);
 
-        const containsGenericCategory = [...GENERIC_CATEGORY_WORDS].some(word => 
+        const containsGenericCategory = [...GENERIC_CATEGORY_WORDS].some(word =>
             qLower.includes(word.toLowerCase())
         );
 
-        const forceGeneralRoute = isCountQuery && containsGenericCategory;
+        // NEW: Intercept ANY query asking for "how many species", even if it mentions a specific animal like "lions"
+        const isSpeciesCountQuery = /how many (species|types|kinds|different)/i.test(question) || /कितनी प्रजातियां/i.test(question);
+
+        const forceGeneralRoute = (isCountQuery && containsGenericCategory) || isSpeciesCountQuery;
 
         if (!forceGeneralRoute) {
             const simpleCacheKey = `${language}:${qLower}`;
@@ -1941,8 +2087,16 @@ app.post('/api/shera/chat', async (req, res) => {
             getCachedEmbedding(subject).catch(() => { });
         }
 
+        const restrictedVerbs = /\b(eat|eating|feed|feeding|khau|khana|kill|killing|hurt|hurting|hit|hitting|punch|punching|kick|kicking|shoot|shooting|ride|riding|steal|stealing|touch|touching|pet|petting|tease|teasing|hunt|hunting|catch|catching|harass|harassing|maar|maarna|pito|pakad|pakadna|chhu|chuna|chori|shikar|nuksan|fuck|fucking|sex|rape|raping|abuse|abusing|torture|torturing|slap|slapping|beat|beating)\b/i;
+
+        const containsAnimal = Object.keys(zooRegistry.lookup).some(animal =>
+            animal.length > 2 && qLower.includes(animal)
+        );
+
+        const isRestrictedAction = restrictedVerbs.test(qLower) && containsAnimal;
+
         if (matchedFacility && !question.toLowerCase().includes('tell me') && !question.toLowerCase().includes('information')) {
-            console.log(`[FAST-PATH] Facility shortcut for "${matchedFacility}"`);
+
             const facilityResponses = {
                 'Food & Drinks': isHindi
                     ? '🍽️ खाने-पीने के स्टॉल पूरे चिड़ियाघर में उपलब्ध हैं! 😊'
@@ -1967,41 +2121,50 @@ app.post('/api/shera/chat', async (req, res) => {
                     : '🚫 Feeding animals is strictly prohibited at the zoo. It can harm their health. Please enjoy watching them instead! 😊',
             };
 
-            // Build the instant facility answer (always zero-latency)
-            let facilityAnswer = null;
-            if (matchedFacility === 'Timings & Hours') {
-                const dynamicTimings = await getDynamicZooTimings(language);
-                if (dynamicTimings) facilityAnswer = dynamicTimings;
+            // 1. VETO GUARD: See if we need to cancel the facility match entirely
+            if (isRestrictedAction) {
+                console.log(`[VETO] Restricted action + Animal detected in raw query. Canceling Facility Shortcut.`);
+                matchedFacility = null; // Veto the facility entirely
             }
-            if (!facilityAnswer) {
-                if (facilityResponses[matchedFacility]) {
-                    facilityAnswer = facilityResponses[matchedFacility];
-                } else if (matchedFacility.includes(',')) {
-                    const parts = matchedFacility.split(',').map(p => p.trim());
-                    const combinedAnswers = parts.map(p => facilityResponses[p]).filter(Boolean);
-                    if (combinedAnswers.length > 0) facilityAnswer = combinedAnswers.join(' \n');
+
+            // 2. Build the facility answer ONLY if it wasn't vetoed
+            let facilityAnswer = null;
+            if (matchedFacility) {
+
+                // Check for dynamic timings
+                if (matchedFacility === 'Timings & Hours') {
+                    const dynamicTimings = await getDynamicZooTimings(language);
+                    if (dynamicTimings) facilityAnswer = dynamicTimings;
+                }
+
+                // If it wasn't dynamic timings, grab the static response
+                if (!facilityAnswer) {
+                    if (facilityResponses[matchedFacility]) {
+                        facilityAnswer = facilityResponses[matchedFacility];
+                    } else if (matchedFacility.includes(',')) {
+                        const parts = matchedFacility.split(',').map(p => p.trim());
+                        const combinedAnswers = parts.map(p => facilityResponses[p]).filter(Boolean);
+                        if (combinedAnswers.length > 0) facilityAnswer = combinedAnswers.join(' \n');
+                    }
                 }
             }
 
-            // If there is ALSO an animal subject in the query, do NOT short-circuit.
-            // Instead, store the facility answer and let the animal search continue below.
-            // The animal LLM response will be prepended with the facility answer.
-            const hasAnimalSubject = subject && subject !== 'general'
-                && !subject.split(',').every(p => facilityResponses[p.trim()] !== undefined
-                    || p.trim() === 'Timings & Hours' || p.trim() === 'Feeding Animals');
+            // 3. Routing Logic (Only triggers if we successfully built an answer)
+            if (facilityAnswer) {
+                const hasAnimalSubject = subject && subject !== 'general'
+                    && !subject.split(',').every(p =>
+                        p.trim() === 'Timings & Hours' || p.trim() === 'Feeding Animals' || facilityResponses[p.trim()] !== undefined
+                    );
 
-            if (facilityAnswer && !hasAnimalSubject) {
-                // Pure facility query — instant return, no LLM needed
-                console.log(`[FACILITY-SHORT CUT] Instant response for "${matchedFacility}"`);
-                return res.json({ answer: facilityAnswer, keyword: matchedFacility, references: [] });
-            }
-
-            if (facilityAnswer && hasAnimalSubject) {
-                // Mixed query (facility + animal): prepend facility answer to the request context
-                // so the LLM response that follows covers the animal part.
-                console.log(`[FACILITY+ANIMAL] Prepending facility answer for "${matchedFacility}", continuing animal search for "${subject}"`);
-                res.locals.prependAnswer = facilityAnswer;
-                // Fall through to animal search below
+                if (!hasAnimalSubject) {
+                    // Pure facility query — instant return
+                    console.log(`[FACILITY-SHORT CUT] Instant response for "${matchedFacility}"`);
+                    return res.json({ answer: facilityAnswer, keyword: matchedFacility, references: [] });
+                } else {
+                    // Mixed query (facility + animal): prepend facility answer
+                    console.log(`[FACILITY+ANIMAL] Prepending facility answer for "${matchedFacility}", continuing animal search for "${subject}"`);
+                    res.locals.prependAnswer = facilityAnswer;
+                }
             }
         }
 
@@ -2025,7 +2188,7 @@ app.post('/api/shera/chat', async (req, res) => {
             if (isActivityQuery) {
                 subject = 'Activity';
                 extractedSubject = 'Activity';
-            } else if (!isGreetingOrCasual && !isLocationQuery) {
+            } else if (!isGreetingOrCasual && !isLocationQuery && !forceGeneralRoute) {
                 const testSearch = await antigravitySearch(question, question, false, 1, language, false);
 
                 // FIX: Increased threshold from 0.35 to 0.65 to prevent weak vector matches from overriding general queries
@@ -2237,7 +2400,7 @@ app.post('/api/shera/chat', async (req, res) => {
         let sortedContext = [];
         let finalSubject = subject;
 
-        function trimContext(raw, maxChars = 400) {
+        function trimContext(raw, maxChars = 1000) {
             if (!raw) return '';
             if (raw.length <= maxChars) return raw;
             const sliced = raw.slice(0, maxChars);
@@ -2257,16 +2420,16 @@ app.post('/api/shera/chat', async (req, res) => {
                     'have', 'been', 'recorded', 'within', 'limits', 'boundaries', 'zoo', 'national', 'delhi',
                     'से', 'अधिक', 'और', 'की', 'के', 'में', 'पर', 'चिड़ियाघर', 'चिड़ियाघर', 'हैं', 'है', 'को'
                 ]);
-                
+
                 while ((match = regex.exec(text)) !== null) {
                     const numStr = match[1];
                     const numVal = parseInt(numStr.replace(/,/g, ''));
                     if (isNaN(numVal)) continue;
-                    
+
                     const startIndex = match.index + numStr.length;
                     const lookahead = text.slice(startIndex, startIndex + 50).toLowerCase();
                     const words = lookahead.split(/[^a-zA-Z0-9\u0900-\u097F]+/).filter(w => w.length > 2 && !stopWords.has(w));
-                    
+
                     matches.push({
                         numStr,
                         numVal,
@@ -2283,14 +2446,19 @@ app.post('/api/shera/chat', async (req, res) => {
 
             let patchedAnswer = answer;
 
+            const countNouns = new Set([
+                'species', 'animals', 'birds', 'reptiles', 'mammals', 'lions', 'tigers', 'peacocks',
+                'visitors', 'stalls', 'beats', 'locations', 'places', 'gates', 'members', 'individuals',
+                'canteens', 'toilets', 'restrooms', 'washrooms', 'points', 'stops', 'kiosks',
+                'prajati', 'prajatiyan', 'janwar', 'pakshi', 'log', 'sadasya',
+                'प्रजातियाँ', 'प्रजाति', 'जानवर', 'पक्षी', 'लोग', 'सदस्य', 'स्टॉल', 'गेट'
+            ]);
+
             for (const ans of ansNums) {
                 let bestCtx = null;
                 let maxOverlap = 0;
 
                 for (const ctx of ctxNums) {
-                    if (ans.numVal === ctx.numVal) continue;
-
-                    // Calculate word overlap
                     const overlap = ans.words.filter(w => ctx.words.includes(w));
                     if (overlap.length > maxOverlap) {
                         maxOverlap = overlap.length;
@@ -2299,16 +2467,26 @@ app.post('/api/shera/chat', async (req, res) => {
                 }
 
                 if (bestCtx && maxOverlap > 0) {
-                    console.log(`[NUMBER-PATCH] Semantic match: Model said ${ans.numStr} (words: ${ans.words}), context says ${bestCtx.numStr} (words: ${bestCtx.words}). Patching.`);
-                    patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), bestCtx.numStr);
+                    if (ans.numVal !== bestCtx.numVal) {
+                        console.log(`[NUMBER-PATCH] Semantic match: Model said ${ans.numStr} (words: ${ans.words}), context says ${bestCtx.numStr} (words: ${bestCtx.words}). Patching.`);
+                        patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), bestCtx.numStr);
+                    }
                 } else {
-                    // Fallback to proximity matching
-                    for (const ctx of ctxNums) {
-                        if (ans.numVal === ctx.numVal) continue;
-                        if (Math.abs(ans.numVal - ctx.numVal) <= ctx.numVal * 0.6) {
-                            console.log(`[NUMBER-PATCH] Proximity match: Model said ${ans.numStr}, context says ${ctx.numStr}. Patching.`);
-                            patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), ctx.numStr);
-                            break;
+                    const existsInContext = ctxNums.some(ctx => ctx.numVal === ans.numVal);
+                    const isCountNoun = ans.words.some(w => countNouns.has(w));
+
+                    if (isCountNoun && (!existsInContext || maxOverlap === 0)) {
+                        console.log(`[NUMBER-PATCH] Hallucinated statistic detected: ${ans.numStr} (words: ${ans.words}). Replacing with vague quantifier.`);
+                        const replacement = isHindi ? 'कई' : 'many';
+                        patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), replacement);
+                    } else if (!existsInContext) {
+                        for (const ctx of ctxNums) {
+                            if (ans.numVal === ctx.numVal) continue;
+                            if (Math.abs(ans.numVal - ctx.numVal) <= ctx.numVal * 0.2) {
+                                console.log(`[NUMBER-PATCH] Proximity match: Model said ${ans.numStr}, context says ${ctx.numStr}. Patching.`);
+                                patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), ctx.numStr);
+                                break;
+                            }
                         }
                     }
                 }
@@ -2359,40 +2537,87 @@ app.post('/api/shera/chat', async (req, res) => {
             let searchResult = null;
 
             if (forceGeneralRoute) {
-                // Determine target key-fact ID
-                let targetId = 'key_fact_animals'; // Default fallback
-                if (qLower.includes('bird') || qLower.includes('पक्ष') || qLower.includes('चिड़ि') || qLower.includes('chidi') || qLower.includes('panch') || qLower.includes('paksh')) {
-                    targetId = 'key_fact_birds';
-                } else if (qLower.includes('mammal') || qLower.includes('स्तन')) {
-                    targetId = 'key_fact_mammals';
-                } else if (qLower.includes('reptile') || qLower.includes('सरीसृप')) {
-                    targetId = 'key_fact_reptiles';
-                }
-
-                console.log(`[SHORT-CIRCUIT] Fetching direct key fact: "${targetId}" from ChromaDB`);
+                console.log(`[SHORT-CIRCUIT] Querying general knowledge records with keyword priority...`);
                 try {
-                    const getRes = await collection.get({ ids: [targetId] });
-                    if (getRes && getRes.ids && getRes.ids.length > 0) {
-                        const docText = formatDocumentText(getRes.documents[0], getRes.metadatas[0], language);
+                    const qEmb = await getCachedEmbedding(question);
+
+                    // 1. WIDE NET: Fetch 20 results across facts, key_facts, and about
+                    const getRes = await collection.query({
+                        queryEmbeddings: [qEmb],
+                        nResults: 20,
+                        where: {
+                            $or: [
+                                { type: "fact" },
+                                { type: "key_facts" },
+                                { type: "about" }
+                            ]
+                        }
+                    });
+
+                    if (getRes && getRes.documents && getRes.documents[0].length > 0) {
+
+                        // Extract target category
+                        const targetWords = ['bird', 'birds', 'mammal', 'mammals', 'reptile', 'reptiles', 'animal', 'animals', 'lion', 'lions'];
+                        const targetCategory = targetWords.find(w => qLower.includes(w));
+
+                        let validDocs = getRes.documents[0].map((doc, i) => {
+                            return {
+                                text: formatDocumentText(doc, getRes.metadatas[0][i], language),
+                                metadata: getRes.metadatas[0][i],
+                                score: getRes.distances && getRes.distances[0] ? getRes.distances[0][i] : i
+                            };
+                        });
+
+                        // 2. THE SEMANTIC TRAP FIX: Drop combo facts to protect the number patcher
+                        if (targetCategory && targetCategory !== 'animal' && targetCategory !== 'animals') {
+                            validDocs = validDocs.filter(d => {
+                                const tLower = d.text.toLowerCase();
+                                const isComboFact = tLower.includes('mammal') && tLower.includes('reptile');
+                                return !isComboFact;
+                            });
+                        }
+
+                        // 3. KEYWORD PROMOTION
+                        validDocs.forEach(d => {
+                            if (targetCategory && d.text.toLowerCase().includes(targetCategory)) {
+                                d.score -= 0.5; // Force specific facts to the very top
+                            }
+                        });
+
+                        // Sort by lowest distance/score and take ONLY the top 5
+                        validDocs.sort((a, b) => a.score - b.score);
+                        const top5Docs = validDocs.slice(0, 5);
+
+                        const relevantFacts = top5Docs.map(d => d.text).join('\n\n');
+
+                        // 4. Strict Boundary Instruction
+                        const strictContext = "CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park. You MUST answer the user's question using ONLY the facts below. \n" +
+                            "- NEVER give global, world, or general trivia numbers. ONLY talk about this specific zoo.\n" +
+                            "- If the exact specific number for the category asked (e.g., birds, reptiles) is NOT explicitly written below, say: 'I don't have the exact number for that category, but we have [total number] species in total at the zoo.'\n" +
+                            "- DO NOT GUESS OR MAKE UP NUMBERS.\n\n" +
+                            relevantFacts;
+
                         searchResult = {
-                            context: docText,
+                            context: strictContext,
                             subject: 'general',
                             extractedSubject: 'general',
                             references: [],
                             topScore: 1.5,
                             isFacilityMatch: false,
-                            sortedContext: [{
-                                doc: docText,
-                                metadata: getRes.metadatas[0],
+                            sortedContext: top5Docs.map(d => ({
+                                doc: d.text,
+                                metadata: d.metadata,
                                 score: 1.5,
-                                originalName: getRes.metadatas[0]?.name || targetId
-                            }]
+                                originalName: d.metadata?.title || 'Zoo Fact'
+                            }))
                         };
                         isCountShortCircuit = true;
-                        console.log(`[SHORT-CIRCUIT] Direct fact retrieved successfully: "${docText}"`);
+                        console.log(`[SHORT-CIRCUIT] Retrieved and promoted top 5 relevant facts successfully.`);
+                    } else {
+                        console.warn(`[SHORT-CIRCUIT] No relevant facts found.`);
                     }
                 } catch (err) {
-                    console.warn(`[SHORT-CIRCUIT] Direct Chroma get failed: ${err.message}. Falling back to normal search.`);
+                    console.warn(`[SHORT-CIRCUIT] Direct Chroma query failed: ${err.message}. Falling back to normal search.`);
                 }
             }
 
@@ -2412,7 +2637,7 @@ app.post('/api/shera/chat', async (req, res) => {
                 finalSubject = searchResult.subject;
             }
 
-            if (isCountShortCircuit) {
+            if (isCountShortCircuit || isRestrictedAction) {
                 references = [];
             } else {
                 const relatedAnimals = findRelatedAnimals(finalSubject, question);
@@ -2621,7 +2846,7 @@ app.post('/api/shera/chat', async (req, res) => {
 
         // FIX: Calculate the context safely BEFORE the if/else blocks begin
         const rawContext = isHindi ? applyHindiGlossary(context) : context;
-        const trimmedContext = trimContext(rawContext, 400);
+        const trimmedContext = trimContext(rawContext, 1000);
 
         if (isNotFound) {
             systemPrompt = isHindi
@@ -2632,6 +2857,7 @@ ${NO_THOUGHT_INSTRUCTION_HI}
 1. यदि उपयोगकर्ता किसी ऐसे जानवर या विषय के बारे में पूछता है जो चिड़ियाघर में नहीं है, तो अपने सामान्य ज्ञान से उत्तर दें, लेकिन यह भी बताएं कि वे हमारे चिड़ियाघर में अभी नहीं हैं। किसी भी परिस्थिति में अपनी तरफ से कोई संख्या, गिनती, आबादी या सांख्यिकी (statistics) मनगढ़ंत न बताएं।
 2. बहुत ही चुलबुला और दोस्ताना अंदाज़ रखें।
 3. अंत में केवल एक प्रासंगिक इमोजी लगाएं।
+4. यदि उपयोगकर्ता जानवरों को नुकसान पहुंचाने, खाने, सवारी करने या उनके साथ कुछ भी अनुचित करने के बारे में पूछता है, तो विनम्रता लेकिन दृढ़ता से मना करें, और अपने उत्तर की शुरुआत में "[REFUSE]" टैग जरूर लगाएं (जैसे "[REFUSE] अरे नहीं! हम ऐसा नहीं करते...")। उन्हें याद दिलाएं कि जानवरों की रक्षा और सम्मान किया जाना चाहिए।
  
 अब उपयोगकर्ता का उत्तर दें। बहुत ही संक्षिप्त (1 वाक्य) और बिना बुलेट या लिंक के।`
                 : `You are Shera, the friendly and playful guide of National Zoological Park, New Delhi.
@@ -2642,6 +2868,7 @@ Rules:
 2. NEVER mention any other zoo, wildlife sanctuary, national park, or external location. You represent ONLY National Zoological Park, New Delhi.
 3. Maintain a playful, enthusiastic, and friendly tone.
 4. Include exactly one relevant emoji at the very end of your response.
+5. If the user asks about harming, eating, riding, or doing anything inappropriate to the animals, politely but firmly refuse, and you MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don't do that here..."). Remind them that animals are to be protected and respected, while maintaining your playful persona.
  
 Now answer the user concisely in 1 sentence. No links or bullet points.`;
 
@@ -2654,6 +2881,7 @@ ${NO_THOUGHT_INSTRUCTION_HI}
 नियम:
 1. बहुत ही चुलबुला और दोस्ताना अंदाज़ रखें। किसी भी परिस्थिति में अपनी तरफ से कोई संख्या, गिनती, आबादी या सांख्यिकी (statistics) मनगढ़ंत न बताएं।
 2. अंत में केवल एक प्रासंगिक इमोजी लगाएं।
+3. यदि उपयोगकर्ता जानवरों को नुकसान पहुंचाने, खाने, सवारी करने या उनके साथ कुछ भी अनुचित करने के बारे में पूछता है, तो विनम्रता लेकिन दृढ़ता से मना करें, और अपने उत्तर की शुरुआत में "[REFUSE]" टैग जरूर लगाएं (जैसे "[REFUSE] अरे नहीं! हम ऐसा नहीं करते...")। उन्हें याद दिलाएं कि जानवरों की रक्षा और सम्मान किया जाना चाहिए।
  
 अब उपयोगकर्ता का उत्तर दें। बहुत ही संक्षिप्त (1-2 वाक्य) और बिना बुलेट या लिंक के।`
                 : `You are Shera, the friendly and playful zoo guide at National Zoological Park, New Delhi.
@@ -2662,6 +2890,7 @@ ${NO_THOUGHT_INSTRUCTION_EN}
 Rules:
 1. Maintain a playful, enthusiastic, and friendly tone. Do NOT invent, hallucinate, or guess any specific statistics, counts, or animal population numbers under any circumstance.
 2. Include exactly one relevant emoji at the very end of your response.
+3. If the user asks about harming, eating, riding, or doing anything inappropriate to the animals, politely but firmly refuse, and you MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don't do that here..."). Remind them that animals are to be protected and respected, while maintaining your playful persona.
  
 Now answer the user concisely in 1-2 sentences. No links or bullet points.`;
 
@@ -2677,10 +2906,12 @@ Context: ${trimmedContext}
  
 नियम:
 1. केवल ऊपर दिए गए context का उपयोग करके उत्तर दें। यदि उपयोगकर्ता पूछे कि यह जानवर कहाँ देखें, तो केवल context में दिए गए हमारे चिड़ियाघर के स्थान का उल्लेख करें। किसी भी अन्य चिड़ियाघर, अभ्यारण्य या बाहरी स्थान का कभी उल्लेख न करें।
-2. यदि context में कोई संख्या, गिनती या आँकड़ा दिया गया है (जैसे "200 से अधिक प्रजातियाँ"), तो आपको वही संख्या उत्तर में उपयोग करनी है। किसी भी संख्या को बदलें नहीं। context में न दी गई किसी भी संख्या, गिनती या आँकड़े को अपनी तरफ से न गढ़ें और न ही कोई मनगढ़ंत आँकड़ा बताएं।
+2. यदि context में कोई संख्या, गिनती या आँकड़ा दिया गया है (जैसे "200 से अधिक प्रजातियाँ"), तो आपको वही संख्या उत्तर में उपयोग करनी है। किसी भी संख्या को बदलें नहीं। context में न दी गई किसी भी संख्या, गिनती या आँकड़े को अपनी तरफ से न गढ़ें और न ही कोई मनगढ़ंत आँकड़ा बताएं। यदि उपयोगकर्ता किसी विशिष्ट जानवर की संख्या, आबादी या गिनती के बारे में पूछता है (जैसे "कितने शेर हैं"), और context में उस जानवर की संख्या का स्पष्ट रूप से उल्लेख नहीं है, तो आपको यह बताना होगा कि सटीक संख्या आपके रिकॉर्ड में उपलब्ध नहीं है, न कि अपनी तरफ से कोई संख्या मनगढ़ंत बताना।
 3. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `स्पष्ट रूप से बताएं कि हमारे पास ${mismatchedInfo.missing} नहीं है।` : `स्पष्ट रूप से बताएं कि हमारे पास ${mismatchedInfo.missing} नहीं है, लेकिन हमारे पास ${mismatchedInfo.available} हैं।`) : (isContextThin ? `यदि यह जानवर हमारे चिड़ियाघर में नहीं है, तो स्वाभाविक रूप से बताएं कि यह अभी हमारे पास नहीं है।` : '')}
 4. बहुत ही चुलबुला (playful), उत्साही और दोस्ताना अंदाज़ रखें।
 5. अंत में केवल एक प्रासंगिक इमोजी लगाएं।
+6. यदि उपयोगकर्ता जानवरों को नुकसान पहुंचाने, खाने, सवारी करने या उनके साथ कुछ भी अनुचित करने के बारे में पूछता है, तो विनम्रता लेकिन दृढ़ता से मना करें, और अपने उत्तर की शुरुआत में "[REFUSE]" टैग जरूर लगाएं (जैसे "[REFUSE] अरे नहीं! हम ऐसा नहीं करते...")। उन्हें याद दिलाएं कि जानवरों की रक्षा और सम्मान किया जाना चाहिए।
+7. जानवरों को हमेशा उनके अनुकूल रेंडर नामों (render names) से ही संबोधित करें (जैसे "Asiatic Lion 1" या "Asiatic Lion 2" के बजाय "Asiatic Lion" या "एशियाई शेर" का उपयोग करें)। जानवरों के नामों में कभी भी कोई संख्या या सांख्यिकीय प्रत्यय शामिल न करें।
  
 सख्त नियम: केवल 1 या 2 वाक्यों में ही उत्तर दें। कोई कहानी या अतिरिक्त वाक्य न लिखें।`
                 : `You are Shera, the friendly and playful guide at National Zoological Park, New Delhi.
@@ -2690,10 +2921,12 @@ Context: ${trimmedContext}
  
 Rules:
 1. ${isContextThin ? 'Since the context is empty/thin, answer the user\'s biological, behavioral, or diet question using your General Knowledge. Do NOT invent, hallucinate, or mention any zoo location or area.' : 'Answer using ONLY the context provided above. If the user asks where to see this animal, refer exclusively to its location within National Zoological Park using the context. NEVER mention any other zoo, wildlife sanctuary, national park, or any external location under any circumstance.'}
-2. If the context contains any specific numbers, counts, or statistics (e.g. "over 200 species", "4 tigers"), you MUST use those EXACT figures in your answer. Never change, round, or substitute any number from the context under any circumstance. DO NOT invent, hallucinate, or guess any counts, numbers, or statistics that are not explicitly mentioned in the context.
+2. If the context contains any specific numbers, counts, or statistics (e.g. "over 200 species", "4 tigers"), you MUST use those EXACT figures in your answer. Never change, round, or substitute any number from the context under any circumstance. DO NOT invent, hallucinate, or guess any counts, numbers, or statistics that are not explicitly mentioned in the context. If the user asks for the count, population, or quantity of a specific animal (e.g. "how many lions"), and the context does not explicitly mention the number of that animal, you MUST state that the exact count is not available in your records, rather than guessing or fabricating any number.
 3. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `Explicitly state that we do NOT have ${mismatchedInfo.missing}s at our zoo.` : `Explicitly state that we do NOT have ${mismatchedInfo.missing}s, but mention we do have ${mismatchedInfo.available} at our zoo.`) : (isContextThin ? `If this animal is not part of our zoo, naturally mention that it is not currently at our zoo.` : '')}
 4. Maintain a playful, enthusiastic, and friendly tone.
 5. Include exactly one relevant emoji at the very end of your response.
+6. If the user asks about harming, eating, riding, or doing anything inappropriate to the animals, politely but firmly refuse, and you MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don't do that here..."). Remind them that animals are to be protected and respected, while maintaining your playful persona.
+7. Always refer to the animals by their friendly render names (e.g., use "Asiatic Lion" instead of "Asiatic Lion 1" or "Asiatic Lion 2"). Never include any numbers or numeric suffixes in animal names.
  
 STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or extra sentences.`;
         }
@@ -2740,13 +2973,51 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                 }
             });
 
+            let buffer = '';
+            let checkedRefuse = false;
+            let refuseDetected = false;
+
             for await (const chunk of streamResp) {
                 const token = chunk.message?.content || '';
                 fullAnswer += token;
-                res.write(`data: ${JSON.stringify({ token })}\n\n`);
+
+                if (!checkedRefuse) {
+                    buffer += token;
+                    if (buffer.length >= 10 || chunk.done) {
+                        checkedRefuse = true;
+                        if (buffer.includes('[REFUSE]')) {
+                            refuseDetected = true;
+                            buffer = buffer.replace('[REFUSE]', '').trim();
+                        }
+                        if (buffer) {
+                            res.write(`data: ${JSON.stringify({ token: buffer })}\n\n`);
+                        }
+                    }
+                } else {
+                    let tokenToWrite = token;
+                    if (refuseDetected && tokenToWrite.includes('[REFUSE]')) {
+                        tokenToWrite = tokenToWrite.replace('[REFUSE]', '');
+                    }
+                    if (tokenToWrite) {
+                        res.write(`data: ${JSON.stringify({ token: tokenToWrite })}\n\n`);
+                    }
+                }
             }
 
-            res.write(`data: ${JSON.stringify({ done: true, keyword: finalSubject, references })}\n\n`);
+            // --- UI SUPPRESSION LOGIC ---
+            let outKeyword = finalSubject;
+            let outReferences = references;
+            if (isRestrictedAction || refuseDetected) {
+                console.log(`[UI CONTROL] Restricted action/refusal detected. Suppressing card rendering.`);
+                outKeyword = 'general';
+                outReferences = [];
+            } else if (finalSubject !== 'general' && shouldSuppressCard(question)) {
+                console.log(`[UI CONTROL] Trait/Fact question detected. Suppressing card rendering for "${finalSubject}".`);
+                outKeyword = 'general';
+                outReferences = [];
+            }
+
+            res.write(`data: ${JSON.stringify({ done: true, keyword: outKeyword, references: outReferences })}\n\n`);
             res.end();
 
             logResources('Stream Complete');
@@ -2801,6 +3072,12 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
 
             answer = validateAndPatchNumbers(answer, trimmedContext);
 
+            let refuseDetected = false;
+            if (answer.includes('[REFUSE]')) {
+                refuseDetected = true;
+                answer = answer.replace('[REFUSE]', '').trim();
+            }
+
             if (isHindi && answer) {
                 const englishWordCount = (answer.match(/\b[a-zA-Z]{3,}\b/g) || []).length;
                 const totalWordCount = answer.split(/\s+/).length;
@@ -2821,6 +3098,10 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                     if (retryAnswer) {
                         console.log(`[HINDI-RETRY] New answer: ${retryAnswer}`);
                         answer = retryAnswer;
+                        if (answer.includes('[REFUSE]')) {
+                            refuseDetected = true;
+                            answer = answer.replace('[REFUSE]', '').trim();
+                        }
                     }
                 }
             }
@@ -2834,7 +3115,20 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                 answer = res.locals.prependAnswer + '\n\n' + answer;
             }
 
-            const responsePayload = { answer, keyword: finalSubject, references };
+            // --- UI SUPPRESSION LOGIC ---
+            let outKeyword = finalSubject;
+            let outReferences = references;
+            if (isRestrictedAction || refuseDetected) {
+                console.log(`[UI CONTROL] Restricted action/refusal detected. Suppressing card rendering.`);
+                outKeyword = 'general';
+                outReferences = [];
+            } else if (finalSubject !== 'general' && shouldSuppressCard(question)) {
+                console.log(`[UI CONTROL] Trait/Fact question detected. Suppressing card rendering for "${finalSubject}".`);
+                outKeyword = 'general';
+                outReferences = [];
+            }
+
+            const responsePayload = { answer, keyword: outKeyword, references: outReferences };
 
             if (topScore >= 0.65 && finalSubject && finalSubject !== 'general') {
                 setCachedResponse(`${language}:${finalSubject}:${qLower}`, responsePayload);

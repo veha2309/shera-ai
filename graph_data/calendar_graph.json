@@ -1,319 +1,1373 @@
 {
   "nodes": [
     {
-      "id": "Calendar Event: National Birding Day",
-      "type": "Event",
-      "description": "National Birding Day. Date: 2026-04-03T00:00:00.000Z. Details: [object Object]"
+      "id": "National Birding Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"National Birding Day\",\"hi\":\"राष्ट्रीय पक्षी दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cb99bef4b481be08dfc36e | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/Uh2OthC13XZI-Tue Mar 31 2026 09:54:03 GMT+0000 (Coordinated Universal Time)-National birding day.jpeg | date: 2026-04-03T00:00:00.000Z | createdAt: 2026-03-31T09:54:06.107Z | updatedAt: 2026-03-31T09:54:06.107Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "National Birding Day",
+          "hi": "राष्ट्रीय पक्षी दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cb99bef4b481be08dfc36e",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/Uh2OthC13XZI-Tue Mar 31 2026 09:54:03 GMT+0000 (Coordinated Universal Time)-National birding day.jpeg",
+        "date": "2026-04-03T00:00:00.000Z",
+        "createdAt": "2026-03-31T09:54:06.107Z",
+        "updatedAt": "2026-03-31T09:54:06.107Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Zoo Lovers Day",
-      "type": "Event",
-      "description": "Zoo Lovers Day. Date: 2026-04-08T00:00:00.000Z. Details: [object Object]"
+      "id": "Zoo Lovers Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Zoo Lovers Day\",\"hi\":\"चिड़ियाघर प्रेमी दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cba673f4b481be08e1007c | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/o6hmSV7Ul35Q-Tue Mar 31 2026 10:48:14 GMT+0000 (Coordinated Universal Time)-Zoo lovers day.jpeg | date: 2026-04-08T00:00:00.000Z | createdAt: 2026-03-31T10:48:19.822Z | updatedAt: 2026-03-31T10:48:19.822Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Zoo Lovers Day",
+          "hi": "चिड़ियाघर प्रेमी दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cba673f4b481be08e1007c",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/o6hmSV7Ul35Q-Tue Mar 31 2026 10:48:14 GMT+0000 (Coordinated Universal Time)-Zoo lovers day.jpeg",
+        "date": "2026-04-08T00:00:00.000Z",
+        "createdAt": "2026-03-31T10:48:19.822Z",
+        "updatedAt": "2026-03-31T10:48:19.822Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: National Dolphin Day",
-      "type": "Event",
-      "description": "National Dolphin Day. Date: 2026-04-14T00:00:00.000Z. Details: [object Object]"
+      "id": "National Dolphin Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"National Dolphin Day\",\"hi\":\"राष्ट्रीय डॉल्फिन दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cba6d4f4b481be08e10094 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/6zMfjfd9ZTU8-Tue Mar 31 2026 10:49:53 GMT+0000 (Coordinated Universal Time)-National dolphin day.jpeg | date: 2026-04-14T00:00:00.000Z | createdAt: 2026-03-31T10:49:56.190Z | updatedAt: 2026-03-31T10:49:56.190Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "National Dolphin Day",
+          "hi": "राष्ट्रीय डॉल्फिन दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cba6d4f4b481be08e10094",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/6zMfjfd9ZTU8-Tue Mar 31 2026 10:49:53 GMT+0000 (Coordinated Universal Time)-National dolphin day.jpeg",
+        "date": "2026-04-14T00:00:00.000Z",
+        "createdAt": "2026-03-31T10:49:56.190Z",
+        "updatedAt": "2026-03-31T10:49:56.190Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Save the Elephant Day",
-      "type": "Event",
-      "description": "Save the Elephant Day. Date: 2026-04-16T00:00:00.000Z. Details: [object Object]"
+      "id": "Save the Elephant Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Save the Elephant Day\",\"hi\":\"हाथी दिवस बचाओ\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cba787f4b481be08e102b0 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/JLvWZphk6r9a-Tue Mar 31 2026 10:52:51 GMT+0000 (Coordinated Universal Time)-Save the elephant day.png | date: 2026-04-16T00:00:00.000Z | createdAt: 2026-03-31T10:52:55.952Z | updatedAt: 2026-03-31T10:52:55.952Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Save the Elephant Day",
+          "hi": "हाथी दिवस बचाओ"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cba787f4b481be08e102b0",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/JLvWZphk6r9a-Tue Mar 31 2026 10:52:51 GMT+0000 (Coordinated Universal Time)-Save the elephant day.png",
+        "date": "2026-04-16T00:00:00.000Z",
+        "createdAt": "2026-03-31T10:52:55.952Z",
+        "updatedAt": "2026-03-31T10:52:55.952Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Bat Appreciation Day",
-      "type": "Event",
-      "description": "International Bat Appreciation Day. Date: 2026-04-17T00:00:00.000Z. Details: [object Object]"
+      "id": "International Bat Appreciation Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Bat Appreciation Day\",\"hi\":\"अंतर्राष्ट्रीय चमगादड़ प्रशंसा दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cba8bbf4b481be08e1106f | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/FyplQ99RZ2mR-Tue Mar 31 2026 10:57:54 GMT+0000 (Coordinated Universal Time)-International Bat appreciation day.avif | date: 2026-04-17T00:00:00.000Z | createdAt: 2026-03-31T10:58:03.078Z | updatedAt: 2026-03-31T10:58:03.078Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Bat Appreciation Day",
+          "hi": "अंतर्राष्ट्रीय चमगादड़ प्रशंसा दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cba8bbf4b481be08e1106f",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/FyplQ99RZ2mR-Tue Mar 31 2026 10:57:54 GMT+0000 (Coordinated Universal Time)-International Bat appreciation day.avif",
+        "date": "2026-04-17T00:00:00.000Z",
+        "createdAt": "2026-03-31T10:58:03.078Z",
+        "updatedAt": "2026-03-31T10:58:03.078Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Earth day",
-      "type": "Event",
-      "description": "World Earth day. Date: 2026-04-22T00:00:00.000Z. Details: [object Object]"
+      "id": "World Earth day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Earth day\",\"hi\":\"विश्व पृथ्वी दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cba9d7f4b481be08e1165d | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/WygfWTxc3skO-Tue Mar 31 2026 11:02:45 GMT+0000 (Coordinated Universal Time)-World Earth day.jpeg | date: 2026-04-22T00:00:00.000Z | createdAt: 2026-03-31T11:02:47.513Z | updatedAt: 2026-03-31T11:02:47.513Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Earth day",
+          "hi": "विश्व पृथ्वी दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cba9d7f4b481be08e1165d",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/WygfWTxc3skO-Tue Mar 31 2026 11:02:45 GMT+0000 (Coordinated Universal Time)-World Earth day.jpeg",
+        "date": "2026-04-22T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:02:47.513Z",
+        "updatedAt": "2026-03-31T11:02:47.513Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Day for Animals in Laboratories",
-      "type": "Event",
-      "description": "World Day for Animals in Laboratories. Date: 2026-04-24T00:00:00.000Z. Details: [object Object]"
+      "id": "World Day for Animals in Laboratories",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Day for Animals in Laboratories\",\"hi\":\"प्रयोगशालाओं में पशुओं के लिए विश्व दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cbaa46f4b481be08e117f5 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/Pibrs33dDrau-Tue Mar 31 2026 11:04:34 GMT+0000 (Coordinated Universal Time)-World day for animals in laboratories.png | date: 2026-04-24T00:00:00.000Z | createdAt: 2026-03-31T11:04:38.589Z | updatedAt: 2026-03-31T11:04:38.589Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Day for Animals in Laboratories",
+          "hi": "प्रयोगशालाओं में पशुओं के लिए विश्व दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cbaa46f4b481be08e117f5",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/Pibrs33dDrau-Tue Mar 31 2026 11:04:34 GMT+0000 (Coordinated Universal Time)-World day for animals in laboratories.png",
+        "date": "2026-04-24T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:04:38.589Z",
+        "updatedAt": "2026-03-31T11:04:38.589Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Penguin Day",
-      "type": "Event",
-      "description": "World Penguin Day. Date: 2026-04-25T00:00:00.000Z. Details: [object Object]"
+      "id": "World Penguin Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Penguin Day\",\"hi\":\"विश्व पेंगुइन दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cbaad8f4b481be08e11b16 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/5dDLJ326A87B-Tue Mar 31 2026 11:07:00 GMT+0000 (Coordinated Universal Time)-World penguin day.jpeg | date: 2026-04-25T00:00:00.000Z | createdAt: 2026-03-31T11:07:04.403Z | updatedAt: 2026-03-31T11:07:04.403Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Penguin Day",
+          "hi": "विश्व पेंगुइन दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cbaad8f4b481be08e11b16",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/5dDLJ326A87B-Tue Mar 31 2026 11:07:00 GMT+0000 (Coordinated Universal Time)-World penguin day.jpeg",
+        "date": "2026-04-25T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:07:04.403Z",
+        "updatedAt": "2026-03-31T11:07:04.403Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Hyena Day",
-      "type": "Event",
-      "description": "International Hyena Day. Date: 2026-04-27T00:00:00.000Z. Details: [object Object]"
+      "id": "International Hyena Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Hyena Day\",\"hi\":\"अंतर्राष्ट्रीय लकड़बग्घा दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cbab8c743bdb164c0c1e7d | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/4y7IpBbnCn5L-Tue Mar 31 2026 11:10:01 GMT+0000 (Coordinated Universal Time)-International Hyena Day.jpeg | date: 2026-04-27T00:00:00.000Z | createdAt: 2026-03-31T11:10:04.205Z | updatedAt: 2026-03-31T11:10:04.205Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Hyena Day",
+          "hi": "अंतर्राष्ट्रीय लकड़बग्घा दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cbab8c743bdb164c0c1e7d",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/4y7IpBbnCn5L-Tue Mar 31 2026 11:10:01 GMT+0000 (Coordinated Universal Time)-International Hyena Day.jpeg",
+        "date": "2026-04-27T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:10:04.205Z",
+        "updatedAt": "2026-03-31T11:10:04.205Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Save the Rhino Day",
-      "type": "Event",
-      "description": "Save the Rhino Day. Date: 2026-05-01T00:00:00.000Z. Details: [object Object]"
+      "id": "Save the Rhino Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Save the Rhino Day\",\"hi\":\"गैंडा दिवस बचाएं\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cbac6d743bdb164c0c2610 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/cmsMtQXCMfz2-Tue Mar 31 2026 11:13:47 GMT+0000 (Coordinated Universal Time)-save the rhino day.jpg | date: 2026-05-01T00:00:00.000Z | createdAt: 2026-03-31T11:13:49.316Z | updatedAt: 2026-03-31T11:13:49.316Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Save the Rhino Day",
+          "hi": "गैंडा दिवस बचाएं"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cbac6d743bdb164c0c2610",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/cmsMtQXCMfz2-Tue Mar 31 2026 11:13:47 GMT+0000 (Coordinated Universal Time)-save the rhino day.jpg",
+        "date": "2026-05-01T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:13:49.316Z",
+        "updatedAt": "2026-03-31T11:13:49.316Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Leopard Day",
-      "type": "Event",
-      "description": "International Leopard Day. Date: 2026-05-03T00:00:00.000Z. Details: [object Object]"
+      "id": "International Leopard Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Leopard Day\",\"hi\":\"अंतर्राष्ट्रीय तेंदुआ दिवस\"} | body: {\"en\":\"\",\"hi\":\"\"} | _id: 69cbb0d1743bdb164c0c3732 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/DM2crVJND6kH-Tue Mar 31 2026 11:32:28 GMT+0000 (Coordinated Universal Time)-International Leopard Day.jpg | date: 2026-05-03T00:00:00.000Z | createdAt: 2026-03-31T11:32:33.378Z | updatedAt: 2026-03-31T11:32:33.378Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Leopard Day",
+          "hi": "अंतर्राष्ट्रीय तेंदुआ दिवस"
+        },
+        "body": {
+          "en": "",
+          "hi": ""
+        },
+        "_id": "69cbb0d1743bdb164c0c3732",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/DM2crVJND6kH-Tue Mar 31 2026 11:32:28 GMT+0000 (Coordinated Universal Time)-International Leopard Day.jpg",
+        "date": "2026-05-03T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:32:33.378Z",
+        "updatedAt": "2026-03-31T11:32:33.378Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Endemic Bird Day",
-      "type": "Event",
-      "description": "Endemic Bird Day. Date: 2026-05-10T00:00:00.000Z. Details: NZP marks Endemic Bird Day by raising awareness about India’s native bird species and their conservation."
+      "id": "Endemic Bird Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Endemic Bird Day\",\"hi\":\"स्थानिक पक्षी दिवस\"} | body: {\"en\":\"NZP marks Endemic Bird Day by raising awareness about India’s native bird species and their conservation.\",\"hi\":\"एनजेडपी भारत की मूल पक्षी प्रजातियों और उनके संरक्षण के बारे में जागरूकता बढ़ाकर स्थानिक पक्षी दिवस मनाता है।\"} | _id: 69cbb19f743bdb164c0c39c1 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/kG5Qs4TSN5an-Tue Mar 31 2026 11:35:55 GMT+0000 (Coordinated Universal Time)-ChatGPT Image Mar 31, 2026, 05_04_58 PM.png | date: 2026-05-10T00:00:00.000Z | createdAt: 2026-03-31T11:35:59.064Z | updatedAt: 2026-05-06T07:45:15.424Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Endemic Bird Day",
+          "hi": "स्थानिक पक्षी दिवस"
+        },
+        "body": {
+          "en": "NZP marks Endemic Bird Day by raising awareness about India’s native bird species and their conservation.",
+          "hi": "एनजेडपी भारत की मूल पक्षी प्रजातियों और उनके संरक्षण के बारे में जागरूकता बढ़ाकर स्थानिक पक्षी दिवस मनाता है।"
+        },
+        "_id": "69cbb19f743bdb164c0c39c1",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/kG5Qs4TSN5an-Tue Mar 31 2026 11:35:55 GMT+0000 (Coordinated Universal Time)-ChatGPT Image Mar 31, 2026, 05_04_58 PM.png",
+        "date": "2026-05-10T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:35:59.064Z",
+        "updatedAt": "2026-05-06T07:45:15.424Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Bee Day",
-      "type": "Event",
-      "description": "World Bee Day. Date: 2026-05-20T00:00:00.000Z. Details: NZP celebrates World Bee Day by spreading awareness about the importance of bees in pollination and ecosystem balance. The zoo promotes conservation efforts to protect bees and support biodiversity."
+      "id": "World Bee Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Bee Day\",\"hi\":\"विश्व मधुमक्खी दिवस\"} | body: {\"en\":\"NZP celebrates World Bee Day by spreading awareness about the importance of bees in pollination and ecosystem balance. The zoo promotes conservation efforts to protect bees and support biodiversity.\",\"hi\":\"एनजेडपी परागण और पारिस्थितिकी तंत्र संतुलन में मधुमक्खियों के महत्व के बारे में जागरूकता फैलाकर विश्व मधुमक्खी दिवस मनाता है। चिड़ियाघर मधुमक्खियों की रक्षा और जैव विविधता का समर्थन करने के लिए संरक्षण प्रयासों को बढ़ावा देता है।\"} | _id: 69cbb216743bdb164c0c3bcb | zooId: 69a6b49dc88f63d77dfc7919 | image: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/jOeK5X0bPaFe-1779106140400-ChatGPT Image May 18, 2026, 05_38_29 PM.webp | date: 2026-05-20T00:00:00.000Z | createdAt: 2026-03-31T11:37:58.334Z | updatedAt: 2026-05-18T12:09:04.150Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Bee Day",
+          "hi": "विश्व मधुमक्खी दिवस"
+        },
+        "body": {
+          "en": "NZP celebrates World Bee Day by spreading awareness about the importance of bees in pollination and ecosystem balance. The zoo promotes conservation efforts to protect bees and support biodiversity.",
+          "hi": "एनजेडपी परागण और पारिस्थितिकी तंत्र संतुलन में मधुमक्खियों के महत्व के बारे में जागरूकता फैलाकर विश्व मधुमक्खी दिवस मनाता है। चिड़ियाघर मधुमक्खियों की रक्षा और जैव विविधता का समर्थन करने के लिए संरक्षण प्रयासों को बढ़ावा देता है।"
+        },
+        "_id": "69cbb216743bdb164c0c3bcb",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/jOeK5X0bPaFe-1779106140400-ChatGPT Image May 18, 2026, 05_38_29 PM.webp",
+        "date": "2026-05-20T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:37:58.334Z",
+        "updatedAt": "2026-05-18T12:09:04.150Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Biodiversity Day",
-      "type": "Event",
-      "description": "International Biodiversity Day. Date: 2026-05-22T00:00:00.000Z. Details: NZP is a show case of Bio- diversity. Diversity of life form of the Zoo can form a basis of talk. Talks and film on these aspects can be arranged for visitors."
+      "id": "International Biodiversity Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Biodiversity Day\",\"hi\":\"अंतर्राष्ट्रीय जैव विविधता दिवस\"} | body: {\"en\":\"NZP is a show case of Bio- diversity. Diversity of life form of the Zoo can form a basis of talk. Talks and film on these aspects can be arranged for visitors.\",\"hi\":\"एनजेडपी जैव-विविधता का एक शो केस है, चिड़ियाघर के जीवन रूप की विविधता बातचीत का आधार बन सकती है और आगंतुकों के लिए इन पहलुओं पर बातचीत और फिल्म की व्यवस्था की जा सकती है।\"} | _id: 69cbb2d0743bdb164c0c467e | zooId: 69a6b49dc88f63d77dfc7919 | image: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/5rIGM0uM39kq-1779106314218-ChatGPT Image May 18, 2026, 05_41_22 PM.webp | date: 2026-05-22T00:00:00.000Z | createdAt: 2026-03-31T11:41:04.611Z | updatedAt: 2026-05-18T12:11:55.768Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Biodiversity Day",
+          "hi": "अंतर्राष्ट्रीय जैव विविधता दिवस"
+        },
+        "body": {
+          "en": "NZP is a show case of Bio- diversity. Diversity of life form of the Zoo can form a basis of talk. Talks and film on these aspects can be arranged for visitors.",
+          "hi": "एनजेडपी जैव-विविधता का एक शो केस है, चिड़ियाघर के जीवन रूप की विविधता बातचीत का आधार बन सकती है और आगंतुकों के लिए इन पहलुओं पर बातचीत और फिल्म की व्यवस्था की जा सकती है।"
+        },
+        "_id": "69cbb2d0743bdb164c0c467e",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/5rIGM0uM39kq-1779106314218-ChatGPT Image May 18, 2026, 05_41_22 PM.webp",
+        "date": "2026-05-22T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:41:04.611Z",
+        "updatedAt": "2026-05-18T12:11:55.768Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Turtle Day & World Turtle Day",
-      "type": "Event",
-      "description": "International Turtle Day & World Turtle Day. Date: 2026-05-23T00:00:00.000Z. Details: NZP observes World Turtle Day and International Turtle Day by raising awareness about turtle conservation and habitat protection. The zoo highlights efforts to safeguard turtles and ensure their survival in the wild."
+      "id": "International Turtle Day & World Turtle Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Turtle Day & World Turtle Day\",\"hi\":\"अंतर्राष्ट्रीय कछुआ दिवस\"} | body: {\"en\":\"NZP observes World Turtle Day and International Turtle Day by raising awareness about turtle conservation and habitat protection. The zoo highlights efforts to safeguard turtles and ensure their survival in the wild.\",\"hi\":\"एनजेडपी कछुआ संरक्षण और आवास संरक्षण के बारे में जागरूकता बढ़ाकर विश्व कछुआ दिवस और अंतर्राष्ट्रीय कछुआ दिवस मनाता है। चिड़ियाघर कछुओं की सुरक्षा और जंगल में उनके अस्तित्व को सुनिश्चित करने के प्रयासों पर प्रकाश डालता है।\"} | _id: 69cbb461743bdb164c0c6409 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/93ZXhtQi3FQ2-1779106494281-turtle day icon.webp | date: 2026-05-23T00:00:00.000Z | createdAt: 2026-03-31T11:47:45.142Z | updatedAt: 2026-05-18T12:14:56.933Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Turtle Day & World Turtle Day",
+          "hi": "अंतर्राष्ट्रीय कछुआ दिवस"
+        },
+        "body": {
+          "en": "NZP observes World Turtle Day and International Turtle Day by raising awareness about turtle conservation and habitat protection. The zoo highlights efforts to safeguard turtles and ensure their survival in the wild.",
+          "hi": "एनजेडपी कछुआ संरक्षण और आवास संरक्षण के बारे में जागरूकता बढ़ाकर विश्व कछुआ दिवस और अंतर्राष्ट्रीय कछुआ दिवस मनाता है। चिड़ियाघर कछुओं की सुरक्षा और जंगल में उनके अस्तित्व को सुनिश्चित करने के प्रयासों पर प्रकाश डालता है।"
+        },
+        "_id": "69cbb461743bdb164c0c6409",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/93ZXhtQi3FQ2-1779106494281-turtle day icon.webp",
+        "date": "2026-05-23T00:00:00.000Z",
+        "createdAt": "2026-03-31T11:47:45.142Z",
+        "updatedAt": "2026-05-18T12:14:56.933Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Environment Day",
-      "type": "Event",
-      "description": "World Environment Day. Date: 2026-06-05T00:00:00.000Z. Details: June-5 World Environment day NZP should make a point to improve overall environment of the enclosures on this day. This will improve the environment not only animal enclosures but also of Zoo as whole."
+      "id": "World Environment Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Environment Day\",\"hi\":\"विश्व पर्यावरण दिवस\"} | body: {\"en\":\"June-5 World Environment day NZP should make a point to improve overall environment of the enclosures on this day. This will improve the environment not only animal enclosures but also of Zoo as whole.\",\"hi\":\"जून-5 विश्व पर्यावरण दिवस एनजेडपी को इस दिन बाड़ों के समग्र पर्यावरण में सुधार करने पर ध्यान देना चाहिए इससे न केवल जानवरों के बाड़ों बल्कि पूरे चिड़ियाघर के पर्यावरण में सुधार होगा।\"} | _id: 69ccb1c42a594df3f25740ea | zooId: 69a6b49dc88f63d77dfc7919 | image: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/I414TquMznZM-1779106630871-World Environment Day.webp | date: 2026-06-05T00:00:00.000Z | createdAt: 2026-04-01T05:48:52.095Z | updatedAt: 2026-05-18T12:17:13.663Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Environment Day",
+          "hi": "विश्व पर्यावरण दिवस"
+        },
+        "body": {
+          "en": "June-5 World Environment day NZP should make a point to improve overall environment of the enclosures on this day. This will improve the environment not only animal enclosures but also of Zoo as whole.",
+          "hi": "जून-5 विश्व पर्यावरण दिवस एनजेडपी को इस दिन बाड़ों के समग्र पर्यावरण में सुधार करने पर ध्यान देना चाहिए इससे न केवल जानवरों के बाड़ों बल्कि पूरे चिड़ियाघर के पर्यावरण में सुधार होगा।"
+        },
+        "_id": "69ccb1c42a594df3f25740ea",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/I414TquMznZM-1779106630871-World Environment Day.webp",
+        "date": "2026-06-05T00:00:00.000Z",
+        "createdAt": "2026-04-01T05:48:52.095Z",
+        "updatedAt": "2026-05-18T12:17:13.663Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Ocean Day",
-      "type": "Event",
-      "description": "World Ocean Day. Date: 2026-06-08T00:00:00.000Z. Details: NZP observes World Ocean Day by spreading awareness about marine conservation and the importance of oceans. Educational activities and displays highlight the need to protect aquatic life and reduce pollution."
+      "id": "World Ocean Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Ocean Day\",\"hi\":\"विश्व महासागर दिवस\"} | body: {\"en\":\"NZP observes World Ocean Day by spreading awareness about marine conservation and the importance of oceans. Educational activities and displays highlight the need to protect aquatic life and reduce pollution.\",\"hi\":\"एनजेडपी समुद्री संरक्षण और महासागरों के महत्व के बारे में जागरूकता फैलाकर विश्व महासागर दिवस मनाता है। शैक्षिक गतिविधियाँ और प्रदर्शन जलीय जीवन की रक्षा करने और प्रदूषण को कम करने की आवश्यकता पर प्रकाश डालते हैं।\"} | _id: 69ccb22f2a594df3f257441c | zooId: 69a6b49dc88f63d77dfc7919 | image: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/Wsx9gM6DskYU-1779106746727-World Ocean Day .webp | date: 2026-06-08T00:00:00.000Z | createdAt: 2026-04-01T05:50:39.339Z | updatedAt: 2026-05-18T12:19:08.289Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Ocean Day",
+          "hi": "विश्व महासागर दिवस"
+        },
+        "body": {
+          "en": "NZP observes World Ocean Day by spreading awareness about marine conservation and the importance of oceans. Educational activities and displays highlight the need to protect aquatic life and reduce pollution.",
+          "hi": "एनजेडपी समुद्री संरक्षण और महासागरों के महत्व के बारे में जागरूकता फैलाकर विश्व महासागर दिवस मनाता है। शैक्षिक गतिविधियाँ और प्रदर्शन जलीय जीवन की रक्षा करने और प्रदूषण को कम करने की आवश्यकता पर प्रकाश डालते हैं।"
+        },
+        "_id": "69ccb22f2a594df3f257441c",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/Wsx9gM6DskYU-1779106746727-World Ocean Day .webp",
+        "date": "2026-06-08T00:00:00.000Z",
+        "createdAt": "2026-04-01T05:50:39.339Z",
+        "updatedAt": "2026-05-18T12:19:08.289Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Sea Turtle Day",
-      "type": "Event",
-      "description": "World Sea Turtle Day. Date: 2026-06-16T00:00:00.000Z. Details: June–16 – World Sea Turtle Day NZP can organize awareness programs, talks, and displays highlighting sea turtle conservation and protection of marine habitats."
+      "id": "World Sea Turtle Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Sea Turtle Day\",\"hi\":\"विश्व समुद्री कछुआ दिवस\"} | body: {\"en\":\"June–16 – World Sea Turtle Day NZP can organize awareness programs, talks, and displays highlighting sea turtle conservation and protection of marine habitats.\",\"hi\":\"जून-16 - विश्व समुद्री कछुआ दिवस एनजेडपी समुद्री कछुए के संरक्षण और समुद्री आवासों की सुरक्षा पर प्रकाश डालते हुए जागरूकता कार्यक्रम, वार्ता और प्रदर्शन आयोजित कर सकता है।\"} | _id: 69ccb29f2a594df3f25748c2 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/NaLQKRV16n52-Wed Apr 01 2026 05:52:24 GMT+0000 (Coordinated Universal Time)-World Sea Turtle Day.jpeg | date: 2026-06-16T00:00:00.000Z | createdAt: 2026-04-01T05:52:31.903Z | updatedAt: 2026-05-06T07:50:25.003Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Sea Turtle Day",
+          "hi": "विश्व समुद्री कछुआ दिवस"
+        },
+        "body": {
+          "en": "June–16 – World Sea Turtle Day NZP can organize awareness programs, talks, and displays highlighting sea turtle conservation and protection of marine habitats.",
+          "hi": "जून-16 - विश्व समुद्री कछुआ दिवस एनजेडपी समुद्री कछुए के संरक्षण और समुद्री आवासों की सुरक्षा पर प्रकाश डालते हुए जागरूकता कार्यक्रम, वार्ता और प्रदर्शन आयोजित कर सकता है।"
+        },
+        "_id": "69ccb29f2a594df3f25748c2",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/NaLQKRV16n52-Wed Apr 01 2026 05:52:24 GMT+0000 (Coordinated Universal Time)-World Sea Turtle Day.jpeg",
+        "date": "2026-06-16T00:00:00.000Z",
+        "createdAt": "2026-04-01T05:52:31.903Z",
+        "updatedAt": "2026-05-06T07:50:25.003Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Day to combat Desertification and Drought",
-      "type": "Event",
-      "description": "World Day to combat Desertification and Drought. Date: 2026-06-17T00:00:00.000Z. Details: NZP can conduct awareness programs on land conservation, water management, and the impact of drought on wildlife habitats. The zoo can educate visitors about preventing land degradation and protecting ecosystems, as desertification affects biodiversity, food systems, and water resources worldwide. \n"
+      "id": "World Day to combat Desertification and Drought",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Day to combat Desertification and Drought\",\"hi\":\"मरुस्थलीकरण और सूखे से निपटने के लिए विश्व दिवस\"} | body: {\"en\":\"NZP can conduct awareness programs on land conservation, water management, and the impact of drought on wildlife habitats. The zoo can educate visitors about preventing land degradation and protecting ecosystems, as desertification affects biodiversity, food systems, and water resources worldwide. \\n\",\"hi\":\"एनजेडपी भूमि संरक्षण, जल प्रबंधन और वन्यजीव आवासों पर सूखे के प्रभाव पर जागरूकता कार्यक्रम चला सकता है। चिड़ियाघर आगंतुकों को भूमि क्षरण को रोकने और पारिस्थितिक तंत्र की रक्षा के बारे में शिक्षित कर सकता है, क्योंकि मरुस्थलीकरण दुनिया भर में जैव विविधता, खाद्य प्रणालियों और जल संसाधनों को प्रभावित करता है।\"} | _id: 69ccb6222a594df3f2577fa6 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/6PBEebF1AziU-Wed Apr 01 2026 06:07:28 GMT+0000 (Coordinated Universal Time)-World Day to combat Desertification and Drought.jpeg | date: 2026-06-17T00:00:00.000Z | createdAt: 2026-04-01T06:07:30.928Z | updatedAt: 2026-05-06T08:50:21.717Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Day to combat Desertification and Drought",
+          "hi": "मरुस्थलीकरण और सूखे से निपटने के लिए विश्व दिवस"
+        },
+        "body": {
+          "en": "NZP can conduct awareness programs on land conservation, water management, and the impact of drought on wildlife habitats. The zoo can educate visitors about preventing land degradation and protecting ecosystems, as desertification affects biodiversity, food systems, and water resources worldwide. \n",
+          "hi": "एनजेडपी भूमि संरक्षण, जल प्रबंधन और वन्यजीव आवासों पर सूखे के प्रभाव पर जागरूकता कार्यक्रम चला सकता है। चिड़ियाघर आगंतुकों को भूमि क्षरण को रोकने और पारिस्थितिक तंत्र की रक्षा के बारे में शिक्षित कर सकता है, क्योंकि मरुस्थलीकरण दुनिया भर में जैव विविधता, खाद्य प्रणालियों और जल संसाधनों को प्रभावित करता है।"
+        },
+        "_id": "69ccb6222a594df3f2577fa6",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/6PBEebF1AziU-Wed Apr 01 2026 06:07:28 GMT+0000 (Coordinated Universal Time)-World Day to combat Desertification and Drought.jpeg",
+        "date": "2026-06-17T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:07:30.928Z",
+        "updatedAt": "2026-05-06T08:50:21.717Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Crocodile day",
-      "type": "Event",
-      "description": "World Crocodile day. Date: 2026-06-17T00:00:00.000Z. Details: June–17 – World Crocodile Day NZP can organize awareness talks and exhibits highlighting crocodile conservation and the importance of protecting wetland habitats."
+      "id": "World Crocodile day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Crocodile day\",\"hi\":\"विश्व मगरमच्छ दिवस\"} | body: {\"en\":\"June–17 – World Crocodile Day NZP can organize awareness talks and exhibits highlighting crocodile conservation and the importance of protecting wetland habitats.\",\"hi\":\"जून-17 - विश्व मगरमच्छ दिवस एनजेडपी मगरमच्छ संरक्षण और आर्द्रभूमि आवासों की रक्षा के महत्व पर प्रकाश डालते हुए जागरूकता वार्ता और प्रदर्शन आयोजित कर सकता है।\"} | _id: 69ccb5ad2a594df3f2577ed9 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/7UOX9joTwDQZ-1779106974137-world Crocodile day.webp | date: 2026-06-17T00:00:00.000Z | createdAt: 2026-04-01T06:05:33.590Z | updatedAt: 2026-05-18T12:22:55.517Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Crocodile day",
+          "hi": "विश्व मगरमच्छ दिवस"
+        },
+        "body": {
+          "en": "June–17 – World Crocodile Day NZP can organize awareness talks and exhibits highlighting crocodile conservation and the importance of protecting wetland habitats.",
+          "hi": "जून-17 - विश्व मगरमच्छ दिवस एनजेडपी मगरमच्छ संरक्षण और आर्द्रभूमि आवासों की रक्षा के महत्व पर प्रकाश डालते हुए जागरूकता वार्ता और प्रदर्शन आयोजित कर सकता है।"
+        },
+        "_id": "69ccb5ad2a594df3f2577ed9",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/7UOX9joTwDQZ-1779106974137-world Crocodile day.webp",
+        "date": "2026-06-17T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:05:33.590Z",
+        "updatedAt": "2026-05-18T12:22:55.517Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Climate Change Day",
-      "type": "Event",
-      "description": "International Climate Change Day. Date: 2026-06-21T00:00:00.000Z. Details: NZP can conduct interactive sessions, exhibitions, and campaigns to educate visitors about reducing carbon footprints and adopting sustainable lifestyles. The zoo can also highlight how climate change affects animal behavior, habitats, and biodiversity, encouraging conservation action."
+      "id": "International Climate Change Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Climate Change Day\",\"hi\":\"अंतर्राष्ट्रीय जलवायु परिवर्तन दिवस\"} | body: {\"en\":\"NZP can conduct interactive sessions, exhibitions, and campaigns to educate visitors about reducing carbon footprints and adopting sustainable lifestyles. The zoo can also highlight how climate change affects animal behavior, habitats, and biodiversity, encouraging conservation action.\",\"hi\":\"एनजेडपी आगंतुकों को कार्बन फुटप्रिंट को कम करने और टिकाऊ जीवन शैली अपनाने के बारे में शिक्षित करने के लिए इंटरैक्टिव सत्र, प्रदर्शनियां और अभियान चला सकता है। चिड़ियाघर यह भी उजागर कर सकता है कि जलवायु परिवर्तन जानवरों के व्यवहार, आवास और जैव विविधता को कैसे प्रभावित करता है, संरक्षण कार्रवाई को प्रोत्साहित करता है।\"} | _id: 69ccb7452a594df3f2578280 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/PcUkValWErlk-Wed Apr 01 2026 06:12:19 GMT+0000 (Coordinated Universal Time)-International Climate Change Day.png | date: 2026-06-21T00:00:00.000Z | createdAt: 2026-04-01T06:12:21.235Z | updatedAt: 2026-05-06T08:54:03.185Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Climate Change Day",
+          "hi": "अंतर्राष्ट्रीय जलवायु परिवर्तन दिवस"
+        },
+        "body": {
+          "en": "NZP can conduct interactive sessions, exhibitions, and campaigns to educate visitors about reducing carbon footprints and adopting sustainable lifestyles. The zoo can also highlight how climate change affects animal behavior, habitats, and biodiversity, encouraging conservation action.",
+          "hi": "एनजेडपी आगंतुकों को कार्बन फुटप्रिंट को कम करने और टिकाऊ जीवन शैली अपनाने के बारे में शिक्षित करने के लिए इंटरैक्टिव सत्र, प्रदर्शनियां और अभियान चला सकता है। चिड़ियाघर यह भी उजागर कर सकता है कि जलवायु परिवर्तन जानवरों के व्यवहार, आवास और जैव विविधता को कैसे प्रभावित करता है, संरक्षण कार्रवाई को प्रोत्साहित करता है।"
+        },
+        "_id": "69ccb7452a594df3f2578280",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/PcUkValWErlk-Wed Apr 01 2026 06:12:19 GMT+0000 (Coordinated Universal Time)-International Climate Change Day.png",
+        "date": "2026-06-21T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:12:21.235Z",
+        "updatedAt": "2026-05-06T08:54:03.185Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Giraffe Day",
-      "type": "Event",
-      "description": "World Giraffe Day. Date: 2026-06-21T00:00:00.000Z. Details: June–21 – World Giraffe Day NZP can organize awareness talks and exhibits highlighting giraffe conservation and threats to their natural habitats."
+      "id": "World Giraffe Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Giraffe Day\",\"hi\":\"विश्व जिराफ़ दिवस\"} | body: {\"en\":\"June–21 – World Giraffe Day NZP can organize awareness talks and exhibits highlighting giraffe conservation and threats to their natural habitats.\",\"hi\":\"जून-21 - विश्व जिराफ दिवस एनजेडपी जिराफ संरक्षण और उनके प्राकृतिक आवासों के खतरों पर प्रकाश डालते हुए जागरूकता वार्ता और प्रदर्शन आयोजित कर सकता है।\"} | _id: 69ccb6632a594df3f25781a3 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/HqpXMSHztYD5-Wed Apr 01 2026 06:08:33 GMT+0000 (Coordinated Universal Time)-World Giraffe Day.jpeg | date: 2026-06-21T00:00:00.000Z | createdAt: 2026-04-01T06:08:35.638Z | updatedAt: 2026-05-06T08:52:23.712Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Giraffe Day",
+          "hi": "विश्व जिराफ़ दिवस"
+        },
+        "body": {
+          "en": "June–21 – World Giraffe Day NZP can organize awareness talks and exhibits highlighting giraffe conservation and threats to their natural habitats.",
+          "hi": "जून-21 - विश्व जिराफ दिवस एनजेडपी जिराफ संरक्षण और उनके प्राकृतिक आवासों के खतरों पर प्रकाश डालते हुए जागरूकता वार्ता और प्रदर्शन आयोजित कर सकता है।"
+        },
+        "_id": "69ccb6632a594df3f25781a3",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/HqpXMSHztYD5-Wed Apr 01 2026 06:08:33 GMT+0000 (Coordinated Universal Time)-World Giraffe Day.jpeg",
+        "date": "2026-06-21T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:08:35.638Z",
+        "updatedAt": "2026-05-06T08:52:23.712Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Van Mahotsav",
-      "type": "Event",
-      "description": "Van Mahotsav. Date: 2026-07-01T00:00:00.000Z. Details: NZP has ample area for plantation. This occasion should be utilized by planting more and more seedlings (local species) in and around enclosures and road sides. School children can be involved in this programme."
+      "id": "Van Mahotsav",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Van Mahotsav\",\"hi\":\"वन महोत्सव\"} | body: {\"en\":\"NZP has ample area for plantation. This occasion should be utilized by planting more and more seedlings (local species) in and around enclosures and road sides. School children can be involved in this programme.\",\"hi\":\"एनजेडपी के पास वृक्षारोपण के लिए पर्याप्त क्षेत्र है। इस अवसर का उपयोग बाड़ों और सड़क के किनारों पर और उसके आसपास अधिक से अधिक पौधे (स्थानीय प्रजातियां) लगाकर किया जाना चाहिए। स्कूली बच्चों को इस कार्यक्रम में शामिल किया जा सकता है।\"} | _id: 69ccbc2e2a594df3f257aac8 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/FsIPPrby9UH9-Wed Apr 01 2026 06:33:15 GMT+0000 (Coordinated Universal Time)-van mahotsav.png | date: 2026-07-01T00:00:00.000Z | createdAt: 2026-04-01T06:33:18.219Z | updatedAt: 2026-05-05T10:55:06.676Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Van Mahotsav",
+          "hi": "वन महोत्सव"
+        },
+        "body": {
+          "en": "NZP has ample area for plantation. This occasion should be utilized by planting more and more seedlings (local species) in and around enclosures and road sides. School children can be involved in this programme.",
+          "hi": "एनजेडपी के पास वृक्षारोपण के लिए पर्याप्त क्षेत्र है। इस अवसर का उपयोग बाड़ों और सड़क के किनारों पर और उसके आसपास अधिक से अधिक पौधे (स्थानीय प्रजातियां) लगाकर किया जाना चाहिए। स्कूली बच्चों को इस कार्यक्रम में शामिल किया जा सकता है।"
+        },
+        "_id": "69ccbc2e2a594df3f257aac8",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/FsIPPrby9UH9-Wed Apr 01 2026 06:33:15 GMT+0000 (Coordinated Universal Time)-van mahotsav.png",
+        "date": "2026-07-01T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:33:18.219Z",
+        "updatedAt": "2026-05-05T10:55:06.676Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Seabird Day",
-      "type": "Event",
-      "description": "World Seabird Day. Date: 2026-07-03T00:00:00.000Z. Details: World Seabird Day is observed every year on July 3 to raise awareness about seabirds and the threats they face in marine environments. It highlights the importance of protecting seabirds and their ocean habitats, encouraging global conservation efforts."
+      "id": "World Seabird Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Seabird Day\",\"hi\":\"विश्व समुद्री पक्षी दिवस\"} | body: {\"en\":\"World Seabird Day is observed every year on July 3 to raise awareness about seabirds and the threats they face in marine environments. It highlights the importance of protecting seabirds and their ocean habitats, encouraging global conservation efforts.\",\"hi\":\"समुद्री पक्षियों और समुद्री पर्यावरण में उनके सामने आने वाले खतरों के बारे में जागरूकता बढ़ाने के लिए हर साल 3 जुलाई को विश्व समुद्री पक्षी दिवस मनाया जाता है। यह वैश्विक संरक्षण प्रयासों को प्रोत्साहित करते हुए समुद्री पक्षियों और उनके समुद्री आवासों की रक्षा के महत्व पर प्रकाश डालता है।\"} | _id: 69ccbcd42a594df3f257be74 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/oukTWmTK4ojH-Wed Apr 01 2026 06:36:00 GMT+0000 (Coordinated Universal Time)-World seabird day.jpeg | date: 2026-07-03T00:00:00.000Z | createdAt: 2026-04-01T06:36:04.105Z | updatedAt: 2026-05-06T08:55:34.681Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Seabird Day",
+          "hi": "विश्व समुद्री पक्षी दिवस"
+        },
+        "body": {
+          "en": "World Seabird Day is observed every year on July 3 to raise awareness about seabirds and the threats they face in marine environments. It highlights the importance of protecting seabirds and their ocean habitats, encouraging global conservation efforts.",
+          "hi": "समुद्री पक्षियों और समुद्री पर्यावरण में उनके सामने आने वाले खतरों के बारे में जागरूकता बढ़ाने के लिए हर साल 3 जुलाई को विश्व समुद्री पक्षी दिवस मनाया जाता है। यह वैश्विक संरक्षण प्रयासों को प्रोत्साहित करते हुए समुद्री पक्षियों और उनके समुद्री आवासों की रक्षा के महत्व पर प्रकाश डालता है।"
+        },
+        "_id": "69ccbcd42a594df3f257be74",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/oukTWmTK4ojH-Wed Apr 01 2026 06:36:00 GMT+0000 (Coordinated Universal Time)-World seabird day.jpeg",
+        "date": "2026-07-03T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:36:04.105Z",
+        "updatedAt": "2026-05-06T08:55:34.681Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Shark Awareness Day",
-      "type": "Event",
-      "description": "Shark Awareness Day. Date: 2026-07-14T00:00:00.000Z. Details: NZP can highlight the role of sharks in maintaining healthy ocean ecosystems through interactive exhibits and educational talks. Visitors can be sensitized about issues like overfishing and the importance of protecting marine biodiversity."
+      "id": "Shark Awareness Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Shark Awareness Day\",\"hi\":\"शार्क जागरूकता दिवस\"} | body: {\"en\":\"NZP can highlight the role of sharks in maintaining healthy ocean ecosystems through interactive exhibits and educational talks. Visitors can be sensitized about issues like overfishing and the importance of protecting marine biodiversity.\",\"hi\":\"एनजेडपी इंटरैक्टिव प्रदर्शनों और शैक्षिक वार्ताओं के माध्यम से स्वस्थ महासागर पारिस्थितिकी तंत्र को बनाए रखने में शार्क की भूमिका को उजागर कर सकता है। आगंतुकों को अत्यधिक मछली पकड़ने और समुद्री जैव विविधता की रक्षा के महत्व जैसे मुद्दों के बारे में संवेदनशील बनाया जा सकता है।\"} | _id: 69ccbe322a594df3f257c0fe | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/eXkVDwmQUHOw-Wed Apr 01 2026 06:41:52 GMT+0000 (Coordinated Universal Time)-Shark Awareness Day.jpeg | date: 2026-07-14T00:00:00.000Z | createdAt: 2026-04-01T06:41:54.928Z | updatedAt: 2026-05-06T09:09:28.059Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Shark Awareness Day",
+          "hi": "शार्क जागरूकता दिवस"
+        },
+        "body": {
+          "en": "NZP can highlight the role of sharks in maintaining healthy ocean ecosystems through interactive exhibits and educational talks. Visitors can be sensitized about issues like overfishing and the importance of protecting marine biodiversity.",
+          "hi": "एनजेडपी इंटरैक्टिव प्रदर्शनों और शैक्षिक वार्ताओं के माध्यम से स्वस्थ महासागर पारिस्थितिकी तंत्र को बनाए रखने में शार्क की भूमिका को उजागर कर सकता है। आगंतुकों को अत्यधिक मछली पकड़ने और समुद्री जैव विविधता की रक्षा के महत्व जैसे मुद्दों के बारे में संवेदनशील बनाया जा सकता है।"
+        },
+        "_id": "69ccbe322a594df3f257c0fe",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/eXkVDwmQUHOw-Wed Apr 01 2026 06:41:52 GMT+0000 (Coordinated Universal Time)-Shark Awareness Day.jpeg",
+        "date": "2026-07-14T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:41:54.928Z",
+        "updatedAt": "2026-05-06T09:09:28.059Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Chimpanzee Day",
-      "type": "Event",
-      "description": "World Chimpanzee Day. Date: 2026-07-14T00:00:00.000Z. Details: World Chimpanzee Day is celebrated every year on July 14 to raise awareness about chimpanzees and the need to protect them and their habitats. This Day reminds us that protecting chimpanzees also means protecting the forests they call home. "
+      "id": "World Chimpanzee Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Chimpanzee Day\",\"hi\":\"विश्व चिंपैंजी दिवस\"} | body: {\"en\":\"World Chimpanzee Day is celebrated every year on July 14 to raise awareness about chimpanzees and the need to protect them and their habitats. This Day reminds us that protecting chimpanzees also means protecting the forests they call home. \",\"hi\":\"विश्व चिंपैंजी दिवस हर साल 14 जुलाई को चिंपांज़ी के बारे में जागरूकता बढ़ाने और उन्हें और उनके आवासों की रक्षा करने की आवश्यकता के लिए मनाया जाता है। यह दिन हमें याद दिलाता है कि चिंपांज़ी की सुरक्षा का मतलब उन जंगलों की रक्षा करना भी है जिन्हें वे अपना घर कहते हैं।\"} | _id: 69ccbd622a594df3f257c09c | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/Bk6Bk1pnxImw-Wed Apr 01 2026 06:38:21 GMT+0000 (Coordinated Universal Time)-World Chimpanzee Day.jpeg | date: 2026-07-14T00:00:00.000Z | createdAt: 2026-04-01T06:38:26.752Z | updatedAt: 2026-05-06T09:07:19.892Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Chimpanzee Day",
+          "hi": "विश्व चिंपैंजी दिवस"
+        },
+        "body": {
+          "en": "World Chimpanzee Day is celebrated every year on July 14 to raise awareness about chimpanzees and the need to protect them and their habitats. This Day reminds us that protecting chimpanzees also means protecting the forests they call home. ",
+          "hi": "विश्व चिंपैंजी दिवस हर साल 14 जुलाई को चिंपांज़ी के बारे में जागरूकता बढ़ाने और उन्हें और उनके आवासों की रक्षा करने की आवश्यकता के लिए मनाया जाता है। यह दिन हमें याद दिलाता है कि चिंपांज़ी की सुरक्षा का मतलब उन जंगलों की रक्षा करना भी है जिन्हें वे अपना घर कहते हैं।"
+        },
+        "_id": "69ccbd622a594df3f257c09c",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/Bk6Bk1pnxImw-Wed Apr 01 2026 06:38:21 GMT+0000 (Coordinated Universal Time)-World Chimpanzee Day.jpeg",
+        "date": "2026-07-14T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:38:26.752Z",
+        "updatedAt": "2026-05-06T09:07:19.892Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Snake Day",
-      "type": "Event",
-      "description": "World Snake Day. Date: 2026-07-16T00:00:00.000Z. Details: July–16 – World Snake Day NZP can conduct live demonstrations and expert talks to dispel myths about snakes and explain their ecological role in controlling pests. Awareness sessions can also focus on snakebite prevention and the importance of conserving native snake species."
+      "id": "World Snake Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Snake Day\",\"hi\":\"विश्व सर्प दिवस\"} | body: {\"en\":\"July–16 – World Snake Day NZP can conduct live demonstrations and expert talks to dispel myths about snakes and explain their ecological role in controlling pests. Awareness sessions can also focus on snakebite prevention and the importance of conserving native snake species.\",\"hi\":\"जुलाई-16 - विश्व साँप दिवस एनजेडपी साँपों के बारे में मिथकों को दूर करने और कीटों को नियंत्रित करने में उनकी पारिस्थितिक भूमिका को समझाने के लिए लाइव प्रदर्शन और विशेषज्ञ वार्ता आयोजित कर सकता है। जागरूकता सत्र साँप के काटने की रोकथाम और देशी साँप प्रजातियों के संरक्षण के महत्व पर भी ध्यान केंद्रित कर सकते हैं।\"} | _id: 69ccbe892a594df3f257c129 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/ftA03zWm0aif-Wed Apr 01 2026 06:43:18 GMT+0000 (Coordinated Universal Time)-World Snake Day.jpeg | date: 2026-07-16T00:00:00.000Z | createdAt: 2026-04-01T06:43:21.276Z | updatedAt: 2026-05-06T09:11:13.147Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Snake Day",
+          "hi": "विश्व सर्प दिवस"
+        },
+        "body": {
+          "en": "July–16 – World Snake Day NZP can conduct live demonstrations and expert talks to dispel myths about snakes and explain their ecological role in controlling pests. Awareness sessions can also focus on snakebite prevention and the importance of conserving native snake species.",
+          "hi": "जुलाई-16 - विश्व साँप दिवस एनजेडपी साँपों के बारे में मिथकों को दूर करने और कीटों को नियंत्रित करने में उनकी पारिस्थितिक भूमिका को समझाने के लिए लाइव प्रदर्शन और विशेषज्ञ वार्ता आयोजित कर सकता है। जागरूकता सत्र साँप के काटने की रोकथाम और देशी साँप प्रजातियों के संरक्षण के महत्व पर भी ध्यान केंद्रित कर सकते हैं।"
+        },
+        "_id": "69ccbe892a594df3f257c129",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/ftA03zWm0aif-Wed Apr 01 2026 06:43:18 GMT+0000 (Coordinated Universal Time)-World Snake Day.jpeg",
+        "date": "2026-07-16T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:43:21.276Z",
+        "updatedAt": "2026-05-06T09:11:13.147Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Mangrove Day",
-      "type": "Event",
-      "description": "International Mangrove Day. Date: 2026-07-26T00:00:00.000Z. Details: International Mangrove Day (officially World Mangrove Day) is observed every year on July 26 to raise awareness about the importance of mangrove ecosystems and their conservation."
+      "id": "International Mangrove Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Mangrove Day\",\"hi\":\"अंतर्राष्ट्रीय मैंग्रोव दिवस\"} | body: {\"en\":\"International Mangrove Day (officially World Mangrove Day) is observed every year on July 26 to raise awareness about the importance of mangrove ecosystems and their conservation.\",\"hi\":\"मैंग्रोव पारिस्थितिकी तंत्र के महत्व और उनके संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 26 जुलाई को अंतर्राष्ट्रीय मैंग्रोव दिवस (आधिकारिक तौर पर विश्व मैंग्रोव दिवस) मनाया जाता है।\"} | _id: 69ccbfb42a594df3f257c435 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/QgvqGBTjG1QT-Wed Apr 01 2026 06:48:18 GMT+0000 (Coordinated Universal Time)-International Mangrove Day.jpeg | date: 2026-07-26T00:00:00.000Z | createdAt: 2026-04-01T06:48:20.560Z | updatedAt: 2026-05-06T09:11:47.149Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Mangrove Day",
+          "hi": "अंतर्राष्ट्रीय मैंग्रोव दिवस"
+        },
+        "body": {
+          "en": "International Mangrove Day (officially World Mangrove Day) is observed every year on July 26 to raise awareness about the importance of mangrove ecosystems and their conservation.",
+          "hi": "मैंग्रोव पारिस्थितिकी तंत्र के महत्व और उनके संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 26 जुलाई को अंतर्राष्ट्रीय मैंग्रोव दिवस (आधिकारिक तौर पर विश्व मैंग्रोव दिवस) मनाया जाता है।"
+        },
+        "_id": "69ccbfb42a594df3f257c435",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/QgvqGBTjG1QT-Wed Apr 01 2026 06:48:18 GMT+0000 (Coordinated Universal Time)-International Mangrove Day.jpeg",
+        "date": "2026-07-26T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:48:20.560Z",
+        "updatedAt": "2026-05-06T09:11:47.149Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Tiger Day",
-      "type": "Event",
-      "description": "International Tiger Day. Date: 2026-07-29T00:00:00.000Z. Details: Awareness is created by celebrating the day which generates massive awareness specially among youths."
+      "id": "International Tiger Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Tiger Day\",\"hi\":\"अंतर्राष्ट्रीय बाघ दिवस\"} | body: {\"en\":\"Awareness is created by celebrating the day which generates massive awareness specially among youths.\",\"hi\":\"इस दिन को मनाकर जागरूकता पैदा की जाती है जिससे विशेष रूप से युवाओं में बड़े पैमाने पर जागरूकता पैदा होती है।\"} | _id: 69ccc0102a594df3f257c45e | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/PVpgr3lY2W93-Wed Apr 01 2026 06:49:50 GMT+0000 (Coordinated Universal Time)-International Tiger Day.jpeg | date: 2026-07-29T00:00:00.000Z | createdAt: 2026-04-01T06:49:52.128Z | updatedAt: 2026-05-05T10:55:41.044Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Tiger Day",
+          "hi": "अंतर्राष्ट्रीय बाघ दिवस"
+        },
+        "body": {
+          "en": "Awareness is created by celebrating the day which generates massive awareness specially among youths.",
+          "hi": "इस दिन को मनाकर जागरूकता पैदा की जाती है जिससे विशेष रूप से युवाओं में बड़े पैमाने पर जागरूकता पैदा होती है।"
+        },
+        "_id": "69ccc0102a594df3f257c45e",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/PVpgr3lY2W93-Wed Apr 01 2026 06:49:50 GMT+0000 (Coordinated Universal Time)-International Tiger Day.jpeg",
+        "date": "2026-07-29T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:49:52.128Z",
+        "updatedAt": "2026-05-05T10:55:41.044Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: National Tree Day",
-      "type": "Event",
-      "description": "National Tree Day. Date: 2026-07-31T00:00:00.000Z. Details: National Tree Day is a special day dedicated to planting and caring for trees, helping to protect the environment and promote a greener future."
+      "id": "National Tree Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"National Tree Day\",\"hi\":\"राष्ट्रीय वृक्ष दिवस\"} | body: {\"en\":\"National Tree Day is a special day dedicated to planting and caring for trees, helping to protect the environment and promote a greener future.\",\"hi\":\"राष्ट्रीय वृक्ष दिवस पेड़ लगाने और उनकी देखभाल करने, पर्यावरण की रक्षा करने और हरित भविष्य को बढ़ावा देने में मदद करने के लिए समर्पित एक विशेष दिन है।\"} | _id: 69ccc0452a594df3f257c47a | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/ngjBj7MxiKxl-Wed Apr 01 2026 06:50:43 GMT+0000 (Coordinated Universal Time)-National Tree Day.jpeg | date: 2026-07-31T00:00:00.000Z | createdAt: 2026-04-01T06:50:45.105Z | updatedAt: 2026-05-06T09:12:21.462Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "National Tree Day",
+          "hi": "राष्ट्रीय वृक्ष दिवस"
+        },
+        "body": {
+          "en": "National Tree Day is a special day dedicated to planting and caring for trees, helping to protect the environment and promote a greener future.",
+          "hi": "राष्ट्रीय वृक्ष दिवस पेड़ लगाने और उनकी देखभाल करने, पर्यावरण की रक्षा करने और हरित भविष्य को बढ़ावा देने में मदद करने के लिए समर्पित एक विशेष दिन है।"
+        },
+        "_id": "69ccc0452a594df3f257c47a",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/ngjBj7MxiKxl-Wed Apr 01 2026 06:50:43 GMT+0000 (Coordinated Universal Time)-National Tree Day.jpeg",
+        "date": "2026-07-31T00:00:00.000Z",
+        "createdAt": "2026-04-01T06:50:45.105Z",
+        "updatedAt": "2026-05-06T09:12:21.462Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Owl Awareness Day",
-      "type": "Event",
-      "description": "International Owl Awareness Day. Date: 2026-08-04T00:00:00.000Z. Details: International Owl Awareness Day is celebrated every year on August 4 to raise awareness about owls and the importance of protecting them."
+      "id": "International Owl Awareness Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Owl Awareness Day\",\"hi\":\"अंतर्राष्ट्रीय उल्लू जागरूकता दिवस\"} | body: {\"en\":\"International Owl Awareness Day is celebrated every year on August 4 to raise awareness about owls and the importance of protecting them.\",\"hi\":\"उल्लुओं के बारे में जागरूकता बढ़ाने और उनकी सुरक्षा के महत्व के लिए हर साल 4 अगस्त को अंतर्राष्ट्रीय उल्लू जागरूकता दिवस मनाया जाता है।\"} | _id: 69cce89a2a594df3f25adff8 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/421PI2wfeDwp-Wed Apr 01 2026 09:42:48 GMT+0000 (Coordinated Universal Time)-International Owl Awareness Day.jpeg | date: 2026-08-04T00:00:00.000Z | createdAt: 2026-04-01T09:42:50.399Z | updatedAt: 2026-05-06T09:13:04.019Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Owl Awareness Day",
+          "hi": "अंतर्राष्ट्रीय उल्लू जागरूकता दिवस"
+        },
+        "body": {
+          "en": "International Owl Awareness Day is celebrated every year on August 4 to raise awareness about owls and the importance of protecting them.",
+          "hi": "उल्लुओं के बारे में जागरूकता बढ़ाने और उनकी सुरक्षा के महत्व के लिए हर साल 4 अगस्त को अंतर्राष्ट्रीय उल्लू जागरूकता दिवस मनाया जाता है।"
+        },
+        "_id": "69cce89a2a594df3f25adff8",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/421PI2wfeDwp-Wed Apr 01 2026 09:42:48 GMT+0000 (Coordinated Universal Time)-International Owl Awareness Day.jpeg",
+        "date": "2026-08-04T00:00:00.000Z",
+        "createdAt": "2026-04-01T09:42:50.399Z",
+        "updatedAt": "2026-05-06T09:13:04.019Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Lion Day",
-      "type": "Event",
-      "description": "World Lion Day. Date: 2026-08-10T00:00:00.000Z. Details: World Lion Day is celebrated every year on August 10 to raise awareness about the conservation of lions and protect their natural habitats.This Day was launched in 2013 by conservationists, including Dereck Joubert and Beverly Joubert, to highlight the declining population of lions."
+      "id": "World Lion Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Lion Day\",\"hi\":\"विश्व शेर दिवस\"} | body: {\"en\":\"World Lion Day is celebrated every year on August 10 to raise awareness about the conservation of lions and protect their natural habitats.This Day was launched in 2013 by conservationists, including Dereck Joubert and Beverly Joubert, to highlight the declining population of lions.\",\"hi\":\"शेरों के संरक्षण के बारे में जागरूकता बढ़ाने और उनके प्राकृतिक आवासों की रक्षा के लिए हर साल 10 अगस्त को विश्व शेर दिवस मनाया जाता है। शेरों की घटती आबादी को उजागर करने के लिए डेरेक जौबर्ट और बेवर्ली जौबर्ट सहित संरक्षणवादियों द्वारा 2013 में इस दिवस की शुरुआत की गई थी।\"} | _id: 69ccea042a594df3f25b1d7b | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/A6pCEXg6rRwd-Wed Apr 01 2026 09:48:50 GMT+0000 (Coordinated Universal Time)-World Lion Day.jpeg | date: 2026-08-10T00:00:00.000Z | createdAt: 2026-04-01T09:48:52.672Z | updatedAt: 2026-05-06T09:14:30.697Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Lion Day",
+          "hi": "विश्व शेर दिवस"
+        },
+        "body": {
+          "en": "World Lion Day is celebrated every year on August 10 to raise awareness about the conservation of lions and protect their natural habitats.This Day was launched in 2013 by conservationists, including Dereck Joubert and Beverly Joubert, to highlight the declining population of lions.",
+          "hi": "शेरों के संरक्षण के बारे में जागरूकता बढ़ाने और उनके प्राकृतिक आवासों की रक्षा के लिए हर साल 10 अगस्त को विश्व शेर दिवस मनाया जाता है। शेरों की घटती आबादी को उजागर करने के लिए डेरेक जौबर्ट और बेवर्ली जौबर्ट सहित संरक्षणवादियों द्वारा 2013 में इस दिवस की शुरुआत की गई थी।"
+        },
+        "_id": "69ccea042a594df3f25b1d7b",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/A6pCEXg6rRwd-Wed Apr 01 2026 09:48:50 GMT+0000 (Coordinated Universal Time)-World Lion Day.jpeg",
+        "date": "2026-08-10T00:00:00.000Z",
+        "createdAt": "2026-04-01T09:48:52.672Z",
+        "updatedAt": "2026-05-06T09:14:30.697Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Elephant Day",
-      "type": "Event",
-      "description": "World Elephant Day. Date: 2026-08-12T00:00:00.000Z. Details: World Elephant Day is observed every year on August 12 to raise awareness about the protection and conservation of elephants."
+      "id": "World Elephant Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Elephant Day\",\"hi\":\"विश्व हाथी दिवस\"} | body: {\"en\":\"World Elephant Day is observed every year on August 12 to raise awareness about the protection and conservation of elephants.\",\"hi\":\"हाथियों की सुरक्षा और संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 12 अगस्त को विश्व हाथी दिवस मनाया जाता है।\"} | _id: 69ccea402a594df3f25b1e36 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/4AoE51rBh9wg-Wed Apr 01 2026 09:49:50 GMT+0000 (Coordinated Universal Time)-World Elephant Day.jpeg | date: 2026-08-12T00:00:00.000Z | createdAt: 2026-04-01T09:49:52.628Z | updatedAt: 2026-05-06T09:17:17.078Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Elephant Day",
+          "hi": "विश्व हाथी दिवस"
+        },
+        "body": {
+          "en": "World Elephant Day is observed every year on August 12 to raise awareness about the protection and conservation of elephants.",
+          "hi": "हाथियों की सुरक्षा और संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 12 अगस्त को विश्व हाथी दिवस मनाया जाता है।"
+        },
+        "_id": "69ccea402a594df3f25b1e36",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/4AoE51rBh9wg-Wed Apr 01 2026 09:49:50 GMT+0000 (Coordinated Universal Time)-World Elephant Day.jpeg",
+        "date": "2026-08-12T00:00:00.000Z",
+        "createdAt": "2026-04-01T09:49:52.628Z",
+        "updatedAt": "2026-05-06T09:17:17.078Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Lizard Day",
-      "type": "Event",
-      "description": "World Lizard Day. Date: 2026-08-14T00:00:00.000Z. Details: World Lizard Day encourages people to learn more about lizards, remove myths and fears, and promote their conservation."
+      "id": "World Lizard Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Lizard Day\",\"hi\":\"विश्व छिपकली दिवस\"} | body: {\"en\":\"World Lizard Day encourages people to learn more about lizards, remove myths and fears, and promote their conservation.\",\"hi\":\"विश्व छिपकली दिवस लोगों को छिपकलियों के बारे में अधिक जानने, मिथकों और भय को दूर करने और उनके संरक्षण को बढ़ावा देने के लिए प्रोत्साहित करता है।\"} | _id: 69cceaab2a594df3f25b2047 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/CFY601wzlgiX-Wed Apr 01 2026 09:51:37 GMT+0000 (Coordinated Universal Time)-World Lizard Day.jpeg | date: 2026-08-14T00:00:00.000Z | createdAt: 2026-04-01T09:51:39.952Z | updatedAt: 2026-05-06T09:18:16.986Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Lizard Day",
+          "hi": "विश्व छिपकली दिवस"
+        },
+        "body": {
+          "en": "World Lizard Day encourages people to learn more about lizards, remove myths and fears, and promote their conservation.",
+          "hi": "विश्व छिपकली दिवस लोगों को छिपकलियों के बारे में अधिक जानने, मिथकों और भय को दूर करने और उनके संरक्षण को बढ़ावा देने के लिए प्रोत्साहित करता है।"
+        },
+        "_id": "69cceaab2a594df3f25b2047",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/CFY601wzlgiX-Wed Apr 01 2026 09:51:37 GMT+0000 (Coordinated Universal Time)-World Lizard Day.jpeg",
+        "date": "2026-08-14T00:00:00.000Z",
+        "createdAt": "2026-04-01T09:51:39.952Z",
+        "updatedAt": "2026-05-06T09:18:16.986Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Orangutan Day",
-      "type": "Event",
-      "description": "World Orangutan Day. Date: 2026-08-19T00:00:00.000Z. Details: World Orangutan Day is observed every year on August 19 to raise awareness about orangutans and the urgent need to protect them. The day highlights conservation efforts for orangutans, which are among the most intelligent primates and are critically endangered."
+      "id": "World Orangutan Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Orangutan Day\",\"hi\":\"विश्व ओरंगुटान दिवस\"} | body: {\"en\":\"World Orangutan Day is observed every year on August 19 to raise awareness about orangutans and the urgent need to protect them. The day highlights conservation efforts for orangutans, which are among the most intelligent primates and are critically endangered.\",\"hi\":\"ऑरंगुटान के बारे में जागरूकता बढ़ाने और उनकी सुरक्षा की तत्काल आवश्यकता के लिए हर साल 19 अगस्त को विश्व ऑरंगुटान दिवस मनाया जाता है। यह दिन ऑरंगुटान के संरक्षण प्रयासों पर प्रकाश डालता है, जो सबसे बुद्धिमान प्राइमेट्स में से हैं और गंभीर रूप से लुप्तप्राय हैं।\"} | _id: 69cceb142a594df3f25b21ca | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/IXaLmmmqXySO-Wed Apr 01 2026 09:53:22 GMT+0000 (Coordinated Universal Time)-World Orangutan Day.jpeg | date: 2026-08-19T00:00:00.000Z | createdAt: 2026-04-01T09:53:24.686Z | updatedAt: 2026-05-06T09:19:48.666Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Orangutan Day",
+          "hi": "विश्व ओरंगुटान दिवस"
+        },
+        "body": {
+          "en": "World Orangutan Day is observed every year on August 19 to raise awareness about orangutans and the urgent need to protect them. The day highlights conservation efforts for orangutans, which are among the most intelligent primates and are critically endangered.",
+          "hi": "ऑरंगुटान के बारे में जागरूकता बढ़ाने और उनकी सुरक्षा की तत्काल आवश्यकता के लिए हर साल 19 अगस्त को विश्व ऑरंगुटान दिवस मनाया जाता है। यह दिन ऑरंगुटान के संरक्षण प्रयासों पर प्रकाश डालता है, जो सबसे बुद्धिमान प्राइमेट्स में से हैं और गंभीर रूप से लुप्तप्राय हैं।"
+        },
+        "_id": "69cceb142a594df3f25b21ca",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/IXaLmmmqXySO-Wed Apr 01 2026 09:53:22 GMT+0000 (Coordinated Universal Time)-World Orangutan Day.jpeg",
+        "date": "2026-08-19T00:00:00.000Z",
+        "createdAt": "2026-04-01T09:53:24.686Z",
+        "updatedAt": "2026-05-06T09:19:48.666Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Mosquito Day",
-      "type": "Event",
-      "description": "World Mosquito Day. Date: 2026-08-20T00:00:00.000Z. Details: NZP can spread awareness about mosquito-borne diseases and the importance of maintaining clean surroundings within and around the zoo."
+      "id": "World Mosquito Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Mosquito Day\",\"hi\":\"विश्व मच्छर दिवस\"} | body: {\"en\":\"NZP can spread awareness about mosquito-borne diseases and the importance of maintaining clean surroundings within and around the zoo.\",\"hi\":\"एनजेडपी मच्छर जनित बीमारियों और चिड़ियाघर के भीतर और आसपास स्वच्छ वातावरण बनाए रखने के महत्व के बारे में जागरूकता फैला सकता है।\"} | _id: 69cceb4f2a594df3f25b26fb | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/Bcj3Pspm1EZb-Wed Apr 01 2026 09:54:22 GMT+0000 (Coordinated Universal Time)-World Mosquito Day.jpeg | date: 2026-08-20T00:00:00.000Z | createdAt: 2026-04-01T09:54:23.554Z | updatedAt: 2026-05-06T09:20:43.490Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Mosquito Day",
+          "hi": "विश्व मच्छर दिवस"
+        },
+        "body": {
+          "en": "NZP can spread awareness about mosquito-borne diseases and the importance of maintaining clean surroundings within and around the zoo.",
+          "hi": "एनजेडपी मच्छर जनित बीमारियों और चिड़ियाघर के भीतर और आसपास स्वच्छ वातावरण बनाए रखने के महत्व के बारे में जागरूकता फैला सकता है।"
+        },
+        "_id": "69cceb4f2a594df3f25b26fb",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/Bcj3Pspm1EZb-Wed Apr 01 2026 09:54:22 GMT+0000 (Coordinated Universal Time)-World Mosquito Day.jpeg",
+        "date": "2026-08-20T00:00:00.000Z",
+        "createdAt": "2026-04-01T09:54:23.554Z",
+        "updatedAt": "2026-05-06T09:20:43.490Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Whale Shark Day",
-      "type": "Event",
-      "description": "International Whale Shark Day. Date: 2026-08-30T00:00:00.000Z. Details: International Whale Shark Day is celebrated every year on August 30 to raise awareness about the conservation of the world’s largest fish—the whale shark."
+      "id": "International Whale Shark Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Whale Shark Day\",\"hi\":\"अंतर्राष्ट्रीय व्हेल शार्क दिवस\"} | body: {\"en\":\"International Whale Shark Day is celebrated every year on August 30 to raise awareness about the conservation of the world’s largest fish—the whale shark.\",\"hi\":\"दुनिया की सबसे बड़ी मछली-व्हेल शार्क के संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 30 अगस्त को अंतर्राष्ट्रीय व्हेल शार्क दिवस मनाया जाता है।\"} | _id: 69cceba42a594df3f25b533b | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/taY4f0VDCmzf-Wed Apr 01 2026 09:55:46 GMT+0000 (Coordinated Universal Time)-International Whale Shark Day.jpeg | date: 2026-08-30T00:00:00.000Z | createdAt: 2026-04-01T09:55:48.288Z | updatedAt: 2026-05-06T09:23:21.980Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Whale Shark Day",
+          "hi": "अंतर्राष्ट्रीय व्हेल शार्क दिवस"
+        },
+        "body": {
+          "en": "International Whale Shark Day is celebrated every year on August 30 to raise awareness about the conservation of the world’s largest fish—the whale shark.",
+          "hi": "दुनिया की सबसे बड़ी मछली-व्हेल शार्क के संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 30 अगस्त को अंतर्राष्ट्रीय व्हेल शार्क दिवस मनाया जाता है।"
+        },
+        "_id": "69cceba42a594df3f25b533b",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/taY4f0VDCmzf-Wed Apr 01 2026 09:55:46 GMT+0000 (Coordinated Universal Time)-International Whale Shark Day.jpeg",
+        "date": "2026-08-30T00:00:00.000Z",
+        "createdAt": "2026-04-01T09:55:48.288Z",
+        "updatedAt": "2026-05-06T09:23:21.980Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: National Wildlife Day",
-      "type": "Event",
-      "description": "National Wildlife Day. Date: 2026-09-04T00:00:00.000Z. Details: National Wildlife Day is celebrated every year on September 4 to raise awareness about protecting wildlife and preserving natural habitats. The day honors the work of conservationists like Steve Irwin, also known as the “Crocodile Hunter,” for his dedication to wildlife protection."
+      "id": "National Wildlife Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"National Wildlife Day\",\"hi\":\"राष्ट्रीय वन्यजीव दिवस\"} | body: {\"en\":\"National Wildlife Day is celebrated every year on September 4 to raise awareness about protecting wildlife and preserving natural habitats. The day honors the work of conservationists like Steve Irwin, also known as the “Crocodile Hunter,” for his dedication to wildlife protection.\",\"hi\":\"वन्यजीवों की सुरक्षा और प्राकृतिक आवासों के संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 4 सितंबर को राष्ट्रीय वन्यजीव दिवस मनाया जाता है। यह दिन स्टीव इरविन जैसे संरक्षणवादियों के काम का सम्मान करता है, जिन्हें वन्यजीव संरक्षण के प्रति समर्पण के लिए \\\"मगरमच्छ शिकारी\\\" के रूप में भी जाना जाता है।\"} | _id: 69cceee32a594df3f25bb761 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/MWDurg195R7X-Wed Apr 01 2026 10:09:38 GMT+0000 (Coordinated Universal Time)-National Wildlife Day.jpeg | date: 2026-09-04T00:00:00.000Z | createdAt: 2026-04-01T10:09:39.539Z | updatedAt: 2026-05-06T09:24:16.018Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "National Wildlife Day",
+          "hi": "राष्ट्रीय वन्यजीव दिवस"
+        },
+        "body": {
+          "en": "National Wildlife Day is celebrated every year on September 4 to raise awareness about protecting wildlife and preserving natural habitats. The day honors the work of conservationists like Steve Irwin, also known as the “Crocodile Hunter,” for his dedication to wildlife protection.",
+          "hi": "वन्यजीवों की सुरक्षा और प्राकृतिक आवासों के संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 4 सितंबर को राष्ट्रीय वन्यजीव दिवस मनाया जाता है। यह दिन स्टीव इरविन जैसे संरक्षणवादियों के काम का सम्मान करता है, जिन्हें वन्यजीव संरक्षण के प्रति समर्पण के लिए \"मगरमच्छ शिकारी\" के रूप में भी जाना जाता है।"
+        },
+        "_id": "69cceee32a594df3f25bb761",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/MWDurg195R7X-Wed Apr 01 2026 10:09:38 GMT+0000 (Coordinated Universal Time)-National Wildlife Day.jpeg",
+        "date": "2026-09-04T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:09:39.539Z",
+        "updatedAt": "2026-05-06T09:24:16.018Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Red Panda Day",
-      "type": "Event",
-      "description": "International Red Panda Day. Date: 2026-09-05T00:00:00.000Z. Details: International Red Panda Day is celebrated to raise awareness about the conservation of red pandas. The day was started by the Red Panda Network to protect red pandas and their natural habitats."
+      "id": "International Red Panda Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Red Panda Day\",\"hi\":\"अंतर्राष्ट्रीय लाल पांडा दिवस\"} | body: {\"en\":\"International Red Panda Day is celebrated to raise awareness about the conservation of red pandas. The day was started by the Red Panda Network to protect red pandas and their natural habitats.\",\"hi\":\"अंतर्राष्ट्रीय रेड पांडा दिवस लाल पांडा के संरक्षण के बारे में जागरूकता बढ़ाने के लिए मनाया जाता है। इस दिन की शुरुआत रेड पांडा नेटवर्क द्वारा लाल पांडा और उनके प्राकृतिक आवासों की रक्षा के लिए की गई थी।\"} | _id: 69ccef542a594df3f25bb82e | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/WS6HbvLo973N-Wed Apr 01 2026 10:11:30 GMT+0000 (Coordinated Universal Time)-International Red Panda Day.jpeg | date: 2026-09-05T00:00:00.000Z | createdAt: 2026-04-01T10:11:32.129Z | updatedAt: 2026-05-06T09:32:35.461Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Red Panda Day",
+          "hi": "अंतर्राष्ट्रीय लाल पांडा दिवस"
+        },
+        "body": {
+          "en": "International Red Panda Day is celebrated to raise awareness about the conservation of red pandas. The day was started by the Red Panda Network to protect red pandas and their natural habitats.",
+          "hi": "अंतर्राष्ट्रीय रेड पांडा दिवस लाल पांडा के संरक्षण के बारे में जागरूकता बढ़ाने के लिए मनाया जाता है। इस दिन की शुरुआत रेड पांडा नेटवर्क द्वारा लाल पांडा और उनके प्राकृतिक आवासों की रक्षा के लिए की गई थी।"
+        },
+        "_id": "69ccef542a594df3f25bb82e",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/WS6HbvLo973N-Wed Apr 01 2026 10:11:30 GMT+0000 (Coordinated Universal Time)-International Red Panda Day.jpeg",
+        "date": "2026-09-05T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:11:32.129Z",
+        "updatedAt": "2026-05-06T09:32:35.461Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Vulture Awareness Day",
-      "type": "Event",
-      "description": "International Vulture Awareness Day. Date: 2026-09-06T00:00:00.000Z. Details: International Vulture Awareness Day is observed to highlight the importance of vultures and promote their conservation."
+      "id": "International Vulture Awareness Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Vulture Awareness Day\",\"hi\":\"अंतर्राष्ट्रीय गिद्ध जागरूकता दिवस\"} | body: {\"en\":\"International Vulture Awareness Day is observed to highlight the importance of vultures and promote their conservation.\",\"hi\":\"गिद्धों के महत्व को उजागर करने और उनके संरक्षण को बढ़ावा देने के लिए अंतर्राष्ट्रीय गिद्ध जागरूकता दिवस मनाया जाता है।\"} | _id: 69ccf0152a594df3f25bc6b0 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/7gO5n9Hyw5fl-Wed Apr 01 2026 10:14:39 GMT+0000 (Coordinated Universal Time)-International Vulture Awareness Day.jpeg | date: 2026-09-06T00:00:00.000Z | createdAt: 2026-04-01T10:14:45.535Z | updatedAt: 2026-05-06T09:33:22.838Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Vulture Awareness Day",
+          "hi": "अंतर्राष्ट्रीय गिद्ध जागरूकता दिवस"
+        },
+        "body": {
+          "en": "International Vulture Awareness Day is observed to highlight the importance of vultures and promote their conservation.",
+          "hi": "गिद्धों के महत्व को उजागर करने और उनके संरक्षण को बढ़ावा देने के लिए अंतर्राष्ट्रीय गिद्ध जागरूकता दिवस मनाया जाता है।"
+        },
+        "_id": "69ccf0152a594df3f25bc6b0",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/7gO5n9Hyw5fl-Wed Apr 01 2026 10:14:39 GMT+0000 (Coordinated Universal Time)-International Vulture Awareness Day.jpeg",
+        "date": "2026-09-06T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:14:45.535Z",
+        "updatedAt": "2026-05-06T09:33:22.838Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: National Iguana Awareness Day",
-      "type": "Event",
-      "description": "National Iguana Awareness Day. Date: 2026-09-08T00:00:00.000Z. Details: National Iguana Awareness Day is celebrated every year on September 8 to raise awareness about iguanas, their care, and their conservation."
+      "id": "National Iguana Awareness Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"National Iguana Awareness Day\",\"hi\":\"राष्ट्रीय इगुआना जागरूकता दिवस\"} | body: {\"en\":\"National Iguana Awareness Day is celebrated every year on September 8 to raise awareness about iguanas, their care, and their conservation.\",\"hi\":\"इगुआना, उनकी देखभाल और उनके संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 8 सितंबर को राष्ट्रीय इगुआना जागरूकता दिवस मनाया जाता है।\"} | _id: 69ccf0ba2a594df3f25bda26 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/VYESK04y4QDE-Wed Apr 01 2026 10:17:27 GMT+0000 (Coordinated Universal Time)-National Iguana Awareness Day.jpeg | date: 2026-09-08T00:00:00.000Z | createdAt: 2026-04-01T10:17:30.732Z | updatedAt: 2026-05-06T09:33:58.427Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "National Iguana Awareness Day",
+          "hi": "राष्ट्रीय इगुआना जागरूकता दिवस"
+        },
+        "body": {
+          "en": "National Iguana Awareness Day is celebrated every year on September 8 to raise awareness about iguanas, their care, and their conservation.",
+          "hi": "इगुआना, उनकी देखभाल और उनके संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 8 सितंबर को राष्ट्रीय इगुआना जागरूकता दिवस मनाया जाता है।"
+        },
+        "_id": "69ccf0ba2a594df3f25bda26",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/VYESK04y4QDE-Wed Apr 01 2026 10:17:27 GMT+0000 (Coordinated Universal Time)-National Iguana Awareness Day.jpeg",
+        "date": "2026-09-08T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:17:30.732Z",
+        "updatedAt": "2026-05-06T09:33:58.427Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Snake Awareness Day",
-      "type": "Event",
-      "description": "International Snake Awareness Day. Date: 2026-09-20T00:00:00.000Z. Details: International Snake Awareness Day is observed every year on July 16 to raise awareness about snakes and their importance in nature. The day aims to remove fear and myths about snakes and promote their conservation."
+      "id": "International Snake Awareness Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Snake Awareness Day\",\"hi\":\"अंतर्राष्ट्रीय साँप जागरूकता दिवस\"} | body: {\"en\":\"International Snake Awareness Day is observed every year on July 16 to raise awareness about snakes and their importance in nature. The day aims to remove fear and myths about snakes and promote their conservation.\",\"hi\":\"सांपों और प्रकृति में उनके महत्व के बारे में जागरूकता बढ़ाने के लिए हर साल 16 जुलाई को अंतर्राष्ट्रीय सांप जागरूकता दिवस मनाया जाता है। इस दिन का उद्देश्य सांपों के बारे में डर और मिथकों को दूर करना और उनके संरक्षण को बढ़ावा देना है।\"} | _id: 69ccf20c2a594df3f25bea89 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/bbFIiDbtJR1K-Wed Apr 01 2026 10:23:05 GMT+0000 (Coordinated Universal Time)-International snake awareness day.png | date: 2026-09-20T00:00:00.000Z | createdAt: 2026-04-01T10:23:08.583Z | updatedAt: 2026-05-06T09:35:33.450Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Snake Awareness Day",
+          "hi": "अंतर्राष्ट्रीय साँप जागरूकता दिवस"
+        },
+        "body": {
+          "en": "International Snake Awareness Day is observed every year on July 16 to raise awareness about snakes and their importance in nature. The day aims to remove fear and myths about snakes and promote their conservation.",
+          "hi": "सांपों और प्रकृति में उनके महत्व के बारे में जागरूकता बढ़ाने के लिए हर साल 16 जुलाई को अंतर्राष्ट्रीय सांप जागरूकता दिवस मनाया जाता है। इस दिन का उद्देश्य सांपों के बारे में डर और मिथकों को दूर करना और उनके संरक्षण को बढ़ावा देना है।"
+        },
+        "_id": "69ccf20c2a594df3f25bea89",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/bbFIiDbtJR1K-Wed Apr 01 2026 10:23:05 GMT+0000 (Coordinated Universal Time)-International snake awareness day.png",
+        "date": "2026-09-20T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:23:08.583Z",
+        "updatedAt": "2026-05-06T09:35:33.450Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Rhino Day",
-      "type": "Event",
-      "description": "World Rhino Day. Date: 2026-09-22T00:00:00.000Z. Details: World Rhino Day is celebrated every year on September 22 to raise awareness about rhinos and the urgent need to protect them."
+      "id": "World Rhino Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Rhino Day\",\"hi\":\"विश्व गैंडा दिवस\"} | body: {\"en\":\"World Rhino Day is celebrated every year on September 22 to raise awareness about rhinos and the urgent need to protect them.\",\"hi\":\"गैंडों के बारे में जागरूकता बढ़ाने और उनकी सुरक्षा की तत्काल आवश्यकता के लिए हर साल 22 सितंबर को विश्व गैंडा दिवस मनाया जाता है।\"} | _id: 69ccf2ea2a594df3f25bf4cc | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/xnk30l44GqvI-Wed Apr 01 2026 10:26:48 GMT+0000 (Coordinated Universal Time)-World Rhino Day.jpeg | date: 2026-09-22T00:00:00.000Z | createdAt: 2026-04-01T10:26:50.267Z | updatedAt: 2026-05-06T09:39:04.602Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Rhino Day",
+          "hi": "विश्व गैंडा दिवस"
+        },
+        "body": {
+          "en": "World Rhino Day is celebrated every year on September 22 to raise awareness about rhinos and the urgent need to protect them.",
+          "hi": "गैंडों के बारे में जागरूकता बढ़ाने और उनकी सुरक्षा की तत्काल आवश्यकता के लिए हर साल 22 सितंबर को विश्व गैंडा दिवस मनाया जाता है।"
+        },
+        "_id": "69ccf2ea2a594df3f25bf4cc",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/xnk30l44GqvI-Wed Apr 01 2026 10:26:48 GMT+0000 (Coordinated Universal Time)-World Rhino Day.jpeg",
+        "date": "2026-09-22T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:26:50.267Z",
+        "updatedAt": "2026-05-06T09:39:04.602Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Elephant Appreciation Day",
-      "type": "Event",
-      "description": "Elephant Appreciation Day. Date: 2026-09-22T00:00:00.000Z. Details: Elephant Appreciation Day reminds us to value and protect elephants, which are vital for maintaining healthy ecosystems."
+      "id": "Elephant Appreciation Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Elephant Appreciation Day\",\"hi\":\"हाथी प्रशंसा दिवस\"} | body: {\"en\":\"Elephant Appreciation Day reminds us to value and protect elephants, which are vital for maintaining healthy ecosystems.\",\"hi\":\"हाथी प्रशंसा दिवस हमें हाथियों को महत्व देने और उनकी रक्षा करने की याद दिलाता है, जो स्वस्थ पारिस्थितिकी तंत्र को बनाए रखने के लिए महत्वपूर्ण हैं।\"} | _id: 69ccf2a82a594df3f25befae | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/FwMCsw4vDlFr-Wed Apr 01 2026 10:25:42 GMT+0000 (Coordinated Universal Time)-Elephant Appreciation Day.png | date: 2026-09-22T00:00:00.000Z | createdAt: 2026-04-01T10:25:44.865Z | updatedAt: 2026-05-06T09:36:29.070Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Elephant Appreciation Day",
+          "hi": "हाथी प्रशंसा दिवस"
+        },
+        "body": {
+          "en": "Elephant Appreciation Day reminds us to value and protect elephants, which are vital for maintaining healthy ecosystems.",
+          "hi": "हाथी प्रशंसा दिवस हमें हाथियों को महत्व देने और उनकी रक्षा करने की याद दिलाता है, जो स्वस्थ पारिस्थितिकी तंत्र को बनाए रखने के लिए महत्वपूर्ण हैं।"
+        },
+        "_id": "69ccf2a82a594df3f25befae",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/FwMCsw4vDlFr-Wed Apr 01 2026 10:25:42 GMT+0000 (Coordinated Universal Time)-Elephant Appreciation Day.png",
+        "date": "2026-09-22T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:25:44.865Z",
+        "updatedAt": "2026-05-06T09:36:29.070Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Raccoon Appreciation Day",
-      "type": "Event",
-      "description": "International Raccoon Appreciation Day. Date: 2026-10-01T00:00:00.000Z. Details: International Raccoon Appreciation Day encourages people to better understand raccoons, reduce negative myths about them, and promote coexistence with wildlife."
+      "id": "International Raccoon Appreciation Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Raccoon Appreciation Day\",\"hi\":\"अंतर्राष्ट्रीय रैकून प्रशंसा दिवस\"} | body: {\"en\":\"International Raccoon Appreciation Day encourages people to better understand raccoons, reduce negative myths about them, and promote coexistence with wildlife.\",\"hi\":\"अंतर्राष्ट्रीय रैकून प्रशंसा दिवस लोगों को रैकून को बेहतर ढंग से समझने, उनके बारे में नकारात्मक मिथकों को कम करने और वन्यजीवों के साथ सह-अस्तित्व को बढ़ावा देने के लिए प्रोत्साहित करता है।\"} | _id: 69ccf3d32a594df3f25c02d8 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/OhzO6OpDyeaZ-Wed Apr 01 2026 10:30:37 GMT+0000 (Coordinated Universal Time)-International Raccoon Appreciation Day.jpeg | date: 2026-10-01T00:00:00.000Z | createdAt: 2026-04-01T10:30:43.753Z | updatedAt: 2026-05-06T09:44:12.501Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Raccoon Appreciation Day",
+          "hi": "अंतर्राष्ट्रीय रैकून प्रशंसा दिवस"
+        },
+        "body": {
+          "en": "International Raccoon Appreciation Day encourages people to better understand raccoons, reduce negative myths about them, and promote coexistence with wildlife.",
+          "hi": "अंतर्राष्ट्रीय रैकून प्रशंसा दिवस लोगों को रैकून को बेहतर ढंग से समझने, उनके बारे में नकारात्मक मिथकों को कम करने और वन्यजीवों के साथ सह-अस्तित्व को बढ़ावा देने के लिए प्रोत्साहित करता है।"
+        },
+        "_id": "69ccf3d32a594df3f25c02d8",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/OhzO6OpDyeaZ-Wed Apr 01 2026 10:30:37 GMT+0000 (Coordinated Universal Time)-International Raccoon Appreciation Day.jpeg",
+        "date": "2026-10-01T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:30:43.753Z",
+        "updatedAt": "2026-05-06T09:44:12.501Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Wildlife Week",
-      "type": "Event",
-      "description": "Wildlife Week. Date: 2026-10-02T00:00:00.000Z. Details: Wildlife Week is observed every year in India from 2nd to 8th October to raise awareness about the protection and conservation of wildlife and natural habitats."
+      "id": "Wildlife Week",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Wildlife Week\",\"hi\":\"वन्य जीव सप्ताह\"} | body: {\"en\":\"Wildlife Week is observed every year in India from 2nd to 8th October to raise awareness about the protection and conservation of wildlife and natural habitats.\",\"hi\":\"वन्यजीवों और प्राकृतिक आवासों की सुरक्षा और संरक्षण के बारे में जागरूकता बढ़ाने के लिए भारत में हर साल 2 से 8 अक्टूबर तक वन्यजीव सप्ताह मनाया जाता है।\"} | _id: 69ccf6032a594df3f25c286f | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/uPoSBMkRRgDr-Wed Apr 01 2026 10:40:02 GMT+0000 (Coordinated Universal Time)-Wildlife Week.png | date: 2026-10-02T00:00:00.000Z | createdAt: 2026-04-01T10:40:03.263Z | updatedAt: 2026-05-06T09:45:47.527Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Wildlife Week",
+          "hi": "वन्य जीव सप्ताह"
+        },
+        "body": {
+          "en": "Wildlife Week is observed every year in India from 2nd to 8th October to raise awareness about the protection and conservation of wildlife and natural habitats.",
+          "hi": "वन्यजीवों और प्राकृतिक आवासों की सुरक्षा और संरक्षण के बारे में जागरूकता बढ़ाने के लिए भारत में हर साल 2 से 8 अक्टूबर तक वन्यजीव सप्ताह मनाया जाता है।"
+        },
+        "_id": "69ccf6032a594df3f25c286f",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/uPoSBMkRRgDr-Wed Apr 01 2026 10:40:02 GMT+0000 (Coordinated Universal Time)-Wildlife Week.png",
+        "date": "2026-10-02T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:40:03.263Z",
+        "updatedAt": "2026-05-06T09:45:47.527Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Animal Day",
-      "type": "Event",
-      "description": "World Animal Day. Date: 2026-10-04T00:00:00.000Z. Details: World Animal Day is celebrated every year on October 4 to promote animal welfare and raise awareness about the protection of all animals."
+      "id": "World Animal Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Animal Day\",\"hi\":\"विश्व पशु दिवस\"} | body: {\"en\":\"World Animal Day is celebrated every year on October 4 to promote animal welfare and raise awareness about the protection of all animals.\",\"hi\":\"पशु कल्याण को बढ़ावा देने और सभी जानवरों की सुरक्षा के बारे में जागरूकता बढ़ाने के लिए हर साल 4 अक्टूबर को विश्व पशु दिवस मनाया जाता है।\"} | _id: 69ccf6582a594df3f25c3b74 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/RPsl43848II7-Wed Apr 01 2026 10:41:26 GMT+0000 (Coordinated Universal Time)-World Animal Day.jpeg | date: 2026-10-04T00:00:00.000Z | createdAt: 2026-04-01T10:41:28.060Z | updatedAt: 2026-05-06T09:47:43.790Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Animal Day",
+          "hi": "विश्व पशु दिवस"
+        },
+        "body": {
+          "en": "World Animal Day is celebrated every year on October 4 to promote animal welfare and raise awareness about the protection of all animals.",
+          "hi": "पशु कल्याण को बढ़ावा देने और सभी जानवरों की सुरक्षा के बारे में जागरूकता बढ़ाने के लिए हर साल 4 अक्टूबर को विश्व पशु दिवस मनाया जाता है।"
+        },
+        "_id": "69ccf6582a594df3f25c3b74",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/RPsl43848II7-Wed Apr 01 2026 10:41:26 GMT+0000 (Coordinated Universal Time)-World Animal Day.jpeg",
+        "date": "2026-10-04T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:41:28.060Z",
+        "updatedAt": "2026-05-06T09:47:43.790Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: National Salmon Day",
-      "type": "Event",
-      "description": "National Salmon Day. Date: 2026-10-08T00:00:00.000Z. Details: National Salmon Day is observed every year on October 8 to celebrate salmon fish and highlight their ecological, cultural, and nutritional importance."
+      "id": "National Salmon Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"National Salmon Day\",\"hi\":\"राष्ट्रीय सामन दिवस\"} | body: {\"en\":\"National Salmon Day is observed every year on October 8 to celebrate salmon fish and highlight their ecological, cultural, and nutritional importance.\",\"hi\":\"सैल्मन मछली का जश्न मनाने और उनके पारिस्थितिक, सांस्कृतिक और पोषण संबंधी महत्व को उजागर करने के लिए हर साल 8 अक्टूबर को राष्ट्रीय सैल्मन दिवस मनाया जाता है।\"} | _id: 69ccf6a32a594df3f25c4d62 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/ymOvBkZJmq1I-Wed Apr 01 2026 10:42:41 GMT+0000 (Coordinated Universal Time)-National Salmon Day.jpeg | date: 2026-10-08T00:00:00.000Z | createdAt: 2026-04-01T10:42:43.341Z | updatedAt: 2026-05-06T09:48:48.335Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "National Salmon Day",
+          "hi": "राष्ट्रीय सामन दिवस"
+        },
+        "body": {
+          "en": "National Salmon Day is observed every year on October 8 to celebrate salmon fish and highlight their ecological, cultural, and nutritional importance.",
+          "hi": "सैल्मन मछली का जश्न मनाने और उनके पारिस्थितिक, सांस्कृतिक और पोषण संबंधी महत्व को उजागर करने के लिए हर साल 8 अक्टूबर को राष्ट्रीय सैल्मन दिवस मनाया जाता है।"
+        },
+        "_id": "69ccf6a32a594df3f25c4d62",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/ymOvBkZJmq1I-Wed Apr 01 2026 10:42:41 GMT+0000 (Coordinated Universal Time)-National Salmon Day.jpeg",
+        "date": "2026-10-08T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:42:43.341Z",
+        "updatedAt": "2026-05-06T09:48:48.335Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Sloth Day",
-      "type": "Event",
-      "description": "International Sloth Day. Date: 2026-10-20T00:00:00.000Z. Details: International Sloth Day is observed every year on 20 October to raise awareness about sloths and the conservation of their natural habitats, especially the tropical rainforests of Central and South America."
+      "id": "International Sloth Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Sloth Day\",\"hi\":\"अंतर्राष्ट्रीय सुस्ती दिवस\"} | body: {\"en\":\"International Sloth Day is observed every year on 20 October to raise awareness about sloths and the conservation of their natural habitats, especially the tropical rainforests of Central and South America.\",\"hi\":\"आलसियों के बारे में जागरूकता बढ़ाने और उनके प्राकृतिक आवासों, विशेषकर मध्य और दक्षिण अमेरिका के उष्णकटिबंधीय वर्षावनों के संरक्षण के लिए हर साल 20 अक्टूबर को अंतर्राष्ट्रीय स्लॉथ दिवस मनाया जाता है।\"} | _id: 69ccf6f32a594df3f25c4d82 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/NhoLFzkSH41K-Wed Apr 01 2026 10:44:01 GMT+0000 (Coordinated Universal Time)-International Sloth Day.jpeg | date: 2026-10-20T00:00:00.000Z | createdAt: 2026-04-01T10:44:03.193Z | updatedAt: 2026-05-06T10:00:20.326Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Sloth Day",
+          "hi": "अंतर्राष्ट्रीय सुस्ती दिवस"
+        },
+        "body": {
+          "en": "International Sloth Day is observed every year on 20 October to raise awareness about sloths and the conservation of their natural habitats, especially the tropical rainforests of Central and South America.",
+          "hi": "आलसियों के बारे में जागरूकता बढ़ाने और उनके प्राकृतिक आवासों, विशेषकर मध्य और दक्षिण अमेरिका के उष्णकटिबंधीय वर्षावनों के संरक्षण के लिए हर साल 20 अक्टूबर को अंतर्राष्ट्रीय स्लॉथ दिवस मनाया जाता है।"
+        },
+        "_id": "69ccf6f32a594df3f25c4d82",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/NhoLFzkSH41K-Wed Apr 01 2026 10:44:01 GMT+0000 (Coordinated Universal Time)-International Sloth Day.jpeg",
+        "date": "2026-10-20T00:00:00.000Z",
+        "createdAt": "2026-04-01T10:44:03.193Z",
+        "updatedAt": "2026-05-06T10:00:20.326Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Reptile Awareness Day",
-      "type": "Event",
-      "description": "Reptile Awareness Day. Date: 2026-10-21T00:00:00.000Z. Details: Reptile Awareness Day is an observance dedicated to educating people about reptiles—their ecological importance, conservation status, and often misunderstood behavior."
+      "id": "Reptile Awareness Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Reptile Awareness Day\",\"hi\":\"सरीसृप जागरूकता दिवस\"} | body: {\"en\":\"Reptile Awareness Day is an observance dedicated to educating people about reptiles—their ecological importance, conservation status, and often misunderstood behavior.\",\"hi\":\"सरीसृप जागरूकता दिवस लोगों को सरीसृपों-उनके पारिस्थितिक महत्व, संरक्षण की स्थिति और अक्सर गलत समझे जाने वाले व्यवहार के बारे में शिक्षित करने के लिए समर्पित एक उत्सव है।\"} | _id: 69ccfc0f2a594df3f25cc65c | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/99NRzU45gbHI-Wed Apr 01 2026 11:05:49 GMT+0000 (Coordinated Universal Time)-Reptile Awareness Day.jpeg | date: 2026-10-21T00:00:00.000Z | createdAt: 2026-04-01T11:05:51.944Z | updatedAt: 2026-05-06T10:10:54.746Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Reptile Awareness Day",
+          "hi": "सरीसृप जागरूकता दिवस"
+        },
+        "body": {
+          "en": "Reptile Awareness Day is an observance dedicated to educating people about reptiles—their ecological importance, conservation status, and often misunderstood behavior.",
+          "hi": "सरीसृप जागरूकता दिवस लोगों को सरीसृपों-उनके पारिस्थितिक महत्व, संरक्षण की स्थिति और अक्सर गलत समझे जाने वाले व्यवहार के बारे में शिक्षित करने के लिए समर्पित एक उत्सव है।"
+        },
+        "_id": "69ccfc0f2a594df3f25cc65c",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/99NRzU45gbHI-Wed Apr 01 2026 11:05:49 GMT+0000 (Coordinated Universal Time)-Reptile Awareness Day.jpeg",
+        "date": "2026-10-21T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:05:51.944Z",
+        "updatedAt": "2026-05-06T10:10:54.746Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Snow Leopard day",
-      "type": "Event",
-      "description": "International Snow Leopard day. Date: 2026-10-23T00:00:00.000Z. Details: International Snow Leopard Day is observed every year on October 23 to raise awareness about the conservation of the snow leopard and the fragile mountain ecosystems it inhabits."
+      "id": "International Snow Leopard day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Snow Leopard day\",\"hi\":\"अंतर्राष्ट्रीय हिम तेंदुआ दिवस\"} | body: {\"en\":\"International Snow Leopard Day is observed every year on October 23 to raise awareness about the conservation of the snow leopard and the fragile mountain ecosystems it inhabits.\",\"hi\":\"हिम तेंदुए और उसमें रहने वाले नाजुक पर्वतीय पारिस्थितिकी तंत्र के संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 23 अक्टूबर को अंतर्राष्ट्रीय हिम तेंदुआ दिवस मनाया जाता है।\"} | _id: 69ccfcc82a594df3f25cdfb6 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/z6VyQRbYQDtq-Wed Apr 01 2026 11:08:51 GMT+0000 (Coordinated Universal Time)-International Snow Leopard day.jpeg | date: 2026-10-23T00:00:00.000Z | createdAt: 2026-04-01T11:08:56.865Z | updatedAt: 2026-05-06T10:11:42.118Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Snow Leopard day",
+          "hi": "अंतर्राष्ट्रीय हिम तेंदुआ दिवस"
+        },
+        "body": {
+          "en": "International Snow Leopard Day is observed every year on October 23 to raise awareness about the conservation of the snow leopard and the fragile mountain ecosystems it inhabits.",
+          "hi": "हिम तेंदुए और उसमें रहने वाले नाजुक पर्वतीय पारिस्थितिकी तंत्र के संरक्षण के बारे में जागरूकता बढ़ाने के लिए हर साल 23 अक्टूबर को अंतर्राष्ट्रीय हिम तेंदुआ दिवस मनाया जाता है।"
+        },
+        "_id": "69ccfcc82a594df3f25cdfb6",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/z6VyQRbYQDtq-Wed Apr 01 2026 11:08:51 GMT+0000 (Coordinated Universal Time)-International Snow Leopard day.jpeg",
+        "date": "2026-10-23T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:08:56.865Z",
+        "updatedAt": "2026-05-06T10:11:42.118Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Gibbon Day",
-      "type": "Event",
-      "description": "International Gibbon Day. Date: 2026-10-24T00:00:00.000Z. Details: International Gibbon Day is observed to raise awareness about gibbons—small apes that play a vital role in forest ecosystems and are among the most threatened primates in the world."
+      "id": "International Gibbon Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Gibbon Day\",\"hi\":\"अंतर्राष्ट्रीय गिब्बन दिवस\"} | body: {\"en\":\"International Gibbon Day is observed to raise awareness about gibbons—small apes that play a vital role in forest ecosystems and are among the most threatened primates in the world.\",\"hi\":\"अंतर्राष्ट्रीय गिब्बन दिवस गिब्बन के बारे में जागरूकता बढ़ाने के लिए मनाया जाता है - छोटे वानर जो वन पारिस्थितिकी तंत्र में महत्वपूर्ण भूमिका निभाते हैं और दुनिया में सबसे अधिक खतरे वाले प्राइमेट्स में से हैं।\"} | _id: 69ccfd272a594df3f25ce4dc | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/asd2roqjRSln-Wed Apr 01 2026 11:10:29 GMT+0000 (Coordinated Universal Time)-International Gibbon Day.jpeg | date: 2026-10-24T00:00:00.000Z | createdAt: 2026-04-01T11:10:31.796Z | updatedAt: 2026-05-06T10:13:54.394Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Gibbon Day",
+          "hi": "अंतर्राष्ट्रीय गिब्बन दिवस"
+        },
+        "body": {
+          "en": "International Gibbon Day is observed to raise awareness about gibbons—small apes that play a vital role in forest ecosystems and are among the most threatened primates in the world.",
+          "hi": "अंतर्राष्ट्रीय गिब्बन दिवस गिब्बन के बारे में जागरूकता बढ़ाने के लिए मनाया जाता है - छोटे वानर जो वन पारिस्थितिकी तंत्र में महत्वपूर्ण भूमिका निभाते हैं और दुनिया में सबसे अधिक खतरे वाले प्राइमेट्स में से हैं।"
+        },
+        "_id": "69ccfd272a594df3f25ce4dc",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/asd2roqjRSln-Wed Apr 01 2026 11:10:29 GMT+0000 (Coordinated Universal Time)-International Gibbon Day.jpeg",
+        "date": "2026-10-24T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:10:31.796Z",
+        "updatedAt": "2026-05-06T10:13:54.394Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Bison Day",
-      "type": "Event",
-      "description": "Bison Day. Date: 2026-11-01T00:00:00.000Z. Details: Bison Day (more commonly celebrated as World Bison Day) is observed to recognize the ecological, cultural, and conservation importance of bison."
+      "id": "Bison Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Bison Day\",\"hi\":\"बाइसन दिवस\"} | body: {\"en\":\"Bison Day (more commonly celebrated as World Bison Day) is observed to recognize the ecological, cultural, and conservation importance of bison.\",\"hi\":\"बाइसन दिवस (आमतौर पर विश्व बाइसन दिवस के रूप में मनाया जाता है) बाइसन के पारिस्थितिक, सांस्कृतिक और संरक्षण महत्व को पहचानने के लिए मनाया जाता है।\"} | _id: 69ccfdfd2a594df3f25d2d22 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/QenRsxV102rj-Wed Apr 01 2026 11:14:04 GMT+0000 (Coordinated Universal Time)-Bison Day.jpeg | date: 2026-11-01T00:00:00.000Z | createdAt: 2026-04-01T11:14:05.501Z | updatedAt: 2026-05-06T10:15:22.983Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Bison Day",
+          "hi": "बाइसन दिवस"
+        },
+        "body": {
+          "en": "Bison Day (more commonly celebrated as World Bison Day) is observed to recognize the ecological, cultural, and conservation importance of bison.",
+          "hi": "बाइसन दिवस (आमतौर पर विश्व बाइसन दिवस के रूप में मनाया जाता है) बाइसन के पारिस्थितिक, सांस्कृतिक और संरक्षण महत्व को पहचानने के लिए मनाया जाता है।"
+        },
+        "_id": "69ccfdfd2a594df3f25d2d22",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/QenRsxV102rj-Wed Apr 01 2026 11:14:04 GMT+0000 (Coordinated Universal Time)-Bison Day.jpeg",
+        "date": "2026-11-01T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:14:05.501Z",
+        "updatedAt": "2026-05-06T10:15:22.983Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Jellyfish Day",
-      "type": "Event",
-      "description": "Jellyfish Day. Date: 2026-11-03T00:00:00.000Z. Details: Jellyfish Day (often observed as World Jellyfish Day on November 3) is an awareness day dedicated to these ancient, fascinating marine animals and their role in ocean ecosystems."
+      "id": "Jellyfish Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Jellyfish Day\",\"hi\":\"जेलिफ़िश दिवस\"} | body: {\"en\":\"Jellyfish Day (often observed as World Jellyfish Day on November 3) is an awareness day dedicated to these ancient, fascinating marine animals and their role in ocean ecosystems.\",\"hi\":\"जेलीफ़िश दिवस (अक्सर 3 नवंबर को विश्व जेलीफ़िश दिवस के रूप में मनाया जाता है) एक जागरूकता दिवस है जो इन प्राचीन, आकर्षक समुद्री जानवरों और समुद्री पारिस्थितिक तंत्र में उनकी भूमिका को समर्पित है।\"} | _id: 69ccfe412a594df3f25d2d3b | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/ktoyGgfX9TUS-Wed Apr 01 2026 11:15:11 GMT+0000 (Coordinated Universal Time)-Jellyfish Day.jpeg | date: 2026-11-03T00:00:00.000Z | createdAt: 2026-04-01T11:15:13.713Z | updatedAt: 2026-05-06T10:15:56.217Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Jellyfish Day",
+          "hi": "जेलिफ़िश दिवस"
+        },
+        "body": {
+          "en": "Jellyfish Day (often observed as World Jellyfish Day on November 3) is an awareness day dedicated to these ancient, fascinating marine animals and their role in ocean ecosystems.",
+          "hi": "जेलीफ़िश दिवस (अक्सर 3 नवंबर को विश्व जेलीफ़िश दिवस के रूप में मनाया जाता है) एक जागरूकता दिवस है जो इन प्राचीन, आकर्षक समुद्री जानवरों और समुद्री पारिस्थितिक तंत्र में उनकी भूमिका को समर्पित है।"
+        },
+        "_id": "69ccfe412a594df3f25d2d3b",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/ktoyGgfX9TUS-Wed Apr 01 2026 11:15:11 GMT+0000 (Coordinated Universal Time)-Jellyfish Day.jpeg",
+        "date": "2026-11-03T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:15:13.713Z",
+        "updatedAt": "2026-05-06T10:15:56.217Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Birds Day",
-      "type": "Event",
-      "description": "World Birds Day. Date: 2026-11-12T00:00:00.000Z. Details: World Birds Day is celebrated to highlight the importance of birds in nature, ecosystems, and human life, and to promote their conservation."
+      "id": "World Birds Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Birds Day\",\"hi\":\"विश्व पक्षी दिवस\"} | body: {\"en\":\"World Birds Day is celebrated to highlight the importance of birds in nature, ecosystems, and human life, and to promote their conservation.\",\"hi\":\"विश्व पक्षी दिवस प्रकृति, पारिस्थितिकी तंत्र और मानव जीवन में पक्षियों के महत्व को उजागर करने और उनके संरक्षण को बढ़ावा देने के लिए मनाया जाता है।\"} | _id: 69ccff372a594df3f25d7e2f | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/0I2qpxfYw12V-Wed Apr 01 2026 11:19:17 GMT+0000 (Coordinated Universal Time)-World Birds Day.png | date: 2026-11-12T00:00:00.000Z | createdAt: 2026-04-01T11:19:19.166Z | updatedAt: 2026-05-06T10:18:41.609Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Birds Day",
+          "hi": "विश्व पक्षी दिवस"
+        },
+        "body": {
+          "en": "World Birds Day is celebrated to highlight the importance of birds in nature, ecosystems, and human life, and to promote their conservation.",
+          "hi": "विश्व पक्षी दिवस प्रकृति, पारिस्थितिकी तंत्र और मानव जीवन में पक्षियों के महत्व को उजागर करने और उनके संरक्षण को बढ़ावा देने के लिए मनाया जाता है।"
+        },
+        "_id": "69ccff372a594df3f25d7e2f",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/0I2qpxfYw12V-Wed Apr 01 2026 11:19:17 GMT+0000 (Coordinated Universal Time)-World Birds Day.png",
+        "date": "2026-11-12T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:19:19.166Z",
+        "updatedAt": "2026-05-06T10:18:41.609Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Jaguar Day",
-      "type": "Event",
-      "description": "International Jaguar Day. Date: 2026-11-29T00:00:00.000Z. Details: International Jaguar Day is observed every year on November 29 to raise global awareness about the conservation of jaguars and the protection of their natural habitats."
+      "id": "International Jaguar Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Jaguar Day\",\"hi\":\"अंतर्राष्ट्रीय जगुआर दिवस\"} | body: {\"en\":\"International Jaguar Day is observed every year on November 29 to raise global awareness about the conservation of jaguars and the protection of their natural habitats.\",\"hi\":\"जगुआर के संरक्षण और उनके प्राकृतिक आवासों की सुरक्षा के बारे में वैश्विक जागरूकता बढ़ाने के लिए हर साल 29 नवंबर को अंतर्राष्ट्रीय जगुआर दिवस मनाया जाता है।\"} | _id: 69ccff782a594df3f25d7e3b | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/1iGe5xOjVUUH-Wed Apr 01 2026 11:20:22 GMT+0000 (Coordinated Universal Time)-International Jaguar Day.jpeg | date: 2026-11-29T00:00:00.000Z | createdAt: 2026-04-01T11:20:24.572Z | updatedAt: 2026-05-06T10:19:05.780Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Jaguar Day",
+          "hi": "अंतर्राष्ट्रीय जगुआर दिवस"
+        },
+        "body": {
+          "en": "International Jaguar Day is observed every year on November 29 to raise global awareness about the conservation of jaguars and the protection of their natural habitats.",
+          "hi": "जगुआर के संरक्षण और उनके प्राकृतिक आवासों की सुरक्षा के बारे में वैश्विक जागरूकता बढ़ाने के लिए हर साल 29 नवंबर को अंतर्राष्ट्रीय जगुआर दिवस मनाया जाता है।"
+        },
+        "_id": "69ccff782a594df3f25d7e3b",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/1iGe5xOjVUUH-Wed Apr 01 2026 11:20:22 GMT+0000 (Coordinated Universal Time)-International Jaguar Day.jpeg",
+        "date": "2026-11-29T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:20:24.572Z",
+        "updatedAt": "2026-05-06T10:19:05.780Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: World Wildlife Conservation Day",
-      "type": "Event",
-      "description": "World Wildlife Conservation Day. Date: 2026-12-04T00:00:00.000Z. Details: World Wildlife Conservation Day is observed every year on December 4 to raise global awareness about protecting wild animals and preserving biodiversity."
+      "id": "World Wildlife Conservation Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"World Wildlife Conservation Day\",\"hi\":\"विश्व वन्यजीव संरक्षण दिवस\"} | body: {\"en\":\"World Wildlife Conservation Day is observed every year on December 4 to raise global awareness about protecting wild animals and preserving biodiversity.\",\"hi\":\"जंगली जानवरों की सुरक्षा और जैव विविधता के संरक्षण के बारे में वैश्विक जागरूकता बढ़ाने के लिए हर साल 4 दिसंबर को विश्व वन्यजीव संरक्षण दिवस मनाया जाता है।\"} | _id: 69cd00df2a594df3f25d9434 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/cOzGElSTp44n-Wed Apr 01 2026 11:26:20 GMT+0000 (Coordinated Universal Time)-World Wildlife Conservation Day.jpeg | date: 2026-12-04T00:00:00.000Z | createdAt: 2026-04-01T11:26:23.741Z | updatedAt: 2026-05-06T10:19:47.924Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "World Wildlife Conservation Day",
+          "hi": "विश्व वन्यजीव संरक्षण दिवस"
+        },
+        "body": {
+          "en": "World Wildlife Conservation Day is observed every year on December 4 to raise global awareness about protecting wild animals and preserving biodiversity.",
+          "hi": "जंगली जानवरों की सुरक्षा और जैव विविधता के संरक्षण के बारे में वैश्विक जागरूकता बढ़ाने के लिए हर साल 4 दिसंबर को विश्व वन्यजीव संरक्षण दिवस मनाया जाता है।"
+        },
+        "_id": "69cd00df2a594df3f25d9434",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/cOzGElSTp44n-Wed Apr 01 2026 11:26:20 GMT+0000 (Coordinated Universal Time)-World Wildlife Conservation Day.jpeg",
+        "date": "2026-12-04T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:26:23.741Z",
+        "updatedAt": "2026-05-06T10:19:47.924Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Cheetah Day",
-      "type": "Event",
-      "description": "International Cheetah Day. Date: 2026-12-04T00:00:00.000Z. Details: International Cheetah Day is observed every year on December 4 to raise awareness about the conservation of cheetahs and the urgent need to protect their shrinking habitats."
+      "id": "International Cheetah Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Cheetah Day\",\"hi\":\"अंतर्राष्ट्रीय चीता दिवस\"} | body: {\"en\":\"International Cheetah Day is observed every year on December 4 to raise awareness about the conservation of cheetahs and the urgent need to protect their shrinking habitats.\",\"hi\":\"चीतों के संरक्षण और उनके घटते आवासों की रक्षा की तत्काल आवश्यकता के बारे में जागरूकता बढ़ाने के लिए हर साल 4 दिसंबर को अंतर्राष्ट्रीय चीता दिवस मनाया जाता है।\"} | _id: 69cd00822a594df3f25d9411 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/e6qOp5CXNxyp-Wed Apr 01 2026 11:24:48 GMT+0000 (Coordinated Universal Time)-International Cheetah Day.jpeg | date: 2026-12-04T00:00:00.000Z | createdAt: 2026-04-01T11:24:50.425Z | updatedAt: 2026-05-06T10:19:26.990Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Cheetah Day",
+          "hi": "अंतर्राष्ट्रीय चीता दिवस"
+        },
+        "body": {
+          "en": "International Cheetah Day is observed every year on December 4 to raise awareness about the conservation of cheetahs and the urgent need to protect their shrinking habitats.",
+          "hi": "चीतों के संरक्षण और उनके घटते आवासों की रक्षा की तत्काल आवश्यकता के बारे में जागरूकता बढ़ाने के लिए हर साल 4 दिसंबर को अंतर्राष्ट्रीय चीता दिवस मनाया जाता है।"
+        },
+        "_id": "69cd00822a594df3f25d9411",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/e6qOp5CXNxyp-Wed Apr 01 2026 11:24:48 GMT+0000 (Coordinated Universal Time)-International Cheetah Day.jpeg",
+        "date": "2026-12-04T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:24:50.425Z",
+        "updatedAt": "2026-05-06T10:19:26.990Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Animal Rights Day",
-      "type": "Event",
-      "description": "International Animal Rights Day. Date: 2026-12-10T00:00:00.000Z. Details: International Animal Rights Day is observed every year on December 10 to promote the idea that animals deserve protection from cruelty and have basic rights to live free from exploitation and suffering. "
+      "id": "International Animal Rights Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Animal Rights Day\",\"hi\":\"अंतर्राष्ट्रीय पशु अधिकार दिवस\"} | body: {\"en\":\"International Animal Rights Day is observed every year on December 10 to promote the idea that animals deserve protection from cruelty and have basic rights to live free from exploitation and suffering. \",\"hi\":\"इस विचार को बढ़ावा देने के लिए हर साल 10 दिसंबर को अंतर्राष्ट्रीय पशु अधिकार दिवस मनाया जाता है कि जानवर क्रूरता से सुरक्षा के पात्र हैं और उन्हें शोषण और पीड़ा से मुक्त रहने का बुनियादी अधिकार है।\"} | _id: 69cd012a2a594df3f25d9453 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/ZcRGxn2iYWXY-Wed Apr 01 2026 11:27:34 GMT+0000 (Coordinated Universal Time)-International Animal Rights Day.jpeg | date: 2026-12-10T00:00:00.000Z | createdAt: 2026-04-01T11:27:38.397Z | updatedAt: 2026-05-06T10:21:00.818Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Animal Rights Day",
+          "hi": "अंतर्राष्ट्रीय पशु अधिकार दिवस"
+        },
+        "body": {
+          "en": "International Animal Rights Day is observed every year on December 10 to promote the idea that animals deserve protection from cruelty and have basic rights to live free from exploitation and suffering. ",
+          "hi": "इस विचार को बढ़ावा देने के लिए हर साल 10 दिसंबर को अंतर्राष्ट्रीय पशु अधिकार दिवस मनाया जाता है कि जानवर क्रूरता से सुरक्षा के पात्र हैं और उन्हें शोषण और पीड़ा से मुक्त रहने का बुनियादी अधिकार है।"
+        },
+        "_id": "69cd012a2a594df3f25d9453",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/ZcRGxn2iYWXY-Wed Apr 01 2026 11:27:34 GMT+0000 (Coordinated Universal Time)-International Animal Rights Day.jpeg",
+        "date": "2026-12-10T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:27:38.397Z",
+        "updatedAt": "2026-05-06T10:21:00.818Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: International Monkey Day",
-      "type": "Event",
-      "description": "International Monkey Day. Date: 2026-12-14T00:00:00.000Z. Details: International Monkey Day is observed every year on December 14 to celebrate monkeys, raise awareness about their intelligence, and highlight the need for their conservation and protection."
+      "id": "International Monkey Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"International Monkey Day\",\"hi\":\"अंतर्राष्ट्रीय बंदर दिवस\"} | body: {\"en\":\"International Monkey Day is observed every year on December 14 to celebrate monkeys, raise awareness about their intelligence, and highlight the need for their conservation and protection.\",\"hi\":\"बंदरों को मनाने, उनकी बुद्धिमत्ता के बारे में जागरूकता बढ़ाने और उनके संरक्षण और सुरक्षा की आवश्यकता पर प्रकाश डालने के लिए हर साल 14 दिसंबर को अंतर्राष्ट्रीय बंदर दिवस मनाया जाता है।\"} | _id: 69cd01a72a594df3f25d96d2 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/GlLL9MChkNn7-Wed Apr 01 2026 11:29:42 GMT+0000 (Coordinated Universal Time)-International Monkey Day.png | date: 2026-12-14T00:00:00.000Z | createdAt: 2026-04-01T11:29:43.776Z | updatedAt: 2026-05-06T10:21:36.190Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "International Monkey Day",
+          "hi": "अंतर्राष्ट्रीय बंदर दिवस"
+        },
+        "body": {
+          "en": "International Monkey Day is observed every year on December 14 to celebrate monkeys, raise awareness about their intelligence, and highlight the need for their conservation and protection.",
+          "hi": "बंदरों को मनाने, उनकी बुद्धिमत्ता के बारे में जागरूकता बढ़ाने और उनके संरक्षण और सुरक्षा की आवश्यकता पर प्रकाश डालने के लिए हर साल 14 दिसंबर को अंतर्राष्ट्रीय बंदर दिवस मनाया जाता है।"
+        },
+        "_id": "69cd01a72a594df3f25d96d2",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/GlLL9MChkNn7-Wed Apr 01 2026 11:29:42 GMT+0000 (Coordinated Universal Time)-International Monkey Day.png",
+        "date": "2026-12-14T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:29:43.776Z",
+        "updatedAt": "2026-05-06T10:21:36.190Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Visit the Zoo Day",
-      "type": "Event",
-      "description": "Visit the Zoo Day. Date: 2026-12-27T00:00:00.000Z. Details: “Visit the Zoo Day” is usually celebrated by schools and zoos as an educational awareness activity. It is used to encourage students and families to learn about wildlife conservation, animal behaviour, and biodiversity."
+      "id": "Visit the Zoo Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Visit the Zoo Day\",\"hi\":\"चिड़ियाघर दिवस पर जाएँ\"} | body: {\"en\":\"“Visit the Zoo Day” is usually celebrated by schools and zoos as an educational awareness activity. It is used to encourage students and families to learn about wildlife conservation, animal behaviour, and biodiversity.\",\"hi\":\"\\\"विजिट द ज़ू डे\\\" आमतौर पर स्कूलों और चिड़ियाघरों द्वारा एक शैक्षिक जागरूकता गतिविधि के रूप में मनाया जाता है। इसका उपयोग छात्रों और परिवारों को वन्यजीव संरक्षण, पशु व्यवहार और जैव विविधता के बारे में सीखने के लिए प्रोत्साहित करने के लिए किया जाता है।\"} | _id: 69cd01f82a594df3f25d9bd9 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/NBtNsxyaELX4-Wed Apr 01 2026 11:31:02 GMT+0000 (Coordinated Universal Time)-Visit the Zoo Day.jpeg | date: 2026-12-27T00:00:00.000Z | createdAt: 2026-04-01T11:31:04.892Z | updatedAt: 2026-05-06T10:24:21.377Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Visit the Zoo Day",
+          "hi": "चिड़ियाघर दिवस पर जाएँ"
+        },
+        "body": {
+          "en": "“Visit the Zoo Day” is usually celebrated by schools and zoos as an educational awareness activity. It is used to encourage students and families to learn about wildlife conservation, animal behaviour, and biodiversity.",
+          "hi": "\"विजिट द ज़ू डे\" आमतौर पर स्कूलों और चिड़ियाघरों द्वारा एक शैक्षिक जागरूकता गतिविधि के रूप में मनाया जाता है। इसका उपयोग छात्रों और परिवारों को वन्यजीव संरक्षण, पशु व्यवहार और जैव विविधता के बारे में सीखने के लिए प्रोत्साहित करने के लिए किया जाता है।"
+        },
+        "_id": "69cd01f82a594df3f25d9bd9",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/NBtNsxyaELX4-Wed Apr 01 2026 11:31:02 GMT+0000 (Coordinated Universal Time)-Visit the Zoo Day.jpeg",
+        "date": "2026-12-27T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:31:04.892Z",
+        "updatedAt": "2026-05-06T10:24:21.377Z",
+        "__v": 0
+      }
     },
     {
-      "id": "Calendar Event: Nandankanan Biological Park Foundation Day",
-      "type": "Event",
-      "description": "Nandankanan Biological Park Foundation Day. Date: 2026-12-29T00:00:00.000Z. Details: Nandankanan Biological Park Foundation Day is celebrated every year on December 29 to mark the establishment of one of India’s most important zoological parks and wildlife conservation centres."
+      "id": "Nandankanan Biological Park Foundation Day",
+      "type": "Entity",
+      "description": "Data Node. Extracted information: title: {\"en\":\"Nandankanan Biological Park Foundation Day\",\"hi\":\"नंदनकानन जैविक उद्यान स्थापना दिवस\"} | body: {\"en\":\"Nandankanan Biological Park Foundation Day is celebrated every year on December 29 to mark the establishment of one of India’s most important zoological parks and wildlife conservation centres.\",\"hi\":\"भारत के सबसे महत्वपूर्ण प्राणी उद्यानों और वन्यजीव संरक्षण केंद्रों में से एक की स्थापना को चिह्नित करने के लिए हर साल 29 दिसंबर को नंदनकानन जैविक पार्क स्थापना दिवस मनाया जाता है।\"} | _id: 69cd028a2a594df3f25da610 | zooId: 69a6b49dc88f63d77dfc7919 | image: https://dev.iwayplus.in/uploads/4JTeldRrYEUC-Wed Apr 01 2026 11:33:27 GMT+0000 (Coordinated Universal Time)-nandankanan biological park foundation day.jpeg | date: 2026-12-29T00:00:00.000Z | createdAt: 2026-04-01T11:33:30.616Z | updatedAt: 2026-05-06T10:25:02.847Z | __v: 0",
+      "properties": {
+        "title": {
+          "en": "Nandankanan Biological Park Foundation Day",
+          "hi": "नंदनकानन जैविक उद्यान स्थापना दिवस"
+        },
+        "body": {
+          "en": "Nandankanan Biological Park Foundation Day is celebrated every year on December 29 to mark the establishment of one of India’s most important zoological parks and wildlife conservation centres.",
+          "hi": "भारत के सबसे महत्वपूर्ण प्राणी उद्यानों और वन्यजीव संरक्षण केंद्रों में से एक की स्थापना को चिह्नित करने के लिए हर साल 29 दिसंबर को नंदनकानन जैविक पार्क स्थापना दिवस मनाया जाता है।"
+        },
+        "_id": "69cd028a2a594df3f25da610",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "image": "https://dev.iwayplus.in/uploads/4JTeldRrYEUC-Wed Apr 01 2026 11:33:27 GMT+0000 (Coordinated Universal Time)-nandankanan biological park foundation day.jpeg",
+        "date": "2026-12-29T00:00:00.000Z",
+        "createdAt": "2026-04-01T11:33:30.616Z",
+        "updatedAt": "2026-05-06T10:25:02.847Z",
+        "__v": 0
+      }
     }
   ],
   "edges": [],
   "metadata": {
-    "created_at": "2026-05-28T12:49:43.885Z",
+    "created_at": "2026-05-29T09:25:12.332Z",
     "source_file": "calendar.json",
     "type": "SCHEDULE"
   }

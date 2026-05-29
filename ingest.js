@@ -61,25 +61,22 @@ const MANUAL_NAME_MAP = {
 };
 
 function enrichName(name, classification = '') {
-    let clean = name;
-    const baseName = name.replace(/\s+\d+$/, '').trim();
+    // Strip the number completely so it matches server.js canonicalNames
+    let baseName = name.replace(/\s+\d+$/, '').trim();
+
     if (!baseName.includes(' ')) {
         const lower = baseName.toLowerCase();
         if (MANUAL_NAME_MAP[lower]) {
-            const suffixMatch = name.match(/\s+\d+$/);
-            const suffix = suffixMatch ? suffixMatch[0] : '';
-            return MANUAL_NAME_MAP[lower] + suffix;
+            return MANUAL_NAME_MAP[lower]; // No suffix re-attachment
         }
         if (classification) {
             const first = classification.split(/[/\s,]+/)[0];
             if (first && first.length > 2) {
-                const suffixMatch = name.match(/\s+\d+$/);
-                const suffix = suffixMatch ? suffixMatch[0] : '';
-                return `${baseName} ${first}${suffix}`;
+                return `${baseName} ${first}`; // No suffix re-attachment
             }
         }
     }
-    return clean;
+    return baseName;
 }
 
 // ─────────────────────────────────────────────
@@ -140,16 +137,12 @@ async function processAnimals(file, data, collection, ollama, model) {
             const synonyms = [];
             const lowerName = rawName.toLowerCase();
             if (lowerName.includes('peafowl')) synonyms.push('peacock', 'peahen');
-            if (lowerName.includes('tiger')) synonyms.push('sher', 'bagh');
-            
-            // STRICTER CHECK: Ensure "macaque" isn't present before applying the "babbar sher" synonym
+            if (lowerName.includes('tiger')) synonyms.push('bagh'); // Removed 'sher'
             if (lowerName.includes('lion') && !lowerName.includes('macaque')) {
-                synonyms.push('babbar sher');
+                synonyms.push('sher', 'babbar sher'); // Added 'sher' to Lion
             }
-
-            if (lowerName.includes('rhinoceros')) synonyms.push('rhino');
+            if (lowerName.includes('rhinoceros')) synonyms.push('rhino', 'genda');
             if (lowerName.includes('elephant')) synonyms.push('hathi');
-
             const isCalendarEvent = !animal.common_name && !animal.render_name && (animal.title || animal.name);
             let eventTitleVariants = '';
             let eventKeyword = '';

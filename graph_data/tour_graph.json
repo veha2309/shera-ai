@@ -3,7 +3,62 @@
     {
       "id": "Tour Stop: Item",
       "type": "Stop",
-      "description": "Stop in tour. Parent tour: Express Tour. Description: The Quick Explorer Trail is a 1 to 2 hour, 3 km loop covering 30 plus animals, perfect for a quick visit .It passes through key zones and features big cats, primates, bears, and aquatic and reptile species."
+      "description": "Stop in tour. Parent tour: Express Tour. Description: The Quick Explorer Trail is a 1 to 2 hour, 3 km loop covering 30 plus animals, perfect for a quick visit .It passes through key zones and features big cats, primates, bears, and aquatic and reptile species.",
+      "properties": {
+        "stop_name": {
+          "en": "Buggy Start Point ",
+          "hi": "बग्गी प्रारंभ प्वाइंट"
+        },
+        "stop_description": {
+          "en": null,
+          "hi": null
+        },
+        "location_name": {
+          "en": "Buggy Start Point",
+          "hi": "छोटी गाड़ी प्रारंभ बिंदु"
+        },
+        "_id": "69fdb899920860adc634467e",
+        "zooId": "69a6b49dc88f63d77dfc7919",
+        "locationId": "69fdb712e128631d81e4135a",
+        "createdAt": "2026-05-08T10:19:05.523Z",
+        "updatedAt": "2026-05-19T13:07:04.196Z",
+        "__v": 0,
+        "icon": "",
+        "mapId": "1a0cb98beb65293d2987426567d14855",
+        "photos": [],
+        "timeToSpend": null,
+        "animals_present": [],
+        "parent_tour": "Express Tour",
+        "tour_description": "The Quick Explorer Trail is a 1 to 2 hour, 3 km loop covering 30 plus animals, perfect for a quick visit .It passes through key zones and features big cats, primates, bears, and aquatic and reptile species.",
+        "original": {
+          "stopId": {
+            "stop_name": {
+              "en": "Buggy Start Point ",
+              "hi": "बग्गी प्रारंभ प्वाइंट"
+            },
+            "stop_description": {
+              "en": null,
+              "hi": null
+            },
+            "location_name": {
+              "en": "Buggy Start Point",
+              "hi": "छोटी गाड़ी प्रारंभ बिंदु"
+            },
+            "_id": "69fdb899920860adc634467e",
+            "zooId": "69a6b49dc88f63d77dfc7919",
+            "locationId": "69fdb712e128631d81e4135a",
+            "items": [],
+            "createdAt": "2026-05-08T10:19:05.523Z",
+            "updatedAt": "2026-05-19T13:07:04.196Z",
+            "__v": 0,
+            "icon": "",
+            "mapId": "1a0cb98beb65293d2987426567d14855",
+            "photos": [],
+            "timeToSpend": null
+          },
+          "_id": "6a0b0aed8f7bcc5d06749314"
+        }
+      }
     }
   ],
   "edges": [
@@ -14,7 +69,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Blackbuck",
+      "target": "Blackbuck 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -24,7 +79,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Black Bear",
+      "target": "Asiatic Black Bear 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -39,17 +94,17 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Sambar Deer",
+      "target": "Sambar Deer 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Indian Rhinoceros",
+      "target": "Indian Rhinoceros (Greater One Horned Rhinoceros)",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Black Bear",
+      "target": "Asiatic Black Bear 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -59,12 +114,12 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Brow antlered Deer (Sangai)",
+      "target": "Brow antlered Deer (Sangai) 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Lion",
+      "target": "Asiatic Lion 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -84,7 +139,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Rhesus Macaque",
+      "target": "Rhesus Macaque 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -129,7 +184,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Bengal Tiger",
+      "target": "Bengal Tiger 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -144,7 +199,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Marsh Crocodile",
+      "target": "Marsh Crocodile 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -164,7 +219,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Blackbuck",
+      "target": "Blackbuck 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -174,7 +229,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Black Bear",
+      "target": "Asiatic Black Bear 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -189,17 +244,17 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Sambar Deer",
+      "target": "Sambar Deer 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Indian Rhinoceros",
+      "target": "Indian Rhinoceros (Greater One Horned Rhinoceros)",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Black Bear",
+      "target": "Asiatic Black Bear 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -209,7 +264,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Brow antlered Deer (Sangai)",
+      "target": "Brow antlered Deer (Sangai) 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -234,17 +289,17 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Indian Peafowl",
+      "target": "Indian Peafowl 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Lion",
+      "target": "Asiatic Lion 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Lion",
+      "target": "Asiatic Lion 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -264,7 +319,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Rhesus Macaque",
+      "target": "Rhesus Macaque 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -309,7 +364,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Bengal Tiger",
+      "target": "Bengal Tiger 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -324,7 +379,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Marsh Crocodile",
+      "target": "Marsh Crocodile 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -344,7 +399,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Blackbuck",
+      "target": "Blackbuck 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -354,7 +409,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Black Bear",
+      "target": "Asiatic Black Bear 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -369,12 +424,12 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Sambar Deer",
+      "target": "Sambar Deer 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Blackbuck",
+      "target": "Blackbuck 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -394,7 +449,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Gaur",
+      "target": "Gaur 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -419,17 +474,17 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Gaur",
+      "target": "Gaur 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Spotted Deer (Chital)",
+      "target": "Spotted Deer (Chital) 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Brow antlered Deer (Sangai)",
+      "target": "Brow antlered Deer (Sangai) 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -439,12 +494,12 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Indian Rhinoceros",
+      "target": "Indian Rhinoceros (Greater One Horned Rhinoceros)",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Black Bear",
+      "target": "Asiatic Black Bear 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -454,7 +509,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Brow antlered Deer (Sangai)",
+      "target": "Brow antlered Deer (Sangai) 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -489,7 +544,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Khalij Pheasant",
+      "target": "Khalij Pheasant 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -504,7 +559,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Silver Pheasant",
+      "target": "Silver Pheasant 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -529,17 +584,17 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Red Jungle Fowl",
+      "target": "Red Jungle Fowl 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Alexandrine Parakeet",
+      "target": "Alexandrine Parakeet 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Indian Peafowl",
+      "target": "Indian Peafowl 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -569,7 +624,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Brahminy Kite",
+      "target": "Brahminy Kite 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -604,17 +659,17 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Indian Peafowl",
+      "target": "Indian Peafowl 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Lion",
+      "target": "Asiatic Lion 2",
       "type": "CONTAINS_ANIMAL"
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Asiatic Lion",
+      "target": "Asiatic Lion 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -634,7 +689,7 @@
     },
     {
       "source": "Tour Stop: Item",
-      "target": "Rhesus Macaque",
+      "target": "Rhesus Macaque 1",
       "type": "CONTAINS_ANIMAL"
     },
     {
@@ -679,7 +734,7 @@
     }
   ],
   "metadata": {
-    "created_at": "2026-05-28T12:49:43.930Z",
+    "created_at": "2026-05-29T09:25:12.413Z",
     "source_file": "tour.json",
     "type": "GEOGRAPHY"
   }
