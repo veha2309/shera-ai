@@ -502,7 +502,7 @@ async function processZooTime(file, data, collection, ollama, model) {
 // MAIN INGESTION
 // ─────────────────────────────────────────────
 async function ingest() {
-    const chroma = new ChromaClient({ path: 'http://[::1]:8001' });
+    const chroma = new ChromaClient({ path: 'http://localhost:8000' });
 
     const embedder = new OllamaEmbeddingFunction({
         url: 'http://127.0.0.1:11434',

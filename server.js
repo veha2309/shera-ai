@@ -176,7 +176,7 @@ function logResources(label) {
 
 // ─── Clients ──────────────────────────────────────────────────────────────────
 const ollama = new Ollama();
-const chroma = new ChromaClient({ host: '[::1]', port: 8001 });
+const chroma = new ChromaClient({ path: 'http://localhost:8000' });
 const embedder = new OllamaEmbeddingFunction({
     url: 'http://127.0.0.1:11434',
     model: 'nomic-embed-text'
