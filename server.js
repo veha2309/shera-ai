@@ -377,13 +377,58 @@ async function getDynamicZooTimings(language = 'en') {
     try {
         const res = await collection.get({ ids: ['zootime_timings'] });
         if (res && res.metadatas && res.metadatas[0] && res.metadatas[0].full_data) {
-            const timings = JSON.parse(res.metadatas[0].full_data);
+            const data = JSON.parse(res.metadatas[0].full_data);
 
             const dateIST = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
             const todayStr = dateIST.toLocaleDateString("en-US", { weekday: 'long' });
-            const today = timings.find(t => t.day === todayStr);
-
             const daysHi = { 'Monday': 'सोमवार', 'Tuesday': 'मंगलवार', 'Wednesday': 'बुधवार', 'Thursday': 'गुरुवार', 'Friday': 'शुक्रवार', 'Saturday': 'शनिवार', 'Sunday': 'रविवार' };
+
+            // Handle the new zootime.json schema
+            if (data.regular_timings) {
+                const month = dateIST.getMonth() + 1; // 0-indexed to 1-indexed
+                const day = dateIST.getDate();
+
+                const isSummer = (month > 4 && month < 10) || (month === 4 && day >= 1) || (month === 10 && day <= 15);
+                const season = isSummer ? data.regular_timings.summer : data.regular_timings.winter;
+
+                const openTime = season.opening_time;
+                const closeTime = season.closing_time;
+
+                let weekSchedule = '';
+                if (language === 'hi') {
+                    weekSchedule = Object.keys(daysHi).map(d => {
+                        if (d === 'Friday') {
+                            return `- ${daysHi[d]}: बंद`;
+                        }
+                        const s = isSummer ? data.regular_timings.summer : data.regular_timings.winter;
+                        return `- ${daysHi[d]}: ${s.opening_time} से ${s.closing_time}`;
+                    }).join('\n');
+                } else {
+                    weekSchedule = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(d => {
+                        if (d === 'Friday') {
+                            return `- Friday: Closed`;
+                        }
+                        const s = isSummer ? data.regular_timings.summer : data.regular_timings.winter;
+                        return `- ${d}: ${s.opening_time} - ${s.closing_time}`;
+                    }).join('\n');
+                }
+
+                let todayScheduleHi = 'बंद';
+                let todayScheduleEn = 'Closed';
+                if (todayStr !== 'Friday') {
+                    todayScheduleHi = `${openTime} से ${closeTime}`;
+                    todayScheduleEn = `${openTime} to ${closeTime}`;
+                }
+
+                if (language === 'hi') {
+                    return `**आज (${daysHi[todayStr] || todayStr}) का समय:** ${todayScheduleHi}।\n\n**पूरे सप्ताह का समय (${isSummer ? 'गर्मी' : 'सर्दी'}):**\n${weekSchedule}`;
+                }
+                return `**Today (${todayStr}):** ${todayScheduleEn}.\n\n**Weekly Schedule (${isSummer ? 'Summer' : 'Winter'}):**\n${weekSchedule}`;
+            }
+
+            // Fallback for old schema
+            const timings = Array.isArray(data) ? data : [];
+            const today = timings.find(t => t.day === todayStr);
 
             let weekSchedule = timings.map(t => {
                 if (t.day === 'Friday') {

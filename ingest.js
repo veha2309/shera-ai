@@ -440,7 +440,20 @@ async function processContact(file, data, collection, ollama, model) {
 async function processZooTime(file, data, collection, ollama, model) {
     const obj = data.data || data;
     try {
-        // Timings per day
+        if (obj.regular_timings) {
+            // New structure: store the entire object in full_data
+            const doc = `Zoo Opening Hours:\nSummer Timings: ${obj.regular_timings.summer.opening_time} – ${obj.regular_timings.summer.closing_time}\nWinter Timings: ${obj.regular_timings.winter.opening_time} – ${obj.regular_timings.winter.closing_time}\nWeekly Closure: Closed on every Friday`;
+            console.log(`- Embedding: Zoo Timings (New Structure)`);
+            await store(collection, ollama, model, {
+                id: 'zootime_timings',
+                label: 'Zoo Timings / Opening Hours',
+                text: doc,
+                metadata: { file_source: file, type: 'timings', full_data: JSON.stringify(obj) }
+            });
+            return;
+        }
+
+        // Timings per day (Old structure)
         const timings = obj.timings || [];
         if (timings.length > 0) {
             const lines = timings.map(t =>

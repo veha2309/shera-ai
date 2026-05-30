@@ -1,84 +1,45 @@
 {
-  "status": true,
-  "data": {
-    "socialLinks": {
-      "youtube": "https://www.youtube.com/channel/UCC9zbRZR9f5CD9SdJfXbSzg",
-      "facebook": "https://www.facebook.com/people/Delhi-Zoo/100067485382447/#",
-      "instagram": "https://www.instagram.com/delhizoo",
-      "twitter": "https://x.com/nzpdelhi?lang=en"
+  "regular_timings": {
+    "summer": {
+      "title": "Summer",
+      "date_range": "1 Apr – 15 Oct",
+      "opening_time": "08:30 AM",
+      "closing_time": "06:30 PM",
+      "booking_closes": "06:00 PM"
     },
-    "ticket": {
-      "bookingUrl": "https://nzpnewdelhi.gov.in/tickets/new?ln=en",
-      "image": null
+    "winter": {
+      "title": "Winter",
+      "date_range": "16 Oct – 31 Mar",
+      "opening_time": "09:00 AM",
+      "closing_time": "05:00 PM",
+      "booking_closes": "04:30 PM"
+    }
+  },
+  "weekly_closure": {
+    "day": "Friday",
+    "status": "Closed on every Friday"
+  },
+  "operations_detail": {
+    "zoo_opening_time": {
+      "description": "Adjusts based on current active season (Summer: 08:30 AM, Winter: 09:00 AM)",
+      "summer": "08:30 AM",
+      "winter": "09:00 AM"
     },
-    "_id": "69a6b49dc88f63d77dfc7919",
-    "name": "NZP Sathi",
-    "address": "Mathura Rd, near Purana Qila, Pragati Maidan, New Delhi, Delhi 110003",
-    "logo": "https://maps.iwayplus.in/uploads/69a6b49dc88f63d77dfc7919/I8TyU0aAWt2p-1775716601901-logonzp.webp",
-    "venueName": "NationalZoologicalPark",
-    "ownerId": "693172158f62f2493ab6aefc",
-    "contributorIds": [
-      "69b133f91eb79f923d335578",
-      "697c80a51fdb552412a98ab1",
-      "69ef30decf115cb1ae71b772",
-      "69fdb6c5e128631d81e3d74a",
-      "67723268f24c851e500d6b6b",
-      "6a0bf0cb8f7bcc5d0682f59e"
-    ],
-    "__v": 0,
-    "shortName": "",
-    "timings": [
-      {
-        "day": "Monday",
-        "openTime": "08:30 AM",
-        "closeTime": "05:30 PM",
-        "isOpen": true,
-        "_id": "69c687b0afd25071ecbf7981"
-      },
-      {
-        "day": "Tuesday",
-        "openTime": "08:30 AM",
-        "closeTime": "05:30 PM",
-        "isOpen": true,
-        "_id": "69c687b0afd25071ecbf7982"
-      },
-      {
-        "day": "Wednesday",
-        "openTime": "08:30 AM",
-        "closeTime": "05:30 PM",
-        "isOpen": true,
-        "_id": "69c687b0afd25071ecbf7983"
-      },
-      {
-        "day": "Thursday",
-        "openTime": "08:30 AM",
-        "closeTime": "05:30 PM",
-        "isOpen": true,
-        "_id": "69c687b0afd25071ecbf7984"
-      },
-      {
-        "day": "Friday",
-        "openTime": "08:30 AM",
-        "closeTime": "05:30 PM",
-        "isOpen": true,
-        "_id": "69c687b0afd25071ecbf7985"
-      },
-      {
-        "day": "Saturday",
-        "openTime": "08:30 AM",
-        "closeTime": "05:30 PM",
-        "isOpen": true,
-        "_id": "69c687b0afd25071ecbf7986"
-      },
-      {
-        "day": "Sunday",
-        "openTime": "08:30 AM",
-        "closeTime": "05:30 PM",
-        "isOpen": true,
-        "_id": "69c687b0afd25071ecbf7987"
-      }
-    ],
-    "website": "https://nzpnewdelhi.gov.in/?ln=en",
-    "zooInfo": []
+    "online_booking_closes": {
+      "description": "Closes 30 minutes before last entry time",
+      "summer": "06:00 PM",
+      "winter": "04:30 PM"
+    },
+    "last_entry_time": {
+      "description": "Adjusts based on current active season (Summer: 06:30 PM, Winter: 05:00 PM)",
+      "summer": "06:30 PM",
+      "winter": "05:00 PM"
+    },
+    "zoo_closing_time": {
+      "value": "06:30 PM"
+    }
+  },
+  "notes": {
+    "season_note": "Seasonal changes apply during extreme weather conditions."
   }
 }
