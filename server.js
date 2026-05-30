@@ -3196,13 +3196,13 @@ Now answer the user concisely in 1-2 sentences. No links or bullet points.`;
             // 2. Detect if the user is actually asking "Where?"
             const isLocationIntent = /\b(where|kahan|kaha|kidhar|location|enclosure|beat|spot|find|see|dekh)\b/i.test(qLower) || /कहाँ|कहा|किधर|जगह|स्थान/.test(qLower);
 
-            // 3. Dynamically build Rule 1
+            // 3. Dynamically build Rule 1 (Now with POSITIVE fallbacks!)
             const rule1_Hi = isLocationIntent 
-                ? `1. The user is asking for a location. If the context says 'LOCATION: Not Available' or lacks a specific location, you MUST reply EXACTLY with: "क्षमा करें, मेरे पास अभी इसकी सटीक लोकेशन की जानकारी नहीं है।" Do NOT guess.`
+                ? `1. The user is asking for a location. If the context says 'LOCATION: Not Available' or lacks a specific location, you MUST reply EXACTLY with: "हमारे चिड़ियाघर में ${finalSubject} बिल्कुल हैं! मेरे पास अभी उनका सटीक बाड़ा (enclosure) नंबर नहीं है, लेकिन आप उन्हें चिड़ियाघर के नक्शे (map) पर आसानी से ढूंढ सकते हैं।" Do NOT guess.`
                 : `1. Use the provided context. If the context is thin, answer biological questions (like number of legs/diet) using general knowledge. Do NOT mention zoo locations.`;
 
             const rule1_En = isLocationIntent 
-                ? `1. The user is asking for a location. If the context says 'LOCATION: Not Available' or lacks a specific location, you MUST reply EXACTLY with: "I'm sorry, but I don't have the exact location details for them at this moment." Do NOT guess.`
+                ? `1. The user is asking for a location. If the context says 'LOCATION: Not Available' or lacks a specific location, you MUST reply EXACTLY with: "We definitely have the ${finalSubject} here at the zoo! I don't have their exact enclosure number handy right now, but you can easily find them marked on the zoo map." Do NOT guess.`
                 : `1. Use the provided context. If the context is thin, answer biological questions (like number of legs/diet) using general knowledge. Do NOT mention zoo locations.`;
 
             systemPrompt = isHindi
