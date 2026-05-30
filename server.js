@@ -385,14 +385,31 @@ async function getDynamicZooTimings(language = 'en') {
 
             const daysHi = { 'Monday': 'सोमवार', 'Tuesday': 'मंगलवार', 'Wednesday': 'बुधवार', 'Thursday': 'गुरुवार', 'Friday': 'शुक्रवार', 'Saturday': 'शनिवार', 'Sunday': 'रविवार' };
 
-            let weekSchedule = timings.map(t => language === 'hi'
-                ? `${daysHi[t.day]}: ${t.openTime}-${t.closeTime}`
-                : `${t.day}: ${t.openTime}-${t.closeTime}`).join('\n');
+            let weekSchedule = timings.map(t => {
+                if (t.day === 'Friday') {
+                    return language === 'hi' ? `${daysHi['Friday']}: बंद` : `Friday: Closed`;
+                }
+                return language === 'hi'
+                    ? `${daysHi[t.day]}: ${t.openTime} - ${t.closeTime}`
+                    : `${t.day}: ${t.openTime} - ${t.closeTime}`;
+            }).join('\n');
+
+            let todayScheduleHi = 'उपलब्ध नहीं';
+            let todayScheduleEn = 'N/A';
+            if (today) {
+                if (today.day === 'Friday') {
+                    todayScheduleHi = 'बंद';
+                    todayScheduleEn = 'Closed';
+                } else {
+                    todayScheduleHi = `${today.openTime} से ${today.closeTime}`;
+                    todayScheduleEn = `${today.openTime} to ${today.closeTime}`;
+                }
+            }
 
             if (language === 'hi') {
-                return `आज (${today ? daysHi[today.day] : ''}) का समय: ${today ? today.openTime + ' से ' + today.closeTime : 'उपलब्ध नहीं'}।\nपूरे सप्ताह का समय:\n${weekSchedule}\nनोट: शुक्रवार (Friday) को चिड़ियाघर बंद रहता है।`;
+                return `आज (${today ? daysHi[today.day] : ''}) का समय: ${todayScheduleHi}।\n\nपूरे सप्ताह का समय:\n${weekSchedule}`;
             }
-            return `Today (${today ? today.day : ''}): ${today ? today.openTime + ' to ' + today.closeTime : 'N/A'}.\nWeekly Schedule:\n${weekSchedule}\nNote: The zoo is closed on Fridays.`;
+            return `Today (${today ? today.day : ''}): ${todayScheduleEn}.\n\nWeekly Schedule:\n${weekSchedule}`;
         }
     } catch (e) {
         console.error("[TIMINGS] Error fetching from Chroma:", e);
@@ -1182,12 +1199,18 @@ function detectFacility(text) {
 function detectFacilitiesExact(text) {
     const t = text.toLowerCase();
     const matched = new Set();
+    const words = t.split(/[^a-z0-9\u0900-\u097F]+/);
 
     for (const [facility, syns] of Object.entries(facilitySynonyms)) {
         for (const s of syns) {
-            const hit = /^[a-z\s]+$/i.test(s)
-                ? new RegExp(`\\b${s}\\b`, 'i').test(t)
-                : t.includes(s);
+            let hit = false;
+            if (/^[a-z\s]+$/i.test(s)) {
+                hit = new RegExp(`\\b${s}\\b`, 'i').test(t);
+            } else if (s.includes(' ')) {
+                hit = t.includes(s);
+            } else {
+                hit = words.includes(s);
+            }
             if (hit) { matched.add(facility); break; }
         }
     }
