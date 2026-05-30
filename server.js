@@ -609,6 +609,18 @@ function findRelatedAnimals(subject, queryText) {
                 if (w.endsWith('s') && w.length > 3) {
                     seeds.add(w.slice(0, -1));
                 }
+                // Map Hindi queries back to English seeds to match English rawNames
+                for (const [engKey, hindiVal] of Object.entries(HINDI_DICT)) {
+                    if (hindiVal === w || engKey === w) {
+                        const engWords = engKey.split(/\s+/);
+                        for (const ew of engWords) {
+                            if (ew.length >= 3 && !QUERY_STOP_WORDS.has(ew)) {
+                                seeds.add(ew);
+                                if (ew.endsWith('s') && ew.length > 3) seeds.add(ew.slice(0, -1));
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -3340,6 +3352,15 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                         }
                     }
                 }
+            }
+
+            // Post-process the answer to fix common LLM transliteration glitches
+            if (isHindi) {
+                answer = answer.replace(/लION/gi, 'शेर')
+                               .replace(/लion/g, 'शेर')
+                               .replace(/टIGER/gi, 'बाघ')
+                               .replace(/एLEPHANT/gi, 'हाथी')
+                               .replace(/ज़ोलो विकसित/gi, 'प्राणी उद्यान');
             }
 
             logResources('Response Generated');
