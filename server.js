@@ -2338,20 +2338,7 @@ app.post('/api/shera/chat', async (req, res) => {
             : "Finding nearby animals and facilities for you... 🗺️";
         return sendStaticResponse(res, msg, 'general', stream);
     }
-    
-    // --- FIX 2: Global Timing Intercept ---
-    if (isSpecificTimingQuestion(qLower)) {
-        console.log(`[GLOBAL] Specific timing query intercepted: "${qLower}"`);
 
-        // Await the dynamic timings from Chroma, or fallback to the static string
-        const dynamicTimings = await getDynamicZooTimings(language);
-        const fallbackTiming = language === 'hi'
-            ? '🕒 दिल्ली चिड़ियाघर गर्मियों में सुबह 8:30 से शाम 4:30 तक और सर्दियों में सुबह 9:00 से शाम 4:00 तक खुला रहता है। ध्यान दें: चिड़ियाघर हर शुक्रवार को बंद रहता है! 📅'
-            : '🕒 The zoo is open from 8:30 AM to 4:30 PM (Summer) and 9:00 AM to 4:00 PM (Winter). Note: The zoo is CLOSED on Fridays! 📅';
-
-        return sendStaticResponse(res, dynamicTimings || fallbackTiming, 'Timings & Hours', stream);
-    }
-    // ----------------------------------------
 
     try {
         const isCountQuery = qLower.includes('how many')
@@ -2385,7 +2372,13 @@ app.post('/api/shera/chat', async (req, res) => {
         let extractedSubject = 'general';
         let matchedFacility = null;
 
-        if (!forceGeneralRoute) {
+        // --- FIX 1: Override routing for timings (Skips Qwen Extractor) ---
+        if (isSpecificTimingQuestion(qLower)) {
+            console.log(`[GLOBAL] Specific timing query intercepted. Routing to LLM with Timing Context.`);
+            subject = 'Timings & Hours';
+            extractedSubject = 'Timings & Hours';
+            matchedFacility = 'Timings & Hours';
+        } else if (!forceGeneralRoute) {
             const extractionResult = await extractSubject(question);
             subject = extractionResult.subject;
             extractedSubject = extractionResult.extractedSubject;
@@ -2478,9 +2471,14 @@ app.post('/api/shera/chat', async (req, res) => {
                     );
 
                 if (!hasAnimalSubject) {
-                    // Pure facility query — instant return (Guarantees zero hallucinations)
-                    console.log(`[FACILITY-SHORT CUT] Instant response for "${matchedFacility}"`);
-                    return sendStaticResponse(res, facilityAnswer, matchedFacility, stream);
+                    if (matchedFacility === 'Timings & Hours') {
+                        // Let it pass through to the LLM for natural phrasing!
+                        console.log(`[FACILITY] Timing query detected. Letting LLM generate natural response.`);
+                    } else {
+                        // Pure facility query (e.g. Washrooms) — instant return
+                        console.log(`[FACILITY-SHORT CUT] Instant response for "${matchedFacility}"`);
+                        return sendStaticResponse(res, facilityAnswer, matchedFacility, stream);
+                    }
                 } else {
                     // Mixed query (facility + animal): prepend facility answer
                     console.log(`[FACILITY+ANIMAL] Prepending facility answer for "${matchedFacility}", continuing animal search for "${subject}"`);
@@ -3216,8 +3214,26 @@ ${isRestrictedAction ? '3. The user is attempting something harmful or inappropr
  
 Now answer the user concisely in 1-2 sentences. No links or bullet points.`;
 
-        }
-        else {
+        } else if (matchedFacility === 'Timings & Hours') {
+            // --- FIX 3: Clean prompt dedicated to Timings ---
+            systemPrompt = isHindi
+                ? `You are Shera, the friendly guide at National Zoological Park.
+${NO_THOUGHT_INSTRUCTION_HI}
+Context: ${trimmedContext}
+Rules:
+1. Answer the user's specific timing question using ONLY the context provided.
+2. If they ask about Friday, explicitly state that the zoo is closed.
+3. Keep it playful, natural, 1-2 sentences, and end with exactly one emoji.
+4. Translate your final answer to natural Hindi.`
+                : `You are Shera, the friendly guide at National Zoological Park.
+${NO_THOUGHT_INSTRUCTION_EN}
+Context: ${trimmedContext}
+Rules:
+1. Answer the user's specific timing question using ONLY the context provided.
+2. If they ask about Friday, explicitly state that the zoo is closed.
+3. Keep it playful, natural, 1-2 sentences, and end with exactly one emoji.`;
+
+        } else {
             // 1. Better Context Thin Check
             const isContextThin = !trimmedContext || trimmedContext.trim().length < 50 || trimmedContext.includes("LOCATION: Not Available");
 
