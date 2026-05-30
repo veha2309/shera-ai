@@ -105,7 +105,18 @@ const HINDI_DICT = {
     'vulnerable': 'संवेदनशील',
     'wildlife protection': 'वन्यजीव संरक्षण',
 
-    // Animal names
+    // Animal names (base)
+    'lion': 'शेर',
+    'tiger': 'बाघ',
+    'elephant': 'हाथी',
+    'bear': 'भालू',
+    'macaque': 'मकाक',
+    'deer': 'हिरण',
+    'crocodile': 'मगरमच्छ',
+    'python': 'अजगर',
+    'snake': 'साँप',
+
+    // Animal names (full)
     'asiatic lion': 'एशियाई शेर',
     'white tiger': 'सफ़ेद बाघ',
     'bengal tiger': 'बंगाल बाघ',
@@ -611,8 +622,7 @@ function findRelatedAnimals(subject, queryText) {
                 }
                 // Map Hindi queries back to English seeds to match English rawNames
                 for (const [engKey, hindiVal] of Object.entries(HINDI_DICT)) {
-                    const hindiWords = hindiVal.split(/\s+/);
-                    if (hindiWords.includes(w) || engKey === w) {
+                    if (hindiVal === w || engKey === w) {
                         const engWords = engKey.split(/\s+/);
                         for (const ew of engWords) {
                             if (ew.length >= 3 && !QUERY_STOP_WORDS.has(ew)) {
