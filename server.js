@@ -1702,10 +1702,8 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
             console.log(`[ENTITY] Conservation query. Found ${endangeredList.length} species.`);
             const listStr = endangeredList.slice(0, 15).join(', ');
 
-            // Add localization for Hindi so the LLM behaves properly
-            const contextStr = language === 'hi'
-                ? `नेशनल जूलॉजिकल पार्क, नई दिल्ली में कई प्रजातियाँ हैं।\nयहाँ के कुछ प्रमुख ${subject} जानवर हैं: ${listStr}।\nआगंतुकों को इनके संरक्षण के बारे में जानने के लिए प्रोत्साहित किया जाता है।`
-                : `The National Zoological Park, New Delhi is home to many species.\nSome key ${subject} animals here are: ${listStr}.\nVisitors are encouraged to learn about their conservation.`;
+            // Use English context for the LLM
+            const contextStr = `The National Zoological Park, New Delhi is home to many species.\nSome key ${subject} animals here are: ${listStr}.\nVisitors are encouraged to learn about their conservation.`;
 
             return {
                 context: contextStr,
@@ -1713,7 +1711,7 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
                     metadata: { name }, score: 1.0, doc: `This is the ${name}.`
                 })),
                 topScore: 1.0,
-                subject: 'Endangered', // Force standard keyword for the UI
+                subject: subject, // Preserve the original query subject instead of forcing 'Endangered'
                 references: endangeredList.slice(0, 5)
             };
         }
