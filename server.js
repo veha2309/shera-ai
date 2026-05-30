@@ -3192,7 +3192,19 @@ Greet the user or respond to their general talk playfully. NEVER say you are an 
 
         if (matchedFacility === 'Timings & Hours') {
             const dynamicTimings = await getDynamicZooTimings(language);
-            context = dynamicTimings || 'The zoo is open from 8:30 AM to 4:30 PM (Summer) and 9:00 AM to 4:00 PM (Winter). The zoo is CLOSED on Fridays.';
+
+            // --- FIX 1: Explicitly inject the seasonal JSON data ---
+            const seasonalContext = language === 'hi'
+                ? `चिड़ियाघर के समय के नियम:
+- ग्रीष्मकाल (1 अप्रैल – 15 अक्टूबर): सुबह 08:30 से शाम 06:30 तक। बुकिंग शाम 06:00 बजे बंद होती है।
+- शीतकाल (16 अक्टूबर – 31 मार्च): सुबह 09:00 से शाम 05:00 तक। बुकिंग शाम 04:30 बजे बंद होती है।
+- शुक्रवार: चिड़ियाघर हर शुक्रवार को बंद रहता है।`
+                : `Zoo Timing Rules:
+- Summer (1 Apr – 15 Oct): 08:30 AM to 06:30 PM. Booking closes at 06:00 PM.
+- Winter (16 Oct – 31 Mar): 09:00 AM to 05:00 PM. Booking closes at 04:30 PM.
+- Friday: The zoo is CLOSED every Friday.`;
+
+            context = dynamicTimings ? `${dynamicTimings}\n\n${seasonalContext}` : seasonalContext;
         } else if (matchedFacility && topScore < 0.2) {
             context = `This facility is ${matchedFacility}. It provides essential services for visitors at the National Zoological Park. Multiple locations exist across the park.`;
         }
