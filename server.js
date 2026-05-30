@@ -689,15 +689,15 @@ function loadZooRegistry() {
 
                 rawNamesList.forEach(raw => {
                     zooRegistry.rawNames.add(raw);
-                    
+
                     const renderEn = (item.render_name && typeof item.render_name === 'object' ? item.render_name.en : item.render_name) || primaryName;
                     const renderHi = (item.render_name && typeof item.render_name === 'object' ? item.render_name.hi : null) || item.common_name?.hi || item.name?.hi || item.title?.hi || primaryName;
-                    
+
                     zooRegistry.rawToRender[raw] = {
                         en: renderEn,
                         hi: renderHi
                     };
-                    
+
                     const cleanedRaw = raw.replace(/\s+\d+$/, '').trim();
                     if (!zooRegistry.rawToRender[cleanedRaw]) {
                         zooRegistry.rawToRender[cleanedRaw] = {
@@ -1211,7 +1211,7 @@ async function llmExtractSubject(query) {
             model: EXTRACTION_MODEL,
             messages: [{ role: 'user', content: prompt }],
             keep_alive: '1h',
-            options: { num_predict: 8, temperature: 0.0, top_k: 5 }
+            options: { num_predict: 8, temperature: 0.0, top_k: 5, num_thread: 4 }
         });
 
         let ext = (resp.message?.content || '').trim().toLowerCase();
@@ -2136,7 +2136,7 @@ function transliterateHinglish(text) {
 function isSpecificTimingQuestion(query) {
     if (!query || typeof query !== 'string') return false;
     const q = query.toLowerCase();
-    
+
     // Days of the week in English, Hindi, and common Hinglish spellings
     const days = [
         'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday',
@@ -2146,10 +2146,10 @@ function isSpecificTimingQuestion(query) {
         'ravivar', 'ravivaar', 'itwar', 'etwar',
         'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार', 'रविवार', 'इतवार'
     ];
-    
+
     const hasDay = days.some(day => q.includes(day));
     if (hasDay) return true;
-    
+
     // Terms indicating a check for today, tomorrow, holidays, or specific open/closed status
     const specificTerms = [
         'today', 'tomorrow', 'aaj', 'kal', 'आज', 'कल',
@@ -2157,10 +2157,10 @@ function isSpecificTimingQuestion(query) {
         'open today', 'closed today', 'open now', 'closed now',
         'is it open', 'is it closed', 'open on', 'closed on'
     ];
-    
+
     const hasSpecificTerm = specificTerms.some(term => q.includes(term));
     if (hasSpecificTerm) return true;
-    
+
     return false;
 }
 
@@ -2180,11 +2180,11 @@ app.post('/api/shera/chat', async (req, res) => {
     function replaceRawNamesWithRenderNames(text, isHindi) {
         if (!text) return text;
         let cleanedText = text;
-        
+
         // Sort rawNames by length descending to prevent substring mismatch issues
         const rawNamesSorted = Array.from(zooRegistry.rawNames)
             .sort((a, b) => b.length - a.length);
-            
+
         for (const rawName of rawNamesSorted) {
             const mapping = zooRegistry.rawToRender[rawName];
             if (mapping) {
@@ -2480,7 +2480,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 150, temperature: 0.7, top_p: 0.8, num_ctx: 512, top_k: 40 }
+                    options: { num_predict: 150, temperature: 0.7, top_p: 0.8, num_ctx: 512, top_k: 40, num_thread: 4 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -2495,7 +2495,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: notFoundPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 150, temperature: 0.7, top_p: 0.8, num_ctx: 512, top_k: 40 }
+                    options: { num_predict: 150, temperature: 0.7, top_p: 0.8, num_ctx: 512, top_k: 40, num_thread: 4 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -2567,7 +2567,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: true,
                     keep_alive: '1h',
-                    options: { num_predict: 50, temperature: isHindi ? 0.2 : 0.6, top_p: 0.9, num_ctx: 384, top_k: 40 }
+                    options: { num_predict: 50, temperature: isHindi ? 0.2 : 0.6, top_p: 0.9, num_ctx: 384, top_k: 40, num_thread: 4 }
                 });
 
                 for await (const chunk of streamResp) {
@@ -2582,7 +2582,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     messages: [{ role: 'system', content: greetingPrompt }, { role: 'user', content: question }],
                     stream: false,
                     keep_alive: '1h',
-                    options: { num_predict: 50, temperature: isHindi ? 0.2 : 0.6, top_p: 0.9, num_ctx: 384, top_k: 40 }
+                    options: { num_predict: 50, temperature: isHindi ? 0.2 : 0.6, top_p: 0.9, num_ctx: 384, top_k: 40, num_thread: 4 }
                 });
                 return res.json({ answer: resp.message.content, keyword: 'general', references: [] });
             }
@@ -2786,8 +2786,8 @@ app.post('/api/shera/chat', async (req, res) => {
 
                         // 4. Strict Boundary Instruction
                         const strictContextBase = isHindi
-                            ? `CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park, New Delhi. Answer ONLY in Hindi. Use ONLY the facts below.\n- NEVER give global trivia numbers.\n- DO NOT GUESS OR MAKE UP NUMBERS.${ isRestrictedAction ? "\n- The user is asking something inappropriate. Refuse politely. Start your response with [REFUSE]." : "" }`
-                            : `CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park. Answer the user's question using ONLY the facts below.\n- NEVER give global trivia numbers. ONLY talk about this specific zoo.\n- If the exact number is NOT explicitly in the facts below, say: 'I don't have the exact count for that.'\n- DO NOT GUESS OR MAKE UP NUMBERS.${ isRestrictedAction ? "\n- The user is asking something inappropriate. Refuse politely. Start your response with [REFUSE]." : "" }`;
+                            ? `CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park, New Delhi. Answer ONLY in Hindi. Use ONLY the facts below.\n- NEVER give global trivia numbers.\n- DO NOT GUESS OR MAKE UP NUMBERS.${isRestrictedAction ? "\n- The user is asking something inappropriate. Refuse politely. Start your response with [REFUSE]." : ""}`
+                            : `CRITICAL INSTRUCTION: You are Shera, a guide for the National Zoological Park. Answer the user's question using ONLY the facts below.\n- NEVER give global trivia numbers. ONLY talk about this specific zoo.\n- If the exact number is NOT explicitly in the facts below, say: 'I don't have the exact count for that.'\n- DO NOT GUESS OR MAKE UP NUMBERS.${isRestrictedAction ? "\n- The user is asking something inappropriate. Refuse politely. Start your response with [REFUSE]." : ""}`;
                         const strictContext = strictContextBase + '\n\n' + relevantFacts;
                         searchResult = {
                             context: strictContext,
@@ -3166,7 +3166,8 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                     temperature: isHindi ? 0.3 : 0.7,
                     top_p: 0.8,
                     num_ctx: 1024,
-                    top_k: 40
+                    top_k: 40,
+                    num_thread: 4
                 }
             });
 
@@ -3234,7 +3235,8 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                     temperature: isHindi ? 0.3 : 0.7,
                     top_p: 0.8,
                     num_ctx: 1024,
-                    top_k: 40
+                    top_k: 40,
+                    num_thread: 4
                 }
             });
 
@@ -3290,7 +3292,7 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                         ],
                         stream: false,
                         keep_alive: '1h',
-                        options: { num_predict: 150, temperature: 0.1, top_p: 0.8, num_ctx: 1024, top_k: 40 }
+                        options: { num_predict: 150, temperature: 0.1, top_p: 0.8, num_ctx: 1024, top_k: 40, num_thread: 4 }
                     });
                     const retryAnswer = (retryResp.message?.content || '').trim();
                     if (retryAnswer) {
@@ -3376,26 +3378,32 @@ app.get('/api/health', (req, res) => {
             }
         });
         setTimeout(async () => {
-            console.log('\n[WARMUP] Pre-loading models into VRAM...');
+            console.log('\n[WARMUP] Pre-loading models into RAM/VRAM sequentially...');
             try {
-                await Promise.all([
-                    ollama.chat({
-                        model: CHAT_MODEL,
-                        messages: [{ role: 'user', content: 'hi' }],
-                        keep_alive: '1h',
-                        options: { num_predict: 1, num_ctx: 64 }
-                    }),
-                    ollama.chat({
-                        model: EXTRACTION_MODEL,
-                        messages: [{ role: 'user', content: 'hi' }],
-                        keep_alive: '1h',
-                        options: { num_predict: 1, num_ctx: 64 }
-                    }),
-                    getCachedEmbedding('zoo warmup')
-                ]);
-                console.log(`[WARMUP] ✅ ${CHAT_MODEL} + ${EXTRACTION_MODEL} + embed model ready.`);
+                // Load the embedder first (smallest)
+                await getCachedEmbedding('zoo warmup');
+                console.log(`[WARMUP] Embed model ready.`);
+
+                // Load the extractor (Qwen)
+                await ollama.chat({
+                    model: EXTRACTION_MODEL,
+                    messages: [{ role: 'user', content: 'hi' }],
+                    keep_alive: '1h',
+                    options: { num_predict: 1, num_ctx: 64, num_thread: 4 }
+                });
+                console.log(`[WARMUP] Extractor ready.`);
+
+                // Load the main model last (Largest)
+                await ollama.chat({
+                    model: CHAT_MODEL,
+                    messages: [{ role: 'user', content: 'hi' }],
+                    keep_alive: '1h',
+                    options: { num_predict: 1, num_ctx: 64, num_thread: 4 }
+                });
+
+                console.log(`[WARMUP] ✅ All models locked into memory.`);
             } catch (e) {
-                console.warn('[WARMUP] Warmup failed (non-critical):', e.message);
+                console.warn('[WARMUP] Warmup failed:', e.message);
             }
         }, 500);
 
