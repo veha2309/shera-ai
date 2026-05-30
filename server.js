@@ -2338,6 +2338,19 @@ app.post('/api/shera/chat', async (req, res) => {
             : "Finding nearby animals and facilities for you... 🗺️";
         return sendStaticResponse(res, msg, 'general', stream);
     }
+    
+    // --- FIX 2: Global Timing Intercept ---
+    if (isSpecificTimingQuestion(qLower)) {
+        console.log(`[GLOBAL] Specific timing query intercepted: "${qLower}"`);
+
+        // Await the dynamic timings from Chroma, or fallback to the static string
+        const dynamicTimings = await getDynamicZooTimings(language);
+        const fallbackTiming = language === 'hi'
+            ? '🕒 दिल्ली चिड़ियाघर गर्मियों में सुबह 8:30 से शाम 4:30 तक और सर्दियों में सुबह 9:00 से शाम 4:00 तक खुला रहता है। ध्यान दें: चिड़ियाघर हर शुक्रवार को बंद रहता है! 📅'
+            : '🕒 The zoo is open from 8:30 AM to 4:30 PM (Summer) and 9:00 AM to 4:00 PM (Winter). Note: The zoo is CLOSED on Fridays! 📅';
+
+        return sendStaticResponse(res, dynamicTimings || fallbackTiming, 'Timings & Hours', stream);
+    }
     // ----------------------------------------
 
     try {
