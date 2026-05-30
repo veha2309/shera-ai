@@ -3190,7 +3190,20 @@ Now answer the user concisely in 1-2 sentences. No links or bullet points.`;
 
         }
         else {
+            // 1. Better Context Thin Check
             const isContextThin = !trimmedContext || trimmedContext.trim().length < 50 || trimmedContext.includes("CURRENTLY NOT AVAILABLE");
+
+            // 2. Detect if the user is actually asking "Where?"
+            const isLocationIntent = /\b(where|kahan|kaha|kidhar|location|enclosure|beat|spot|find|see|dekh)\b/i.test(qLower) || /कहाँ|कहा|किधर|जगह|स्थान/.test(qLower);
+
+            // 3. Dynamically build Rule 1 so the LLM doesn't see the apology string unless necessary
+            const rule1_Hi = isLocationIntent 
+                ? `1. The user is asking for a location. If the location is NOT explicitly written in the context, you MUST reply EXACTLY with: "क्षमा करें, मेरे पास अभी इसकी सटीक लोकेशन की जानकारी नहीं है।" You are STRICTLY FORBIDDEN from guessing locations.`
+                : `1. You may answer biological, behavioral, or diet questions using your General Knowledge. Do NOT mention any zoo locations or enclosures.`;
+
+            const rule1_En = isLocationIntent 
+                ? `1. The user is asking for a location. If the location is NOT explicitly written in the context, you MUST reply EXACTLY with: "I'm sorry, but I don't have the exact location details for them at this moment." You are STRICTLY FORBIDDEN from guessing locations.`
+                : `1. You may answer biological, behavioral, or diet questions using your General Knowledge. Do NOT mention any zoo locations or enclosures.`;
 
             systemPrompt = isHindi
                 ? `You are Shera, the friendly and playful guide at National Zoological Park, New Delhi.
@@ -3199,12 +3212,10 @@ ${NO_THOUGHT_INSTRUCTION_HI}
 Context: ${trimmedContext}
  
 Rules:
-1. ${isContextThin 
-    ? 'The provided context is thin. You may answer biological, behavioral, or diet questions using your General Knowledge. HOWEVER, if the user asks for a location, enclosure, or beat number, you MUST reply EXACTLY with: "क्षमा करें, मेरे पास अभी इसकी सटीक लोकेशन की जानकारी नहीं है।" You are STRICTLY FORBIDDEN from guessing locations.' 
-    : 'Answer using ONLY the context provided above. If the user asks where to see this animal, refer exclusively to its location within National Zoological Park using the context. If the location is not explicitly stated, you MUST reply EXACTLY with: "क्षमा करें, मेरे पास अभी इसकी सटीक लोकेशन की जानकारी नहीं है।"'}
+${rule1_Hi}
 2. VERIFY INVENTORY: You are an official guide at the National Zoological Park, New Delhi. Before answering any question about an animal, check the provided context. If the animal is NOT explicitly mentioned as being present at our zoo, you MUST explicitly state: "We do not have [Animal Name] at the National Zoological Park." Do not answer with facts about the animal until you have cleared this check.
-3. If the context contains any specific numbers, counts, or statistics, you MUST use those EXACT figures in your answer. DO NOT invent, hallucinate, or guess any counts, numbers, or statistics that are not explicitly mentioned.
-4. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `Explicitly state that we do NOT have ${mismatchedInfo.missing}s at our zoo.` : `Explicitly state that we do NOT have ${mismatchedInfo.missing}s, but mention we do have ${mismatchedInfo.available} at our zoo.`) : (isContextThin ? `If this animal is not part of our zoo, naturally mention that it is not currently at our zoo.` : '')}
+3. If the context contains specific zoo statistics or population counts, use those EXACT figures. DO NOT invent zoo statistics. HOWEVER, you MAY state basic biological facts using your general knowledge (e.g., an animal having 4 legs, 2 wings).
+4. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `Explicitly state that we do NOT have ${mismatchedInfo.missing}s at our zoo.` : `Explicitly state that we do NOT have ${mismatchedInfo.missing}s, but mention we do have ${mismatchedInfo.available} at our zoo.`) : (isContextThin && !isLocationIntent ? `If this animal is not part of our zoo, naturally mention that it is not currently at our zoo.` : '')}
 5. Maintain a playful, enthusiastic, and friendly tone.
 6. Include exactly one relevant emoji at the very end of your response.
 ${isRestrictedAction ? '7. The user is attempting something harmful or inappropriate to the animals. Politely but firmly refuse. You MUST start your response with the hidden tag "[REFUSE]".' : ''}
@@ -3221,12 +3232,10 @@ ${NO_THOUGHT_INSTRUCTION_EN}
 Context: ${trimmedContext}
  
 Rules:
-1. ${isContextThin 
-    ? 'The provided context is thin. You may answer biological, behavioral, or diet questions using your General Knowledge. HOWEVER, if the user asks for a location, enclosure, or beat number, you MUST reply EXACTLY with: "I\'m sorry, but I don\'t have the exact location details for them at this moment." You are STRICTLY FORBIDDEN from guessing locations.' 
-    : 'Answer using ONLY the context provided above. If the user asks where to see this animal, refer exclusively to its location within National Zoological Park using the context. If the location is not explicitly stated, you MUST reply EXACTLY with: "I\'m sorry, but I don\'t have the exact location details for them at this moment."'}
+${rule1_En}
 2. VERIFY INVENTORY: You are an official guide at the National Zoological Park, New Delhi. Before answering any question about an animal, check the provided context. If the animal is NOT explicitly mentioned as being present at our zoo, you MUST explicitly state: "We do not have [Animal Name] at the National Zoological Park." Do not answer with facts about the animal until you have cleared this check.
-3. If the context contains any specific numbers, counts, or statistics, you MUST use those EXACT figures in your answer. DO NOT invent, hallucinate, or guess any counts, numbers, or statistics that are not explicitly mentioned.
-4. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `Explicitly state that we do NOT have ${mismatchedInfo.missing}s at our zoo.` : `Explicitly state that we do NOT have ${mismatchedInfo.missing}s, but mention we do have ${mismatchedInfo.available} at our zoo.`) : (isContextThin ? `If this animal is not part of our zoo, naturally mention that it is not currently at our zoo.` : '')}
+3. If the context contains specific zoo statistics or population counts, use those EXACT figures. DO NOT invent zoo statistics. HOWEVER, you MAY state basic biological facts using your general knowledge (e.g., an animal having 4 legs, 2 wings).
+4. ${mismatchedInfo ? (mismatchedInfo.isAbsentAnimal ? `Explicitly state that we do NOT have ${mismatchedInfo.missing}s at our zoo.` : `Explicitly state that we do NOT have ${mismatchedInfo.missing}s, but mention we do have ${mismatchedInfo.available} at our zoo.`) : (isContextThin && !isLocationIntent ? `If this animal is not part of our zoo, naturally mention that it is not currently at our zoo.` : '')}
 5. Maintain a playful, enthusiastic, and friendly tone.
 6. Include exactly one relevant emoji at the very end of your response.
 ${isRestrictedAction ? '7. The user is attempting something harmful or inappropriate to the animals. Politely but firmly refuse. You MUST start your response with the hidden tag "[REFUSE]".' : ''}
