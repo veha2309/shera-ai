@@ -2604,90 +2604,93 @@ app.post('/api/shera/chat', async (req, res) => {
         }
 
         function validateAndPatchNumbers(answer, context) {
-            if (!context || !answer) return answer;
+            // Disabled: Number patching causes significant semantic issues (e.g. replacing valid ranges like 3000-5000 with 5000-5000).
+            // The system prompts now strictly instruct the LLM on number usage.
+            //             if (!context || !answer) return answer;
 
-            function getNumberContexts(text) {
-                const matches = [];
-                const regex = /\b(\d[\d,]*)\b/g;
-                let match;
-                const stopWords = new Set([
-                    'of', 'and', 'the', 'in', 'a', 'an', 'to', 'for', 'with', 'both', 'resident', 'migratory',
-                    'have', 'been', 'recorded', 'within', 'limits', 'boundaries', 'zoo', 'national', 'delhi',
-                    'से', 'अधिक', 'और', 'की', 'के', 'में', 'पर', 'चिड़ियाघर', 'चिड़ियाघर', 'हैं', 'है', 'को'
-                ]);
+            // function getNumberContexts(text) {
+            //     const matches = [];
+            //     const regex = /\b(\d[\d,]*)\b/g;
+            //     let match;
+            //     const stopWords = new Set([
+            //         'of', 'and', 'the', 'in', 'a', 'an', 'to', 'for', 'with', 'both', 'resident', 'migratory',
+            //         'have', 'been', 'recorded', 'within', 'limits', 'boundaries', 'zoo', 'national', 'delhi',
+            //         'से', 'अधिक', 'और', 'की', 'के', 'में', 'पर', 'चिड़ियाघर', 'चिड़ियाघर', 'हैं', 'है', 'को'
+            //     ]);
 
-                while ((match = regex.exec(text)) !== null) {
-                    const numStr = match[1];
-                    const numVal = parseInt(numStr.replace(/,/g, ''));
-                    if (isNaN(numVal)) continue;
+            //     while ((match = regex.exec(text)) !== null) {
+            //         const numStr = match[1];
+            //         const numVal = parseInt(numStr.replace(/,/g, ''));
+            //         if (isNaN(numVal)) continue;
 
-                    const startIndex = match.index + numStr.length;
-                    const lookahead = text.slice(startIndex, startIndex + 50).toLowerCase();
-                    const words = lookahead.split(/[^a-zA-Z0-9\u0900-\u097F]+/).filter(w => w.length > 2 && !stopWords.has(w));
+            //         const startIndex = match.index + numStr.length;
+            //         const lookahead = text.slice(startIndex, startIndex + 50).toLowerCase();
+            //         const words = lookahead.split(/[^a-zA-Z0-9\u0900-\u097F]+/).filter(w => w.length > 2 && !stopWords.has(w));
 
-                    matches.push({
-                        numStr,
-                        numVal,
-                        words: words.slice(0, 3)
-                    });
-                }
-                return matches;
-            }
+            //         matches.push({
+            //             numStr,
+            //             numVal,
+            //             words: words.slice(0, 3)
+            //         });
+            //     }
+            //     return matches;
+            // }
 
-            const ctxNums = getNumberContexts(context);
-            const ansNums = getNumberContexts(answer);
+            // const ctxNums = getNumberContexts(context);
+            // const ansNums = getNumberContexts(answer);
 
-            if (ctxNums.length === 0 || ansNums.length === 0) return answer;
+            // if (ctxNums.length === 0 || ansNums.length === 0) return answer;
 
-            let patchedAnswer = answer;
+            // let patchedAnswer = answer;
 
-            const countNouns = new Set([
-                'species', 'animals', 'birds', 'reptiles', 'mammals', 'lions', 'tigers', 'peacocks',
-                'visitors', 'stalls', 'beats', 'locations', 'places', 'gates', 'members', 'individuals',
-                'canteens', 'toilets', 'restrooms', 'washrooms', 'points', 'stops', 'kiosks',
-                'prajati', 'prajatiyan', 'janwar', 'pakshi', 'log', 'sadasya',
-                'प्रजातियाँ', 'प्रजाति', 'जानवर', 'पक्षी', 'लोग', 'सदस्य', 'स्टॉल', 'गेट'
-            ]);
+            // const countNouns = new Set([
+            //     'species', 'animals', 'birds', 'reptiles', 'mammals', 'lions', 'tigers', 'peacocks',
+            //     'visitors', 'stalls', 'beats', 'locations', 'places', 'gates', 'members', 'individuals',
+            //     'canteens', 'toilets', 'restrooms', 'washrooms', 'points', 'stops', 'kiosks',
+            //     'prajati', 'prajatiyan', 'janwar', 'pakshi', 'log', 'sadasya',
+            //     'प्रजातियाँ', 'प्रजाति', 'जानवर', 'पक्षी', 'लोग', 'सदस्य', 'स्टॉल', 'गेट'
+            // ]);
 
-            for (const ans of ansNums) {
-                let bestCtx = null;
-                let maxOverlap = 0;
+            // for (const ans of ansNums) {
+            //     let bestCtx = null;
+            //     let maxOverlap = 0;
 
-                for (const ctx of ctxNums) {
-                    const overlap = ans.words.filter(w => ctx.words.includes(w));
-                    if (overlap.length > maxOverlap) {
-                        maxOverlap = overlap.length;
-                        bestCtx = ctx;
-                    }
-                }
+            //     for (const ctx of ctxNums) {
+            //         const overlap = ans.words.filter(w => ctx.words.includes(w));
+            //         if (overlap.length > maxOverlap) {
+            //             maxOverlap = overlap.length;
+            //             bestCtx = ctx;
+            //         }
+            //     }
 
-                if (bestCtx && maxOverlap > 0) {
-                    if (ans.numVal !== bestCtx.numVal) {
-                        console.log(`[NUMBER-PATCH] Semantic match: Model said ${ans.numStr} (words: ${ans.words}), context says ${bestCtx.numStr} (words: ${bestCtx.words}). Patching.`);
-                        patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), bestCtx.numStr);
-                    }
-                } else {
-                    const existsInContext = ctxNums.some(ctx => ctx.numVal === ans.numVal);
-                    const isCountNoun = ans.words.some(w => countNouns.has(w));
+            //     if (bestCtx && maxOverlap > 0) {
+            //         if (ans.numVal !== bestCtx.numVal) {
+            //             console.log(`[NUMBER-PATCH] Semantic match: Model said ${ans.numStr} (words: ${ans.words}), context says ${bestCtx.numStr} (words: ${bestCtx.words}). Patching.`);
+            //             patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), bestCtx.numStr);
+            //         }
+            //     } else {
+            //         const existsInContext = ctxNums.some(ctx => ctx.numVal === ans.numVal);
+            //         const isCountNoun = ans.words.some(w => countNouns.has(w));
 
-                    if (isCountNoun && (!existsInContext || maxOverlap === 0)) {
-                        console.log(`[NUMBER-PATCH] Hallucinated statistic detected: ${ans.numStr} (words: ${ans.words}). Replacing with vague quantifier.`);
-                        const replacement = isHindi ? 'कई' : 'many';
-                        patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), replacement);
-                    } else if (!existsInContext) {
-                        for (const ctx of ctxNums) {
-                            if (ans.numVal === ctx.numVal) continue;
-                            if (Math.abs(ans.numVal - ctx.numVal) <= ctx.numVal * 0.2) {
-                                console.log(`[NUMBER-PATCH] Proximity match: Model said ${ans.numStr}, context says ${ctx.numStr}. Patching.`);
-                                patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), ctx.numStr);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+            //         if (isCountNoun && (!existsInContext || maxOverlap === 0)) {
+            //             console.log(`[NUMBER-PATCH] Hallucinated statistic detected: ${ans.numStr} (words: ${ans.words}). Replacing with vague quantifier.`);
+            //             const replacement = isHindi ? 'कई' : 'many';
+            //             patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), replacement);
+            //         } else if (!existsInContext) {
+            //             for (const ctx of ctxNums) {
+            //                 if (ans.numVal === ctx.numVal) continue;
+            //                 if (Math.abs(ans.numVal - ctx.numVal) <= ctx.numVal * 0.2) {
+            //                     console.log(`[NUMBER-PATCH] Proximity match: Model said ${ans.numStr}, context says ${ctx.numStr}. Patching.`);
+            //                     patchedAnswer = patchedAnswer.replace(new RegExp(`\\b${ans.numStr}\\b`, 'g'), ctx.numStr);
+            //                     break;
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
 
-            return patchedAnswer;
+            // return patchedAnswer;
+            return answer;
         }
 
         const isActivityQuery = qLower.includes('active now')
