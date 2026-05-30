@@ -387,11 +387,11 @@ async function getDynamicZooTimings(language = 'en') {
 
             let weekSchedule = timings.map(t => {
                 if (t.day === 'Friday') {
-                    return language === 'hi' ? `${daysHi['Friday']}: बंद` : `Friday: Closed`;
+                    return language === 'hi' ? `- ${daysHi['Friday']}: बंद` : `- Friday: Closed`;
                 }
                 return language === 'hi'
-                    ? `${daysHi[t.day]}: ${t.openTime} - ${t.closeTime}`
-                    : `${t.day}: ${t.openTime} - ${t.closeTime}`;
+                    ? `- ${daysHi[t.day]}: ${t.openTime} - ${t.closeTime}`
+                    : `- ${t.day}: ${t.openTime} - ${t.closeTime}`;
             }).join('\n');
 
             let todayScheduleHi = 'उपलब्ध नहीं';
@@ -407,9 +407,9 @@ async function getDynamicZooTimings(language = 'en') {
             }
 
             if (language === 'hi') {
-                return `आज (${today ? daysHi[today.day] : ''}) का समय: ${todayScheduleHi}।\n\nपूरे सप्ताह का समय:\n${weekSchedule}`;
+                return `**आज (${today ? daysHi[today.day] : ''}) का समय:** ${todayScheduleHi}।\n\n**पूरे सप्ताह का समय:**\n${weekSchedule}`;
             }
-            return `Today (${today ? today.day : ''}): ${todayScheduleEn}.\n\nWeekly Schedule:\n${weekSchedule}`;
+            return `**Today (${today ? today.day : ''}):** ${todayScheduleEn}.\n\n**Weekly Schedule:**\n${weekSchedule}`;
         }
     } catch (e) {
         console.error("[TIMINGS] Error fetching from Chroma:", e);
@@ -910,12 +910,12 @@ const QUERY_STOP_WORDS = new Set([
 
 // Generic subject words: valid zoo subjects but too broad to resolve to a single animal.
 // Used only at the routing layer to decide "deep search" vs "general".
-const GENERIC_SUBJECT_WORDS = new Set(['bird', 'birds', 'animal', 'animals']);
+// const GENERIC_SUBJECT_WORDS = new Set(['bird', 'birds', 'animal', 'animals']);
 
 const GENERIC_CATEGORY_WORDS = new Set([
     'animal', 'animals', 'bird', 'birds', 'insect', 'insects', 'fish', 'fishes',
     'reptile', 'reptiles', 'mammal', 'mammals', 'pashu', 'janwar', 'pakshi', 'panchi',
-    'जीव', 'जानवर', 'पक्षी'
+    'जीव', 'जानवर', 'पक्षी', 'tour', 'tours', 'safari', 'safar', 'trip'
 ]);
 
 const EVENT_INDICATOR_REGEX = /\b(day|week|event|festival|mahotsav|celebrat|program|divas|saptah|karyakram|दिवस|महोत्सव|सप्ताह|कार्यक्रम)\b/i;
