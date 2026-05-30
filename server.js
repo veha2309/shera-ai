@@ -952,7 +952,7 @@ const TRAIT_WORDS = /\b(big|bigger|large|larger|size|small|smaller|heavy|weight|
 const QUESTION_WORDS = /\b(how|what|where|why|when|who|tell|give|share|does|do|is|are)\b/i;
 
 // Hindi/Hinglish Traits
-const HINDI_TRAIT_WORDS = /बड़ा|bada|bade|chota|chote|size|वजन|प्रजातियाँ|समूह|prajatiyan|samuh|wazan|vajan|लंबा|lambai|ऊंचाई|unchai|old|age|उम्र|umr|lifespan|life|jeevan|fast|tez|speed|raf-tar|fact|facts|khana|diet|sleep|sona|active|rang|color|housed|born|paida|pregnancy|gestation|पैर|pair|टांग|tang|टांगे|tange|आंख|aankh|आंखें|aankhen|दांत|daant|पूंछ|poonch|पंख|pankh|त्वचा|twacha|fur|सींग|seeng|गर्दन|gardan|नाखून|nakhoon|दौड़|daud|तैर|tair|उड़|ud|आवाज|aawaz|रूप|roop|बच्चा|bacha|बच्चे|bache/i;
+const HINDI_TRAIT_WORDS = /भारी|bhari|bhaari|मोटा|mota|motai|बड़ा|bada|bade|chota|chote|size|वजन|प्रजातियाँ|समूह|prajatiyan|samuh|wazan|vajan|लंबा|lamba|lambai|ऊंचाई|unchai|old|age|उम्र|umr|lifespan|life|jeevan|fast|tez|speed|raf-tar|fact|facts|khana|diet|sleep|sona|active|rang|color|housed|born|paida|pregnancy|gestation|पैर|pair|टांग|tang|टांगे|tange|आंख|aankh|आंखें|aankhen|दांत|daant|पूंछ|poonch|पंख|pankh|त्वचा|twacha|fur|सींग|seeng|गर्दन|gardan|नाखून|nakhoon|दौड़|daud|तैर|tair|उड़|ud|आवाज|aawaz|रूप|roop|बच्चा|bacha|बच्चे|bache/i;
 
 // Hindi/Hinglish Question Words
 const HINDI_QUESTION_WORDS = /क्या|kya|kaun|who|kahan|where|kyon|why|kab|when|kaise|how|kitna|kitni|kitne|does|do|is|are/i;
@@ -1677,10 +1677,25 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
         return { context: '', subject: 'general', references: [], topScore: 0 };
     }
 
-    if (subject.toLowerCase() === 'endangered' || subject.toLowerCase() === 'conservation' || subject.toLowerCase() === 'संकटग्रस्त') {
+    const subjLower = subject.toLowerCase();
+    const isConservation = subjLower.includes('endangered') || 
+                           subjLower.includes('conservation') || 
+                           subjLower.includes('threatened') || 
+                           subjLower.includes('vulnerable') || 
+                           subjLower.includes('extinct') || 
+                           subjLower.includes('संकटग्रस्त');
+
+    if (isConservation) {
         const endangeredList = zooRegistry.canonicalNames.filter(name => {
             const status = String(zooRegistry.metadata[name]?.threatStatus || '').toLowerCase();
-            return status.includes('endangered') || status.includes('threatened');
+            if (!status || status === 'undefined') return false;
+            
+            if (subjLower.includes('near')) return status.includes('near');
+            if (subjLower.includes('critically')) return status.includes('critically');
+            if (subjLower.includes('vulnerable')) return status.includes('vulnerable');
+            if (subjLower.includes('extinct')) return status.includes('extinct');
+            
+            return status.includes('endangered') || status.includes('threatened') || status.includes('vulnerable');
         });
 
         if (endangeredList.length > 0) {
@@ -1689,8 +1704,8 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
 
             // Add localization for Hindi so the LLM behaves properly
             const contextStr = language === 'hi'
-                ? `नेशनल जूलॉजिकल पार्क, नई दिल्ली में कई संकटग्रस्त (endangered) प्रजातियाँ हैं।\nयहाँ के कुछ प्रमुख संकटग्रस्त जानवर हैं: ${listStr}।\nआगंतुकों को इनके संरक्षण के बारे में जानने के लिए प्रोत्साहित किया जाता है।`
-                : `The National Zoological Park, New Delhi is home to many endangered and threatened species.\nSome key endangered animals here are: ${listStr}.\nVisitors are encouraged to learn about their conservation.`;
+                ? `नेशनल जूलॉजिकल पार्क, नई दिल्ली में कई प्रजातियाँ हैं।\nयहाँ के कुछ प्रमुख ${subject} जानवर हैं: ${listStr}।\nआगंतुकों को इनके संरक्षण के बारे में जानने के लिए प्रोत्साहित किया जाता है।`
+                : `The National Zoological Park, New Delhi is home to many species.\nSome key ${subject} animals here are: ${listStr}.\nVisitors are encouraged to learn about their conservation.`;
 
             return {
                 context: contextStr,
@@ -2711,15 +2726,13 @@ app.post('/api/shera/chat', async (req, res) => {
             });
 
             if (activeAnimals.length > 0) {
-                const displayAnimals = isHindi ? activeAnimals.map(a => applyHindiGlossary(a)) : activeAnimals;
+                const displayAnimals = activeAnimals;
                 const listStr = displayAnimals.slice(0, 10).join(', ') + (displayAnimals.length > 10 ? ' etc.' : '');
                 const timeDesc = currentHour >= 12
                     ? `${currentHour === 12 ? 12 : currentHour - 12} PM`
                     : `${currentHour} AM`;
 
-                context = isHindi
-                    ? `चिड़ियाघर में अभी भारतीय समयानुसार लगभग ${timeDesc} बज रहे हैं। इस समय दिल्ली चिड़ियाघर में सक्रिय और देखने योग्य मुख्य जानवर निम्नलिखित हैं: ${listStr} आदि।`
-                    : `The current local time at the zoo is around ${timeDesc}. The key animals that are currently active and likely to be seen right now are: ${listStr}.`;
+                context = `The current local time at the zoo is around ${timeDesc}. The key animals that are currently active and likely to be seen right now are: ${listStr}.`;
 
                 sortedContext = activeAnimals.slice(0, 5).map(name => ({
                     metadata: { name }, score: 1.0, doc: `This is the ${name}.`
@@ -2929,8 +2942,8 @@ app.post('/api/shera/chat', async (req, res) => {
                     : applyHindiGlossary(finalSubject);
 
                 mismatchedInfo = {
-                    missing: isHindi ? missingHindi : missingEnglish,
-                    available: isHindi ? availableHindi : availableEnglish,
+                    missing: missingEnglish,
+                    available: availableEnglish,
                     isAbsentAnimal: false
                 };
             } else if (zooRegistry.eventNames.has(finalSubject)) {
@@ -2961,7 +2974,7 @@ app.post('/api/shera/chat', async (req, res) => {
                     const missingHindi = hindiTranslation[coreClean] || capCore;
 
                     mismatchedInfo = {
-                        missing: isHindi ? missingHindi : capCore,
+                        missing: capCore,
                         isAbsentAnimal: true
                     };
                 }
@@ -2971,19 +2984,15 @@ app.post('/api/shera/chat', async (req, res) => {
         if (mismatchedInfo) {
             let mismatchStatement = '';
             if (mismatchedInfo.isAbsentAnimal) {
-                mismatchStatement = isHindi
-                    ? `हालांकि हमारे चिड़ियाघर में ${mismatchedInfo.missing} मौजूद नहीं है।`
-                    : `Although the ${mismatchedInfo.missing} is not currently housed at our zoo.`;
+                mismatchStatement = `Although the ${mismatchedInfo.missing} is not currently housed at our zoo.`;
             } else {
-                mismatchStatement = isHindi
-                    ? `हमारे पास ${mismatchedInfo.missing} नहीं है, लेकिन हमारे पास ${mismatchedInfo.available} हैं।`
-                    : `We do not have ${mismatchedInfo.missing}s, but we do have ${mismatchedInfo.available} at our zoo.`;
+                mismatchStatement = `We do not have ${mismatchedInfo.missing}s, but we do have ${mismatchedInfo.available} at our zoo.`;
             }
             context = mismatchStatement + '\n\n' + context;
         }
 
-        const isRelationalQuery = /\b(eat|eats|live|lives|endangered|habitat|beat|location)\b/i.test(question);
-        const needsGraph = (isEventQuery || isRelationalQuery || topScore < 0.3) && graph.nodes.length > 0;
+        const isRelationalQuery = /\b(eat|eats|live|lives|habitat|beat|location)\b/i.test(question);
+        const needsGraph = (isEventQuery || isRelationalQuery || topScore < 0.3) && graph.nodes.length > 0 && finalSubject !== 'Endangered';
         let graphAugmented = false;
 
         if (needsGraph) {
@@ -3016,20 +3025,14 @@ app.post('/api/shera/chat', async (req, res) => {
                 eventDate = fd?.date ? new Date(fd.date).toDateString() : '';
             } catch { /* ignore */ }
 
-            context = isHindi
-                ? [`कार्यक्रम: ${finalSubject}`, eventDate ? `तारीख: ${eventDate}` : '', 'यह नेशनल जूलॉजिकल पार्क, नई दिल्ली में मान्यता प्राप्त एक विशेष दिन है।', 'आगंतुकों को इस अवसर पर जागरूक होने और इसे मनाने के लिए प्रोत्साहित किया जाता है।'].filter(Boolean).join('\n')
-                : [`Event: ${finalSubject}`, eventDate ? `Date: ${eventDate}` : '', 'This is a special observance day recognized at the National Zoological Park, New Delhi.', 'Visitors are encouraged to learn about and celebrate this occasion during their visit.'].filter(Boolean).join('\n');
+            context = [`Event: ${finalSubject}`, eventDate ? `Date: ${eventDate}` : '', 'This is a special observance day recognized at the National Zoological Park, New Delhi.', 'Visitors are encouraged to learn about and celebrate this occasion during their visit.'].filter(Boolean).join('\n');
         }
 
         if (matchedFacility === 'Timings & Hours') {
             const dynamicTimings = await getDynamicZooTimings(language);
-            context = dynamicTimings || (isHindi
-                ? 'दिल्ली चिड़ियाघर गर्मियों में सुबह 8:30 से शाम 4:30 तक और सर्दियों में सुबह 9:00 से शाम 4:00 तक खुला रहता है। शुक्रवार को बंद रहता है।'
-                : 'The zoo is open from 8:30 AM to 4:30 PM (Summer) and 9:00 AM to 4:00 PM (Winter). The zoo is CLOSED on Fridays.');
+            context = dynamicTimings || 'The zoo is open from 8:30 AM to 4:30 PM (Summer) and 9:00 AM to 4:00 PM (Winter). The zoo is CLOSED on Fridays.';
         } else if (matchedFacility && topScore < 0.2) {
-            context = isHindi
-                ? `यह सुविधा ${matchedFacility} है। यह नेशनल जूलॉजिकल पार्क में आगंतुकों के लिए आवश्यक सेवाएं प्रदान करती है।`
-                : `This facility is ${matchedFacility}. It provides essential services for visitors at the National Zoological Park. Multiple locations exist across the park.`;
+            context = `This facility is ${matchedFacility}. It provides essential services for visitors at the National Zoological Park. Multiple locations exist across the park.`;
         }
 
         const isNotFound = extractedSubject !== 'general' && topScore < 0.2 && !isFacilityMatch && !isEventQuery && !graphAugmented && !mismatchedInfo;
@@ -3046,7 +3049,7 @@ app.post('/api/shera/chat', async (req, res) => {
         const NO_THOUGHT_INSTRUCTION_HI = "STRICT: Do NOT include any internal monologue or thinking process. IMPORTANT: You must write your final response ENTIRELY in Hindi.";
 
         // FIX: Calculate the context safely BEFORE the if/else blocks begin
-        const rawContext = isHindi ? applyHindiGlossary(context) : context;
+        const rawContext = context;
         const trimmedContext = trimContext(rawContext, 1000);
 
         if (isNotFound) {
@@ -3144,9 +3147,7 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
         let userMessageContent = isHindi ? applyHindiGlossary(question) : question;
 
         if (finalSubject && finalSubject !== 'general' && finalSubject.toLowerCase() !== question.toLowerCase()) {
-            userMessageContent = isHindi
-                ? `[विषय: ${applyHindiGlossary(finalSubject)}] उपयोगकर्ता का संदेश: ${applyHindiGlossary(question)}`
-                : `[Topic: ${finalSubject}] User's message: ${question}`;
+            userMessageContent = `[Topic: ${finalSubject}] User's message: ${userMessageContent}`;
         }
 
         if (stream) {
