@@ -3283,7 +3283,7 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                 const englishRatio = englishWordCount / Math.max(totalWordCount, 1);
                 if (englishRatio > 0.25) {
                     console.warn(`[HINDI-LEAK] ${Math.round(englishRatio * 100)}% English words detected in Hindi response. Retrying...`);
-                    const hindiRetryPrompt = `आप शेरा हैं, दिल्ली चिड़ियाघर के मित्रवत हिंदी गाइड। केवल हिंदी में उत्तर दें। सख्त नियम: कोई भी आंतरिक सोच या विचार प्रक्रिया शामिल न करें। 1-2 वाक्यों में सीधे उत्तर दें। अंत में एक इमोजी लगाएं।`;
+                    const hindiRetryPrompt = `You are Shera, the friendly guide at National Zoological Park. You MUST process this instruction in English, but your FINAL OUTPUT MUST BE TRANSLATED ENTIRELY INTO NATURAL HINDI. STRICT RULE: Do not include any internal monologue or thinking process. Answer directly in 1-2 sentences. Put exactly one emoji at the end. No English words.`;
                     const retryResp = await ollama.chat({
                         model: CHAT_MODEL,
                         messages: [
