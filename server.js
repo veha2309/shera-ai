@@ -2322,6 +2322,24 @@ app.post('/api/shera/chat', async (req, res) => {
         return sendStaticResponse(res, hit.answer, hit.keyword, stream);
     }
 
+    // --- FIX 1: Global Location Intercept ---
+    const isLocationQueryGlobal = qLower.includes('nearby')
+        || qLower.includes('close to me')
+        || qLower.includes('where am i')
+        || qLower.includes('आसपास')
+        || qLower.includes('नज़दीक')
+        || qLower.includes('पास')
+        || /\b(paas|pas|nazdeek|aaspaas)\b/.test(qLower);
+
+    if (isLocationQueryGlobal) {
+        console.log(`[GLOBAL] Location/nearby query intercepted: "${qLower}"`);
+        const msg = isHindi
+            ? "आपके आस-पास के जानवरों और सुविधाओं को ढूंढ रहा हूँ... 🗺️"
+            : "Finding nearby animals and facilities for you... 🗺️";
+        return sendStaticResponse(res, msg, 'general', stream);
+    }
+    // ----------------------------------------
+
     try {
         const isCountQuery = qLower.includes('how many')
             || qLower.includes('number of')
@@ -3237,7 +3255,8 @@ ${isRestrictedAction ? '5. [RESTRICTED ACTION DETECTED] Start your response with
         }
 
 
-        if (finalSubject && finalSubject !== 'general') {
+        // --- FIX 2: Block short-circuit if a modifier mismatch was detected ---
+        if (finalSubject && finalSubject !== 'general' && !mismatchedInfo) {
             const words = qLower.split(/[^a-z0-9\u0900-\u097F]+/).filter(w => w.length > 0);
             if (words.length <= 3 && zooRegistry.canonicalNames.includes(finalSubject)) {
                 const actionWords = new Set([
