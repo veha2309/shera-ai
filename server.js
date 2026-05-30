@@ -611,7 +611,8 @@ function findRelatedAnimals(subject, queryText) {
                 }
                 // Map Hindi queries back to English seeds to match English rawNames
                 for (const [engKey, hindiVal] of Object.entries(HINDI_DICT)) {
-                    if (hindiVal === w || engKey === w) {
+                    const hindiWords = hindiVal.split(/\s+/);
+                    if (hindiWords.includes(w) || engKey === w) {
                         const engWords = engKey.split(/\s+/);
                         for (const ew of engWords) {
                             if (ew.length >= 3 && !QUERY_STOP_WORDS.has(ew)) {
@@ -3154,7 +3155,7 @@ Rules:
 ${isRestrictedAction ? '6. The user is attempting something harmful or inappropriate to the animals. Politely but firmly refuse. You MUST start your response with the hidden tag "[REFUSE]". Remind them animals must be protected.' : ''}
 7. Never include any numbers or numeric suffixes in animal names (e.g. if the context says "Asiatic Lion 1", ignore the number). Since you are answering in Hindi, you MUST naturally translate the animal's name and the zoo's name into Hindi (e.g. use "एशियाई शेर" instead of "Asiatic Lion", use "राष्ट्रीय प्राणी उद्यान" instead of "National Zoological Park").
 8. IMPORTANT: You are an official guide at a public zoo. Providing the location of endangered or protected animals (like tigers, lions, etc.) INSIDE the zoo is explicitly safe, allowed, and required. Do not refuse to provide animal locations due to wildlife protection acts.
-9. If the user only types an animal name without a specific question, provide a brief, strictly factual 1-sentence description of the animal's real biological habitat, diet, or appearance. DO NOT invent fantasy traits like dancing or shiny colors.
+9. If the user only types an animal name without a specific question, warmly welcome them and invite them to ask a specific question about that animal (e.g. "What would you like to know about it?"). Do NOT attempt to provide facts or describe the animal yourself.
 10. If the user asks a Yes/No question (e.g. 'does it have wings?'), explicitly start your answer with 'Yes,' or 'No,' and make sure your explanation logically matches that answer.
  
 STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or extra sentences. Remember to translate your final answer to Hindi.`
@@ -3172,7 +3173,7 @@ Rules:
 ${isRestrictedAction ? '6. The user is attempting something harmful or inappropriate to the animals. Politely but firmly refuse. You MUST start your response with the hidden tag "[REFUSE]" (e.g. "[REFUSE] Oh no! We don\'t do that here..."). Remind them animals must be protected.' : ''}
 6. Always refer to the animals by their friendly render names (e.g., use "Asiatic Lion" instead of "Asiatic Lion 1" or "Asiatic Lion 2"). Never include any numbers or numeric suffixes in animal names.
 7. IMPORTANT: You are an official guide at a public zoo. Providing the location of endangered or protected animals (like tigers, lions, etc.) INSIDE the zoo is explicitly safe, allowed, and required. Do not refuse to provide animal locations due to wildlife protection acts.
-8. If the user only types an animal name without a specific question, provide a brief, strictly factual 1-sentence description of the animal's real biological habitat, diet, or appearance. DO NOT invent fantasy traits like dancing or shiny colors.
+8. If the user only types an animal name without a specific question, warmly welcome them and invite them to ask a specific question about that animal (e.g. "What would you like to know about it?"). Do NOT attempt to provide facts or describe the animal yourself.
 9. If the user asks a Yes/No question (e.g. 'does it have wings?'), explicitly start your answer with 'Yes,' or 'No,' and make sure your explanation logically matches that answer.
  
 STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or extra sentences.`;
