@@ -1493,7 +1493,7 @@ async function extractSubject(query) {
                 } else if (qw.length >= 4 && cw.length >= 4 && (qw.includes(cw) || cw.includes(qw))) {
                     // SAFEGUARD ADDED HERE: Requires both words to be at least 4 characters long
                     bestWordScore = 0.7; // Substring inclusion
-                } else if (qw.length >= 5 && cw.length >= 5) {
+                } else if (qw.length >= 4 && cw.length >= 4) {
                     const dist = levenshtein(qw, cw);
                     const maxAllowed = cw.length >= 6 ? 2 : 1;
                     if (dist <= maxAllowed) {
@@ -1569,7 +1569,7 @@ async function extractSubject(query) {
             if (zooRegistry.eventNames.has(n) && !EVENT_INDICATOR_REGEX.test(qLower)) return false;
             const canonicalWords = n.toLowerCase().split(/[^a-z0-9]+/);
             for (const cw of canonicalWords) {
-                if (cw.length < 5) continue; // FIX: Tightened from 4 to 5
+                if (cw.length < 4) continue; // FIX: Tightened from 4 to 5
                 const maxDist = cw.length >= 7 ? 2 : 1; // FIX: Tightened from 6 to 7
                 const lengthDiff = Math.abs(qw.length - cw.length);
                 if (lengthDiff > maxDist) continue; // FIX: Prevent matching words of vastly different lengths
