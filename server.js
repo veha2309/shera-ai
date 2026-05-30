@@ -605,6 +605,10 @@ function findRelatedAnimals(subject, queryText) {
         for (const w of queryWords) {
             if (w.length >= 3 && !QUERY_STOP_WORDS.has(w) && !ADJECTIVE_BLACKLIST.has(w)) {
                 seeds.add(w);
+                // Basic plural handling so "lions" matches "lion"
+                if (w.endsWith('s') && w.length > 3) {
+                    seeds.add(w.slice(0, -1));
+                }
             }
         }
     }
@@ -967,9 +971,21 @@ const FUZZY_TRAITS = [
     'color', 'active', 'pregnancy', 'gestation', 'like', 'likes'
 ];
 
-function shouldSuppressCard(query) {
+function shouldSuppressCard(query, finalSubject) {
     if (!query || typeof query !== 'string') return false;
-    const q = query.toLowerCase();
+    let q = query.toLowerCase();
+
+    // Prevent trait suppression if the trait word is literally part of the animal's name (e.g. "Lion Tailed Macaque" shouldn't trigger "tail")
+    if (finalSubject && finalSubject !== 'general') {
+        const subjectWords = finalSubject.toLowerCase().replace(/[?!.,;()]/g, '').split(/\s+/);
+        for (const sw of subjectWords) {
+            const swBase = sw.replace(/ed$/, '').replace(/s$/, ''); // Handle "tailed" -> "tail"
+            q = q.replace(new RegExp(`\\b${sw}\\b`, 'gi'), '');
+            if (swBase.length > 2) {
+                q = q.replace(new RegExp(`\\b${swBase}\\b`, 'gi'), '');
+            }
+        }
+    }
 
     // 1. Check exact regexes first (Fastest)
     let hasTrait = TRAIT_WORDS.test(q) || HINDI_TRAIT_WORDS.test(q);
@@ -3223,7 +3239,7 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                 console.log(`[UI CONTROL] Restricted action/refusal detected. Suppressing card rendering.`);
                 outKeyword = 'general';
                 outReferences = [];
-            } else if (finalSubject !== 'general' && shouldSuppressCard(question)) {
+            } else if (finalSubject !== 'general' && shouldSuppressCard(question, finalSubject)) {
                 console.log(`[UI CONTROL] Trait/Fact question detected. Suppressing card rendering for "${finalSubject}".`);
                 outKeyword = 'general';
                 outReferences = [];
@@ -3336,7 +3352,7 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                 console.log(`[UI CONTROL] Restricted action/refusal detected. Suppressing card rendering.`);
                 outKeyword = 'general';
                 outReferences = [];
-            } else if (finalSubject !== 'general' && shouldSuppressCard(question)) {
+            } else if (finalSubject !== 'general' && shouldSuppressCard(question, finalSubject)) {
                 console.log(`[UI CONTROL] Trait/Fact question detected. Suppressing card rendering for "${finalSubject}".`);
                 outKeyword = 'general';
                 outReferences = [];
