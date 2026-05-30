@@ -609,16 +609,21 @@ function findRelatedAnimals(subject, queryText) {
         }
     }
 
-    // 2. Gather words from the subject (strip numbers first)
-    if (subject && subject.toLowerCase() !== 'general') {
-        const cleanSubject = subject.toLowerCase().replace(/\s+\d+$/, '').trim();
-        const subjectWords = cleanSubject.replace(/[?!.,()0-9]/g, '').split(/\s+/);
-        for (const w of subjectWords) {
-            if (w.length >= 3 && !QUERY_STOP_WORDS.has(w) && !ADJECTIVE_BLACKLIST.has(w)) {
-                seeds.add(w);
-            }
-        }
-    }
+    //     // 2. Gather words from the subject (strip numbers first)
+    // if (subject && subject.toLowerCase() !== 'general') {
+    //     const cleanSubject = subject.toLowerCase().replace(/\s+\d+$/, '').trim();
+    //     const subjectWords = cleanSubject.replace(/[?!.,()0-9]/g, '').split(/\s+/);
+    //     for (const w of subjectWords) {
+    //         if (w.length >= 3 && !QUERY_STOP_WORDS.has(w) && !ADJECTIVE_BLACKLIST.has(w)) {
+    //             seeds.add(w);
+    //         }
+    //     }
+    // }
+
+
+    
+    // The user requested we ONLY match related cards against the original prompt, NOT the extracted subject/keyword.
+    // Therefore, we no longer extract words from the subject.
 
     const related = new Set();
     for (const seed of seeds) {
