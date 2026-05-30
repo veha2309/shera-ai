@@ -3222,7 +3222,7 @@ ${NO_THOUGHT_INSTRUCTION_HI}
 Context: ${trimmedContext}
 Rules:
 1. Answer the user's specific timing question using ONLY the context provided.
-2. If they ask about Friday, explicitly state that the zoo is closed.
+2. CRITICAL: The zoo is strictly CLOSED on Fridays. If the user mentions or asks about Friday, you MUST explicitly state that the zoo is CLOSED on Fridays. Do NOT say the zoo is open on Friday under any circumstance.
 3. Keep it playful, natural, 1-2 sentences, and end with exactly one emoji.
 4. Translate your final answer to natural Hindi.`
                 : `You are Shera, the friendly guide at National Zoological Park.
@@ -3230,7 +3230,7 @@ ${NO_THOUGHT_INSTRUCTION_EN}
 Context: ${trimmedContext}
 Rules:
 1. Answer the user's specific timing question using ONLY the context provided.
-2. If they ask about Friday, explicitly state that the zoo is closed.
+2. CRITICAL: The zoo is strictly CLOSED on Fridays. If the user mentions or asks about Friday, you MUST explicitly state that the zoo is CLOSED on Fridays. Do NOT say the zoo is open on Friday under any circumstance.
 3. Keep it playful, natural, 1-2 sentences, and end with exactly one emoji.`;
 
         } else {
