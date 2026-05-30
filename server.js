@@ -2008,6 +2008,19 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
     return result;
 }
 
+function filterReferences(references, text, finalSubject) {
+    if (!references || !Array.isArray(references) || references.length === 0) return [];
+    const ansLower = (text || '').toLowerCase().replace(/-/g, ' ');
+    const cleanFinal = (finalSubject || '').toLowerCase().replace(/\s+\d+$/, '').trim();
+    
+    return references.filter(ref => {
+        const refClean = ref.toLowerCase().replace(/\s+\d+$/, '').replace(/-/g, ' ').trim();
+        if (refClean === cleanFinal) return true;
+        if (ansLower.includes(refClean)) return true;
+        return false;
+    });
+}
+
 function sendStaticResponse(res, answer, keyword, stream, references = []) {
     if (stream) {
         res.setHeader('Content-Type', 'text/event-stream');
@@ -3227,7 +3240,8 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
                     const greetingAnswer = isHindi 
                         ? `नमस्ते! आप ${applyHindiGlossary(finalSubject)} के बारे में क्या जानना चाहते हैं? 😊`
                         : `Hello! What would you like to know about the ${finalSubject}? 😊`;
-                    return sendStaticResponse(res, greetingAnswer, finalSubject, stream);
+                    const filteredRefs = filterReferences(references, greetingAnswer, finalSubject);
+                    return sendStaticResponse(res, greetingAnswer, finalSubject, stream, filteredRefs);
                 }
             }
         }
@@ -3306,7 +3320,7 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
 
             // --- UI SUPPRESSION LOGIC ---
             let outKeyword = finalSubject;
-            let outReferences = references;
+            let outReferences = filterReferences(references, fullAnswer, finalSubject);
             if (isRestrictedAction || refuseDetected) {
                 console.log(`[UI CONTROL] Restricted action/refusal detected. Suppressing card rendering.`);
                 outKeyword = 'general';
@@ -3428,7 +3442,7 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
 
             // --- UI SUPPRESSION LOGIC ---
             let outKeyword = finalSubject;
-            let outReferences = references;
+            let outReferences = filterReferences(references, answer, finalSubject);
             if (isRestrictedAction || refuseDetected) {
                 console.log(`[UI CONTROL] Restricted action/refusal detected. Suppressing card rendering.`);
                 outKeyword = 'general';
