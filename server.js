@@ -3081,10 +3081,15 @@ Greet the user or respond to their general talk playfully. NEVER say you are an 
 
         if (needsGraph) {
             const subjectLower = finalSubject.toLowerCase();
-            const matchedNode = graph.nodes.find(n =>
-                n.id && typeof n.id === 'string' &&
-                (n.id.toLowerCase().includes(subjectLower) || subjectLower.includes(n.id.toLowerCase()))
-            );
+            const matchedNode = graph.nodes.find(n => {
+                if (!n.id || typeof n.id !== 'string') return false;
+
+                // NEW GUARD: Do not match event nodes unless the user explicitly asked an event question.
+                // This prevents "chimpanzee" from accidentally triggering "World Chimpanzee Day".
+                if (zooRegistry.eventNames.has(n.id) && !isEventQuery) return false;
+
+                return n.id.toLowerCase().includes(subjectLower) || subjectLower.includes(n.id.toLowerCase());
+            });
 
             if (matchedNode) {
                 const relatedNodes = graphTraversal(matchedNode.id, 1).slice(0, 3);
