@@ -3189,6 +3189,26 @@ ${isRestrictedAction ? '6. The user is attempting something harmful or inappropr
 STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or extra sentences.`;
         }
 
+        if (finalSubject && finalSubject !== 'general') {
+            const words = qLower.split(/[^a-z0-9\u0900-\u097F]+/).filter(w => w.length > 0);
+            if (words.length <= 3) {
+                const actionWords = new Set([
+                    'kahan', 'kaha', 'where', 'kaise', 'how', 'kya', 'what', 'kaun', 'who', 
+                    'kitne', 'kitna', 'many', 'kab', 'when', 'kidhar', 'fact', 'facts', 'tathya', 
+                    'info', 'jankari', 'details', 'batao', 'tell', 'show', 'dikhao', 'dekhna',
+                    'क्यों', 'कहाँ', 'कहा', 'कैसे', 'क्या', 'कौन', 'कितने', 'कितना', 'कब', 'तथ्य', 'जानकारी', 'बताओ', 'दिखाओ', 'देखना', 'khao', 'khata', 'eat', 'diet'
+                ]);
+                const hasActionWord = words.some(w => actionWords.has(w));
+                if (!hasActionWord) {
+                    console.log(`[SHORT-CIRCUIT] Query "${question}" identified as animal name only. Bypassing LLM.`);
+                    const greetingAnswer = isHindi 
+                        ? `नमस्ते! आप ${applyHindiGlossary(finalSubject)} के बारे में क्या जानना चाहते हैं? 😊`
+                        : `Hello! What would you like to know about the ${finalSubject}? 😊`;
+                    return sendStaticResponse(res, greetingAnswer, finalSubject, stream);
+                }
+            }
+        }
+
         console.log(`[THINKING] Processing "${finalSubject}" with ${CHAT_MODEL}...`);
         console.log(`Generating response for: ${finalSubject}...`);
 
