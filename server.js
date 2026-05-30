@@ -665,7 +665,7 @@ function findRelatedAnimals(subject, queryText) {
     // }
 
 
-    
+
     // The user requested we ONLY match related cards against the original prompt, NOT the extracted subject/keyword.
     // Therefore, we no longer extract words from the subject.
 
@@ -1361,7 +1361,7 @@ async function llmExtractSubject(query) {
 
             if (levenshtein(pw, key) <= maxDist) {
                 const resolved = zooRegistry.lookup[key];
-                if (zooRegistry.eventNames.has(resolved) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) {
+                if (zooRegistry.eventNames.has(resolved) && !EVENT_INDICATOR_REGEX.test(query)) {
                     continue;
                 }
                 console.log(`[EXTRACTOR-FUZZY-FALLBACK] Fuzzy key match: "${pw}" ≈ "${key}" → "${resolved}"`);
@@ -1371,7 +1371,7 @@ async function llmExtractSubject(query) {
 
         // Fuzzy scan canonical names word-by-word
         for (const canonical of zooRegistry.canonicalNames) {
-            if (zooRegistry.eventNames.has(canonical) && GENERIC_CATEGORY_WORDS.has(pw) && !EVENT_INDICATOR_REGEX.test(query)) continue;
+            if (zooRegistry.eventNames.has(canonical) && !EVENT_INDICATOR_REGEX.test(query)) continue;
             const cWords = canonical.toLowerCase().split(/[^a-z0-9]+/);
 
             for (const cw of cWords) {
@@ -1745,23 +1745,23 @@ async function antigravitySearch(query, subject, isFacilityMatch, topK = 5, lang
     }
 
     const subjLower = subject.toLowerCase();
-    const isConservation = subjLower.includes('endangered') || 
-                           subjLower.includes('conservation') || 
-                           subjLower.includes('threatened') || 
-                           subjLower.includes('vulnerable') || 
-                           subjLower.includes('extinct') || 
-                           subjLower.includes('संकटग्रस्त');
+    const isConservation = subjLower.includes('endangered') ||
+        subjLower.includes('conservation') ||
+        subjLower.includes('threatened') ||
+        subjLower.includes('vulnerable') ||
+        subjLower.includes('extinct') ||
+        subjLower.includes('संकटग्रस्त');
 
     if (isConservation) {
         const endangeredList = zooRegistry.canonicalNames.filter(name => {
             const status = String(zooRegistry.metadata[name]?.threatStatus || '').toLowerCase();
             if (!status || status === 'undefined') return false;
-            
+
             if (subjLower.includes('near')) return status.includes('near');
             if (subjLower.includes('critically')) return status.includes('critically');
             if (subjLower.includes('vulnerable')) return status.includes('vulnerable');
             if (subjLower.includes('extinct')) return status.includes('extinct');
-            
+
             return status.includes('endangered') || status.includes('threatened') || status.includes('vulnerable');
         });
 
@@ -2012,7 +2012,7 @@ function filterReferences(references, text, finalSubject) {
     if (!references || !Array.isArray(references) || references.length === 0) return [];
     const ansLower = (text || '').toLowerCase().replace(/-/g, ' ');
     const cleanFinal = (finalSubject || '').toLowerCase().replace(/\s+\d+$/, '').trim();
-    
+
     return references.filter(ref => {
         const refClean = ref.toLowerCase().replace(/\s+\d+$/, '').replace(/-/g, ' ').trim();
         if (refClean === cleanFinal) return true;
@@ -2440,10 +2440,10 @@ app.post('/api/shera/chat', async (req, res) => {
                         p.trim() === 'Timings & Hours' || p.trim() === 'Feeding Animals' || facilityResponses[p.trim()] !== undefined
                     );
 
-                const isSpecificTiming = matchedFacility.includes('Timings & Hours') && isSpecificTimingQuestion(question);
+                const isSpecificTiming = matchedFacility.includes('Timings & Hours');
 
                 if (isSpecificTiming) {
-                    console.log(`[FACILITY] Specific timing question detected. Bypassing shortcut to let LLM answer.`);
+                    console.log(`[FACILITY] Timing question detected. Bypassing shortcut to let LLM answer.`);
                 } else if (!hasAnimalSubject) {
                     // Pure facility query — instant return
                     console.log(`[FACILITY-SHORT CUT] Instant response for "${matchedFacility}"`);
@@ -3128,7 +3128,7 @@ app.post('/api/shera/chat', async (req, res) => {
 
         // FIX: Calculate the context safely BEFORE the if/else blocks begin
         const rawContext = context;
-        const trimmedContext = trimContext(rawContext, 1000);
+        const trimmedContext = trimContext(rawContext, 500);
 
         if (isNotFound) {
             systemPrompt = isHindi
@@ -3227,17 +3227,17 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
 
         if (finalSubject && finalSubject !== 'general') {
             const words = qLower.split(/[^a-z0-9\u0900-\u097F]+/).filter(w => w.length > 0);
-            if (words.length <= 3) {
+            if (words.length <= 3 && zooRegistry.canonicalNames.includes(finalSubject)) {
                 const actionWords = new Set([
-                    'kahan', 'kaha', 'where', 'kaise', 'how', 'kya', 'what', 'kaun', 'who', 
-                    'kitne', 'kitna', 'many', 'kab', 'when', 'kidhar', 'fact', 'facts', 'tathya', 
+                    'kahan', 'kaha', 'where', 'kaise', 'how', 'kya', 'what', 'kaun', 'who',
+                    'kitne', 'kitna', 'many', 'kab', 'when', 'kidhar', 'fact', 'facts', 'tathya',
                     'info', 'jankari', 'details', 'batao', 'tell', 'show', 'dikhao', 'dekhna',
                     'क्यों', 'कहाँ', 'कहा', 'कैसे', 'क्या', 'कौन', 'कितने', 'कितना', 'कब', 'तथ्य', 'जानकारी', 'बताओ', 'दिखाओ', 'देखना', 'khao', 'khata', 'eat', 'diet'
                 ]);
                 const hasActionWord = words.some(w => actionWords.has(w));
                 if (!hasActionWord) {
                     console.log(`[SHORT-CIRCUIT] Query "${question}" identified as animal name only. Bypassing LLM.`);
-                    const greetingAnswer = isHindi 
+                    const greetingAnswer = isHindi
                         ? `नमस्ते! आप ${applyHindiGlossary(finalSubject)} के बारे में क्या जानना चाहते हैं? 😊`
                         : `Hello! What would you like to know about the ${finalSubject}? 😊`;
                     const filteredRefs = filterReferences(references, greetingAnswer, finalSubject);
@@ -3425,10 +3425,10 @@ STRICT RULE: Answer in exactly 1 or 2 sentences. Do not write any stories or ext
             // Post-process the answer to fix common LLM transliteration glitches
             if (isHindi) {
                 answer = answer.replace(/लION/gi, 'शेर')
-                               .replace(/लion/g, 'शेर')
-                               .replace(/टIGER/gi, 'बाघ')
-                               .replace(/एLEPHANT/gi, 'हाथी')
-                               .replace(/ज़ोलो विकसित/gi, 'प्राणी उद्यान');
+                    .replace(/लion/g, 'शेर')
+                    .replace(/टIGER/gi, 'बाघ')
+                    .replace(/एLEPHANT/gi, 'हाथी')
+                    .replace(/ज़ोलो विकसित/gi, 'प्राणी उद्यान');
             }
 
             logResources('Response Generated');
