@@ -3336,6 +3336,27 @@ Greet the user or respond to their general talk playfully. NEVER say you are an 
 
         const cleanFinalSubject = finalSubject.toLowerCase().trim();
 
+        // --- FAST-PATH: ZERO-LATENCY LOCATION Fallback BYPASS ---
+        if (isLocationIntent && finalSubject && finalSubject !== 'general') {
+            // Check if the retrieved database context actually contains concrete coordinates
+            const hasSpecificLocation = context && 
+                (context.toLowerCase().includes('location:') && !context.toLowerCase().includes('location: not available')) ||
+                context.toLowerCase().includes('enclosure_number') ||
+                context.toLowerCase().includes('beat_number');
+            
+            // If it's a general house/aviary sector or lacks concrete map coordinates, bypass the LLM entirely
+            if (!hasSpecificLocation || finalSubject.toLowerCase().includes('house') || finalSubject.toLowerCase().includes('aviary')) {
+                console.log(`[LOCATION-BYPASS] Structural or empty location intent for "${finalSubject}". Short-circuiting LLM pipeline.`);
+                
+                const bypassAnswer = isHindi
+                    ? `हमारे चिड़ियाघर में ${getHindiDisplayName(finalSubject)} बिल्कुल हैं! मेरे पास अभी उनका सटीक बाड़ा (enclosure) नंबर नहीं है, लेकिन आप उन्हें चिड़ियाघर के नक्शे (map) पर आसानी से ढूंढ सकते हैं। 🗺️`
+                    : `We definitely have the ${finalSubject} here at the zoo! I don't have its exact enclosure number handy right now, but you can easily find it marked on the zoo map. 🗺️`;
+                
+                return sendStaticResponse(res, bypassAnswer, finalSubject, stream, references);
+            }
+        }
+        // --- END FAST PATH ---
+
         // Bypass the LLM entirely for Endangered/Conservation queries
         if (cleanFinalSubject === 'endangered' || cleanFinalSubject === 'conservation') {
             console.log(`[SHORT-CIRCUIT] Bypassing LLM for exact Endangered data.`);
@@ -3413,49 +3434,21 @@ Rules:
 3. Keep it playful, natural, 1-2 sentences, and end with exactly one emoji.`;
 
         } else {
-            // 3. Dynamically build Rule 1
-            const isSubjectSentence = finalSubject.split(/\s+/).length > 3;
-            // --- NEW FIX: Only use the exact location template if the subject is a short name ---
-            let rule1_Hi = `1. Use the provided context. Answer the EXACT question asked. IMPORTANT: If the user states a false biological fact, you MUST use general knowledge to CORRECT them. Do not agree with false facts.`;
-            let rule1_En = `1. Use the provided context. Answer the EXACT question asked. IMPORTANT: If the user states a false biological fact, you MUST use general knowledge to CORRECT them. Do not agree with false facts.`;
-
-            if (isLocationIntent && !isSubjectSentence && finalSubject !== 'general') {
-                rule1_Hi = `1. The user is asking for a location. If the context says 'LOCATION: Not Available' or lacks a specific location, you MUST reply EXACTLY with: "हमारे चिड़ियाघर में ${finalSubject} बिल्कुल हैं! मेरे पास अभी उनका सटीक बाड़ा (enclosure) नंबर नहीं है, लेकिन आप उन्हें चिड़ियाघर के नक्शे (map) पर आसानी से ढूंढ सकते हैं।" Do NOT guess.`;
-                rule1_En = `1. The user is asking for a location. If the context says 'LOCATION: Not Available' or lacks a specific location, you MUST reply EXACTLY with: "We definitely have the ${finalSubject} here at the zoo! I don't have their exact enclosure number handy right now, but you can easily find them marked on the zoo map." Do NOT guess.`;
-            } else if (isTourSubject) {
-                rule1_Hi = `1. The user is asking about the ${finalSubject}. Use the context to summarize the tour, its highlights, and where it starts. Be welcoming and inviting as a tour guide.`;
-                rule1_En = `1. The user is asking about the ${finalSubject}. Use the context to summarize the tour, its highlights, and where it starts. Be welcoming and inviting as a tour guide.`;
-            }
-
             systemPrompt = isHindi
-                ? `You are Shera, the friendly guide at National Zoological Park, New Delhi.
+                ? `आप दिल्ली चिड़ियाघर के गाइड 'शेरा' हैं।
 ${NO_THOUGHT_INSTRUCTION_HI}
- 
-Context: ${trimmedContext}
- 
-Rules:
-${rule1_Hi}
-2. The animal discussed IS currently housed at our zoo. NEVER say we do not have it.
-3. If the context has specific zoo statistics, use them exactly. Do not invent zoo statistics.
-4. Maintain a playful tone and include exactly one emoji at the end.
-${isRestrictedAction ? '5. [RESTRICTED ACTION DETECTED] Start your response with the hidden tag "[REFUSE]".' : ''}
-6. Do not include numbers in animal names (e.g., use "एशियाई शेर" not "Asiatic Lion 1").
-7. Answer in exactly 1 or 2 sentences. You are a conversational chatbot, NOT a translator. Answer factually and directly in Hindi.`
-
-                // And for the English version:
-                : `You are Shera, the friendly guide at National Zoological Park, New Delhi.
+संदर्भ (Context): ${trimmedContext}
+नियम:
+1. दिए गए संदर्भ का उपयोग करके सीधे उपयोगकर्ता के सवाल का जवाब दें। 
+2. यदि उपयोगकर्ता कोई गलत जैविक तथ्य बोलता है, तो उसे विनम्रता से सही करें।
+3. जवाब केवल 1-2 वाक्यों में दें। अंत में केवल एक प्रासंगिक इमोजी लगाएं।`
+                : `You are Shera, the friendly guide at the National Zoological Park.
 ${NO_THOUGHT_INSTRUCTION_EN}
- 
 Context: ${trimmedContext}
- 
 Rules:
-${rule1_En}
-2. The animal discussed IS currently housed at our zoo. NEVER say we do not have it.
-3. If the context has specific zoo statistics, use them exactly. Do not invent zoo statistics.
-4. Maintain a playful tone and include exactly one emoji at the end.
-${isRestrictedAction ? '5. [RESTRICTED ACTION DETECTED] Start your response with the hidden tag "[REFUSE]".' : ''}
-6. Always refer to the animals by their friendly names without numeric suffixes.
-7. Answer in exactly 1 or 2 sentences.`;
+1. Answer factually in 1-2 sentences using ONLY the provided context.
+2. If the user states a false biological fact, politely correct them.
+3. Be concise and end your response with exactly one relevant emoji.`;
         }
 
 
