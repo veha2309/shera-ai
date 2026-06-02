@@ -3023,7 +3023,7 @@ Greet the user or respond to their general talk playfully. NEVER say you are an 
                     const getRes = await collection.query({
                         queryEmbeddings: [qEmb],
                         nResults: 1,
-                        where: { "type": "summary" } 
+                        where: { "type": "summary" }
                     });
 
                     if (getRes && getRes.documents && getRes.documents[0].length > 0) {
@@ -3482,6 +3482,28 @@ ${isRestrictedAction ? '5. [RESTRICTED ACTION DETECTED] Start your response with
                 }
             }
         }
+        // --- FAST-PATH: ZERO-LATENCY TRAIT BYPASS ---
+        // If the user asks a simple trait question and we have a high-confidence exact match
+        if (isTrait && topScore >= 1.0 && sortedContext.length > 0 && !qLower.includes('why') && !qLower.includes('how')) {
+            const topMeta = sortedContext[0].metadata || {};
+            let bypassAnswer = null;
+
+            if (/\b(like|likes|enjoy|enjoys|pasand|पसंद)\b/i.test(qLower) && topMeta.likes) {
+                bypassAnswer = isHindi ? `${finalSubject} को यह पसंद है: ${topMeta.likes} 😊` : `${finalSubject} likes: ${topMeta.likes} 😊`;
+            } else if (/\b(eat|eats|diet|khana|khata|भोजन|खाता)\b/i.test(qLower) && topMeta.diet) {
+                bypassAnswer = isHindi ? `${finalSubject} का आहार: ${topMeta.diet} 🌿` : `The diet of the ${finalSubject} consists of: ${topMeta.diet} 🌿`;
+            } else if (/\b(habitat|live|lives|rehta|रहता)\b/i.test(qLower) && topMeta.habitat) {
+                bypassAnswer = isHindi ? `${finalSubject} यहाँ रहता है: ${topMeta.habitat} 🌳` : `The ${finalSubject} thrives in: ${topMeta.habitat} 🌳`;
+            }
+
+            if (bypassAnswer) {
+                console.log(`[TRAIT-BYPASS] Short-circuiting LLM to save compute time.`);
+                // Force general keyword to suppress the UI card, matching your current logic
+                return sendStaticResponse(res, bypassAnswer, 'general', stream, []);
+            }
+        }
+        // --- END FAST PATH ---
+
 
         console.log(`[THINKING] Processing "${finalSubject}" with ${CHAT_MODEL}...`);
         console.log(`Generating response for: ${finalSubject}...`);
