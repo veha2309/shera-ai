@@ -3486,19 +3486,45 @@ ${isRestrictedAction ? '5. [RESTRICTED ACTION DETECTED] Start your response with
         // If the user asks a simple trait question and we have a high-confidence exact match
         if (isTrait && topScore >= 1.0 && sortedContext.length > 0 && !qLower.includes('why') && !qLower.includes('how')) {
             const topMeta = sortedContext[0].metadata || {};
+
+            // Safely parse the nested stringified data from ChromaDB
+            let fd = {};
+            try {
+                if (topMeta.full_data) fd = JSON.parse(topMeta.full_data);
+            } catch (e) { }
+
+            // Helper to grab the correct language string from either root metadata or full_data
+            const getAttr = (key) => {
+                const val = topMeta[key] || fd[key];
+                if (!val) return null;
+                if (typeof val === 'object') return val[language] || val.en || null;
+                return String(val);
+            };
+
+            const dietStr = getAttr('diet');
+            const habitatStr = getAttr('habitat');
+            const likesStr = getAttr('likes') || getAttr('behavior');
+
             let bypassAnswer = null;
 
-            if (/\b(like|likes|enjoy|enjoys|pasand|पसंद)\b/i.test(qLower) && topMeta.likes) {
-                bypassAnswer = isHindi ? `${finalSubject} को यह पसंद है: ${topMeta.likes} 😊` : `${finalSubject} likes: ${topMeta.likes} 😊`;
-            } else if (/\b(eat|eats|diet|khana|khata|भोजन|खाता)\b/i.test(qLower) && topMeta.diet) {
-                bypassAnswer = isHindi ? `${finalSubject} का आहार: ${topMeta.diet} 🌿` : `The diet of the ${finalSubject} consists of: ${topMeta.diet} 🌿`;
-            } else if (/\b(habitat|live|lives|rehta|रहता)\b/i.test(qLower) && topMeta.habitat) {
-                bypassAnswer = isHindi ? `${finalSubject} यहाँ रहता है: ${topMeta.habitat} 🌳` : `The ${finalSubject} thrives in: ${topMeta.habitat} 🌳`;
+            if (/\b(like|likes|enjoy|enjoys|pasand|पसंद)\b/i.test(qLower)) {
+                if (likesStr) {
+                    bypassAnswer = isHindi ? `${finalSubject} को यह पसंद है: ${likesStr} 😊` : `The ${finalSubject} likes: ${likesStr} 😊`;
+                } else if (dietStr && habitatStr) {
+                    // Synthesize "likes" using diet and habitat
+                    bypassAnswer = isHindi ? `${finalSubject} को ${habitatStr} में रहना और ${dietStr} खाना पसंद है! 😊` : `The ${finalSubject} enjoys living in ${habitatStr} and eating ${dietStr}! 😊`;
+                } else if (dietStr) {
+                    bypassAnswer = isHindi ? `${finalSubject} को खाना पसंद है: ${dietStr} 😊` : `The ${finalSubject} likes to eat: ${dietStr} 😊`;
+                }
+            } else if (/\b(eat|eats|diet|khana|khata|भोजन|खाता)\b/i.test(qLower) && dietStr) {
+                bypassAnswer = isHindi ? `${finalSubject} का आहार: ${dietStr} 🌿` : `The diet of the ${finalSubject} consists of: ${dietStr} 🌿`;
+            } else if (/\b(habitat|live|lives|rehta|रहता)\b/i.test(qLower) && habitatStr) {
+                bypassAnswer = isHindi ? `${finalSubject} यहाँ रहता है: ${habitatStr} 🌳` : `The ${finalSubject} thrives in: ${habitatStr} 🌳`;
             }
 
             if (bypassAnswer) {
                 console.log(`[TRAIT-BYPASS] Short-circuiting LLM to save compute time.`);
-                // Force general keyword to suppress the UI card, matching your current logic
+                // Return instantly, skipping the 15-second LLM wait
                 return sendStaticResponse(res, bypassAnswer, 'general', stream, []);
             }
         }
