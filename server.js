@@ -3331,7 +3331,8 @@ Greet the user or respond to their general talk playfully. NEVER say you are an 
 
         // FIX: Calculate the context safely BEFORE the if/else blocks begin
         const rawContext = context;
-        const trimmedContext = trimContext(rawContext, 3000);
+        const maxContextLength = isTrait ? 800 : 2500;
+        const trimmedContext = trimContext(rawContext, maxContextLength);
 
         const cleanFinalSubject = finalSubject.toLowerCase().trim();
 
