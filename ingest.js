@@ -84,9 +84,10 @@ function enrichName(name, classification = '') {
 // ─────────────────────────────────────────────
 
 // ── animals.json / exhibits / enclosures ──
-async function processAnimals(file, data, collection, ollama, model) {
+async function processAnimals(file, data, collection, ollama, model, allProcessedAnimals = []) {
     const items = Array.isArray(data) ? data : data.data || [data];
     for (const animal of items) {
+        allProcessedAnimals.push(animal);
         try {
             const rawName =
                 en(animal.common_name) ||
@@ -143,7 +144,7 @@ async function processAnimals(file, data, collection, ollama, model) {
             }
             if (lowerName.includes('rhinoceros')) synonyms.push('rhino', 'genda');
             if (lowerName.includes('elephant')) synonyms.push('hathi');
-            const isCalendarEvent = !animal.common_name && !animal.render_name && (animal.title || animal.name);
+            const isCalendarEvent = !animal.common_name && !animal.render_name && (animal.title || animal.name) && !file.includes('tour');
             let eventTitleVariants = '';
             let eventKeyword = '';
             if (isCalendarEvent) {
@@ -504,6 +505,23 @@ async function processZooTime(file, data, collection, ollama, model) {
     }
 }
 
+// ── summary ──
+async function processZooSummary(collection, ollama, model, animals) {
+    console.log(`- Building Zoo Summary for ${animals.length} species...`);
+    const mammals = animals.filter(a => en(a.category).toLowerCase().includes('mammal')).length;
+    const birds = animals.filter(a => en(a.category).toLowerCase().includes('bird')).length;
+    const reptiles = animals.filter(a => en(a.category).toLowerCase().includes('reptile')).length;
+    
+    const doc = `The National Zoological Park currently houses over 1,300 individual animals representing a total of ${animals.length} species. This includes ${mammals} mammal species, ${birds} bird species, and ${reptiles} reptile species.`;
+    
+    await store(collection, ollama, model, {
+        id: 'zoo_summary',
+        label: 'Zoo Summary',
+        text: doc,
+        metadata: { type: 'summary', total: animals.length }
+    });
+}
+
 // ─────────────────────────────────────────────
 // MAIN INGESTION
 // ─────────────────────────────────────────────
@@ -519,6 +537,8 @@ async function ingest() {
     const embedModel = 'nomic-embed-text';
     const collectionName = 'zoo_collection';
     const dataDir = path.join(__dirname, 'zoo-data');
+
+    let allProcessedAnimals = [];
 
     console.log('--- Shera AI: Enhanced Chroma Ingestion Started ---');
 
@@ -584,7 +604,7 @@ async function ingest() {
 
                 } else {
                     // Generic handler: animals, calendar, events, tour, etc.
-                    await processAnimals(file, parsed, collection, ollama, embedModel);
+                    await processAnimals(file, parsed, collection, ollama, embedModel, allProcessedAnimals);
                 }
 
             } catch (fileErr) {
@@ -593,6 +613,9 @@ async function ingest() {
 
             console.log('');
         }
+
+        // Inside ingest() after the for (const file of files) loop
+        await processZooSummary(collection, ollama, embedModel, allProcessedAnimals);
 
         console.log('--- Enhanced Ingestion Completed Successfully ---');
 
