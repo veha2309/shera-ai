@@ -79,6 +79,30 @@ function enrichName(name, classification = '') {
     return baseName;
 }
 
+// Load translation map
+const TRANSLATION_MAP = {};
+try {
+    const transPath = path.join(__dirname, 'zoo-data', 'animal_names.json');
+    if (fs.existsSync(transPath)) {
+        const list = JSON.parse(fs.readFileSync(transPath, 'utf8'));
+        for (const item of list) {
+            const eng = item["English Name"];
+            if (eng) {
+                const aliases = Array.isArray(item["Aliases"]) ? item["Aliases"] : 
+                                (Array.isArray(item["Search Variants"]) ? item["Search Variants"] : 
+                                 (Array.isArray(item["Typos"]) ? item["Typos"] : []));
+                TRANSLATION_MAP[eng.toLowerCase().trim()] = {
+                    hindi: item["Hindi Name"] ? item["Hindi Name"].trim() : '',
+                    hinglish: item["Hinglish Name"] ? item["Hinglish Name"].trim() : '',
+                    aliases: aliases.map(a => a.trim()).filter(Boolean)
+                };
+            }
+        }
+    }
+} catch (err) {
+    console.error(`Error loading animal names translations in ingest.js: ${err.message}`);
+}
+
 // ─────────────────────────────────────────────
 // FILE HANDLERS
 // ─────────────────────────────────────────────
@@ -144,6 +168,22 @@ async function processAnimals(file, data, collection, ollama, model, allProcesse
             }
             if (lowerName.includes('rhinoceros')) synonyms.push('rhino', 'genda');
             if (lowerName.includes('elephant')) synonyms.push('hathi');
+
+            // Translate using TRANSLATION_MAP
+            const cleanNameLower = cleanName.toLowerCase().trim();
+            const rawNameLower = rawName.toLowerCase().trim();
+            const matchedTrans = TRANSLATION_MAP[cleanNameLower] || TRANSLATION_MAP[rawNameLower];
+            if (matchedTrans) {
+                if (matchedTrans.hindi && !synonyms.includes(matchedTrans.hindi)) synonyms.push(matchedTrans.hindi);
+                if (matchedTrans.hinglish && !synonyms.includes(matchedTrans.hinglish)) synonyms.push(matchedTrans.hinglish);
+                if (matchedTrans.aliases) {
+                    matchedTrans.aliases.forEach(alias => {
+                        const lowAlias = alias.toLowerCase();
+                        if (!synonyms.includes(lowAlias)) synonyms.push(lowAlias);
+                    });
+                }
+            }
+
             const isCalendarEvent = !animal.common_name && !animal.render_name && (animal.title || animal.name) && !file.includes('tour');
             let eventTitleVariants = '';
             let eventKeyword = '';
@@ -154,6 +194,10 @@ async function processAnimals(file, data, collection, ollama, model, allProcesse
             }
 
             const details = [`Animal/Subject Name: ${rawName}`];
+            if (matchedTrans) {
+                if (matchedTrans.hindi) details.push(`Hindi Name: ${matchedTrans.hindi}`);
+                if (matchedTrans.hinglish) details.push(`Hinglish Name: ${matchedTrans.hinglish}`);
+            }
             if (synonyms.length > 0) details.push(`Synonyms: ${synonyms.join(', ')}`);
             if (isCalendarEvent && eventTitleVariants) details.push(`Event Title Variants: ${eventTitleVariants}`);
             if (isCalendarEvent && eventKeyword) details.push(`Core Subject: ${eventKeyword}`);
@@ -189,6 +233,8 @@ async function processAnimals(file, data, collection, ollama, model, allProcesse
                     name: cleanName,
                     common_name: en(animal.common_name),
                     render_name: en(animal.render_name),
+                    hindi_name: matchedTrans?.hindi || '',
+                    hinglish_name: matchedTrans?.hinglish || '',
                     scientific_name: scientificName,
                     category,
                     classification,
@@ -567,9 +613,9 @@ async function ingest() {
         for (const file of files) {
             console.log(`Processing: ${file}`);
 
-            // Skip only the heavy geometry file – it contains lat/lng coords, not textual knowledge
-            if (file.includes('geojson') || file.includes('floorplan')) {
-                console.log(`  Skipping geometry/map file: ${file}\n`);
+            // Skip geometry files and the animal names translation catalog
+            if (file.includes('geojson') || file.includes('floorplan') || file.includes('animal_names')) {
+                console.log(`  Skipping geometry/translation file: ${file}\n`);
                 continue;
             }
 

@@ -485,6 +485,23 @@ const zooRegistry = {
 };
 let venueTimings = [];
 
+const REGISTRY_BLACKLIST = new Set([
+    'national', 'international', 'world', 'india', 'indian',
+    'park', 'zoo', 'day', 'and', 'the', 'for', 'with', 'birds', 'animals',
+    'वाला', 'वाली', 'का', 'की', 'के', 'में', 'पर', 'काले', 'सिर', 'लाल', 'सफेद', 'नीला', 'हरा', 'काला',
+    'laal', 'sphed', 'niilaa', 'hraa', 'kaalaa', 'bhaartiiy', 'cittiidaar', 'taalaab', 'vaalaa', 'vaalii',
+    // Generic animal base nouns (English)
+    'deer', 'monkey', 'macaque', 'snake', 'python', 'crocodile', 'owl', 'pheasant', 'macaw', 'conure', 
+    'finch', 'parrot', 'parakeet', 'caique', 'duck', 'goose', 'kite', 'partridge', 'heron', 'ibis', 
+    'stork', 'hornbill', 'pelican', 'bear', 'tiger', 'lion', 'elephant', 'hyena', 'civet', 'fox', 'wolf',
+    // Generic animal base nouns (Hinglish/Hindi)
+    'hiran', 'hirnn', 'hirn', 'bandar', 'macaque', 'saanp', 'saap', 'python', 'ajgar', 'magarmach', 'magarmacch',
+    'ullu', 'teetar', 'tiitr', 'tota', 'totta', 'batakh', 'chidiya', 'panchi', 'cheetah', 'chita', 'genda',
+    'bhalu', 'bhaluu', 'sher', 'haathii', 'hathi', 'lomdi', 'lomdhi', 'bhedia', 'bhediya', 'gilaheri', 'mor',
+    'हिरण', 'बंदर', 'साँप', 'सांप', 'अजगर', 'मगरमच्छ', 'उल्लू', 'तीतर', 'तोता', 'बतख', 'चिड़िया', 'पक्षी', 
+    'चीता', 'गैंडा', 'भालू', 'शेर', 'हाथी', 'लोमड़ी', 'भेड़िया', 'गिलहरी', 'मोर'
+]);
+
 // ─── Priority Overrides ───────────────────────────────────────────────────────
 const priorityOverrides = {
     'भारतीय पक्षी': 'Indian Birds',
@@ -778,7 +795,7 @@ function loadZooRegistry() {
     const classifications = new Set();
 
     for (const file of files) {
-        if (file.includes('geojson') || file.includes('floorplan') || file.includes('facts')) continue;
+        if (file.includes('geojson') || file.includes('floorplan') || file.includes('facts') || file.includes('animal_names')) continue;
         try {
             const raw = fs.readFileSync(path.join(dataDir, file), 'utf8');
             const data = JSON.parse(raw);
@@ -885,13 +902,8 @@ function loadZooRegistry() {
 
     zooRegistry.canonicalNames = Array.from(names);
 
-    const blacklist = new Set([
-        'national', 'international', 'world', 'india', 'indian',
-        'park', 'zoo', 'day', 'and', 'the', 'for', 'with', 'birds', 'animals'
-    ]);
-
     for (const cls of classifications) {
-        if (cls.length > 3 && !blacklist.has(cls.toLowerCase())) {
+        if (cls.length > 3 && !REGISTRY_BLACKLIST.has(cls.toLowerCase())) {
             names.add(cls);
             zooRegistry.lookup[cls.toLowerCase()] = cls;
         }
@@ -918,11 +930,110 @@ function loadZooRegistry() {
         if (isFacilityName) {
             const words = lower.split(/[/\s,.-]+/);
             for (const word of words) {
-                if (word.length > 3 && !blacklist.has(word) && !zooRegistry.lookup[word]) {
+                if (word.length > 3 && !REGISTRY_BLACKLIST.has(word) && !zooRegistry.lookup[word]) {
                     zooRegistry.lookup[word] = displayName;
                 }
             }
         }
+    }
+
+    // Ingest animal names from animal_names.json
+    try {
+        const transPath = path.join(dataDir, 'animal_names.json');
+        if (fs.existsSync(transPath)) {
+            const list = JSON.parse(fs.readFileSync(transPath, 'utf8'));
+            for (const item of list) {
+                const eng = item["English Name"];
+                const hiName = item["Hindi Name"] ? item["Hindi Name"].trim() : '';
+                const hingName = item["Hinglish Name"] ? item["Hinglish Name"].trim() : '';
+
+                if (eng) {
+                    const cleanEng = eng.replace(/\s+\d+$/, '').trim();
+                    const cleanEngLower = cleanEng.toLowerCase();
+
+                    // Add to rawNames
+                    zooRegistry.rawNames.add(cleanEng);
+
+                    // Populate rawToRender
+                    if (!zooRegistry.rawToRender[cleanEng]) {
+                        zooRegistry.rawToRender[cleanEng] = { en: cleanEng, hi: hiName || cleanEng };
+                    } else {
+                        if (hiName) zooRegistry.rawToRender[cleanEng].hi = hiName;
+                    }
+
+                    if (!zooRegistry.rawToRender[cleanEngLower]) {
+                        zooRegistry.rawToRender[cleanEngLower] = { en: cleanEng, hi: hiName || cleanEng };
+                    } else {
+                        if (hiName) zooRegistry.rawToRender[cleanEngLower].hi = hiName;
+                    }
+
+                    const displayName = zooRegistry.lookup[cleanEngLower] || cleanEng;
+
+                    if (hiName) {
+                        const cleanHi = hiName.replace(/[()]/g, ' ').trim();
+                        zooRegistry.lookup[cleanHi.toLowerCase()] = displayName;
+
+                        const words = cleanHi.split(/\s+/);
+                        for (const word of words) {
+                            const wLower = word.toLowerCase().trim();
+                            if (wLower.length > 1 && !REGISTRY_BLACKLIST.has(wLower)) {
+                                if (!zooRegistry.lookup[wLower]) {
+                                    zooRegistry.lookup[wLower] = displayName;
+                                }
+                                if (wLower.includes('कछुआ')) {
+                                    ['कछुआ', 'कछुए'].forEach(v => {
+                                        if (!zooRegistry.lookup[v]) {
+                                            zooRegistry.lookup[v] = displayName;
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+                    if (hingName) {
+                        const cleanHing = hingName.replace(/[()]/g, ' ').trim();
+                        zooRegistry.lookup[cleanHing.toLowerCase()] = displayName;
+
+                        const words = cleanHing.split(/\s+/);
+                        for (const word of words) {
+                            const wLower = word.toLowerCase().trim();
+                            if (wLower.length > 1 && !REGISTRY_BLACKLIST.has(wLower)) {
+                                if (!zooRegistry.lookup[wLower]) {
+                                    zooRegistry.lookup[wLower] = displayName;
+                                }
+                                if (wLower.includes('kchuaa') || wLower.includes('kachuaa') || wLower.includes('kachua') || wLower.includes('kachhua')) {
+                                    ['kachua', 'kachhua', 'kchuaa', 'kachuaa'].forEach(v => {
+                                        if (!zooRegistry.lookup[v]) {
+                                            zooRegistry.lookup[v] = displayName;
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                    // Register aliases/typos
+                    const aliases = Array.isArray(item["Aliases"]) ? item["Aliases"] : 
+                                    (Array.isArray(item["Search Variants"]) ? item["Search Variants"] : 
+                                     (Array.isArray(item["Typos"]) ? item["Typos"] : []));
+                    for (const alias of aliases) {
+                        const cleanAlias = alias.trim().toLowerCase();
+                        if (cleanAlias.length > 1) {
+                            zooRegistry.lookup[cleanAlias] = displayName;
+                            if (cleanAlias.includes('kchuaa') || cleanAlias.includes('kachuaa') || cleanAlias.includes('kachua') || cleanAlias.includes('kachhua')) {
+                                ['kachua', 'kachhua', 'kchuaa', 'kachuaa'].forEach(v => {
+                                    if (!zooRegistry.lookup[v]) {
+                                        zooRegistry.lookup[v] = displayName;
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } catch (err) {
+        console.error(`Error loading animal names translations in server.js: ${err.message}`);
     }
 
     Object.assign(zooRegistry.lookup, priorityOverrides);
@@ -1250,9 +1361,9 @@ const facilitySynonyms = {
     'Drinking Water': ['water', 'drink', 'drinking water', 'thirsty', 'thristy', 'thirsti', 'thirsy', 'thurst', 'fountain', 'pani', 'paani', 'पानी', 'प्यास', 'pyaas', 'pyasa', 'pyaasa', 'pyase', 'pyaase', 'water bottle', 'water filter'],
     'Washrooms': ['washroom', 'wash room', 'toilet', 'toliet', 'tolet', 'toielt', 'washrum', 'washrm',
         'restroom', 'bathroom', 'shauchalay', 'shochalay', 'शौचालय', 'टॉयलेट', 'pee', 'poo', 'mutralay'],
-    'Buggy Stops': ['buggy', 'shuttle', 'ride', 'cart', 'transport', 'बग्गी', 'gadi', 'gaadi', 'shuttle car', 'rickshaw', 'rikshaw'],
+    'Buggy Stops': ['buggy', 'shuttle', 'ride', 'cart', 'transport', 'बग्गी', 'baggi', 'baggy', 'gadi', 'gaadi', 'shuttle car', 'rickshaw', 'rikshaw'],
     'First Aid': ['first aid', 'firstaid', 'medical', 'medicine', 'doctor', 'clinic', 'hospital', 'hurt', 'pain', 'injury', 'injured', 'wound', 'wounded', 'accident', 'emergency', 'दवाई', 'अस्पताल', 'dawai', 'dawae', 'chot', 'injur', 'चोट', 'इलाज', 'इमर्जेंसी', 'दर्द'],
-    'Counters': ['counter', 'ticket', 'info', 'information', 'help', 'टिकट', 'काउंटर', 'booking', 'paise'],
+    'Counters': ['counter', 'ticket', 'info', 'information', 'help', 'टिकट', 'काउंटर', 'काउन्टर', 'काउंन्टर', 'काऊंटर', 'kaunter', 'caunter', 'booking', 'बुकिंग', 'paise'],
     'Timings & Hours': ['timing', 'timings', 'hours', 'schedule', 'khula', 'khulne', 'samay', 'baje', 'open today', 'closing time', 'opening time', 'kab tak', 'kitne baje', 'time', 'band', 'bandh', 'closed', 'chhutti', 'chutti', 'छुट्टी', 'बंद', 'khulta', 'khulega', 'khulegi', 'kholte', 'kholenge'],
     'Exit Gate': ['exit', 'exit gate', 'way out', 'leave the zoo', 'going out', 'get out', 'निकास', 'निकास द्वार', 'बाहर', 'बाहर निकलें', 'बाहर जाएं', 'nikas', 'bahar'],
     'Main Entrance': ['entrance', 'entry', 'enter', 'main entrance', 'main gate', 'front gate', 'get in', 'go in', 'going in', 'प्रवेश', 'प्रवेश द्वार', 'दरवाज़ा', 'द्वार', 'मुख्य द्वार', 'pravesh', 'entry gate'],
@@ -1672,7 +1783,7 @@ async function extractSubject(query) {
         const qw = words[idx];
         // Skip words that were already claimed by a longer phrase match above
         if (consumedIndices.has(idx)) continue;
-        if (qw.length < 3 || QUERY_STOP_WORDS.has(qw) || ADJECTIVE_BLACKLIST.has(qw)) continue;
+        if (qw.length < 3 || QUERY_STOP_WORDS.has(qw) || ADJECTIVE_BLACKLIST.has(qw) || REGISTRY_BLACKLIST.has(qw)) continue;
 
         // Single-word priority override check (len === 1 case, separated from the loop above)
         if (priorityOverrides[qw] && !QUERY_STOP_WORDS.has(qw)) {
@@ -2229,6 +2340,24 @@ const STATIC_RESPONSES = {
 };
 
 const HINGLISH_TO_HINDI = {
+    'hiran': 'हिरण',
+    'hirn': 'हिरण',
+    'hirnn': 'हिरण',
+    'cheetal': 'चीतल',
+    'chital': 'चीतल',
+    'kachua': 'कछुआ',
+    'kachhua': 'कछुआ',
+    'kchuaa': 'कछुआ',
+    'kachuaa': 'कछुआ',
+    'lomdi': 'लोमड़ी',
+    'lomdhi': 'लोमड़ी',
+    'baggi': 'बग्गी',
+    'baggy': 'बग्गी',
+    'buggy': 'बग्गी',
+    'booking': 'बुकिंग',
+    'counter': 'काउंटर',
+    'kaunter': 'काउंटर',
+    'caunter': 'काउंटर',
     'mujhe': 'मुझे',
     'sher': 'शेर',
     'dekhna': 'देखना',
